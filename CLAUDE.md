@@ -8,6 +8,7 @@ This file provides guidance to Claude Code when working with the Disruptors Medi
 - **Branch**: main
 - **Status**: Production ready ✅
 - **Last Updated**: December 2024
+- **Documentation**: See `/docs/` folder for comprehensive project documentation
 
 ## Application Overview
 
@@ -177,3 +178,16 @@ For any issues or improvements:
 5. Maintain TypeScript strict mode compliance
 
 This application is production-ready and successfully resolves all critical navigation and asset loading issues identified in December 2024.
+
+## 📚 Additional Documentation
+
+For comprehensive project information, see the `/docs/` folder which contains:
+
+- **`docs/SESSION_SUMMARY_DECEMBER_2024.md`** - Detailed implementation log of recent fixes
+- **`docs/TODO_ROADMAP.md`** - Development priorities and feature roadmap  
+- **`docs/CLOUDINARY_ASSETS_DOCUMENTATION.md`** - Asset management guide
+- **`docs/PROJECT_OVERVIEW.md`** - Business context and objectives
+- **`docs/DM3_STATIC_PRD.md`** & **`docs/LOVABLE_PRD.md`** - Product requirements
+- **`docs/README.md`** - Documentation index and organization guide
+
+This documentation collection provides complete guidance for development, maintenance, and future enhancements.
