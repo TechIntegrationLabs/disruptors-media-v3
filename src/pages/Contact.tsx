@@ -478,6 +478,7 @@ const Contact: React.FC = () => {
                 height="600"
                 frameBorder="0"
                 className="rounded-lg"
+                title="Schedule Strategy Session"
               ></iframe>
             </div>
           </div>

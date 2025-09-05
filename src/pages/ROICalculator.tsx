@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import {
   CalculatorIcon,
@@ -40,14 +40,13 @@ const ROICalculator: React.FC = () => {
   const [results, setResults] = useState<ROIResults | null>(null);
   const [showTooltip, setShowTooltip] = useState<string | null>(null);
 
-  const calculateROI = () => {
+  const calculateROI = useCallback(() => {
     const {
       monthlyRevenue,
       monthlyMarketingSpend,
       conversionRate,
       averageOrderValue,
-      monthlyTraffic,
-      customerLifetimeValue
+      monthlyTraffic
     } = inputs;
 
     // Current metrics
@@ -57,13 +56,12 @@ const ROICalculator: React.FC = () => {
     const trafficIncrease = 0.35; // 35% traffic increase
     const conversionIncrease = 0.45; // 45% conversion rate improvement
     const aovIncrease = 0.25; // 25% average order value increase
-    const retentionIncrease = 0.30; // 30% customer lifetime value increase
 
     // Projected metrics
     const newTraffic = monthlyTraffic * (1 + trafficIncrease);
     const newConversionRate = conversionRate * (1 + conversionIncrease);
     const newAOV = averageOrderValue * (1 + aovIncrease);
-    const newCLV = customerLifetimeValue * (1 + retentionIncrease);
+    // Note: newCLV calculation available but not used in current ROI calculation
 
     // Calculate projected revenue
     const newMonthlyRevenue = (newTraffic * (newConversionRate / 100) * newAOV);
@@ -85,11 +83,11 @@ const ROICalculator: React.FC = () => {
       revenueIncrease: ((newMonthlyRevenue - monthlyRevenue) / monthlyRevenue) * 100,
       conversionImprovement: conversionIncrease * 100
     });
-  };
+  }, [inputs]);
 
   useEffect(() => {
     calculateROI();
-  }, [inputs]);
+  }, [calculateROI]);
 
   const handleInputChange = (field: keyof CalculatorInputs, value: string) => {
     const numValue = parseFloat(value) || 0;
@@ -116,9 +114,6 @@ const ROICalculator: React.FC = () => {
     }).format(amount);
   };
 
-  const formatNumber = (num: number) => {
-    return new Intl.NumberFormat('en-US').format(Math.round(num));
-  };
 
   const tooltips: Record<string, string> = {
     monthlyRevenue: 'Total revenue generated per month from your business',

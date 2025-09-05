@@ -4,7 +4,6 @@ import {
   ChevronRightIcon,
   ChevronLeftIcon,
   CheckCircleIcon,
-  XCircleIcon,
   ChartBarIcon,
   LightBulbIcon,
   ArrowPathIcon

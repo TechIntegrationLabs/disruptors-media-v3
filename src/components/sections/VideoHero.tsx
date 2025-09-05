@@ -1,6 +1,4 @@
 import { motion } from 'framer-motion';
-import { PlayIcon } from '@heroicons/react/24/solid';
-import { useState } from 'react';
 
 interface VideoHeroProps {
   title: string;
@@ -18,7 +16,6 @@ interface VideoHeroProps {
 }
 
 export default function VideoHero({ title, subtitle, videoUrl, posterImage, primaryCta, secondaryCta }: VideoHeroProps) {
-  const [isPlaying, setIsPlaying] = useState(false);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
