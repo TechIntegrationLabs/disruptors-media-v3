@@ -4,12 +4,14 @@ import { ChevronLeftIcon, ChevronRightIcon, StarIcon } from '@heroicons/react/24
 
 interface Testimonial {
   id: string;
-  name: string;
+  client: string;
+  author: string;
   role: string;
   company: string;
   content: string;
   rating: number;
-  image: string;
+  image?: string;
+  projectId?: string;
 }
 
 interface TestimonialsProps {
@@ -69,12 +71,12 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
           {/* Author */}
           <div className="flex items-center justify-center">
             <img
-              src={current.image}
-              alt={current.name}
+              src={current.image || 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/defaults/avatar-placeholder'}
+              alt={current.author}
               className="w-16 h-16 rounded-full mr-4 object-cover"
             />
             <div className="text-left">
-              <div className="font-semibold text-dark">{current.name}</div>
+              <div className="font-semibold text-dark">{current.author}</div>
               <div className="text-gray-600">
                 {current.role} at {current.company}
               </div>

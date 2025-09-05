@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { 
   ChartBarIcon,
   ClockIcon,
-  BuildingOfficeIcon,
+  BuildingOffice2Icon,
   TagIcon,
   CheckCircleIcon,
   ArrowRightIcon,
@@ -208,7 +208,7 @@ const CaseStudy: React.FC = () => {
             </h1>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-gray-300">
               <div className="flex items-center">
-                <BuildingOfficeIcon className="h-5 w-5 mr-2" />
+                <BuildingOffice2Icon className="h-5 w-5 mr-2" />
                 <span>{data.client.name}</span>
               </div>
               <span className="hidden sm:block">•</span>

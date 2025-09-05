@@ -3,9 +3,9 @@ import { useLocation } from 'react-router-dom';
 
 declare global {
   interface Window {
-    gtag: (command: string, targetId: string, config?: any) => void;
+    gtag: (...args: any[]) => void;
     dataLayer: any[];
-    fbq: (command: string, event: string, data?: any) => void;
+    fbq: any;
   }
 }
 

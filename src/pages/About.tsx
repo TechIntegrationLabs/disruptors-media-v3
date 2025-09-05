@@ -8,7 +8,7 @@ import {
   RocketLaunchIcon,
   LightBulbIcon,
   TrophyIcon,
-  GlobeAmericasIcon,
+  GlobeAltIcon,
   HeartIcon
 } from '@heroicons/react/24/outline';
 
@@ -320,7 +320,7 @@ export default function About() {
               viewport={{ once: true }}
               className="bg-white rounded-xl p-8 shadow-lg"
             >
-              <GlobeAmericasIcon className="w-12 h-12 text-gold mb-4" />
+              <GlobeAltIcon className="w-12 h-12 text-gold mb-4" />
               <h3 className="text-2xl font-bold text-dark mb-4">Our Vision</h3>
               <p className="text-gray-700 text-lg leading-relaxed">
                 To be the global leader in AI marketing transformation, helping businesses of all 

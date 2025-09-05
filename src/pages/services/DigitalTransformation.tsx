@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
-  CloudArrowUpIcon,
+  CloudIcon,
   LightBulbIcon,
   ShieldCheckIcon,
   SparklesIcon,
@@ -14,7 +14,7 @@ import {
 
 const transformationPillars = [
   {
-    icon: CloudArrowUpIcon,
+    icon: CloudIcon,
     title: 'Cloud Migration',
     description: 'Seamlessly transition your infrastructure to modern cloud solutions for enhanced scalability and efficiency'
   },

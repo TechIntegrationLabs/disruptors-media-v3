@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 import {
   VideoCameraIcon,
   MicrophoneIcon,
-  TvIcon,
   LightBulbIcon,
-  WifiIcon,
+  SignalIcon,
   ComputerDesktopIcon,
-  CalendarIcon,
+  CalendarDaysIcon,
   CheckCircleIcon,
   ClockIcon,
   MapPinIcon,
@@ -41,7 +40,7 @@ const studioEquipment = [
   },
   {
     category: 'Display & Monitoring',
-    icon: TvIcon,
+    icon: ComputerDesktopIcon,
     items: [
       '3x HD TV monitors',
       'Confidence monitors',
@@ -122,7 +121,7 @@ const StudioServices: React.FC = () => {
                 rel="noopener noreferrer"
                 className="bg-gold hover:bg-gold/90 text-dark px-8 py-4 rounded-lg font-semibold transition-colors inline-flex items-center justify-center gap-2"
               >
-                <CalendarIcon className="w-5 h-5" />
+                <CalendarDaysIcon className="w-5 h-5" />
                 Book Studio Time
               </a>
               <button
@@ -451,7 +450,7 @@ const StudioServices: React.FC = () => {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <WifiIcon className="w-12 h-12 text-gold mx-auto mb-4" />
+                <SignalIcon className="w-12 h-12 text-gold mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-dark mb-2">High-Speed Internet</h3>
                 <p className="text-gray-600">1GB fiber connection for seamless streaming and uploads</p>
               </motion.div>
@@ -473,7 +472,7 @@ const StudioServices: React.FC = () => {
                 transition={{ delay: 0.2 }}
                 className="text-center"
               >
-                <CalendarIcon className="w-12 h-12 text-gold mx-auto mb-4" />
+                <CalendarDaysIcon className="w-12 h-12 text-gold mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-dark mb-2">Flexible Scheduling</h3>
                 <p className="text-gray-600">Available 7 days a week, early morning to late evening</p>
               </motion.div>
@@ -498,7 +497,7 @@ const StudioServices: React.FC = () => {
               rel="noopener noreferrer"
               className="bg-gold hover:bg-gold/90 text-dark px-8 py-4 rounded-lg font-semibold transition-colors inline-flex items-center justify-center gap-2"
             >
-              <CalendarIcon className="w-5 h-5" />
+              <CalendarDaysIcon className="w-5 h-5" />
               Check Availability
             </a>
             <a

@@ -4,7 +4,7 @@ import {
   CalculatorIcon,
   CurrencyDollarIcon,
   ChartBarIcon,
-  TrendingUpIcon,
+  ArrowTrendingUpIcon,
   ArrowPathIcon,
   InformationCircleIcon
 } from '@heroicons/react/24/outline';
@@ -234,7 +234,7 @@ const ROICalculator: React.FC = () => {
             {/* ROI Comparison */}
             <div className="glass-card p-8">
               <div className="flex items-center mb-6">
-                <TrendingUpIcon className="h-6 w-6 text-gold mr-3" />
+                <ArrowTrendingUpIcon className="h-6 w-6 text-gold mr-3" />
                 <h3 className="text-xl font-bold text-white">ROI Comparison</h3>
               </div>
               
