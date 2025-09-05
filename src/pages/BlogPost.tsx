@@ -1,0 +1,302 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Link, useParams } from 'react-router-dom';
+import {
+  ClockIcon,
+  UserIcon,
+  CalendarDaysIcon,
+  TagIcon,
+  ArrowLeftIcon,
+  ShareIcon,
+  ArrowRightIcon
+} from '@heroicons/react/24/outline';
+import { blogPosts } from '../data/blog';
+
+const BlogPost: React.FC = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const post = blogPosts.find(p => p.slug === slug);
+
+  if (!post) {
+    return (
+      <div className="min-h-screen bg-dark flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-white mb-4">Article Not Found</h1>
+          <p className="text-gray-300 mb-8">The article you're looking for doesn't exist.</p>
+          <Link to="/blog" className="btn-primary">
+            Back to Blog
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  // Get related posts (same category, excluding current post)
+  const relatedPosts = blogPosts
+    .filter(p => p.category === post.category && p.id !== post.id)
+    .slice(0, 3);
+
+  const shareUrl = window.location.href;
+  const shareText = `Check out this article: ${post.title}`;
+
+  const shareOnTwitter = () => {
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`, '_blank');
+  };
+
+  const shareOnLinkedIn = () => {
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`, '_blank');
+  };
+
+  return (
+    <div>
+      {/* Hero Section */}
+      <section className="relative section-padding bg-gradient-sophisticated">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* Back to Blog */}
+            <Link 
+              to="/blog" 
+              className="inline-flex items-center text-gold hover:text-gold-light mb-6 transition-colors"
+            >
+              <ArrowLeftIcon className="h-4 w-4 mr-2" />
+              Back to Blog
+            </Link>
+
+            {/* Category and Reading Time */}
+            <div className="flex items-center gap-4 mb-6">
+              <span className="px-3 py-1 bg-gold text-dark text-sm font-medium rounded-full">
+                {post.category}
+              </span>
+              <div className="flex items-center text-gray-300 text-sm">
+                <ClockIcon className="h-4 w-4 mr-1" />
+                {post.readTime} min read
+              </div>
+            </div>
+
+            {/* Title */}
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              {post.title}
+            </h1>
+
+            {/* Excerpt */}
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+              {post.excerpt}
+            </p>
+
+            {/* Meta Information */}
+            <div className="flex flex-wrap items-center gap-6 mb-8">
+              <div className="flex items-center text-gray-300">
+                <UserIcon className="h-5 w-5 mr-2" />
+                <span className="font-medium">{post.author}</span>
+              </div>
+              <div className="flex items-center text-gray-300">
+                <CalendarDaysIcon className="h-5 w-5 mr-2" />
+                <span>{post.date}</span>
+              </div>
+              <button
+                onClick={shareOnTwitter}
+                className="flex items-center text-gray-300 hover:text-gold transition-colors"
+              >
+                <ShareIcon className="h-5 w-5 mr-2" />
+                Share
+              </button>
+            </div>
+
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2">
+              {post.tags.map(tag => (
+                <span key={tag} className="px-3 py-1 bg-white/10 text-gray-300 text-sm rounded-full">
+                  <TagIcon className="h-3 w-3 inline mr-1" />
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Featured Image */}
+      <section className="py-8 bg-dark">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative h-96 md:h-[500px] rounded-xl overflow-hidden"
+          >
+            <img 
+              src={post.image} 
+              alt={post.title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent" />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Article Content */}
+      <section className="section-padding bg-dark-light">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="prose prose-lg prose-invert max-w-none"
+          >
+            {/* This would normally be MDX content, but we'll simulate it */}
+            <div className="text-gray-300 space-y-6 leading-relaxed">
+              <p className="text-xl text-white font-medium">
+                {post.excerpt}
+              </p>
+              
+              <p>
+                This comprehensive case study dives deep into the strategies, challenges, and remarkable results 
+                we achieved with our client. Through innovative approaches and data-driven decision making, 
+                we were able to transform their digital presence and drive significant business growth.
+              </p>
+
+              <h2 className="text-2xl font-bold text-white mt-8 mb-4">The Challenge</h2>
+              <p>
+                Every successful campaign starts with understanding the unique challenges our clients face. 
+                In this case, we needed to develop a comprehensive strategy that would address multiple 
+                pain points while staying true to the brand's core values and mission.
+              </p>
+
+              <h2 className="text-2xl font-bold text-white mt-8 mb-4">Our Approach</h2>
+              <p>
+                Our team developed a multi-faceted approach combining cutting-edge AI technology with 
+                time-tested marketing principles. We focused on creating authentic connections with 
+                the target audience while optimizing for measurable business outcomes.
+              </p>
+
+              <h2 className="text-2xl font-bold text-white mt-8 mb-4">Results & Impact</h2>
+              <p>
+                The results speak for themselves. Through strategic implementation and continuous 
+                optimization, we were able to exceed all initial goals and create a sustainable 
+                framework for long-term success.
+              </p>
+
+              <div className="bg-dark p-6 rounded-lg my-8 border border-gold/20">
+                <h3 className="text-xl font-bold text-gold mb-4">Key Takeaways</h3>
+                <ul className="list-disc list-inside space-y-2 text-gray-300">
+                  <li>Data-driven strategies consistently outperform intuition-based approaches</li>
+                  <li>Authentic brand storytelling creates deeper customer connections</li>
+                  <li>Continuous optimization is essential for sustained growth</li>
+                  <li>Cross-platform integration amplifies campaign effectiveness</li>
+                </ul>
+              </div>
+
+              <h2 className="text-2xl font-bold text-white mt-8 mb-4">What's Next?</h2>
+              <p>
+                This success story demonstrates the power of combining strategic thinking with 
+                innovative execution. If you're ready to transform your business results, 
+                we'd love to discuss how our proven methodologies can work for your brand.
+              </p>
+            </div>
+
+            {/* Share Buttons */}
+            <div className="flex items-center gap-4 mt-12 pt-8 border-t border-white/20">
+              <span className="text-gray-300 font-medium">Share this article:</span>
+              <button
+                onClick={shareOnTwitter}
+                className="btn-secondary text-sm"
+              >
+                Twitter
+              </button>
+              <button
+                onClick={shareOnLinkedIn}
+                className="btn-secondary text-sm"
+              >
+                LinkedIn
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Related Articles */}
+      {relatedPosts.length > 0 && (
+        <section className="section-padding bg-dark">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">
+              Related Articles
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {relatedPosts.map((relatedPost, index) => (
+                <motion.article
+                  key={relatedPost.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="glass-card hover:bg-white/10 transition-all duration-300"
+                >
+                  <div className="relative h-48 bg-gradient-to-br from-gold/10 to-transparent rounded-t-lg overflow-hidden">
+                    <img 
+                      src={relatedPost.image} 
+                      alt={relatedPost.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="px-2 py-1 bg-dark-light text-gold text-xs font-medium rounded">
+                        {relatedPost.category}
+                      </span>
+                      <div className="flex items-center text-gray-400 text-sm">
+                        <ClockIcon className="h-4 w-4 mr-1" />
+                        {relatedPost.readTime}m
+                      </div>
+                    </div>
+
+                    <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">
+                      {relatedPost.title}
+                    </h3>
+
+                    <p className="text-gray-300 text-sm mb-4 line-clamp-2">
+                      {relatedPost.excerpt}
+                    </p>
+
+                    <Link 
+                      to={`/blog/${relatedPost.slug}`} 
+                      className="btn-secondary w-full inline-flex items-center justify-center text-sm"
+                    >
+                      Read More
+                      <ArrowRightIcon className="h-4 w-4 ml-2" />
+                    </Link>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* CTA Section */}
+      <section className="section-padding bg-gradient-sophisticated">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold text-white mb-6">
+            Ready to Achieve Similar Results?
+          </h2>
+          <p className="text-xl text-gray-300 mb-8">
+            Let's discuss how we can help transform your business with proven strategies and innovative solutions.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/contact" className="btn-primary">
+              Get Your Free Strategy Session
+            </Link>
+            <Link to="/portfolio" className="btn-secondary">
+              View More Case Studies
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default BlogPost;

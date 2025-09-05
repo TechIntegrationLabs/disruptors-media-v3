@@ -7,6 +7,7 @@ import {
   ClockIcon,
   ArrowTopRightOnSquareIcon
 } from '@heroicons/react/24/outline';
+import { portfolioProjects } from '../data/portfolio';
 
 interface Project {
   id: string;
@@ -27,123 +28,36 @@ interface Project {
   featured: boolean;
 }
 
-// Sample portfolio data - this would come from a CMS or data file
-const portfolioProjects: Project[] = [
-  {
-    id: '1',
-    slug: 'techcorp-ai-transformation',
-    title: 'AI-Powered Lead Generation System',
-    client: 'TechCorp Solutions',
-    industry: 'Tech',
-    serviceType: 'AI Marketing',
-    projectSize: 'Enterprise',
-    challenge: 'Struggling with low-quality leads and manual lead scoring processes',
-    solution: 'Implemented AI-driven lead scoring, automated nurturing sequences, and predictive analytics',
-    results: [
-      { metric: 'Lead Quality Increase', value: '+240%' },
-      { metric: 'Sales Conversion Rate', value: '+85%' },
-      { metric: 'Time to Close', value: '-45%' }
-    ],
-    timeline: '6 months',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/c_scale,w_800/v1/portfolio/techcorp-results',
-    featured: true
-  },
-  {
-    id: '2',
-    slug: 'healthsystem-digital-overhaul',
-    title: 'Healthcare Digital Transformation',
-    client: 'Regional Health System',
-    industry: 'Healthcare',
-    serviceType: 'Digital Transformation',
-    projectSize: 'Enterprise',
-    challenge: 'Outdated systems hampering patient experience and operational efficiency',
-    solution: 'Complete digital infrastructure overhaul with AI-powered patient engagement tools',
-    results: [
-      { metric: 'Patient Satisfaction', value: '+65%' },
-      { metric: 'Operational Efficiency', value: '+40%' },
-      { metric: 'Cost Reduction', value: '-30%' }
-    ],
-    timeline: '8 months',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/c_scale,w_800/v1/portfolio/health-transformation',
-    featured: true
-  },
-  {
-    id: '3',
-    slug: 'fintech-startup-growth',
-    title: 'FinTech Startup Growth Strategy',
-    client: 'InnovateFinance',
-    industry: 'Finance',
-    serviceType: 'AI Marketing',
-    projectSize: 'Startup',
-    challenge: 'New fintech struggling to acquire users in competitive market',
-    solution: 'AI-driven user acquisition campaigns with personalized onboarding flows',
-    results: [
-      { metric: 'User Acquisition', value: '+400%' },
-      { metric: 'Customer Acquisition Cost', value: '-55%' },
-      { metric: 'User Retention', value: '+120%' }
-    ],
-    timeline: '4 months',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/c_scale,w_800/v1/portfolio/fintech-growth',
-    featured: false
-  },
-  {
-    id: '4',
-    slug: 'ecommerce-ai-personalization',
-    title: 'E-commerce AI Personalization',
-    client: 'ShopSmart Retail',
-    industry: 'E-commerce',
-    serviceType: 'AI Marketing',
-    projectSize: 'SMB',
-    challenge: 'Low conversion rates and poor customer engagement on e-commerce platform',
-    solution: 'Implemented AI-powered product recommendations and personalized shopping experiences',
-    results: [
-      { metric: 'Conversion Rate', value: '+150%' },
-      { metric: 'Average Order Value', value: '+75%' },
-      { metric: 'Customer Lifetime Value', value: '+90%' }
-    ],
-    timeline: '3 months',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/c_scale,w_800/v1/portfolio/ecommerce-personalization',
-    featured: true
-  },
-  {
-    id: '5',
-    slug: 'manufacturing-content-series',
-    title: 'Manufacturing Industry Thought Leadership',
-    client: 'Advanced Manufacturing Co',
-    industry: 'Manufacturing',
-    serviceType: 'Content Production',
-    projectSize: 'Enterprise',
-    challenge: 'Needed to establish thought leadership in industrial automation space',
-    solution: 'Created comprehensive content series with studio-produced video content and AI-optimized distribution',
-    results: [
-      { metric: 'Brand Awareness', value: '+180%' },
-      { metric: 'Industry Recognition', value: '5 Awards' },
-      { metric: 'Lead Generation', value: '+220%' }
-    ],
-    timeline: '5 months',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/c_scale,w_800/v1/portfolio/manufacturing-thought-leadership',
-    featured: false
-  },
-  {
-    id: '6',
-    slug: 'saas-startup-studio',
-    title: 'SaaS Startup Podcast Launch',
-    client: 'CloudTech Innovations',
-    industry: 'SaaS',
-    serviceType: 'Studio Services',
-    projectSize: 'Startup',
-    challenge: 'Wanted to launch thought leadership podcast to attract enterprise clients',
-    solution: 'Full podcast production using our professional studio with AI-powered content optimization',
-    results: [
-      { metric: 'Podcast Downloads', value: '50K+' },
-      { metric: 'Enterprise Inquiries', value: '+300%' },
-      { metric: 'Brand Authority Score', value: '+160%' }
-    ],
-    timeline: '2 months',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/c_scale,w_800/v1/portfolio/saas-podcast-launch',
-    featured: false
-  }
-];
+// Convert imported data to Portfolio component format
+const convertToProjectFormat = (projects: any[]): Project[] => {
+  return projects.map(project => ({
+    id: project.id,
+    slug: project.slug,
+    title: project.title,
+    client: project.client,
+    industry: project.industry.includes('Sports') ? 'Tech' as const : 
+             project.industry.includes('Healthcare') ? 'Healthcare' as const :
+             project.industry.includes('Food') ? 'Manufacturing' as const :
+             project.industry.includes('Fashion') ? 'E-commerce' as const :
+             project.industry.includes('Real Estate') ? 'Finance' as const :
+             'Tech' as const,
+    serviceType: project.serviceType.includes('Social Media') ? 'AI Marketing' as const :
+                project.serviceType.includes('Full Brand') ? 'Digital Transformation' as const :
+                project.serviceType.includes('Production') ? 'Content Production' as const :
+                project.serviceType.includes('Podcast') ? 'Studio Services' as const :
+                'AI Marketing' as const,
+    projectSize: project.projectSize as 'Startup' | 'SMB' | 'Enterprise',
+    challenge: project.challenge,
+    solution: project.solution,
+    results: project.results,
+    timeline: project.timeline,
+    image: project.image,
+    featured: project.featured
+  }));
+};
+
+// Use real portfolio data
+const portfolioProjectsData: Project[] = convertToProjectFormat(portfolioProjects);
 
 const Portfolio: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -153,13 +67,13 @@ const Portfolio: React.FC = () => {
   const [showFilters, setShowFilters] = useState(false);
 
   // Get unique filter values
-  const industries = Array.from(new Set(portfolioProjects.map(p => p.industry)));
-  const serviceTypes = Array.from(new Set(portfolioProjects.map(p => p.serviceType)));
-  const projectSizes = Array.from(new Set(portfolioProjects.map(p => p.projectSize)));
+  const industries = Array.from(new Set(portfolioProjectsData.map(p => p.industry)));
+  const serviceTypes = Array.from(new Set(portfolioProjectsData.map(p => p.serviceType)));
+  const projectSizes = Array.from(new Set(portfolioProjectsData.map(p => p.projectSize)));
 
   // Filter projects based on selected criteria
   const filteredProjects = useMemo(() => {
-    return portfolioProjects.filter(project => {
+    return portfolioProjectsData.filter(project => {
       const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            project.client.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            project.challenge.toLowerCase().includes(searchTerm.toLowerCase());

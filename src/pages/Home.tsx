@@ -1,12 +1,53 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import Hero from '../components/sections/Hero';
+import SEO from '../components/common/SEO';
+import VideoHero from '../components/sections/VideoHero';
+import ClientLogos from '../components/sections/ClientLogos';
+import StudioShowcase from '../components/sections/StudioShowcase';
+import Testimonials from '../components/sections/Testimonials';
+import BlogPreview from '../components/sections/BlogPreview';
+import Newsletter from '../components/sections/Newsletter';
+import AnimatedCounters from '../components/sections/AnimatedCounters';
+import { featuredClients } from '../data/clients';
+import { testimonials } from '../data/clients';
+import { blogPosts } from '../data/blog';
 
 const Home: React.FC = () => {
+  // Convert client data to logo format
+  const clientLogos = featuredClients.map(client => ({
+    name: client.name,
+    src: client.logo,
+    href: client.url
+  }));
+
+  // Get featured blog posts
+  const featuredBlogPosts = blogPosts.filter(post => post.featured).slice(0, 3);
+
+  const counters = [
+    { label: 'Revenue Generated', value: 50, suffix: 'M+', prefix: '$' },
+    { label: 'Successful Campaigns', value: 200, suffix: '+' },
+    { label: 'Client Satisfaction', value: 95, suffix: '%' },
+    { label: 'Years of Excellence', value: 12, suffix: '+' },
+  ];
+
   return (
     <div className="min-h-screen">
-      <Hero />
+      <SEO
+        title="AI-Powered Marketing Solutions That Drive Results"
+        description="Transform your business with data-driven AI marketing strategies, professional content production, and digital transformation. 12+ years generating $50M+ in client revenue."
+        keywords="AI marketing, digital transformation, content production, studio services, marketing automation, business growth, North Salt Lake, Utah, AI-powered marketing, data-driven strategies"
+        url="https://disruptorsmedia.com"
+        type="website"
+      />
+      <VideoHero
+        title="AI Marketing That Drives Results"
+        subtitle="Transform your business with data-driven strategies and professional content production"
+        videoUrl="https://cdn.coverr.co/videos/coverr-typing-on-laptop-keyboard-1005/1080p.mp4"
+        posterImage="https://via.placeholder.com/1920x1080/1a1a1a/d4af37?text=Hero+Video"
+        primaryCta={{ text: 'Start Your Transformation', href: '/contact' }}
+        secondaryCta={{ text: 'Watch Our Work', href: '/portfolio' }}
+      />
       
       {/* Services Overview */}
       <section className="py-20 bg-white">
@@ -61,34 +102,23 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Results Section */}
-      <section className="py-20 bg-dark text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Proven Results
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Our data-driven approach delivers measurable outcomes for our clients.
-            </p>
-          </div>
+      {/* Client Logos */}
+      <ClientLogos logos={clientLogos} />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-gold mb-2">$50M+</div>
-              <div className="text-gray-300">Revenue Generated</div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-gold mb-2">200+</div>
-              <div className="text-gray-300">Successful Campaigns</div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-gold mb-2">95%</div>
-              <div className="text-gray-300">Client Satisfaction</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Studio Showcase */}
+      <StudioShowcase />
+
+      {/* Animated Counters */}
+      <AnimatedCounters counters={counters} />
+
+      {/* Testimonials */}
+      <Testimonials testimonials={testimonials} />
+
+      {/* Blog Preview */}
+      <BlogPreview posts={featuredBlogPosts} />
+
+      {/* Newsletter */}
+      <Newsletter />
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-gold/10 to-cream">
