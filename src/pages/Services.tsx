@@ -268,7 +268,7 @@ export default function Services() {
               className="relative"
             >
               <img
-                src="https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_600,h_500,c_fill/about/why-choose-us-benefits"
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=500&fit=crop&crop=center"
                 alt="Why Choose Disruptors Media"
                 className="rounded-lg shadow-2xl"
               />

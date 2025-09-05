@@ -317,7 +317,7 @@ export default function DigitalTransformation() {
               className="relative"
             >
               <img
-                src="https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_600,h_600,c_fill/services/digital-transformation-process"
+                src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&h=600&fit=crop&crop=center"
                 alt="Digital Transformation Benefits"
                 className="rounded-lg shadow-xl"
               />

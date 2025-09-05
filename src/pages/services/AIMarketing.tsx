@@ -193,7 +193,7 @@ const AIMarketing: React.FC = () => {
               className="relative"
             >
               <img
-                src="https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_600,h_400,c_fill/services/ai-marketing-dashboard"
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&crop=center"
                 alt="AI Marketing Dashboard"
                 className="rounded-lg shadow-xl"
               />

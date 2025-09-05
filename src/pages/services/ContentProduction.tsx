@@ -110,25 +110,25 @@ const portfolio = [
   {
     title: 'Tech Startup Launch Video',
     category: 'Video Production',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_600,h_400,c_fill/portfolio/launch-video-production',
+    image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&h=400&fit=crop&crop=center',
     results: '2M+ views, 300% increase in sign-ups'
   },
   {
     title: 'Executive Podcast Series',
     category: 'Podcast Production',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_600,h_400,c_fill/portfolio/podcast-series-production',
+    image: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&h=400&fit=crop&crop=center',
     results: 'Top 10 in Business category'
   },
   {
     title: 'Product Campaign Photography',
     category: 'Photography',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_600,h_400,c_fill/portfolio/product-photography',
+    image: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&h=400&fit=crop&crop=center',
     results: '150% increase in conversions'
   },
   {
     title: 'AI-Powered Blog Content',
     category: 'Content Writing',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_600,h_400,c_fill/portfolio/blog-content-creation',
+    image: 'https://images.unsplash.com/photo-1486312338219-ce68e2c6b13d?w=600&h=400&fit=crop&crop=center',
     results: '400% increase in organic traffic'
   }
 ];
@@ -276,12 +276,12 @@ export default function ContentProduction() {
               className="grid grid-cols-2 gap-4"
             >
               <img
-                src="https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_300,h_400,c_fill/studio/recording-studio-1"
+                src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=300&h=400&fit=crop&crop=center"
                 alt="Studio setup"
                 className="rounded-lg shadow-xl"
               />
               <img
-                src="https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_300,h_400,c_fill/studio/recording-studio-2"
+                src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=400&fit=crop&crop=center"
                 alt="Recording session"
                 className="rounded-lg shadow-xl mt-8"
               />
