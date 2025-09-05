@@ -37,14 +37,14 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-gold transition-colors">
+                <span className="text-gray-500 cursor-not-allowed">
                   Digital Transformation
-                </a>
+                </span>
               </li>
               <li>
-                <a href="#" className="hover:text-gold transition-colors">
+                <span className="text-gray-500 cursor-not-allowed">
                   Content Production
-                </a>
+                </span>
               </li>
             </ul>
           </div>
@@ -54,19 +54,19 @@ const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold text-gold mb-4">Company</h4>
             <ul className="space-y-2 text-gray-300">
               <li>
-                <a href="#" className="hover:text-gold transition-colors">
+                <span className="text-gray-500 cursor-not-allowed">
                   About Us
-                </a>
+                </span>
               </li>
               <li>
-                <a href="#" className="hover:text-gold transition-colors">
+                <span className="text-gray-500 cursor-not-allowed">
                   Portfolio
-                </a>
+                </span>
               </li>
               <li>
-                <a href="#" className="hover:text-gold transition-colors">
+                <span className="text-gray-500 cursor-not-allowed">
                   Blog
-                </a>
+                </span>
               </li>
               <li>
                 <Link to="/contact" className="hover:text-gold transition-colors">
