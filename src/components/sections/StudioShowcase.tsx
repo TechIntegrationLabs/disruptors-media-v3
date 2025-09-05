@@ -84,24 +84,24 @@ export default function StudioShowcase() {
           >
             <div className="space-y-4">
               <img
-                src="https://via.placeholder.com/400x300/1a1a1a/d4af37?text=Studio+Wide+Shot"
+                src="https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_600,h_400,c_fill/photos/studio/overview/wide-angle-001.jpg"
                 alt="Studio wide shot"
                 className="rounded-lg w-full h-48 object-cover"
               />
               <img
-                src="https://via.placeholder.com/400x400/1a1a1a/d4af37?text=Recording+Setup"
+                src="https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_600,h_400,c_fill/photos/studio/recording/session-example.jpg"
                 alt="Recording setup"
                 className="rounded-lg w-full h-64 object-cover"
               />
             </div>
             <div className="space-y-4 pt-8">
               <img
-                src="https://via.placeholder.com/400x400/1a1a1a/d4af37?text=Camera+Equipment"
+                src="https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_80,h_80/photos/studio/equipment/cameras-detail.jpg"
                 alt="Camera equipment"
                 className="rounded-lg w-full h-64 object-cover"
               />
               <img
-                src="https://via.placeholder.com/400x300/1a1a1a/d4af37?text=Control+Room"
+                src="https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_600,h_400,c_fill/photos/studio/equipment/setup-overview.jpg"
                 alt="Control room"
                 className="rounded-lg w-full h-48 object-cover"
               />

@@ -110,25 +110,25 @@ const portfolio = [
   {
     title: 'Tech Startup Launch Video',
     category: 'Video Production',
-    image: 'https://via.placeholder.com/600x400/1a1a1a/d4af37?text=Launch+Video',
+    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_600,h_400,c_fill/portfolio/launch-video-production',
     results: '2M+ views, 300% increase in sign-ups'
   },
   {
     title: 'Executive Podcast Series',
     category: 'Podcast Production',
-    image: 'https://via.placeholder.com/600x400/1a1a1a/d4af37?text=Podcast+Series',
+    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_600,h_400,c_fill/portfolio/podcast-series-production',
     results: 'Top 10 in Business category'
   },
   {
     title: 'Product Campaign Photography',
     category: 'Photography',
-    image: 'https://via.placeholder.com/600x400/1a1a1a/d4af37?text=Product+Photos',
+    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_600,h_400,c_fill/portfolio/product-photography',
     results: '150% increase in conversions'
   },
   {
     title: 'AI-Powered Blog Content',
     category: 'Content Writing',
-    image: 'https://via.placeholder.com/600x400/1a1a1a/d4af37?text=Blog+Content',
+    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_600,h_400,c_fill/portfolio/blog-content-creation',
     results: '400% increase in organic traffic'
   }
 ];
@@ -276,12 +276,12 @@ export default function ContentProduction() {
               className="grid grid-cols-2 gap-4"
             >
               <img
-                src="https://via.placeholder.com/300x400/1a1a1a/d4af37?text=Studio+1"
+                src="https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_300,h_400,c_fill/studio/recording-studio-1"
                 alt="Studio setup"
                 className="rounded-lg shadow-xl"
               />
               <img
-                src="https://via.placeholder.com/300x400/1a1a1a/d4af37?text=Studio+2"
+                src="https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_300,h_400,c_fill/studio/recording-studio-2"
                 alt="Recording session"
                 className="rounded-lg shadow-xl mt-8"
               />

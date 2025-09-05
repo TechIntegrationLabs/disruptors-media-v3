@@ -168,7 +168,7 @@ export default function About() {
               className="relative"
             >
               <img
-                src="https://via.placeholder.com/600x400/1a1a1a/d4af37?text=Our+Story"
+                src="https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_600,h_400,c_fill/about/company-story-timeline"
                 alt="Disruptors Media Story"
                 className="rounded-lg shadow-xl"
               />

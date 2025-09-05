@@ -96,7 +96,7 @@ const StudioServices: React.FC = () => {
       <section className="relative bg-gradient-to-br from-dark via-dark/95 to-dark/90 text-white py-20">
         <div className="absolute inset-0 overflow-hidden">
           <img
-            src="https://via.placeholder.com/1920x600/1a1a1a/d4af37?text=Professional+Studio"
+            src="https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto/studio/professional-studio-wide"
             alt="Studio background"
             className="w-full h-full object-cover opacity-20"
           />
@@ -242,22 +242,22 @@ const StudioServices: React.FC = () => {
                 className="grid grid-cols-2 gap-4"
               >
                 <img
-                  src="https://via.placeholder.com/400x300/1a1a1a/d4af37?text=Studio+Main"
+                  src="https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_400,h_300,c_fill/studio/studio-main-room"
                   alt="Main studio area"
                   className="rounded-lg shadow-lg w-full h-48 object-cover"
                 />
                 <img
-                  src="https://via.placeholder.com/400x300/1a1a1a/d4af37?text=Control+Room"
+                  src="https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_400,h_300,c_fill/studio/control-room"
                   alt="Control room"
                   className="rounded-lg shadow-lg w-full h-48 object-cover"
                 />
                 <img
-                  src="https://via.placeholder.com/400x300/1a1a1a/d4af37?text=Green+Screen"
+                  src="https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_400,h_300,c_fill/studio/green-screen-setup"
                   alt="Green screen setup"
                   className="rounded-lg shadow-lg w-full h-48 object-cover"
                 />
                 <img
-                  src="https://via.placeholder.com/400x300/1a1a1a/d4af37?text=Podcast+Setup"
+                  src="https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_400,h_300,c_fill/studio/podcast-setup"
                   alt="Podcast recording"
                   className="rounded-lg shadow-lg w-full h-48 object-cover"
                 />
