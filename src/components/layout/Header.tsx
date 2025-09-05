@@ -22,7 +22,10 @@ const Header: React.FC = () => {
       { name: 'Studio Services', href: '/services/studio' }
     ]},
     { name: 'Portfolio', href: '/portfolio' },
+    { name: 'Gallery', href: '/gallery' },
+    { name: 'Podcast', href: '/podcast' },
     { name: 'Blog', href: '/blog' },
+    { name: 'FAQ', href: '/faq' },
     { name: 'Tools', href: '/assessment', submenu: [
       { name: 'AI Assessment', href: '/assessment' },
       { name: 'ROI Calculator', href: '/roi-calculator' }

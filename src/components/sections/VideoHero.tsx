@@ -23,13 +23,13 @@ export default function VideoHero({ title, subtitle, videoUrl, posterImage, prim
       <div className="absolute inset-0 z-0">
         <video
           className="absolute inset-0 w-full h-full object-cover"
-          poster={posterImage}
+          poster={posterImage || '/assets/images/poster.jpg'}
           autoPlay
           muted
           loop
           playsInline
         >
-          <source src={videoUrl} type="video/mp4" />
+          <source src={videoUrl || '/assets/videos/main-banner-video.mp4'} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-dark/80 via-dark/50 to-dark/80" />
       </div>

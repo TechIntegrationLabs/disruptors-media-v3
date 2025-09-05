@@ -10,6 +10,15 @@ interface ClientLogosProps {
 }
 
 export default function ClientLogos({ title = "Trusted by Industry Leaders", logos }: ClientLogosProps) {
+  // Add old site client logos to the array
+  const oldSiteLogos = [
+    { name: 'Client 1', src: '/assets/images/client-1.png', href: '#' },
+    { name: 'Client 2', src: '/assets/images/client-2.png', href: '#' }
+  ];
+  
+  // Combine with passed logos
+  const allLogos = [...logos, ...oldSiteLogos];
+
   return (
     <section className="py-20 bg-cream">
       <div className="max-w-7xl mx-auto px-6">
@@ -25,7 +34,7 @@ export default function ClientLogos({ title = "Trusted by Industry Leaders", log
         )}
         
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
-          {logos.map((logo, index) => (
+          {allLogos.map((logo, index) => (
             <motion.div
               key={logo.name}
               initial={{ opacity: 0, scale: 0.8 }}

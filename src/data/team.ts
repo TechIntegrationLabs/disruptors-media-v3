@@ -36,7 +36,7 @@ export const teamMembers: TeamMember[] = [
     role: 'CEO & Founder',
     email: 'moe@disruptorsmedia.com',
     bio: 'Visionary leader with over 12 years of experience in digital marketing and business transformation. Moe founded Disruptors Media with the mission to help businesses harness the power of AI and cutting-edge marketing strategies.',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/team/moe-disruptors'
+    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_400,h_400,c_fill/v1/team/moe-disruptors.jpg'
   },
   {
     id: '2',
@@ -44,7 +44,7 @@ export const teamMembers: TeamMember[] = [
     role: 'Chief Creative Officer',
     email: 'tyler@disruptorsmedia.com',
     bio: 'Creative mastermind behind many of our viral campaigns. Tyler specializes in content strategy, brand development, and bringing innovative ideas to life through compelling storytelling.',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/team/tyler-gordon'
+    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_400,h_400,c_fill/v1/team/tyler-gordon.jpg'
   },
   {
     id: '3',
@@ -52,7 +52,7 @@ export const teamMembers: TeamMember[] = [
     role: 'Head of Technology',
     email: 'josh@disruptorsmedia.com',
     bio: 'Technical expert driving our digital transformation initiatives. Josh leads our development team and ensures our clients stay ahead with the latest technology solutions.',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/team/josh-disruptors'
+    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_400,h_400,c_fill/v1/team/josh-disruptors.jpg'
   },
   {
     id: '4',
@@ -60,7 +60,7 @@ export const teamMembers: TeamMember[] = [
     role: 'Lead Developer & UX Designer',
     email: 'bailey@disruptorsmedia.com',
     bio: 'Full-stack developer and UX specialist creating seamless digital experiences. Bailey combines technical expertise with design thinking to build solutions that users love.',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/team/bailey-latimer'
+    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_400,h_400,c_fill/v1/team/bailey-latimer.jpg'
   },
   {
     id: '5',
@@ -68,7 +68,7 @@ export const teamMembers: TeamMember[] = [
     role: 'Creative Director',
     email: 'carson@disruptorsmedia.com',
     bio: 'Award-winning creative director specializing in video production and brand storytelling. Carson brings concepts to life through powerful visual narratives.',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/team/carson-ireland'
+    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_400,h_400,c_fill/v1/team/carson-ireland.jpg'
   }
 ];
 

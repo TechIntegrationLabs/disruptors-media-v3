@@ -42,7 +42,7 @@ export const portfolioProjects: PortfolioProject[] = [
       { metric: 'Engagement Rate', value: '+450%' }
     ],
     timeline: '6 months',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/portfolio/bruce-leeroy',
+    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_800,h_600,c_fill/v1/portfolio/bruce-leeroy.jpg',
     featured: true,
     credits: [
       { role: 'Creative Direction', names: ['Tyler Gordon'] },
@@ -68,7 +68,7 @@ export const portfolioProjects: PortfolioProject[] = [
       { metric: 'Community Engagement', value: '+180%' }
     ],
     timeline: '4 months',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/portfolio/community-cures',
+    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_800,h_600,c_fill/v1/portfolio/community-cures.jpg',
     featured: true,
     credits: [
       { role: 'Creative Direction', names: ['Bailey Latimer', 'Tyler Gordon'] },
@@ -94,7 +94,7 @@ export const portfolioProjects: PortfolioProject[] = [
       { metric: 'ROI on Ad Spend', value: '4.2x' }
     ],
     timeline: '3 months',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/portfolio/master-lus',
+    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_800,h_600,c_fill/v1/portfolio/master-lus.jpg',
     featured: false,
     credits: [
       { role: 'Marketing', names: ['Tyler Gordon'] },
@@ -121,7 +121,7 @@ export const portfolioProjects: PortfolioProject[] = [
       { metric: 'Occupancy Rate', value: '+40%' }
     ],
     timeline: '6 months',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/portfolio/e-district',
+    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_800,h_600,c_fill/v1/portfolio/e-district.jpg',
     featured: false,
     credits: [
       { role: 'Creative Direction', names: ['Carson Ireland'] },
@@ -147,7 +147,7 @@ export const portfolioProjects: PortfolioProject[] = [
       { metric: 'Brand Awareness', value: '+380%' }
     ],
     timeline: '8 months',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/portfolio/desjardins-brands',
+    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_800,h_600,c_fill/v1/portfolio/desjardins-brands.jpg',
     featured: true,
     credits: [
       { role: 'Creative Direction', names: ['Tyler Gordon'] },
@@ -173,7 +173,7 @@ export const portfolioProjects: PortfolioProject[] = [
       { metric: 'Subscriber Growth', value: '+400%' }
     ],
     timeline: '12 months',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/portfolio/bf4real-podcast',
+    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_800,h_600,c_fill/v1/portfolio/bf4real-podcast.jpg',
     featured: true,
     credits: [
       { role: 'Media Production', names: ['Carson Ireland', 'Tyler Gordon'] },
@@ -198,7 +198,7 @@ export const portfolioProjects: PortfolioProject[] = [
       { metric: 'Social Following', value: '8K+' }
     ],
     timeline: '3 months',
-    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/portfolio/psyched-out',
+    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_800,h_600,c_fill/v1/portfolio/psyched-out.jpg',
     featured: false,
     credits: [
       { role: 'Creative Direction', names: ['Tyler Gordon'] },

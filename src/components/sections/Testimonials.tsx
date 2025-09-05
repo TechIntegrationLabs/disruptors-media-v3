@@ -71,7 +71,7 @@ export default function Testimonials({ testimonials }: TestimonialsProps) {
           {/* Author */}
           <div className="flex items-center justify-center">
             <img
-              src={current.image || 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/defaults/avatar-placeholder'}
+              src={current.image || 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_80,h_80,c_fill/v1/defaults/avatar-placeholder.jpg'}
               alt={current.author}
               className="w-16 h-16 rounded-full mr-4 object-cover"
             />

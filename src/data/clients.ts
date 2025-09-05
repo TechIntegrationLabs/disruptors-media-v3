@@ -24,42 +24,42 @@ export const featuredClients: Client[] = [
   {
     id: '1',
     name: 'BF4Real Podcast',
-    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/clients/bf4real-logo',
+    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_200,h_100,c_fit/v1/clients/bf4real-logo.png',
     url: 'https://disruptorsmedia.com/work/bf4real-podcast',
     featured: true
   },
   {
     id: '2',
     name: 'Bruce Leeroy',
-    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/clients/bruce-leeroy-logo',
+    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_200,h_100,c_fit/v1/clients/bruce-leeroy-logo.png',
     url: 'https://disruptorsmedia.com/work/bruce-leeroy',
     featured: true
   },
   {
     id: '3',
     name: 'E-District',
-    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/clients/e-district-logo',
+    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_200,h_100,c_fit/v1/clients/e-district-logo.png',
     url: 'https://disruptorsmedia.com/work/e-district',
     featured: true
   },
   {
     id: '4',
     name: 'Master Lu\'s Health Center',
-    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/clients/master-lus-logo',
+    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_200,h_100,c_fit/v1/clients/master-lus-logo.png',
     url: 'https://disruptorsmedia.com/work/master-lus-health-center',
     featured: true
   },
   {
     id: '5',
     name: 'Psyched Out',
-    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/clients/psyched-out-logo',
+    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_200,h_100,c_fit/v1/clients/psyched-out-logo.png',
     url: 'https://disruptorsmedia.com/work/psyched-out',
     featured: true
   },
   {
     id: '6',
     name: 'Community Cures',
-    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/clients/community-cures-logo',
+    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_200,h_100,c_fit/v1/clients/community-cures-logo.png',
     url: 'https://disruptorsmedia.com/work/community-curescast',
     featured: true
   },
@@ -67,26 +67,26 @@ export const featuredClients: Client[] = [
   {
     id: '7',
     name: 'Desjardins Brands',
-    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/clients/desjardins-brands-logo',
+    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_200,h_100,c_fit/v1/clients/desjardins-brands-logo.png',
     url: 'https://disruptorsmedia.com/work/desjardins-brands',
     featured: false
   },
   {
     id: '8',
     name: 'The Wellness Way',
-    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/clients/wellness-way-logo',
+    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_200,h_100,c_fit/v1/clients/wellness-way-logo.png',
     featured: false
   },
   {
     id: '9',
     name: 'Red Rhino',
-    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/clients/red-rhino-logo',
+    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_200,h_100,c_fit/v1/clients/red-rhino-logo.png',
     featured: false
   },
   {
     id: '10',
     name: 'Muscle Works',
-    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/clients/muscle-works-logo',
+    logo: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_200,h_100,c_fit/v1/clients/muscle-works-logo.png',
     featured: false
   }
 ];

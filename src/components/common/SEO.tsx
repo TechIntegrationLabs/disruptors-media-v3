@@ -35,7 +35,7 @@ const SEO: React.FC<SEOProps> = ({
   // Default values
   const defaultTitle = 'Disruptors Media - AI-Powered Marketing Solutions';
   const defaultDescription = 'Transform your business with AI-powered marketing strategies, professional content production, and data-driven digital transformation. 12+ years of proven results generating $50M+ in client revenue.';
-  const defaultImage = 'https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/og-images/disruptors-media-og-default';
+  const defaultImage = 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/v1/og-images/disruptors-media-og-default.jpg';
   const defaultUrl = 'https://disruptorsmedia.com';
   const defaultKeywords = 'AI marketing, digital transformation, content production, studio services, marketing automation, business growth, North Salt Lake, Utah';
 
@@ -51,7 +51,7 @@ const SEO: React.FC<SEOProps> = ({
     "@type": "Organization",
     "name": "Disruptors Media",
     "url": "https://disruptorsmedia.com",
-    "logo": "https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/logo/disruptors-media-logo",
+    "logo": "https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto/v1/logo/disruptors-media-logo.png",
     "description": defaultDescription,
     "foundingDate": "2012",
     "founder": {
@@ -118,7 +118,7 @@ const SEO: React.FC<SEOProps> = ({
       "name": "Disruptors Media",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://res.cloudinary.com/dvcvxhzmt/image/upload/v1/logo/disruptors-media-logo"
+        "url": "https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto/v1/logo/disruptors-media-logo.png"
       }
     },
     "datePublished": publishedTime,

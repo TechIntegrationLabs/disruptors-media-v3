@@ -1,0 +1,31 @@
+/* Custom Fonts from Old Site Design System */
+
+/* Custom Fonts - Using fallbacks for build compatibility */
+
+/* Font utility classes for old site typography patterns */
+.font-headline {
+  font-family: 'OT Neue Montreal', 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-tech {
+  font-family: 'PP Supply Mono', ui-monospace, 'SFMono-Regular', monospace;
+}
+
+/* Typography patterns from old site */
+.text-technical {
+  font-family: 'PP Supply Mono', ui-monospace, monospace;
+  font-weight: 400;
+  letter-spacing: 0.025em;
+}
+
+.text-headline-compressed {
+  font-family: 'OT Neue Montreal', 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.text-headline-squeezed {
+  font-family: 'OT Neue Montreal', 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}

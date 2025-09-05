@@ -1,6 +1,6 @@
-# CLAUDE.md - Disruptors Media v3 React Application
+# CLAUDE.md
 
-This file provides guidance to Claude Code when working with the Disruptors Media v3 React application.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Repository Information
 
@@ -20,7 +20,15 @@ Modern React 19 marketing website showcasing AI-powered marketing solutions and 
 npm install          # Install dependencies
 npm start           # Development server (localhost:3000)
 npm run build       # Production build
-npm test            # Run tests
+npm test            # Run tests (Jest with React Testing Library)
+npm run preview     # Preview production build (requires `npm install -g serve`)
+```
+
+### Running a Single Test
+```bash
+npm test -- --testNamePattern="specific test name"  # Run specific test by name
+npm test -- path/to/test.test.tsx                  # Run specific test file
+npm test -- --coverage                             # Run with coverage report
 ```
 
 ## Technology Stack
@@ -106,11 +114,31 @@ interface NavigationItem {
 
 ## Development Guidelines
 
+### Component Patterns
+```typescript
+// TypeScript-first component with proper interface
+interface ComponentProps {
+  title: string;
+  variant?: 'primary' | 'secondary';
+  children: React.ReactNode;
+}
+
+export const Component: React.FC<ComponentProps> = ({ title, variant = 'primary', children }) => {
+  return (
+    <div className={`tailwind-classes ${variant === 'primary' ? 'bg-gold' : 'bg-cream'}`}>
+      <h2>{title}</h2>
+      {children}
+    </div>
+  );
+};
+```
+
 ### Adding New Pages
 1. Create page component in `src/pages/`
 2. Add route to `src/App.tsx`
 3. Update navigation in `src/components/layout/Header.tsx` if needed
 4. Follow TypeScript interface patterns
+5. Wrap with Layout component for consistent header/footer
 
 ### Image Usage
 ```typescript
@@ -142,12 +170,22 @@ import { motion } from 'framer-motion';
 - Automatic code splitting via Create React App
 - CSS purging removes unused Tailwind classes
 - Assets optimized and compressed
+- Build output in `build/` directory
 
 ### Performance Features
 - **Lazy loading** for images
 - **Code splitting** for route-based chunks
 - **CDN delivery** via Cloudinary
 - **PWA capabilities** with service worker
+
+### Linting and Code Quality
+```bash
+# ESLint is configured via react-scripts
+npm run build  # Will run linting as part of build process
+
+# TypeScript checking
+npx tsc --noEmit  # Check types without building
+```
 
 ## Data Sources
 
@@ -167,6 +205,44 @@ The application uses real data migrated from the Disruptors Media Laravel databa
 ✅ **Responsive**: Mobile-first design working across breakpoints
 ✅ **Performance**: Optimized builds under 155KB gzipped
 ✅ **PWA**: Progressive web app capabilities configured
+
+## Common Development Tasks
+
+### Environment Setup
+1. Clone the repository
+2. Run `npm install` in the `disruptors-media-v3` directory
+3. Start development with `npm start`
+4. Application runs on `http://localhost:3000`
+
+### Working with Forms
+Forms use React Hook Form with Yup validation:
+```typescript
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+const schema = yup.object({
+  email: yup.string().email().required(),
+});
+
+const { register, handleSubmit, formState: { errors } } = useForm({
+  resolver: yupResolver(schema)
+});
+```
+
+### Working with Animations
+Use Framer Motion's standard patterns:
+```typescript
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+```
 
 ## Support & Maintenance
 

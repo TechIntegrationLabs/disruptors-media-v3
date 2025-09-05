@@ -8,6 +8,7 @@ import {
   ArrowTopRightOnSquareIcon
 } from '@heroicons/react/24/outline';
 import { portfolioProjects } from '../data/portfolio';
+import { Link } from 'react-router-dom';
 
 interface Project {
   id: string;
@@ -287,13 +288,13 @@ const Portfolio: React.FC = () => {
                       ))}
                     </div>
 
-                    <a 
-                      href={`/portfolio/${project.slug}`} 
+                    <Link 
+                      to={`/case-study/${project.slug}`} 
                       className="btn-primary w-full inline-flex items-center justify-center"
                     >
                       View Full Case Study
                       <ArrowTopRightOnSquareIcon className="h-5 w-5 ml-2" />
-                    </a>
+                    </Link>
                   </div>
                 </motion.div>
               ))}

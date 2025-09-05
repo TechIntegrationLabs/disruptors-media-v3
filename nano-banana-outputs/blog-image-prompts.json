@@ -1,0 +1,156 @@
+{
+  "generated_at": "2025-09-05T22:12:58.208Z",
+  "total_images": 10,
+  "images": [
+    {
+      "id": "1",
+      "title": "How We Generated 2M+ Views for an MMA Fighter Using AI-Driven Content Strategy",
+      "slug": "bruce-leeroy-case-study",
+      "filename": "bruce-leeroy-case-study.jpg",
+      "prompt": "Professional MMA fighter in intense training pose hitting heavy bag, modern gym with dramatic cinematic lighting, holographic social media metrics showing \"2M+ VIEWS\" floating around, viral dashboard elements, upward trending charts, blue and gray gradient background with gold accents, tech grid pattern overlay, clean space at top for text overlay, professional digital marketing aesthetic, landscape 16:9 format, high resolution",
+      "status": "ready_for_generation",
+      "cloudinary_url": "https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_1200,h_675,c_fill/blog/bruce-leeroy-case-study.jpg",
+      "recommended_generators": [
+        "DeepAI (https://deepai.org/machine-learning-model/text2img)",
+        "Stability AI DreamStudio",
+        "Midjourney",
+        "DALL-E 3"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "From Startup to $100K Revenue: The Desjardins Brands Digital Transformation",
+      "slug": "desjardins-transformation",
+      "filename": "desjardins-transformation.jpg",
+      "prompt": "Elegant luxury food products and gourmet ingredients arranged artistically, sophisticated brand packaging, digital transformation elements like growth charts and revenue graphs floating above, premium gold and dark color scheme, modern minimalist design, professional lighting, clean space for text overlay, 16:9 landscape format",
+      "status": "ready_for_generation",
+      "cloudinary_url": "https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_1200,h_675,c_fill/blog/desjardins-transformation.jpg",
+      "recommended_generators": [
+        "DeepAI (https://deepai.org/machine-learning-model/text2img)",
+        "Stability AI DreamStudio",
+        "Midjourney",
+        "DALL-E 3"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "The Complete Guide to Professional Podcast Production in 2024",
+      "slug": "podcast-production-guide",
+      "filename": "podcast-production-guide.jpg",
+      "prompt": "Modern podcast studio setup with professional microphones, mixing console, acoustic panels, warm ambient lighting, floating audio waveforms and production graphics, sleek professional equipment, dark and gold color scheme, cinematic lighting, clean space for text overlay, 16:9 landscape format",
+      "status": "ready_for_generation",
+      "cloudinary_url": "https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_1200,h_675,c_fill/blog/podcast-production-guide.jpg",
+      "recommended_generators": [
+        "DeepAI (https://deepai.org/machine-learning-model/text2img)",
+        "Stability AI DreamStudio",
+        "Midjourney",
+        "DALL-E 3"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Why Traditional Wellness Businesses Need Modern Marketing: Master Lu's Success Story",
+      "slug": "wellness-marketing",
+      "filename": "wellness-marketing.jpg",
+      "prompt": "Serene wellness center with traditional elements like zen stones and bamboo, seamlessly integrated with modern digital marketing graphics, holistic health symbols meeting tech UI elements, calming earth tones with modern blue accents, balanced composition, professional lighting, clean space for text overlay, 16:9 landscape format",
+      "status": "ready_for_generation",
+      "cloudinary_url": "https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_1200,h_675,c_fill/blog/wellness-marketing.jpg",
+      "recommended_generators": [
+        "DeepAI (https://deepai.org/machine-learning-model/text2img)",
+        "Stability AI DreamStudio",
+        "Midjourney",
+        "DALL-E 3"
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Building Community Through Podcasting: The Community Curescast Approach",
+      "slug": "community-podcast-strategy",
+      "filename": "community-podcast-strategy.jpg",
+      "prompt": "Diverse group of people connected through podcast listening, community building visualization with interconnected network lines, warm community colors, modern podcast equipment in background, inclusive and welcoming atmosphere, professional design, clean space for text overlay, 16:9 landscape format",
+      "status": "ready_for_generation",
+      "cloudinary_url": "https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_1200,h_675,c_fill/blog/community-podcast-strategy.jpg",
+      "recommended_generators": [
+        "DeepAI (https://deepai.org/machine-learning-model/text2img)",
+        "Stability AI DreamStudio",
+        "Midjourney",
+        "DALL-E 3"
+      ]
+    },
+    {
+      "id": "6",
+      "title": "Real Estate Marketing Revolution: How E-District Increased Revenue by 120%",
+      "slug": "e-district-success",
+      "filename": "e-district-success.jpg",
+      "prompt": "Modern commercial property building with sleek architecture, digital billboard displays, revenue growth charts overlaid on building facade, professional real estate marketing aesthetic, urban cityscape background, blue and gray color scheme, professional lighting, clean space for text overlay, 16:9 landscape format",
+      "status": "ready_for_generation",
+      "cloudinary_url": "https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_1200,h_675,c_fill/blog/e-district-success.jpg",
+      "recommended_generators": [
+        "DeepAI (https://deepai.org/machine-learning-model/text2img)",
+        "Stability AI DreamStudio",
+        "Midjourney",
+        "DALL-E 3"
+      ]
+    },
+    {
+      "id": "7",
+      "title": "Fashion E-commerce Launch Strategy: Psyched Out Clothing's $15K First Month",
+      "slug": "fashion-ecommerce-launch",
+      "filename": "fashion-ecommerce-launch.jpg",
+      "prompt": "Stylish fashion clothing items arranged artistically, e-commerce elements like shopping carts and sales metrics, modern fashion photography aesthetic, trendy color palette, floating UI elements showing sales growth, professional product photography lighting, clean space for text overlay, 16:9 landscape format",
+      "status": "ready_for_generation",
+      "cloudinary_url": "https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_1200,h_675,c_fill/blog/fashion-ecommerce-launch.jpg",
+      "recommended_generators": [
+        "DeepAI (https://deepai.org/machine-learning-model/text2img)",
+        "Stability AI DreamStudio",
+        "Midjourney",
+        "DALL-E 3"
+      ]
+    },
+    {
+      "id": "8",
+      "title": "The Power of High-Profile Guests: BF4Real Podcast's Growth Strategy",
+      "slug": "high-profile-podcast-guests",
+      "filename": "high-profile-podcast-guests.jpg",
+      "prompt": "Premium podcast interview setup with multiple professional microphones, celebrity-quality lighting setup, VIP lounge aesthetic, floating social media follower counts and engagement metrics, luxury podcast studio environment, professional cinematic lighting, clean space for text overlay, 16:9 landscape format",
+      "status": "ready_for_generation",
+      "cloudinary_url": "https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_1200,h_675,c_fill/blog/high-profile-podcast-guests.jpg",
+      "recommended_generators": [
+        "DeepAI (https://deepai.org/machine-learning-model/text2img)",
+        "Stability AI DreamStudio",
+        "Midjourney",
+        "DALL-E 3"
+      ]
+    },
+    {
+      "id": "9",
+      "title": "12 Years of Digital Marketing Evolution: What We've Learned Since 2012",
+      "slug": "digital-marketing-evolution",
+      "filename": "digital-marketing-evolution.jpg",
+      "prompt": "Timeline visualization showing digital marketing evolution from 2012 to 2024, vintage social media icons transforming into modern AI and tech elements, growth trajectory visualization, professional infographic style, blue and gold color scheme, clean modern design, clean space for text overlay, 16:9 landscape format",
+      "status": "ready_for_generation",
+      "cloudinary_url": "https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_1200,h_675,c_fill/blog/digital-marketing-evolution.jpg",
+      "recommended_generators": [
+        "DeepAI (https://deepai.org/machine-learning-model/text2img)",
+        "Stability AI DreamStudio",
+        "Midjourney",
+        "DALL-E 3"
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Behind the Scenes: Our North Salt Lake Studio Setup and Why Location Matters",
+      "slug": "studio-behind-scenes",
+      "filename": "studio-behind-scenes.jpg",
+      "prompt": "Behind-the-scenes view of professional media studio, high-end video and audio equipment, studio lighting rigs, clean modern studio design, Utah mountain landscape visible through window, professional studio aesthetic, warm lighting, clean space for text overlay, 16:9 landscape format",
+      "status": "ready_for_generation",
+      "cloudinary_url": "https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_1200,h_675,c_fill/blog/studio-behind-scenes.jpg",
+      "recommended_generators": [
+        "DeepAI (https://deepai.org/machine-learning-model/text2img)",
+        "Stability AI DreamStudio",
+        "Midjourney",
+        "DALL-E 3"
+      ]
+    }
+  ]
+}
