@@ -9,6 +9,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { portfolioProjects } from '../data/portfolio';
 import { Link } from 'react-router-dom';
+import SEO from '../components/common/SEO';
 
 interface Project {
   id: string;
@@ -100,6 +101,11 @@ const Portfolio: React.FC = () => {
 
   return (
     <div>
+      <SEO
+        title="Portfolio | Case Studies & Success Stories | Disruptors Media"
+        description="Explore our portfolio of successful AI marketing campaigns, digital transformations, and content production projects. Real results: $50M+ client revenue, 200+ campaigns."
+        keywords="portfolio, case studies, AI marketing success, digital transformation results, content production portfolio, client success stories, marketing ROI"
+      />
       {/* Hero Section */}
       <section className="relative section-padding bg-gradient-sophisticated">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

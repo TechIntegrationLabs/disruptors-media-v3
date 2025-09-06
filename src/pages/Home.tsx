@@ -9,6 +9,7 @@ import Testimonials from '../components/sections/Testimonials';
 import BlogPreview from '../components/sections/BlogPreview';
 import Newsletter from '../components/sections/Newsletter';
 import AnimatedCounters from '../components/sections/AnimatedCounters';
+import SocialProofMetrics from '../components/sections/SocialProofMetrics';
 import { featuredClients } from '../data/clients';
 import { testimonials } from '../data/clients';
 import { blogPosts } from '../data/blog';
@@ -110,6 +111,9 @@ const Home: React.FC = () => {
 
       {/* Animated Counters */}
       <AnimatedCounters counters={counters} />
+
+      {/* Social Proof Metrics */}
+      <SocialProofMetrics />
 
       {/* Testimonials */}
       <Testimonials testimonials={testimonials} />

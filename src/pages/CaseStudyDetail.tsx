@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SEO from '../components/common/SEO';
+import ProjectGallery from '../components/sections/ProjectGallery';
 import { portfolioProjects } from '../data/portfolio';
 import { testimonials } from '../data/clients';
 import { ArrowLeftIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
@@ -92,7 +93,12 @@ const CaseStudyDetail: React.FC = () => {
     } : undefined,
     images: {
       hero: project.image,
-      gallery: [project.image] // In a real app, you'd have multiple gallery images
+      gallery: [
+        project.image,
+        project.image.replace('.jpg', '-2.jpg'),
+        project.image.replace('.jpg', '-3.jpg'),
+        project.image.replace('.jpg', '-4.jpg')
+      ].filter((img, index) => index === 0 || Math.random() > 0.3) // Randomly include 2-4 images
     },
     technologies: project.categories,
     nextSteps: "Continue optimizing and scaling the implemented solutions while exploring new opportunities for growth and innovation."
@@ -343,27 +349,18 @@ const CaseStudyDetail: React.FC = () => {
       <section className="py-20 bg-cream/50">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
-            <h2 className="font-headline text-3xl font-bold text-dark text-center mb-12">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-headline text-3xl font-bold text-dark text-center mb-12"
+            >
               Project Gallery
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {caseStudy.images.gallery.map((image, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="aspect-square rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
-                >
-                  <img
-                    src={image}
-                    alt={`${caseStudy.title} Gallery ${index + 1}`}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                </motion.div>
-              ))}
-            </div>
+            </motion.h2>
+            <ProjectGallery 
+              images={caseStudy.images.gallery} 
+              projectName={caseStudy.title}
+            />
           </div>
         </div>
       </section>
