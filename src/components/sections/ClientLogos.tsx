@@ -10,14 +10,7 @@ interface ClientLogosProps {
 }
 
 export default function ClientLogos({ title = "Trusted by Industry Leaders", logos }: ClientLogosProps) {
-  // Add old site client logos to the array
-  const oldSiteLogos = [
-    { name: 'Client 1', src: '/assets/images/client-1.png', href: '#' },
-    { name: 'Client 2', src: '/assets/images/client-2.png', href: '#' }
-  ];
-  
-  // Combine with passed logos
-  const allLogos = [...logos, ...oldSiteLogos];
+  const allLogos = logos;
 
   return (
     <section className="py-20 bg-cream">

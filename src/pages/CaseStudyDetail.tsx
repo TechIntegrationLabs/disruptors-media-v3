@@ -2,6 +2,8 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SEO from '../components/common/SEO';
+import { portfolioProjects } from '../data/portfolio';
+import { testimonials } from '../data/clients';
 import { ArrowLeftIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 
 interface CaseStudyData {
@@ -38,141 +40,63 @@ const CaseStudyDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  // Mock case study data - in real app would fetch from API
-  const caseStudies: Record<string, CaseStudyData> = {
-    'enterprise-ai-transformation': {
-      id: 'enterprise-ai-transformation',
-      title: 'Enterprise AI Marketing Transformation',
-      client: 'TechCorp Industries',
-      industry: 'Technology',
-      duration: '8 months',
-      services: ['AI Strategy', 'Marketing Automation', 'Content Production', 'Analytics Implementation'],
-      challenge: 'TechCorp Industries was struggling with fragmented marketing efforts across multiple channels. Their traditional approach was not scaling with their rapid growth, resulting in inconsistent messaging and poor lead qualification. They needed a unified AI-powered approach that could maintain personalization at scale while driving measurable ROI.',
-      solution: 'We implemented a comprehensive AI marketing ecosystem that unified their customer journey across all touchpoints. Our solution combined machine learning algorithms for predictive analytics with human creativity for authentic storytelling, embodying our core philosophy of technology meeting humanity.',
-      implementation: [
-        'Deployed advanced customer segmentation using machine learning algorithms',
-        'Created personalized content workflows powered by AI and refined by human insight',
-        'Implemented predictive lead scoring to prioritize high-value prospects',
-        'Established real-time analytics dashboard for data-driven decision making',
-        'Integrated all marketing channels into a unified automation platform',
-        'Developed dynamic content optimization based on user behavior patterns'
-      ],
-      results: [
-        {
-          metric: 'Lead Quality Improvement',
-          value: '340%',
-          description: 'Higher conversion rate from marketing qualified leads to sales qualified leads'
-        },
-        {
-          metric: 'Marketing ROI',
-          value: '250%',
-          description: 'Increase in return on marketing investment within 6 months'
-        },
-        {
-          metric: 'Content Efficiency',
-          value: '180%',
-          description: 'Faster content production with AI-assisted workflows'
-        },
-        {
-          metric: 'Customer Acquisition Cost',
-          value: '45%',
-          description: 'Reduction in CAC through improved targeting and personalization'
-        }
-      ],
-      testimonial: {
-        quote: "Disruptors Media transformed how we think about marketing. Their AI-powered approach didn't just improve our metrics—it revolutionized our entire customer engagement strategy. The balance of technology and human insight is exactly what we needed.",
-        author: "Sarah Johnson",
-        title: "Chief Marketing Officer",
-        company: "TechCorp Industries"
-      },
-      images: {
-        hero: '/assets/images/portfolio/case-study-1.jpg',
-        gallery: [
-          '/assets/images/portfolio/work-1.jpg',
-          '/assets/images/portfolio/work-2.jpg',
-          '/assets/images/portfolio/work-3.jpg'
-        ]
-      },
-      technologies: ['Machine Learning', 'Marketing Automation', 'Predictive Analytics', 'Content AI', 'Customer Data Platform'],
-      nextSteps: 'Following the success of the initial implementation, TechCorp is expanding the AI marketing system to their international markets and exploring advanced personalization capabilities.',
-      websiteUrl: 'https://techcorp.example.com'
-    },
-    'creative-brand-storytelling': {
-      id: 'creative-brand-storytelling',
-      title: 'Creative Brand Storytelling Campaign',
-      client: 'Artisan Collective',
-      industry: 'Retail & E-commerce',
-      duration: '4 months',
-      services: ['Brand Strategy', 'Content Production', 'Social Media Marketing', 'Video Production'],
-      challenge: 'Artisan Collective, a premium handcrafted goods marketplace, was struggling to differentiate itself in a crowded e-commerce space. Their beautiful products were getting lost among mass-produced alternatives, and they needed a way to communicate their authentic craftsmanship story effectively.',
-      solution: 'We developed a comprehensive storytelling strategy that highlighted the human element behind each product. Using our studio services and AI-powered content optimization, we created a multi-channel narrative that celebrated the intersection of traditional craftsmanship and modern marketing.',
-      implementation: [
-        'Conducted in-depth interviews with artisan partners to capture authentic stories',
-        'Created a visual identity system that emphasized handmade authenticity',
-        'Produced high-quality video content showcasing the creation process',
-        'Developed AI-optimized social media content while maintaining brand authenticity',
-        'Implemented influencer partnerships with genuine brand alignment',
-        'Created an interactive website experience highlighting artisan stories'
-      ],
-      results: [
-        {
-          metric: 'Brand Awareness',
-          value: '280%',
-          description: 'Increase in brand recognition within target demographics'
-        },
-        {
-          metric: 'Social Engagement',
-          value: '420%',
-          description: 'Higher engagement rates across all social platforms'
-        },
-        {
-          metric: 'Sales Growth',
-          value: '190%',
-          description: 'Increase in direct-to-consumer sales'
-        },
-        {
-          metric: 'Customer Lifetime Value',
-          value: '150%',
-          description: 'Improvement in repeat customer purchases'
-        }
-      ],
-      testimonial: {
-        quote: "They didn't just create marketing for us—they helped us rediscover our story. The way they blend technology with genuine human connection is remarkable. Our artisans feel heard, and our customers feel connected.",
-        author: "Michael Chen",
-        title: "Founder",
-        company: "Artisan Collective"
-      },
-      images: {
-        hero: '/assets/images/portfolio/case-study-2.jpg',
-        gallery: [
-          '/assets/images/portfolio/work-4.jpg',
-          '/assets/images/portfolio/work-5.jpg',
-          '/assets/images/portfolio/work-6.jpg'
-        ]
-      },
-      technologies: ['Brand Strategy', 'Video Production', 'Social Media AI', 'Content Management', 'E-commerce Integration'],
-      nextSteps: 'Artisan Collective is now expanding internationally and implementing advanced personalization features for their growing customer base.',
-      websiteUrl: 'https://artisancollective.example.com'
-    }
-  };
-
-  const caseStudy = id ? caseStudies[id] : null;
-
-  if (!caseStudy) {
+  // Find the project by slug
+  const project = portfolioProjects.find(p => p.slug === id);
+  
+  if (!project) {
     return (
-      <div className="min-h-screen bg-cream flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-dark mb-4">Case Study Not Found</h1>
+          <h1 className="text-2xl font-bold text-dark mb-4">Case Study Not Found</h1>
           <button
             onClick={() => navigate('/portfolio')}
-            className="bg-gold text-dark px-6 py-3 rounded-full font-semibold hover:bg-gold-light transition-colors"
+            className="btn-primary inline-flex items-center"
           >
+            <ArrowLeftIcon className="h-5 w-5 mr-2" />
             Back to Portfolio
           </button>
         </div>
       </div>
     );
   }
+
+  // Get testimonial for this project
+  const projectTestimonial = testimonials.find(t => t.projectId === project.id);
+
+  // Convert portfolio project to case study format
+  const caseStudy: CaseStudyData = {
+    id: project.slug,
+    title: project.title,
+    client: project.client,
+    industry: project.industry,
+    duration: project.timeline,
+    services: project.categories,
+    challenge: project.challenge,
+    solution: project.solution,
+    implementation: [
+      "Initial assessment and strategy development",
+      "Implementation of core solutions and systems",
+      "Testing and optimization phase",
+      "Launch and performance monitoring"
+    ],
+    results: project.results.map(r => ({
+      metric: r.metric,
+      value: r.value,
+      description: `Achieved ${r.value} improvement in ${r.metric.toLowerCase()}`
+    })),
+    testimonial: projectTestimonial ? {
+      quote: projectTestimonial.content,
+      author: projectTestimonial.author,
+      title: projectTestimonial.role,
+      company: projectTestimonial.company
+    } : undefined,
+    images: {
+      hero: project.image,
+      gallery: [project.image] // In a real app, you'd have multiple gallery images
+    },
+    technologies: project.categories,
+    nextSteps: "Continue optimizing and scaling the implemented solutions while exploring new opportunities for growth and innovation."
+  };
 
   return (
     <div className="min-h-screen bg-cream">

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import SEO from '../components/common/SEO';
+import { teamMembers } from '../data/team';
 import {
   SparklesIcon,
   ChartBarIcon,
@@ -400,6 +401,54 @@ export default function About() {
                 Every project, strategy, and campaign is measured by its real-world impact on client success.
               </p>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-dark mb-4">Meet Our Team</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              The creative minds and strategic thinkers behind every successful campaign
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {teamMembers.map((member, index) => (
+              <motion.div
+                key={member.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center group"
+              >
+                <div className="relative mb-6">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg group-hover:shadow-xl transition-shadow duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gold/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <h3 className="text-xl font-bold text-dark mb-2">{member.name}</h3>
+                <p className="text-gold font-medium mb-3">{member.role}</p>
+                <p className="text-gray-600 text-sm mb-4">{member.bio}</p>
+                <a
+                  href={`mailto:${member.email}`}
+                  className="text-gold hover:text-gold/80 text-sm font-medium transition-colors"
+                >
+                  {member.email}
+                </a>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
