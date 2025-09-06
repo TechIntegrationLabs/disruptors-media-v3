@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import SEO from '../components/common/SEO';
 import {
   SparklesIcon,
   ChartBarIcon,
@@ -77,6 +78,11 @@ const teamStats = [
 export default function About() {
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title="About Us | Disruptors Media"
+        description="Learn about our mission to bridge technology and humanity in digital marketing. 12+ years of AI-powered marketing excellence with 95% client satisfaction."
+        keywords="about disruptors media, AI marketing agency, technology meets humanity, digital marketing team, marketing automation, North Salt Lake Utah"
+      />
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-dark via-dark/95 to-dark/90 text-white py-20">
         <div className="max-w-7xl mx-auto px-6">

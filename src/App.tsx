@@ -18,6 +18,7 @@ import Gallery from './pages/Gallery';
 import Podcast from './pages/Podcast';
 import FAQ from './pages/FAQ';
 import CaseStudyDetail from './pages/CaseStudyDetail';
+import About from './pages/About';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/blog" element={<Blog />} />

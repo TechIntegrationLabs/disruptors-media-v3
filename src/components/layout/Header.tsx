@@ -17,6 +17,7 @@ const Header: React.FC = () => {
 
   const navigation: NavigationItem[] = [
     { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
     { name: 'Services', href: '/services/ai-marketing', submenu: [
       { name: 'AI Marketing', href: '/services/ai-marketing' },
       { name: 'Studio Services', href: '/services/studio' }
