@@ -471,7 +471,29 @@ const Contact: React.FC = () => {
               ))}
             </div>
             
-            <div className="text-center">
+            <div className="text-center space-y-4">
+              <div className="bg-gold/10 backdrop-blur rounded-lg p-6">
+                <h3 className="text-xl font-bold text-white mb-4">Quick Start with Our Typeform</h3>
+                <p className="text-gray-300 mb-6">
+                  Get started immediately with our comprehensive project intake form
+                </p>
+                <a
+                  href="https://zufh2dc8efb.typeform.com/to/XUfheBdy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gold hover:bg-gold/90 text-dark px-8 py-4 rounded-full font-semibold transition-colors inline-flex items-center justify-center"
+                >
+                  Start Project Form
+                  <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+              
+              <div className="text-center text-gray-400">
+                <p>Or schedule a call below</p>
+              </div>
+              
               <iframe
                 src="https://cal.com/disruptors-media/strategy-session"
                 width="100%"

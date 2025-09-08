@@ -77,8 +77,8 @@ export const companyInfo: CompanyInfo = {
   founded: 2012,
   employees: '25+',
   location: 'North Salt Lake, Utah',
-  address: '123 Innovation Drive, North Salt Lake, UT 84054', // Update with real address
-  phone: '(801) 555-0123', // Update with real phone
+  address: '650 N MAIN ST, NORTH SALT LAKE, UT 84054',
+  phone: '(801) 555-0123'
   email: 'hello@disruptorsmedia.com',
   social: {
     twitter: 'https://twitter.com/DisruptorsMedia',

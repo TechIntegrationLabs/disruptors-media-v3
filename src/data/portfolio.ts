@@ -207,5 +207,31 @@ export const portfolioProjects: PortfolioProject[] = [
       { role: 'Marketing', names: ['Tyler Gordon'] }
     ],
     categories: ['Branding', 'UI/UX', 'Marketing', 'Web Development', 'Photography']
+  },
+  {
+    id: '8',
+    slug: 'bys',
+    title: 'Building Safer Communities Through Martial Arts',
+    client: 'BYS',
+    industry: 'Sports/Community Safety',
+    serviceType: 'Brand Development & Marketing',
+    projectSize: 'SMB',
+    description: 'BYS is a sports promotion focused on teaching self defense through martial arts and preventing gun violence in Los Angeles - to over 100,000 combined followers across various social media platforms. Through working with BYS, Disruptors Media developed a passion for marketing and making a positive impact in local communities.',
+    challenge: 'Building awareness for a community safety program while competing with established martial arts and fitness brands in the LA market',
+    solution: 'Created comprehensive digital marketing strategy emphasizing community impact, self-defense education, and violence prevention messaging',
+    results: [
+      { metric: 'Combined Social Followers', value: '100K+' },
+      { metric: 'Community Reach', value: '500K+' },
+      { metric: 'Engagement Rate', value: '+280%' }
+    ],
+    timeline: '6 months',
+    image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_800,h_600,c_fill/v1/portfolio/bys-martial-arts.jpg',
+    featured: false,
+    credits: [
+      { role: 'Creative Direction', names: ['Tyler Gordon'] },
+      { role: 'Marketing', names: ['Tyler Gordon'] },
+      { role: 'Web Development', names: ['Tyler Gordon'] }
+    ],
+    categories: ['Marketing', 'UX/UI', 'Web Development', 'Branding']
   }
 ];

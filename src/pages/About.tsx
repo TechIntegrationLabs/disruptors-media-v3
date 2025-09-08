@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import SEO from '../components/common/SEO';
 import { teamMembers } from '../data/team';
+import BrandStatements from '../components/sections/BrandStatements';
+import Process from '../components/sections/Process';
 import {
   SparklesIcon,
   ChartBarIcon,
@@ -452,6 +454,12 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      {/* Brand Statements */}
+      <BrandStatements />
+
+      {/* Our Process */}
+      <Process />
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-dark to-dark/90 text-white">
