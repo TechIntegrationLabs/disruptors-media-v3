@@ -14,8 +14,12 @@ import { featuredClients } from '../data/clients';
 import { testimonials } from '../data/clients';
 import { blogPosts } from '../data/blog';
 const Home: React.FC = () => {
-  // Use existing featured clients data
-  const clientLogos = featuredClients;
+  // Map featured clients to the format expected by ClientLogos component
+  const clientLogos = featuredClients.map(client => ({
+    name: client.name,
+    src: client.logo, // Map 'logo' to 'src'
+    href: client.url
+  }));
 
   // Get featured blog posts
   const featuredBlogPosts = blogPosts.filter(post => post.featured).slice(0, 3);

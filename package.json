@@ -45,7 +45,9 @@
     "auto-commit": "node scripts/auto-commit-agent.js commit",
     "auto-commit:watch": "node scripts/auto-commit-agent.js watch",
     "auto-commit:status": "node scripts/auto-commit-agent.js status",
-    "commit": "node scripts/auto-commit-agent.js commit"
+    "commit": "node scripts/auto-commit-agent.js commit",
+    "dev:auto": "./scripts/dev-with-auto-commit.sh --auto-commit",
+    "dev:safe": "./scripts/dev-with-auto-commit.sh"
   },
   "eslintConfig": {
     "extends": [
