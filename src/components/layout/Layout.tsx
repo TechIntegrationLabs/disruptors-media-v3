@@ -10,14 +10,22 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Analytics />
-      <Header />
-      <main className="flex-grow">
-        {children}
-      </main>
-      <Footer />
-      <Chat />
+    <div 
+      className="min-h-screen flex flex-col bg-cover bg-center bg-fixed bg-no-repeat"
+      style={{
+        backgroundImage: `url(https://res.cloudinary.com/dvcvxhzmt/image/upload/v1755697037/backgrounds/main-bg.jpg)`
+      }}
+    >
+      {/* Dark overlay for better content readability */}
+      <div className="min-h-screen flex flex-col bg-black/70">
+        <Analytics />
+        <Header />
+        <main className="flex-grow">
+          {children}
+        </main>
+        <Footer />
+        <Chat />
+      </div>
     </div>
   );
 };

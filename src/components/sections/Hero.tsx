@@ -6,9 +6,6 @@ import { ChevronDownIcon } from '@heroicons/react/24/outline';
 const Hero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-dark via-dark-light to-gray-900"></div>
-      
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
         <motion.div
@@ -16,6 +13,16 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
+          {/* Gold Logo */}
+          <motion.img
+            src="https://res.cloudinary.com/dvcvxhzmt/image/upload/v1755697002/logos/gold-logo.png"
+            alt="Disruptors Media Logo"
+            className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mx-auto mb-8"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
+          />
+          
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
             <span className="text-gold">AI-Powered</span><br />
             Marketing Solutions
