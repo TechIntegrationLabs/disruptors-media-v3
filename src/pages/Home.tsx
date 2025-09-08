@@ -44,7 +44,7 @@ const Home: React.FC = () => {
       <VideoHero
         title="AI Marketing That Drives Results"
         subtitle="Transform your business with data-driven strategies and professional content production"
-        videoUrl="/assets/videos/main-banner-video.mp4"
+        videoUrl="https://res.cloudinary.com/dvcvxhzmt/video/upload/v1757280802/dm-abt_rwm0ng.mp4"
         posterImage="/assets/images/poster.jpg"
         primaryCta={{ text: 'Start Your Transformation', href: '/contact' }}
         secondaryCta={{ text: 'Watch Our Work', href: '/portfolio' }}

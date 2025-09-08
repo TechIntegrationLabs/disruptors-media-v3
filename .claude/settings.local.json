@@ -3,7 +3,9 @@
     "allow": [
       "Bash(git checkout:*)",
       "Bash(git fetch:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(npm start)",
+      "Bash(npx kill-port:*)"
     ],
     "deny": [],
     "ask": []
