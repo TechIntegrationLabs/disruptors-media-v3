@@ -48,7 +48,10 @@
     "auto-commit:status": "node scripts/auto-commit-agent.js status",
     "commit": "node scripts/auto-commit-agent.js commit",
     "dev:auto": "./scripts/dev-with-auto-commit.sh --auto-commit",
-    "dev:safe": "./scripts/dev-with-auto-commit.sh"
+    "dev:safe": "./scripts/dev-with-auto-commit.sh",
+    "clients:sync": "node src/data/clients/clients-sync.js",
+    "clients:validate": "node src/data/clients/clients-sync.js",
+    "clients:backup": "node -e \"require('./src/data/clients/clients-sync.js').fetchFromGoogleSheets().then(console.log)\""
   },
   "eslintConfig": {
     "extends": [

@@ -4,12 +4,30 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
+### Core Development
 ```bash
 npm install          # Install dependencies
 npm start           # Development server (localhost:3000)
 npm run build       # Production build
 npm test            # Run tests (Jest with React Testing Library)
 npm run preview     # Preview production build (requires `npm install -g serve`)
+npm run dev         # Alias for npm start
+```
+
+### Specialized Workflows
+```bash
+npm run auto-commit         # Automated git commits with message generation
+npm run auto-commit:watch   # Watch mode for automatic commits
+npm run auto-commit:status  # Check auto-commit system status
+npm run dev:auto           # Development server with auto-commit enabled
+npm run dev:safe           # Development server without auto-commit
+```
+
+### Client Data Management
+```bash
+npm run clients:sync       # Sync client data from Google Sheets
+npm run clients:validate   # Validate client data structure
+npm run clients:backup     # Backup client data from Google Sheets
 ```
 
 ### Running Tests
@@ -29,9 +47,11 @@ npx tsc --noEmit    # Check types without building
 ### Technology Stack
 - **React 19.1.1** with TypeScript 4.9.5
 - **React Router DOM 7.8.2** for client-side routing
-- **Framer Motion 12.23.12** for animations
+- **Framer Motion 12.23.12** + **GSAP 3.13.0** for animations
 - **Tailwind CSS 3.4.17** with custom design tokens in `tailwind.config.js`
 - **Cloudinary** (cloud name: dvcvxhzmt) for asset management
+- **React Hook Form 7.62.0** + **Yup 1.7.0** for form handling
+- **Google Generative AI** integration for automated content workflows
 
 ### Project Structure
 ```
