@@ -1,12 +1,14 @@
 import React from 'react';
 import SEO from '../components/common/SEO';
 
-// PRD-Compliant Sections
-import HeroSection from '../components/sections/HeroSection';
-import CTASection from '../components/sections/CTASection';  
-import InteractiveSection from '../components/sections/InteractiveSection';
+// GSAP Animated Components
+import Hero from '../components/sections/Hero';
 import AboutSection from '../components/sections/AboutSection';
 import ServicesSlider from '../components/sections/ServicesSlider';
+
+// PRD-Compliant Sections
+import CTASection from '../components/sections/CTASection';  
+import InteractiveSection from '../components/sections/InteractiveSection';
 import FeaturedClients from '../components/sections/FeaturedClients';
 import FeaturedQuote from '../components/sections/FeaturedQuote';
 import WorkGrid from '../components/sections/WorkGrid';
@@ -123,11 +125,8 @@ const Home: React.FC = () => {
         type="website"
       />
       
-      {/* 1. Main Hero Section - PRD Specification */}
-      <HeroSection 
-        title={heroData.title}
-        subtitle={heroData.subtitle}
-      />
+      {/* 1. Main Hero Section - GSAP Animated */}
+      <Hero />
       
       {/* 2. Call-to-Action Section - PRD Specification */}
       <CTASection />

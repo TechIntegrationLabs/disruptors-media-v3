@@ -8,6 +8,9 @@ import MagneticCursor from '../animations/MagneticCursor';
 
 const Hero: React.FC = () => {
   const heroRef = useHeroAnimations();
+  
+  // Debug: Log when component mounts
+  console.log('Hero component mounted with GSAP animations');
 
   return (
     <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">

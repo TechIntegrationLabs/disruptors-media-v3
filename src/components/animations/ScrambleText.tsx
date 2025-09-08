@@ -28,6 +28,8 @@ const ScrambleText: React.FC<ScrambleTextProps> = ({
     const element = textRef.current;
     if (!element) return;
 
+    console.log('ScrambleText effect running for text:', text);
+    
     const chars = scrambleChars.split('');
     const textLength = originalText.current.length;
     
