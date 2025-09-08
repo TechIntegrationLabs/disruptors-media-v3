@@ -2,74 +2,217 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-/* Custom CSS Variables */
+/* PRD Font Loading - Optimized for Performance */
+@font-face {
+  font-family: 'OT Neue Montreal';
+  src: url('/fonts/OTNeueMontreal-SemiBoldSemiSqueezed.woff2') format('woff2'),
+       url('/fonts/OTNeueMontreal-SemiBoldSemiSqueezed.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Supply Mono';
+  src: url('/fonts/PPSupplyMono-Regular.woff2') format('woff2'),
+       url('/fonts/PPSupplyMono-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;  
+  font-display: swap;
+}
+
+/* PRD CSS Variables */
 :root {
-  --color-gold: #FFD700;
-  --color-dark: #2B2B2B;
-  --color-cream: #F1EDE9;
-  --color-white: #FFFFFF;
-  --color-black: #000000;
+  /* Primary Colors */
+  --color-brand-charcoal: #2B2B2B;
+  --color-brand-cream: #F1EDE9;
+  --color-pure-black: #000000;
+  --color-pure-white: #FFFFFF;
+  
+  /* Secondary Colors */
+  --color-warm-beige: #CAC1B8;
+  
+  /* Typography */
+  --font-primary: 'PP Supply Mono', monospace;
+  --font-secondary: 'OT Neue Montreal', sans-serif;
+  --color-text-primary: #2B2B2B;
+  --color-text-inverted: #F1EDE9;
+  --color-text-accent: #000000;
+  
+  /* Background Images */
+  --bg-texture: url('../images/main-bg.jpg');
+  --bg-logo-emboss: url('../images/logo-emboss.png');
+  --bg-mobile-section: url('../images/mobile-sec-bg.jpg');
+  
+  /* Spacing */
+  --spacing-xs: 10px;
+  --spacing-sm: 20px;
+  --spacing-md: 40px;
+  --spacing-lg: 60px;
+  --spacing-xl: 130px;
+  --container-max-width: 1430px;
 }
 
-/* Glass Morphism Utilities */
-.glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.glass-dark {
-  background: rgba(43, 43, 43, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Custom Animation Classes */
-.animate-fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
-}
-
-.animate-slide-up {
-  animation: slideUp 0.8s ease-out forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Typography */
+/* PRD Base Styles */
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-family: var(--font-primary);
+  color: var(--color-text-primary);
+  background: var(--bg-texture) repeat;
   line-height: 1.6;
-  color: var(--color-dark);
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom button styles */
-.btn-primary {
-  @apply bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105;
+/* PRD Utility Classes */
+.text-primary { color: var(--color-brand-charcoal); }
+.text-inverted { color: var(--color-brand-cream); }
+.text-accent { color: var(--color-pure-black); }
+.bg-dark { background-color: var(--color-brand-charcoal); }
+.bg-light { background-color: var(--color-warm-beige); }
+.bg-texture { background: var(--bg-texture) repeat; }
+.bg-logo-emboss { 
+  background: var(--bg-logo-emboss) center 40px no-repeat; 
 }
 
-.btn-secondary {
-  @apply border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-gray-900 font-semibold px-6 py-3 rounded-lg transition-all duration-300;
+/* PRD Container System */
+.container-custom { 
+  max-width: var(--container-max-width); 
+  margin: 0 auto; 
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media (min-width: 1200px) {
+  .container-custom {
+    width: 1430px;
+  }
+}
+
+/* PRD Typography Classes */
+.hero-h1 {
+  font-family: var(--font-secondary);
+  font-size: 220.302px;
+  font-weight: 600;
+  line-height: 198.59px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.section-h2 {
+  font-family: var(--font-secondary);
+  font-size: 63px;
+  font-weight: 600;
+  line-height: 68.6px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.body-primary {
+  font-family: var(--font-primary);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 30px;
+  text-transform: uppercase;
+}
+
+/* PRD Animation Classes */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-up.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* PRD Accordion Styles */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.accordion-content.open {
+  max-height: 500px;
+}
+
+.toggle-sign {
+  transition: transform 0.3s ease-in-out;
+}
+
+.toggle-sign.minus {
+  transform: rotate(180deg);
+}
+
+/* PRD Work Grid Styles */
+.work-grid .col-item:nth-child(odd) {
+  padding-right: 0px;
+}
+
+.work-grid .col-item:nth-child(even) {
+  border-left: 1px solid var(--color-pure-black);
+  padding-left: 0px;
+}
+
+/* PRD Button Styles */
+.primary-btn {
+  background: var(--color-brand-charcoal);
+  color: var(--color-brand-cream);
+  font-family: var(--font-primary);
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 16px 21px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(43, 43, 43, 0.3);
+}
+
+.cta-large {
+  background: var(--color-brand-charcoal);
+  color: var(--color-brand-cream);
+  font-family: var(--font-primary);
+  font-size: 39.645px;
+  font-weight: 400;
+  line-height: 47.65px;
+  text-transform: uppercase;
+  padding: 16px 21px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* PRD Mobile Hamburger Menu Animations */
+.hamburger.open span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

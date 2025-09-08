@@ -2,149 +2,169 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import SEO from '../components/common/SEO';
-import VideoHero from '../components/sections/VideoHero';
-import ClientLogos from '../components/sections/ClientLogos';
-import StudioShowcase from '../components/sections/StudioShowcase';
-import Testimonials from '../components/sections/Testimonials';
-import BlogPreview from '../components/sections/BlogPreview';
-import Newsletter from '../components/sections/Newsletter';
-import AnimatedCounters from '../components/sections/AnimatedCounters';
-import SocialProofMetrics from '../components/sections/SocialProofMetrics';
-import { featuredClients } from '../data/clients';
-import { testimonials } from '../data/clients';
-import { blogPosts } from '../data/blog';
+
+// PRD-Compliant Sections
+import HeroSection from '../components/sections/HeroSection';
+import CTASection from '../components/sections/CTASection';  
+import InteractiveSection from '../components/sections/InteractiveSection';
+import AboutSection from '../components/sections/AboutSection';
+import ServicesSlider from '../components/sections/ServicesSlider';
+import FeaturedClients from '../components/sections/FeaturedClients';
+import FeaturedQuote from '../components/sections/FeaturedQuote';
+import WorkGrid from '../components/sections/WorkGrid';
+import VideoGallery from '../components/sections/VideoGallery';
+import PreFooter from '../components/sections/PreFooter';
 const Home: React.FC = () => {
-  // Map featured clients to the format expected by ClientLogos component
-  const clientLogos = featuredClients.map(client => ({
-    name: client.name,
-    src: client.logo, // Map 'logo' to 'src'
-    href: client.url
-  }));
+  // PRD Homepage Content Data
+  const heroData = {
+    title: "DISRUPTORS", // Will be styled with exact PRD specifications
+    subtitle: "CREATIVE STRATEGY & DIGITAL INNOVATION", // Exact PRD subtitle
+  };
 
-  // Get featured blog posts
-  const featuredBlogPosts = blogPosts.filter(post => post.featured).slice(0, 3);
+  const aboutContent = {
+    title: "WHO WE ARE",
+    content: `We are creative strategists and digital innovators who believe in disrupting traditional approaches to deliver exceptional results. Our team combines cutting-edge technology with proven creative methodologies to transform businesses and amplify their impact in the marketplace.`
+  };
 
-  // Real metrics based on actual client results
-  const counters = [
-    { label: 'Active Clients', value: 8, suffix: '+' },
-    { label: 'Portfolio Projects', value: 8, suffix: '' },
-    { label: 'Client Satisfaction', value: 100, suffix: '%' },
-    { label: 'Years in Business', value: 5, suffix: '+' },
+  const servicesData = [
+    {
+      id: 1,
+      title: "Creative Strategy",
+      description: "Brand positioning and creative direction that cuts through the noise and connects with your target audience.",
+      backgroundImage: "/images/what-we-do-bx-1.png"
+    },
+    {
+      id: 2, 
+      title: "Brand Development",
+      description: "Complete identity systems and brand guidelines that establish your unique market position.",
+      backgroundImage: "/images/what-we-do-bx-2.png"
+    },
+    {
+      id: 3,
+      title: "Web Development", 
+      description: "Custom websites and digital experiences that drive engagement and conversions.",
+      backgroundImage: "/images/what-we-do-bx-3.png"
+    },
+    {
+      id: 4,
+      title: "Digital Marketing",
+      description: "Data-driven strategies and campaigns that deliver measurable results and ROI.",
+      backgroundImage: "/images/what-we-do-bx.png"
+    },
+    {
+      id: 5,
+      title: "Video Production",
+      description: "Professional video content and animation that tells your story with impact.",
+      backgroundImage: "/images/what-we-do-bx-1.png"
+    },
+    {
+      id: 6,
+      title: "Photography",
+      description: "Commercial photography and visual content that showcases your brand professionally.",
+      backgroundImage: "/images/what-we-do-bx-2.png"
+    }
   ];
 
+  const workPortfolio = [
+    {
+      id: 1,
+      title: "Brand Identity System",
+      category: "Brand Development",
+      image: "/images/work-1.jpg",
+      slug: "brand-identity-system"
+    },
+    {
+      id: 2,
+      title: "E-Commerce Platform",
+      category: "Web Development",
+      image: "/images/work-2.jpg", 
+      slug: "ecommerce-platform"
+    },
+    {
+      id: 3,
+      title: "Marketing Campaign",
+      category: "Digital Marketing",
+      image: "/images/work-3.jpg",
+      slug: "marketing-campaign"
+    },
+    {
+      id: 4,
+      title: "Corporate Video",
+      category: "Video Production",
+      image: "/images/work-4.jpg",
+      slug: "corporate-video"
+    },
+    {
+      id: 5,
+      title: "Product Photography",
+      category: "Photography",
+      image: "/images/work-5.jpg",
+      slug: "product-photography"
+    },
+    {
+      id: 6,
+      title: "Creative Strategy",
+      category: "Strategy",
+      image: "/images/work-6.jpg",
+      slug: "creative-strategy"
+    }
+  ];
+
+  const featuredQuote = {
+    title: "RESULTS SPEAK LOUDER THAN PROMISES",
+    content: "We don't just deliver projects – we deliver transformations. Every strategy, every design, every campaign is crafted to not just meet expectations, but to exceed them and drive real, measurable impact for our clients.",
+  };
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-texture">
       <SEO
-        title="AI-Powered Marketing Solutions That Drive Results"
-        description="Transform your business with data-driven AI marketing strategies, professional content production, and digital transformation. Proven results with real client success stories."
-        keywords="AI marketing, digital transformation, content production, studio services, marketing automation, business growth, North Salt Lake, Utah, AI-powered marketing, data-driven strategies"
+        title="Disruptors Media - Creative Strategy & Digital Innovation"
+        description="Creative strategists and digital innovators delivering exceptional results through cutting-edge technology and proven creative methodologies."
+        keywords="creative strategy, digital innovation, brand development, web development, digital marketing, video production, photography, disruptors media"
         url="https://disruptorsmedia.com"
         type="website"
       />
-      <VideoHero
-        title="AI Marketing That Drives Results"
-        subtitle="Transform your business with data-driven strategies and professional content production"
-        videoUrl="/assets/videos/dm-abt.mp4"
-        posterImage="/assets/images/poster-abt.jpg"
-        primaryCta={{ text: 'Start Your Transformation', href: '/contact' }}
-        secondaryCta={{ text: 'Watch Our Work', href: '/portfolio' }}
-        showLogo={true}
+      
+      {/* 1. Main Hero Section - PRD Specification */}
+      <HeroSection 
+        title={heroData.title}
+        subtitle={heroData.subtitle}
       />
       
-      {/* Services Overview */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4">
-              Our Services
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From AI-powered marketing strategies to professional studio production,
-              we provide comprehensive solutions for your business growth.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="bg-gradient-to-br from-cream to-white p-8 rounded-xl shadow-lg"
-            >
-              <div className="text-gold text-4xl mb-4">🤖</div>
-              <h3 className="text-2xl font-bold text-dark mb-4">AI Marketing Strategy</h3>
-              <p className="text-gray-600 mb-6">
-                Leverage cutting-edge AI technology to optimize your marketing campaigns,
-                analyze customer data, and drive measurable results.
-              </p>
-              <Link
-                to="/services/ai-marketing"
-                className="btn-primary inline-block"
-              >
-                Learn More
-              </Link>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="bg-gradient-to-br from-gold/10 to-white p-8 rounded-xl shadow-lg"
-            >
-              <div className="text-gold text-4xl mb-4">🎬</div>
-              <h3 className="text-2xl font-bold text-dark mb-4">Professional Studio</h3>
-              <p className="text-gray-600 mb-6">
-                State-of-the-art studio facility with professional equipment for
-                video production, podcasting, and content creation.
-              </p>
-              <Link
-                to="/services/studio"
-                className="btn-primary inline-block"
-              >
-                Book Studio
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Client Logos */}
-      <ClientLogos logos={clientLogos} />
-
-      {/* Studio Showcase */}
-      <StudioShowcase />
-
-      {/* Animated Counters */}
-      <AnimatedCounters counters={counters} />
-
-      {/* Social Proof Metrics */}
-      <SocialProofMetrics />
-
-      {/* Testimonials */}
-      <Testimonials testimonials={testimonials} />
-
-      {/* Blog Preview */}
-      <BlogPreview posts={featuredBlogPosts} />
-
-      {/* Newsletter */}
-      <Newsletter />
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-gold/10 to-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4">
-            Ready to Transform Your Business?
-          </h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Let's discuss how our AI-powered solutions and professional services
-            can accelerate your growth.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="btn-primary">
-              Get Started
-            </Link>
-            <a href="#services" className="btn-secondary">
-              View Services
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* 2. Call-to-Action Section - PRD Specification */}
+      <CTASection />
+      
+      {/* 3. Mobile/Interactive Section - PRD Specification */}
+      <InteractiveSection />
+      
+      {/* 4. Who We Are Section - PRD Specification */}
+      <AboutSection 
+        title={aboutContent.title}
+        content={aboutContent.content}
+      />
+      
+      {/* 5. What We Do Section - PRD Specification */}
+      <ServicesSlider services={servicesData} />
+      
+      {/* 6. Featured Clients Section - PRD Specification */}
+      <FeaturedClients />
+      
+      {/* 7. Featured Quote Section - PRD Specification */}
+      <FeaturedQuote 
+        title={featuredQuote.title}
+        content={featuredQuote.content}
+      />
+      
+      {/* 8. Work Portfolio Section - PRD Specification */}
+      <WorkGrid portfolio={workPortfolio} />
+      
+      {/* 9. Video Gallery Section - PRD Specification */}
+      <VideoGallery />
+      
+      {/* 10. Pre-Footer Navigation - PRD Specification */}
+      <PreFooter />
+      
+      {/* Footer will be handled by Layout wrapper */}
     </div>
   );
 };

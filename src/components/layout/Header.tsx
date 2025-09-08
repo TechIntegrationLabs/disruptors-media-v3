@@ -1,240 +1,121 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 
 interface NavigationItem {
   name: string;
   href: string;
-  submenu?: { name: string; href: string; }[];
 }
 
 const Header: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
+  // PRD Navigation Items - Exact specification
   const navigation: NavigationItem[] = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Services', href: '/services/ai-marketing', submenu: [
-      { name: 'AI Marketing', href: '/services/ai-marketing' },
-      { name: 'Studio Services', href: '/services/studio' }
-    ]},
-    { name: 'Portfolio', href: '/portfolio' },
-    { name: 'Gallery', href: '/gallery' },
-    { name: 'Podcast', href: '/podcast' },
-    { name: 'Blog', href: '/blog' },
+    { name: 'HOME', href: '/' },
+    { name: 'ABOUT', href: '/about' },
+    { name: 'SERVICES', href: '/services' },
+    { name: 'WORK', href: '/work' },
+    { name: 'CONTACT', href: '/contact' },
     { name: 'FAQ', href: '/faq' },
-    { name: 'Tools', href: '/assessment', submenu: [
-      { name: 'AI Assessment', href: '/assessment' },
-      { name: 'ROI Calculator', href: '/roi-calculator' }
-    ]},
-    { name: 'Contact', href: '/contact' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
 
-  // Handle dropdown toggle
-  const handleDropdownToggle = (itemName: string) => {
-    setActiveDropdown(activeDropdown === itemName ? null : itemName);
-  };
-
-  // Close dropdown when clicking outside
+  // Handle responsive behavior
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setActiveDropdown(null);
-      }
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Close dropdown on route change
+  // Close mobile menu on route change
   useEffect(() => {
-    setActiveDropdown(null);
+    setIsMenuOpen(false);
   }, [location.pathname]);
 
-  return (
-    <header className="bg-black/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link to="/" className="flex items-center">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="text-2xl font-bold text-gold"
-              >
-                Disruptors Media
-              </motion.div>
-            </Link>
-          </div>
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:block" ref={dropdownRef}>
-            <div className="ml-10 flex items-baseline space-x-8">
-              {navigation.map((item) => (
-                <div key={item.name} className="relative">
-                  {item.submenu ? (
-                    <div>
-                      <button
-                        onClick={() => handleDropdownToggle(item.name)}
-                        className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center ${
-                          isActive(item.href) || (item.submenu && item.submenu.some(subItem => isActive(subItem.href)))
-                            ? 'text-gold border-b-2 border-gold'
-                            : 'text-gray-200 hover:text-gold hover:bg-gray-800/30'
-                        }`}
-                      >
-                        {item.name}
-                        <ChevronDownIcon 
-                          className={`ml-1 h-4 w-4 transition-transform duration-200 ${
-                            activeDropdown === item.name ? 'rotate-180' : ''
-                          }`} 
-                        />
-                      </button>
-                      
-                      <AnimatePresence>
-                        {activeDropdown === item.name && (
-                          <motion.div
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -10 }}
-                            transition={{ duration: 0.2 }}
-                            className="absolute left-0 mt-2 w-64 bg-black/95 backdrop-blur-md border border-gray-700 rounded-lg shadow-lg py-2 z-50"
-                          >
-                            {item.submenu.map((subItem) => (
-                              <Link
-                                key={subItem.name}
-                                to={subItem.href}
-                                className={`block px-4 py-3 text-sm font-medium transition-colors duration-200 ${
-                                  isActive(subItem.href)
-                                    ? 'text-gold bg-gold/10'
-                                    : 'text-gray-200 hover:text-gold hover:bg-gray-800/30'
-                                }`}
-                                onClick={() => setActiveDropdown(null)}
-                              >
-                                {subItem.name}
-                              </Link>
-                            ))}
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  ) : (
-                    <Link
+  return (
+    <header className="relative w-full z-1000" style={{ padding: '25px 0' }}>
+      <div className="container-custom">
+        <div className="flex justify-between items-center">
+          {/* Logo - PRD Specification */}
+          <Link to="/" className="inline-block">
+            <img 
+              src="/images/logo.svg" 
+              alt="Disruptors Media" 
+              className="h-auto max-h-10"
+            />
+          </Link>
+
+          {/* Desktop Navigation - PRD Specification */}
+          {!isMobile && (
+            <nav className="inline-block float-right">
+              <ul className="flex list-none m-0">
+                {navigation.map((item, index) => (
+                  <li key={index} className="inline-block text-center mx-4">
+                    <Link 
                       to={item.href}
-                      className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                        isActive(item.href)
-                          ? 'text-gold border-b-2 border-gold'
-                          : 'text-gray-200 hover:text-gold hover:bg-gray-800/30'
-                      }`}
+                      className={`font-pp-supply-mono text-body-primary transition-colors duration-300 ease-out text-brand-charcoal no-underline relative ${
+                        isActive(item.href) ? 'font-semibold' : ''
+                      } hover:after:w-full after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-brand-charcoal after:transition-all after:duration-300 after:ease-out`}
                     >
                       {item.name}
                     </Link>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gold hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gold"
+          {/* Mobile Menu Toggle - PRD Specification */}
+          {isMobile && (
+            <button 
+              className="inline-flex items-center justify-center p-2 bg-transparent border-none cursor-pointer"
+              onClick={toggleMenu}
+              aria-label="Toggle navigation menu"
+              aria-expanded={isMenuOpen}
             >
-              {isOpen ? (
-                <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-              ) : (
-                <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-              )}
+              <span className={`hamburger relative w-7 h-5 block ${isMenuOpen ? 'open' : ''}`}>
+                <span className="absolute w-full h-0.5 bg-brand-charcoal transition-all duration-300 top-0 left-0"></span>
+                <span className="absolute w-full h-0.5 bg-brand-charcoal transition-all duration-300 top-1/2 -translate-y-1/2 left-0"></span>
+                <span className="absolute w-full h-0.5 bg-brand-charcoal transition-all duration-300 bottom-0 left-0"></span>
+              </span>
             </button>
-          </div>
+          )}
         </div>
 
-        {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden"
-            >
-              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/90 backdrop-blur-md rounded-lg mt-2">
-                {navigation.map((item) => (
-                  <div key={item.name}>
-                    {item.submenu ? (
-                      <div>
-                        <button
-                          onClick={() => handleDropdownToggle(item.name)}
-                          className={`w-full text-left px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 flex items-center justify-between ${
-                            isActive(item.href) || (item.submenu && item.submenu.some(subItem => isActive(subItem.href)))
-                              ? 'text-gold bg-gold/10'
-                              : 'text-gray-200 hover:text-gold hover:bg-gray-800/30'
-                          }`}
-                        >
-                          {item.name}
-                          <ChevronDownIcon 
-                            className={`h-4 w-4 transition-transform duration-200 ${
-                              activeDropdown === item.name ? 'rotate-180' : ''
-                            }`} 
-                          />
-                        </button>
-                        
-                        <AnimatePresence>
-                          {activeDropdown === item.name && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: 'auto' }}
-                              exit={{ opacity: 0, height: 0 }}
-                              className="pl-4 mt-1 space-y-1"
-                            >
-                              {item.submenu.map((subItem) => (
-                                <Link
-                                  key={subItem.name}
-                                  to={subItem.href}
-                                  onClick={() => {
-                                    setIsOpen(false);
-                                    setActiveDropdown(null);
-                                  }}
-                                  className={`block px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                                    isActive(subItem.href)
-                                      ? 'text-gold bg-gold/10'
-                                      : 'text-gray-400 hover:text-gold hover:bg-gray-800/30'
-                                  }`}
-                                >
-                                  {subItem.name}
-                                </Link>
-                              ))}
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    ) : (
-                      <Link
-                        to={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
-                          isActive(item.href)
-                            ? 'text-gold bg-gold/10'
-                            : 'text-gray-200 hover:text-gold hover:bg-gray-800/30'
-                        }`}
-                      >
-                        {item.name}
-                      </Link>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
+        {/* Mobile Navigation - PRD Specification */}
+        {isMobile && (
+          <nav className={`fixed top-0 left-0 w-full h-screen bg-brand-cream transform transition-transform duration-400 ease-in-out z-[999] pt-24 ${
+            isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}>
+            <ul className="list-none p-0 m-0 text-center">
+              {navigation.map((item, index) => (
+                <li key={index} className="my-5">
+                  <Link 
+                    to={item.href}
+                    className={`font-pp-supply-mono text-2xl font-normal text-brand-charcoal no-underline uppercase block p-4 transition-colors duration-300 ${
+                      isActive(item.href) ? 'font-semibold' : ''
+                    } hover:bg-black/10`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
+      </div>
     </header>
   );
 };

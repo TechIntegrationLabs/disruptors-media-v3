@@ -5,6 +5,9 @@ import Layout from './components/layout/Layout';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import LoadingCounter from './components/animations/LoadingCounter';
 import Home from './pages/Home';
+import About from './pages/About';
+import Services from './pages/Services';
+import Work from './pages/Work';
 import Contact from './pages/Contact';
 import Portfolio from './pages/Portfolio';
 import Blog from './pages/Blog';
@@ -18,7 +21,6 @@ import Gallery from './pages/Gallery';
 import Podcast from './pages/Podcast';
 import FAQ from './pages/FAQ';
 import CaseStudyDetail from './pages/CaseStudyDetail';
-import About from './pages/About';
 
 function App() {
   return (
@@ -29,7 +31,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/work" element={<Work />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
@@ -39,8 +44,8 @@ function App() {
             <Route path="/services/studio" element={<StudioServices />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/podcast" element={<Podcast />} />
-            <Route path="/faq" element={<FAQ />} />
             <Route path="/case-study/:id" element={<CaseStudyDetail />} />
+            <Route path="/work/:slug" element={<CaseStudyDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>

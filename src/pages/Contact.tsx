@@ -1,38 +1,25 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import {
-  PhoneIcon,
-  EnvelopeIcon,
-  MapPinIcon,
-  ClockIcon,
-  ChatBubbleLeftRightIcon,
-  CalendarDaysIcon,
-  CheckCircleIcon,
-  ExclamationTriangleIcon
-} from '@heroicons/react/24/outline';
-import { companyInfo } from '../data/team';
+import SEO from '../components/common/SEO';
 
-type FormType = 'general' | 'project' | 'studio' | 'partnership';
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
 interface FormData {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  phone?: string;
-  company?: string;
-  projectType?: string;
-  budget?: string;
-  timeline?: string;
+  phone: string;
+  company: string;
+  projectType: string;
+  budget: string;
+  timeline: string;
   message: string;
-  studioDate?: string;
-  studioTime?: string;
-  partnershipType?: string;
+  howDidYouHear: string;
 }
 
 const Contact: React.FC = () => {
-  const [activeForm, setActiveForm] = useState<FormType>('general');
   const [formData, setFormData] = useState<FormData>({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
     company: '',
@@ -40,9 +27,7 @@ const Contact: React.FC = () => {
     budget: '',
     timeline: '',
     message: '',
-    studioDate: '',
-    studioTime: '',
-    partnershipType: ''
+    howDidYouHear: ''
   });
   const [formStatus, setFormStatus] = useState<FormStatus>('idle');
 
@@ -55,8 +40,10 @@ const Contact: React.FC = () => {
       setFormStatus('success');
       setTimeout(() => {
         setFormStatus('idle');
+        // Reset form
         setFormData({
-          name: '',
+          firstName: '',
+          lastName: '',
           email: '',
           phone: '',
           company: '',
@@ -64,9 +51,7 @@ const Contact: React.FC = () => {
           budget: '',
           timeline: '',
           message: '',
-          studioDate: '',
-          studioTime: '',
-          partnershipType: ''
+          howDidYouHear: ''
         });
       }, 3000);
     }, 1500);
@@ -76,436 +61,851 @@ const Contact: React.FC = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const formTypes = [
-    { id: 'general', label: 'General Inquiry', icon: ChatBubbleLeftRightIcon },
-    { id: 'project', label: 'Project Quote', icon: CheckCircleIcon },
-    { id: 'studio', label: 'Studio Booking', icon: CalendarDaysIcon },
-    { id: 'partnership', label: 'Partnership', icon: ExclamationTriangleIcon }
-  ];
-
   return (
-    <div className="min-h-screen bg-dark py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Get In Touch
+    <div className="min-h-screen bg-texture">
+      <SEO
+        title="Contact - Disruptors Media"
+        description="Get in touch with Disruptors Media for your next project. Contact us for a free consultation on creative strategy, brand development, and digital marketing."
+        keywords="contact, get in touch, consultation, project inquiry, creative agency, brand strategy, digital marketing"
+        url="https://disruptorsmedia.com/contact"
+        type="website"
+      />
+      
+      {/* 1. Contact Hero Section - PRD Specification with Modified Styling */}
+      <section 
+        className="relative w-full main-sec contact"
+        style={{ 
+          paddingTop: '130px', 
+          paddingBottom: '110px',
+          background: 'transparent'
+        }}
+      >
+        <div className="container-custom">
+          {/* Page Title - PRD Specification with increased margin */}
+          <h1 
+            className="text-brand-charcoal text-center"
+            style={{
+              fontFamily: 'var(--font-secondary)',
+              fontSize: '220.302px',
+              fontWeight: 600,
+              lineHeight: '198.59px',
+              textTransform: 'uppercase',
+              marginBottom: '168px' // Increased spacing per PRD
+            }}
+          >
+            CONTACT
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Ready to transform your business with AI-powered marketing?
-            Choose how you'd like to connect with us below.
-          </p>
-        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-1 space-y-8"
+          {/* Contact Subtitle - PRD Specification with custom styling */}
+          <h2 
+            className="text-brand-charcoal text-center mb-20"
+            style={{
+              fontFamily: 'var(--font-secondary)',
+              fontSize: '61px', // Slightly smaller than default 63px
+              fontWeight: 600,
+              lineHeight: '68.6px',
+              color: 'var(--color-brand-charcoal)',
+              textTransform: 'none', // No uppercase transformation
+              textAlign: 'center'
+            }}
           >
-            {/* Contact Details */}
-            <div className="glass-card p-8">
-              <h2 className="text-2xl font-bold text-white mb-6">Contact Information</h2>
-              
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <PhoneIcon className="h-6 w-6 text-gold mr-4" />
-                  <div>
-                    <div className="text-white font-medium">Phone</div>
-                    <div className="text-gray-300">{companyInfo.phone}</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center">
-                  <EnvelopeIcon className="h-6 w-6 text-gold mr-4" />
-                  <div>
-                    <div className="text-white font-medium">Email</div>
-                    <div className="text-gray-300">{companyInfo.email}</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center">
-                  <MapPinIcon className="h-6 w-6 text-gold mr-4" />
-                  <div>
-                    <div className="text-white font-medium">Location</div>
-                    <div className="text-gray-300">{companyInfo.location}</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center">
-                  <ClockIcon className="h-6 w-6 text-gold mr-4" />
-                  <div>
-                    <div className="text-white font-medium">Business Hours</div>
-                    <div className="text-gray-300">Mon-Fri: 9AM-6PM MST</div>
-                  </div>
-                </div>
+            Let's start something great together
+          </h2>
+        </div>
+      </section>
+
+      {/* 2. Contact Information Section - PRD Specification */}
+      <section className="w-full py-20">
+        <div className="container-custom">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+            {/* Primary Email */}
+            <div className="text-center">
+              <h3 
+                className="text-brand-charcoal mb-4"
+                style={{
+                  fontFamily: 'var(--font-primary)',
+                  fontSize: '16px',
+                  fontWeight: 400,
+                  textTransform: 'uppercase'
+                }}
+              >
+                EMAIL
+              </h3>
+              <a 
+                href="mailto:hello@disruptorsmedia.com"
+                className="text-brand-charcoal no-underline hover:opacity-80 transition-opacity block mb-3"
+                style={{
+                  fontFamily: 'var(--font-primary)',
+                  fontSize: '22px',
+                  fontWeight: 400,
+                  textTransform: 'uppercase'
+                }}
+              >
+                HELLO@DISRUPTORSMEDIA.COM
+              </a>
+            </div>
+
+            {/* Phone Number */}
+            <div className="text-center">
+              <h3 
+                className="text-brand-charcoal mb-4"
+                style={{
+                  fontFamily: 'var(--font-primary)',
+                  fontSize: '16px',
+                  fontWeight: 400,
+                  textTransform: 'uppercase'
+                }}
+              >
+                PHONE
+              </h3>
+              <a 
+                href="tel:+15551234567"
+                className="text-brand-charcoal no-underline hover:opacity-80 transition-opacity block"
+                style={{
+                  fontFamily: 'var(--font-primary)',
+                  fontSize: '22px',
+                  fontWeight: 400
+                }}
+              >
+                +1 (555) 123-4567
+              </a>
+            </div>
+
+            {/* Address */}
+            <div className="text-center">
+              <h3 
+                className="text-brand-charcoal mb-4"
+                style={{
+                  fontFamily: 'var(--font-primary)',
+                  fontSize: '16px',
+                  fontWeight: 400,
+                  textTransform: 'uppercase'
+                }}
+              >
+                ADDRESS
+              </h3>
+              <div 
+                className="text-brand-charcoal"
+                style={{
+                  fontFamily: 'var(--font-primary)',
+                  fontSize: '16px',
+                  fontWeight: 400,
+                  lineHeight: '24px'
+                }}
+              >
+                123 Creative Street<br />
+                Innovation District<br />
+                City, State 12345
               </div>
             </div>
 
-            {/* Quick Actions */}
-            <div className="glass-card p-8">
-              <h3 className="text-xl font-bold text-white mb-4">Quick Actions</h3>
-              <div className="space-y-3">
-                <a
-                  href="/assessment"
-                  className="w-full btn-primary text-center block"
+            {/* Business Hours */}
+            <div className="text-center">
+              <h3 
+                className="text-brand-charcoal mb-4"
+                style={{
+                  fontFamily: 'var(--font-primary)',
+                  fontSize: '16px',
+                  fontWeight: 400,
+                  textTransform: 'uppercase'
+                }}
+              >
+                HOURS
+              </h3>
+              <div 
+                className="text-brand-charcoal"
+                style={{
+                  fontFamily: 'var(--font-primary)',
+                  fontSize: '16px',
+                  fontWeight: 400,
+                  lineHeight: '24px'
+                }}
+              >
+                MONDAY - FRIDAY<br />
+                9:00 AM - 6:00 PM<br />
+                <br />
+                SATURDAY - SUNDAY<br />
+                BY APPOINTMENT
+              </div>
+            </div>
+          </div>
+
+          {/* Secondary Contact Methods */}
+          <div className="text-center mb-20">
+            <h3 
+              className="text-brand-charcoal mb-8"
+              style={{
+                fontFamily: 'var(--font-secondary)',
+                fontSize: '39px',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                marginBottom: '30px'
+              }}
+            >
+              ADDITIONAL CONTACTS
+            </h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div>
+                <div 
+                  className="text-brand-charcoal mb-2"
+                  style={{
+                    fontFamily: 'var(--font-primary)',
+                    fontSize: '14px',
+                    fontWeight: 400,
+                    textTransform: 'uppercase'
+                  }}
                 >
-                  Take AI Assessment
+                  GENERAL INQUIRIES
+                </div>
+                <a 
+                  href="mailto:info@disruptorsmedia.com"
+                  className="text-brand-charcoal no-underline hover:opacity-80 transition-opacity"
+                  style={{
+                    fontFamily: 'var(--font-primary)',
+                    fontSize: '16px',
+                    fontWeight: 400,
+                    textTransform: 'uppercase'
+                  }}
+                >
+                  INFO@DISRUPTORSMEDIA.COM
                 </a>
-                <a
-                  href="/roi-calculator"
-                  className="w-full btn-secondary text-center block"
+              </div>
+              <div>
+                <div 
+                  className="text-brand-charcoal mb-2"
+                  style={{
+                    fontFamily: 'var(--font-primary)',
+                    fontSize: '14px',
+                    fontWeight: 400,
+                    textTransform: 'uppercase'
+                  }}
                 >
-                  Calculate ROI
+                  NEW BUSINESS
+                </div>
+                <a 
+                  href="mailto:hello@disruptorsmedia.com"
+                  className="text-brand-charcoal no-underline hover:opacity-80 transition-opacity"
+                  style={{
+                    fontFamily: 'var(--font-primary)',
+                    fontSize: '16px',
+                    fontWeight: 400,
+                    textTransform: 'uppercase'
+                  }}
+                >
+                  HELLO@DISRUPTORSMEDIA.COM
                 </a>
-                <a
-                  href="https://cal.com/disruptors-media/strategy-session"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full btn-outline text-center block"
+              </div>
+              <div>
+                <div 
+                  className="text-brand-charcoal mb-2"
+                  style={{
+                    fontFamily: 'var(--font-primary)',
+                    fontSize: '14px',
+                    fontWeight: 400,
+                    textTransform: 'uppercase'
+                  }}
                 >
-                  Book Strategy Call
+                  PRESS & MEDIA
+                </div>
+                <a 
+                  href="mailto:press@disruptorsmedia.com"
+                  className="text-brand-charcoal no-underline hover:opacity-80 transition-opacity"
+                  style={{
+                    fontFamily: 'var(--font-primary)',
+                    fontSize: '16px',
+                    fontWeight: 400,
+                    textTransform: 'uppercase'
+                  }}
+                >
+                  PRESS@DISRUPTORSMEDIA.COM
+                </a>
+              </div>
+              <div>
+                <div 
+                  className="text-brand-charcoal mb-2"
+                  style={{
+                    fontFamily: 'var(--font-primary)',
+                    fontSize: '14px',
+                    fontWeight: 400,
+                    textTransform: 'uppercase'
+                  }}
+                >
+                  CAREERS
+                </div>
+                <a 
+                  href="mailto:careers@disruptorsmedia.com"
+                  className="text-brand-charcoal no-underline hover:opacity-80 transition-opacity"
+                  style={{
+                    fontFamily: 'var(--font-primary)',
+                    fontSize: '16px',
+                    fontWeight: 400,
+                    textTransform: 'uppercase'
+                  }}
+                >
+                  CAREERS@DISRUPTORSMEDIA.COM
                 </a>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Social Links */}
-            <div className="glass-card p-8">
-              <h3 className="text-xl font-bold text-white mb-4">Follow Us</h3>
-              <div className="flex space-x-4">
-                {Object.entries(companyInfo.social).map(([platform, url]) => (
-                  <a
-                    key={platform}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-gold/20 text-gold rounded-full flex items-center justify-center hover:bg-gold hover:text-dark transition-all duration-300"
-                  >
-                    <span className="sr-only">{platform}</span>
-                    <div className="w-5 h-5" />
-                  </a>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+      {/* 3. Contact Form Section - PRD Specification */}
+      <section className="w-full py-20">
+        <div className="container-custom">
+          <div className="max-w-4xl mx-auto">
+            <h2 
+              className="text-brand-charcoal text-center mb-12"
+              style={{
+                fontFamily: 'var(--font-secondary)',
+                fontSize: '63px',
+                fontWeight: 600,
+                lineHeight: '68.6px',
+                textTransform: 'uppercase',
+                marginBottom: '50px'
+              }}
+            >
+              GET IN TOUCH
+            </h2>
 
-          {/* Contact Forms */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="lg:col-span-2"
-          >
-            <div className="glass-card p-8">
-              {/* Form Type Selector */}
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold text-white mb-6">How can we help you?</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {formTypes.map(({ id, label, icon: Icon }) => (
-                    <button
-                      key={id}
-                      onClick={() => setActiveForm(id as FormType)}
-                      className={`p-4 rounded-lg border transition-all duration-300 ${
-                        activeForm === id
-                          ? 'border-gold bg-gold/10 text-white'
-                          : 'border-white/20 bg-dark-light text-gray-300 hover:border-gold/50'
-                      }`}
-                    >
-                      <Icon className="h-6 w-6 mx-auto mb-2" />
-                      <div className="text-sm font-medium">{label}</div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Form */}
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Basic Fields */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => handleInputChange('name', e.target.value)}
-                      className="w-full px-4 py-3 bg-dark-light border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
-                      placeholder="Your full name"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => handleInputChange('email', e.target.value)}
-                      className="w-full px-4 py-3 bg-dark-light border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Phone
-                    </label>
-                    <input
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => handleInputChange('phone', e.target.value)}
-                      className="w-full px-4 py-3 bg-dark-light border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
-                      placeholder="(555) 123-4567"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Company
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.company}
-                      onChange={(e) => handleInputChange('company', e.target.value)}
-                      className="w-full px-4 py-3 bg-dark-light border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
-                      placeholder="Your company name"
-                    />
-                  </div>
-                </div>
-
-                {/* Form-specific fields */}
-                {activeForm === 'project' && (
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Project Type
-                      </label>
-                      <select
-                        value={formData.projectType}
-                        onChange={(e) => handleInputChange('projectType', e.target.value)}
-                        className="w-full px-4 py-3 bg-dark-light border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-gold"
-                      >
-                        <option value="">Select type</option>
-                        <option value="ai-marketing">AI Marketing</option>
-                        <option value="digital-transformation">Digital Transformation</option>
-                        <option value="content-production">Content Production</option>
-                        <option value="studio-services">Studio Services</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Budget Range
-                      </label>
-                      <select
-                        value={formData.budget}
-                        onChange={(e) => handleInputChange('budget', e.target.value)}
-                        className="w-full px-4 py-3 bg-dark-light border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-gold"
-                      >
-                        <option value="">Select budget</option>
-                        <option value="5k-15k">$5K - $15K</option>
-                        <option value="15k-50k">$15K - $50K</option>
-                        <option value="50k-100k">$50K - $100K</option>
-                        <option value="100k+">$100K+</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Timeline
-                      </label>
-                      <select
-                        value={formData.timeline}
-                        onChange={(e) => handleInputChange('timeline', e.target.value)}
-                        className="w-full px-4 py-3 bg-dark-light border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-gold"
-                      >
-                        <option value="">Select timeline</option>
-                        <option value="asap">ASAP</option>
-                        <option value="1-3-months">1-3 months</option>
-                        <option value="3-6-months">3-6 months</option>
-                        <option value="6-months+">6+ months</option>
-                      </select>
-                    </div>
-                  </div>
-                )}
-
-                {activeForm === 'studio' && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Preferred Date
-                      </label>
-                      <input
-                        type="date"
-                        value={formData.studioDate}
-                        onChange={(e) => handleInputChange('studioDate', e.target.value)}
-                        className="w-full px-4 py-3 bg-dark-light border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-gold"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Preferred Time
-                      </label>
-                      <select
-                        value={formData.studioTime}
-                        onChange={(e) => handleInputChange('studioTime', e.target.value)}
-                        className="w-full px-4 py-3 bg-dark-light border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-gold"
-                      >
-                        <option value="">Select time</option>
-                        <option value="morning">Morning (9AM-12PM)</option>
-                        <option value="afternoon">Afternoon (1PM-5PM)</option>
-                        <option value="evening">Evening (6PM-9PM)</option>
-                      </select>
-                    </div>
-                  </div>
-                )}
-
-                {activeForm === 'partnership' && (
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Partnership Type
-                    </label>
-                    <select
-                      value={formData.partnershipType}
-                      onChange={(e) => handleInputChange('partnershipType', e.target.value)}
-                      className="w-full px-4 py-3 bg-dark-light border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-gold"
-                    >
-                      <option value="">Select partnership type</option>
-                      <option value="referral">Referral Partner</option>
-                      <option value="technology">Technology Integration</option>
-                      <option value="reseller">Reseller/Agency</option>
-                      <option value="strategic">Strategic Alliance</option>
-                    </select>
-                  </div>
-                )}
-
-                {/* Message */}
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Personal Information */}
+              <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Message *
+                  <label 
+                    className="block mb-2"
+                    style={{
+                      fontFamily: 'var(--font-primary)',
+                      fontSize: '14px',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-brand-charcoal)',
+                      marginBottom: '5px',
+                      display: 'block'
+                    }}
+                  >
+                    FIRST NAME *
                   </label>
-                  <textarea
+                  <input
+                    type="text"
                     required
-                    rows={6}
-                    value={formData.message}
-                    onChange={(e) => handleInputChange('message', e.target.value)}
-                    className="w-full px-4 py-3 bg-dark-light border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent resize-none"
-                    placeholder="Tell us about your project, goals, or questions..."
+                    value={formData.firstName}
+                    onChange={(e) => handleInputChange('firstName', e.target.value)}
+                    style={{
+                      fontFamily: 'var(--font-primary)',
+                      fontSize: '16px',
+                      padding: '15px',
+                      border: '1px solid var(--color-brand-charcoal)',
+                      background: 'transparent',
+                      color: 'var(--color-brand-charcoal)',
+                      width: '100%'
+                    }}
+                    placeholder="First Name"
                   />
                 </div>
+                <div>
+                  <label 
+                    className="block mb-2"
+                    style={{
+                      fontFamily: 'var(--font-primary)',
+                      fontSize: '14px',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-brand-charcoal)',
+                      marginBottom: '5px',
+                      display: 'block'
+                    }}
+                  >
+                    LAST NAME *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={formData.lastName}
+                    onChange={(e) => handleInputChange('lastName', e.target.value)}
+                    style={{
+                      fontFamily: 'var(--font-primary)',
+                      fontSize: '16px',
+                      padding: '15px',
+                      border: '1px solid var(--color-brand-charcoal)',
+                      background: 'transparent',
+                      color: 'var(--color-brand-charcoal)',
+                      width: '100%'
+                    }}
+                    placeholder="Last Name"
+                  />
+                </div>
+              </div>
 
-                {/* Submit Button */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label 
+                    className="block mb-2"
+                    style={{
+                      fontFamily: 'var(--font-primary)',
+                      fontSize: '14px',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-brand-charcoal)',
+                      marginBottom: '5px',
+                      display: 'block'
+                    }}
+                  >
+                    EMAIL ADDRESS *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
+                    style={{
+                      fontFamily: 'var(--font-primary)',
+                      fontSize: '16px',
+                      padding: '15px',
+                      border: '1px solid var(--color-brand-charcoal)',
+                      background: 'transparent',
+                      color: 'var(--color-brand-charcoal)',
+                      width: '100%'
+                    }}
+                    placeholder="your@email.com"
+                  />
+                </div>
+                <div>
+                  <label 
+                    className="block mb-2"
+                    style={{
+                      fontFamily: 'var(--font-primary)',
+                      fontSize: '14px',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-brand-charcoal)',
+                      marginBottom: '5px',
+                      display: 'block'
+                    }}
+                  >
+                    PHONE NUMBER
+                  </label>
+                  <input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange('phone', e.target.value)}
+                    style={{
+                      fontFamily: 'var(--font-primary)',
+                      fontSize: '16px',
+                      padding: '15px',
+                      border: '1px solid var(--color-brand-charcoal)',
+                      background: 'transparent',
+                      color: 'var(--color-brand-charcoal)',
+                      width: '100%'
+                    }}
+                    placeholder="(555) 123-4567"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label 
+                  className="block mb-2"
+                  style={{
+                    fontFamily: 'var(--font-primary)',
+                    fontSize: '14px',
+                    textTransform: 'uppercase',
+                    color: 'var(--color-brand-charcoal)',
+                    marginBottom: '5px',
+                    display: 'block'
+                  }}
+                >
+                  COMPANY NAME
+                </label>
+                <input
+                  type="text"
+                  value={formData.company}
+                  onChange={(e) => handleInputChange('company', e.target.value)}
+                  style={{
+                    fontFamily: 'var(--font-primary)',
+                    fontSize: '16px',
+                    padding: '15px',
+                    border: '1px solid var(--color-brand-charcoal)',
+                    background: 'transparent',
+                    color: 'var(--color-brand-charcoal)',
+                    width: '100%'
+                  }}
+                  placeholder="Your Company Name"
+                />
+              </div>
+
+              {/* Project Information */}
+              <div className="grid md:grid-cols-3 gap-6">
+                <div>
+                  <label 
+                    className="block mb-2"
+                    style={{
+                      fontFamily: 'var(--font-primary)',
+                      fontSize: '14px',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-brand-charcoal)',
+                      marginBottom: '5px',
+                      display: 'block'
+                    }}
+                  >
+                    PROJECT TYPE
+                  </label>
+                  <select
+                    value={formData.projectType}
+                    onChange={(e) => handleInputChange('projectType', e.target.value)}
+                    style={{
+                      fontFamily: 'var(--font-primary)',
+                      fontSize: '16px',
+                      padding: '15px',
+                      border: '1px solid var(--color-brand-charcoal)',
+                      background: 'transparent',
+                      color: 'var(--color-brand-charcoal)',
+                      width: '100%'
+                    }}
+                  >
+                    <option value="">Select Project Type</option>
+                    <option value="brand-identity">Brand Identity</option>
+                    <option value="web-development">Web Development</option>
+                    <option value="digital-marketing">Digital Marketing</option>
+                    <option value="video-production">Video Production</option>
+                    <option value="photography">Photography</option>
+                    <option value="consulting">Consulting</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label 
+                    className="block mb-2"
+                    style={{
+                      fontFamily: 'var(--font-primary)',
+                      fontSize: '14px',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-brand-charcoal)',
+                      marginBottom: '5px',
+                      display: 'block'
+                    }}
+                  >
+                    PROJECT BUDGET
+                  </label>
+                  <select
+                    value={formData.budget}
+                    onChange={(e) => handleInputChange('budget', e.target.value)}
+                    style={{
+                      fontFamily: 'var(--font-primary)',
+                      fontSize: '16px',
+                      padding: '15px',
+                      border: '1px solid var(--color-brand-charcoal)',
+                      background: 'transparent',
+                      color: 'var(--color-brand-charcoal)',
+                      width: '100%'
+                    }}
+                  >
+                    <option value="">Select Budget Range</option>
+                    <option value="under-10k">Under $10,000</option>
+                    <option value="10k-25k">$10,000 - $25,000</option>
+                    <option value="25k-50k">$25,000 - $50,000</option>
+                    <option value="50k-100k">$50,000 - $100,000</option>
+                    <option value="100k-plus">$100,000+</option>
+                    <option value="not-sure">Not Sure</option>
+                  </select>
+                </div>
+                <div>
+                  <label 
+                    className="block mb-2"
+                    style={{
+                      fontFamily: 'var(--font-primary)',
+                      fontSize: '14px',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-brand-charcoal)',
+                      marginBottom: '5px',
+                      display: 'block'
+                    }}
+                  >
+                    TIMELINE
+                  </label>
+                  <select
+                    value={formData.timeline}
+                    onChange={(e) => handleInputChange('timeline', e.target.value)}
+                    style={{
+                      fontFamily: 'var(--font-primary)',
+                      fontSize: '16px',
+                      padding: '15px',
+                      border: '1px solid var(--color-brand-charcoal)',
+                      background: 'transparent',
+                      color: 'var(--color-brand-charcoal)',
+                      width: '100%'
+                    }}
+                  >
+                    <option value="">Select Timeline</option>
+                    <option value="asap">ASAP</option>
+                    <option value="1-3-months">1-3 Months</option>
+                    <option value="3-6-months">3-6 Months</option>
+                    <option value="6-months-plus">6+ Months</option>
+                    <option value="flexible">Flexible</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Message */}
+              <div>
+                <label 
+                  className="block mb-2"
+                  style={{
+                    fontFamily: 'var(--font-primary)',
+                    fontSize: '14px',
+                    textTransform: 'uppercase',
+                    color: 'var(--color-brand-charcoal)',
+                    marginBottom: '5px',
+                    display: 'block'
+                  }}
+                >
+                  PROJECT DESCRIPTION *
+                </label>
+                <textarea
+                  required
+                  rows={6}
+                  value={formData.message}
+                  onChange={(e) => handleInputChange('message', e.target.value)}
+                  style={{
+                    fontFamily: 'var(--font-primary)',
+                    fontSize: '16px',
+                    padding: '15px',
+                    border: '1px solid var(--color-brand-charcoal)',
+                    background: 'transparent',
+                    color: 'var(--color-brand-charcoal)',
+                    width: '100%',
+                    resize: 'none'
+                  }}
+                  placeholder="Tell us about your project goals, challenges, and what you're looking to achieve..."
+                />
+              </div>
+
+              <div>
+                <label 
+                  className="block mb-2"
+                  style={{
+                    fontFamily: 'var(--font-primary)',
+                    fontSize: '14px',
+                    textTransform: 'uppercase',
+                    color: 'var(--color-brand-charcoal)',
+                    marginBottom: '5px',
+                    display: 'block'
+                  }}
+                >
+                  HOW DID YOU HEAR ABOUT US?
+                </label>
+                <input
+                  type="text"
+                  value={formData.howDidYouHear}
+                  onChange={(e) => handleInputChange('howDidYouHear', e.target.value)}
+                  style={{
+                    fontFamily: 'var(--font-primary)',
+                    fontSize: '16px',
+                    padding: '15px',
+                    border: '1px solid var(--color-brand-charcoal)',
+                    background: 'transparent',
+                    color: 'var(--color-brand-charcoal)',
+                    width: '100%'
+                  }}
+                  placeholder="Referral, Google, Social Media, etc."
+                />
+              </div>
+
+              {/* Submit Button - PRD Specification */}
+              <div className="text-center pt-6">
                 <button
                   type="submit"
                   disabled={formStatus === 'loading'}
-                  className={`w-full py-4 px-6 rounded-lg font-medium transition-all duration-300 ${
-                    formStatus === 'success'
-                      ? 'bg-green-500 text-white'
-                      : formStatus === 'error'
-                      ? 'bg-red-500 text-white'
-                      : formStatus === 'loading'
-                      ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
-                      : 'bg-gold text-dark hover:bg-gold-light'
-                  }`}
+                  className="submit-btn"
+                  style={{
+                    background: formStatus === 'success' ? '#28a745' : formStatus === 'error' ? '#dc3545' : 'var(--color-brand-charcoal)',
+                    color: 'var(--color-brand-cream)',
+                    fontFamily: 'var(--font-primary)',
+                    fontSize: '20px',
+                    textTransform: 'uppercase',
+                    padding: '19px 40px',
+                    border: 'none',
+                    cursor: formStatus === 'loading' ? 'not-allowed' : 'pointer',
+                    opacity: formStatus === 'loading' ? 0.6 : 1
+                  }}
                 >
-                  {formStatus === 'loading' && (
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                  )}
-                  {formStatus === 'loading' ? 'Sending...' :
-                   formStatus === 'success' ? 'Message Sent!' :
-                   formStatus === 'error' ? 'Try Again' :
-                   'Send Message'}
+                  {formStatus === 'loading' ? 'SENDING...' :
+                   formStatus === 'success' ? 'MESSAGE SENT!' :
+                   formStatus === 'error' ? 'TRY AGAIN' :
+                   'SEND MESSAGE'}
                 </button>
 
                 {formStatus === 'success' && (
-                  <div className="text-center text-green-400 text-sm">
-                    Thank you! We'll get back to you within 24 hours.
+                  <div 
+                    className="mt-4"
+                    style={{
+                      fontFamily: 'var(--font-primary)',
+                      fontSize: '16px',
+                      color: '#28a745'
+                    }}
+                  >
+                    Thank you! We'll be in touch within 24 hours.
                   </div>
                 )}
-              </form>
-            </div>
-          </motion.div>
+              </div>
+            </form>
+          </div>
         </div>
+      </section>
 
-        {/* Cal.com Integration */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-16"
-        >
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Prefer to Schedule a Call?
-            </h2>
-            <p className="text-xl text-gray-300">
-              Book a free 30-minute strategy session to discuss your needs.
-            </p>
-          </div>
+      {/* 4. Contact CTA Section - PRD Specification */}
+      <section className="w-full text-center" style={{ padding: '60px 0' }}>
+        <div className="container-custom">
+          <h2 
+            className="text-brand-charcoal mb-8"
+            style={{
+              fontFamily: 'var(--font-secondary)',
+              fontSize: '63px',
+              fontWeight: 600,
+              lineHeight: '68.6px',
+              textTransform: 'uppercase',
+              textAlign: 'center',
+              marginBottom: '30px'
+            }}
+          >
+            PREFER TO TALK?
+          </h2>
           
-          <div className="glass-card p-8 max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-              {[
-                { title: 'Strategy Session', duration: '30 mins', description: 'Discuss goals and challenges' },
-                { title: 'Project Consultation', duration: '60 mins', description: 'Deep dive into your project needs' },
-                { title: 'Studio Tour', duration: '45 mins', description: 'Visit our facility and see the setup' }
-              ].map((session, index) => (
-                <div key={index} className="text-center">
-                  <CalendarDaysIcon className="h-12 w-12 text-gold mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-white mb-2">{session.title}</h3>
-                  <div className="text-gold font-medium mb-2">{session.duration}</div>
-                  <p className="text-gray-300 text-sm">{session.description}</p>
-                </div>
-              ))}
-            </div>
-            
-            <div className="text-center space-y-4">
-              <div className="bg-gold/10 backdrop-blur rounded-lg p-6">
-                <h3 className="text-xl font-bold text-white mb-4">Quick Start with Our Typeform</h3>
-                <p className="text-gray-300 mb-6">
-                  Get started immediately with our comprehensive project intake form
-                </p>
-                <a
-                  href="https://zufh2dc8efb.typeform.com/to/XUfheBdy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gold hover:bg-gold/90 text-dark px-8 py-4 rounded-full font-semibold transition-colors inline-flex items-center justify-center"
-                >
-                  Start Project Form
-                  <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-              </div>
-              
-              <div className="text-center text-gray-400">
-                <p>Or schedule a call below</p>
-              </div>
-              
-              <iframe
-                src="https://cal.com/disruptors-media/strategy-session"
-                width="100%"
-                height="600"
-                frameBorder="0"
-                className="rounded-lg"
-                title="Schedule Strategy Session"
-              ></iframe>
-            </div>
+          <p 
+            className="text-brand-charcoal mb-12"
+            style={{
+              fontFamily: 'var(--font-primary)',
+              fontSize: '20px',
+              fontWeight: 400,
+              lineHeight: '28px',
+              textAlign: 'center',
+              marginBottom: '40px'
+            }}
+          >
+            Schedule a free 30-minute consultation to discuss your project.
+          </p>
+
+          <button 
+            className="cta-large"
+            style={{
+              background: 'var(--color-brand-charcoal)',
+              color: 'var(--color-brand-cream)',
+              fontFamily: 'var(--font-primary)',
+              fontSize: '39.645px',
+              fontWeight: 400,
+              lineHeight: '47.65px',
+              textTransform: 'uppercase',
+              padding: '16px 21px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              minWidth: '300px',
+              border: 'none',
+              cursor: 'pointer'
+            }}
+            onClick={() => window.open('https://cal.com/disruptors-media/strategy-session', '_blank')}
+          >
+            <span>SCHEDULE CALL</span>
+            <svg 
+              width="24" 
+              height="24" 
+              viewBox="0 0 24 24" 
+              fill="none"
+              className="ml-4"
+            >
+              <path 
+                d="M7 17L17 7M17 7H7M17 7V17" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      {/* 5. Social Media Links Section - PRD Specification */}
+      <section className="w-full text-center py-12">
+        <div className="container-custom">
+          <h3 
+            className="text-brand-charcoal mb-6"
+            style={{
+              fontFamily: 'var(--font-secondary)',
+              fontSize: '39px',
+              fontWeight: 600,
+              textTransform: 'uppercase',
+              marginBottom: '20px'
+            }}
+          >
+            CONNECT WITH US
+          </h3>
+          
+          <p 
+            className="text-brand-charcoal mb-8"
+            style={{
+              fontFamily: 'var(--font-primary)',
+              fontSize: '16px',
+              fontWeight: 400,
+              lineHeight: '24px',
+              marginBottom: '30px'
+            }}
+          >
+            Follow us on social media for updates and behind-the-scenes content.
+          </p>
+
+          <div className="flex justify-center space-x-6">
+            <a 
+              href="https://facebook.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+              style={{ margin: '0 13px' }}
+            >
+              <img 
+                src="/images/fb.svg" 
+                alt="Facebook" 
+                className="w-8 h-8"
+              />
+            </a>
+            <a 
+              href="https://instagram.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+              style={{ margin: '0 13px' }}
+            >
+              <img 
+                src="/images/insta.svg" 
+                alt="Instagram" 
+                className="w-8 h-8"
+              />
+            </a>
+            <a 
+              href="https://twitter.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+              style={{ margin: '0 13px' }}
+            >
+              <img 
+                src="/images/twitter.svg" 
+                alt="Twitter/X" 
+                className="w-8 h-8"
+              />
+            </a>
+            <a 
+              href="https://youtube.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+              style={{ margin: '0 13px' }}
+            >
+              <img 
+                src="/images/youtube.svg" 
+                alt="YouTube" 
+                className="w-8 h-8"
+              />
+            </a>
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </section>
     </div>
   );
 };

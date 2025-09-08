@@ -1,84 +1,119 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-black/80 backdrop-blur-sm text-white border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="col-span-1 md:col-span-2">
-            <h3 className="text-xl font-bold text-gold mb-4">Disruptors Media</h3>
-            <p className="text-gray-300 mb-4">
-              AI-powered marketing solutions and professional studio services
-              helping businesses transform their digital presence.
-            </p>
-            <div className="text-sm text-gray-400">
-              <p>North Salt Lake, Utah</p>
-              <p>Email: hello@disruptorsmedia.com</p>
-              <p>Phone: (555) 123-4567</p>
-            </div>
-          </div>
+    <footer 
+      className="w-full bg-texture bg-logo-emboss text-center"
+      style={{ 
+        padding: '160px 30px 40px 30px',
+        background: 'var(--bg-texture) repeat, var(--bg-logo-emboss) center 40px no-repeat'
+      }}
+    >
+      <div className="container-custom">
+        {/* Copyright Information - PRD Specification */}
+        <p 
+          className="text-brand-charcoal mb-6"
+          style={{
+            fontFamily: 'var(--font-primary)',
+            fontSize: '16px',
+            fontWeight: 400,
+            textTransform: 'uppercase',
+            lineHeight: 1.8
+          }}
+        >
+          © {currentYear} DISRUPTORS MEDIA. ALL RIGHTS RESERVED.
+        </p>
 
-          {/* Services */}
-          <div>
-            <h4 className="text-lg font-semibold text-gold mb-4">Services</h4>
-            <ul className="space-y-2 text-gray-300">
-              <li>
-                <Link to="/services/ai-marketing" className="hover:text-gold transition-colors">
-                  AI Marketing Strategy
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/studio" className="hover:text-gold transition-colors">
-                  Studio Services
-                </Link>
-              </li>
-              <li>
-                <span className="text-gray-500 cursor-not-allowed">
-                  Digital Transformation
-                </span>
-              </li>
-              <li>
-                <span className="text-gray-500 cursor-not-allowed">
-                  Content Production
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="text-lg font-semibold text-gold mb-4">Company</h4>
-            <ul className="space-y-2 text-gray-300">
-              <li>
-                <span className="text-gray-500 cursor-not-allowed">
-                  About Us
-                </span>
-              </li>
-              <li>
-                <span className="text-gray-500 cursor-not-allowed">
-                  Portfolio
-                </span>
-              </li>
-              <li>
-                <span className="text-gray-500 cursor-not-allowed">
-                  Blog
-                </span>
-              </li>
-              <li>
-                <Link to="/contact" className="hover:text-gold transition-colors">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
+        {/* Contact Information - PRD Specification */}
+        <div 
+          className="mb-8"
+          style={{
+            fontFamily: 'var(--font-primary)',
+            fontSize: '16px',
+            fontWeight: 400,
+            textTransform: 'uppercase',
+            lineHeight: 1.8,
+            color: 'var(--color-brand-charcoal)'
+          }}
+        >
+          <p className="mb-2">
+            <a 
+              href="mailto:hello@disruptorsmedia.com"
+              className="text-brand-charcoal no-underline hover:opacity-80 transition-opacity"
+            >
+              HELLO@DISRUPTORSMEDIA.COM
+            </a>
+          </p>
+          <p className="mb-2">
+            <a 
+              href="tel:+1234567890"
+              className="text-brand-charcoal no-underline hover:opacity-80 transition-opacity"
+            >
+              +1 (XXX) XXX-XXXX
+            </a>
+          </p>
+          <p className="mb-4">
+            [BUSINESS ADDRESS]<br />
+            [CITY, STATE ZIP CODE]
+          </p>
         </div>
 
-        <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; {currentYear} Disruptors Media. All rights reserved.</p>
+        {/* Social Media Icons - PRD Specification */}
+        <div className="flex justify-center space-x-6">
+          <a 
+            href="https://facebook.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hover:opacity-80 transition-opacity"
+            style={{ margin: '0 13px' }}
+          >
+            <img 
+              src="/images/fb.svg" 
+              alt="Facebook" 
+              className="w-6 h-6"
+            />
+          </a>
+          <a 
+            href="https://instagram.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hover:opacity-80 transition-opacity"
+            style={{ margin: '0 13px' }}
+          >
+            <img 
+              src="/images/insta.svg" 
+              alt="Instagram" 
+              className="w-6 h-6"
+            />
+          </a>
+          <a 
+            href="https://twitter.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hover:opacity-80 transition-opacity"
+            style={{ margin: '0 13px' }}
+          >
+            <img 
+              src="/images/twitter.svg" 
+              alt="Twitter/X" 
+              className="w-6 h-6"
+            />
+          </a>
+          <a 
+            href="https://youtube.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hover:opacity-80 transition-opacity"
+            style={{ margin: '0 13px' }}
+          >
+            <img 
+              src="/images/youtube.svg" 
+              alt="YouTube" 
+              className="w-6 h-6"
+            />
+          </a>
         </div>
       </div>
     </footer>
