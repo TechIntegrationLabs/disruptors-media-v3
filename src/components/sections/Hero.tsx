@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { useHeroAnimations } from '../../hooks/useScrollAnimations';
 import ScrambleText from '../animations/ScrambleText';
-import ParticleField from '../animations/ParticleField';
 import MagneticCursor from '../animations/MagneticCursor';
 
 const Hero: React.FC = () => {
@@ -31,9 +30,6 @@ const Hero: React.FC = () => {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/60"></div>
       
-      {/* Particle Field */}
-      <ParticleField particleCount={30} color="#FFD700" />
-      
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
         <div>
@@ -41,7 +37,8 @@ const Hero: React.FC = () => {
           <img
             src="https://res.cloudinary.com/dvcvxhzmt/image/upload/v1755697002/logos/gold-logo.png"
             alt="Disruptors Media Logo"
-            className="hero-logo w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mx-auto mb-8"
+            className="hero-logo w-32 md:w-40 lg:w-48 h-auto mx-auto mb-8"
+            style={{ maxWidth: '200px', height: 'auto' }}
           />
           
           <h1 className="hero-title text-4xl md:text-6xl lg:text-7xl font-bold mb-6">

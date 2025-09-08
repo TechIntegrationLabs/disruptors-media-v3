@@ -48,6 +48,24 @@ const LoadingCounter: React.FC<LoadingCounterProps> = ({
       }
     });
 
+    // Loader image animation
+    const loaderImage = counterRef.current?.querySelector('.loader-image');
+    if (loaderImage) {
+      gsap.fromTo(loaderImage, 
+        { scale: 0.8, opacity: 0 },
+        { scale: 1, opacity: 0.9, duration: 1, ease: "back.out(1.7)" }
+      );
+      
+      // Subtle pulse effect
+      gsap.to(loaderImage, {
+        scale: 1.05,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut"
+      });
+    }
+
     // Technical coordinate simulation
     const coords = counterRef.current?.querySelector('.coordinates');
     if (coords) {
@@ -82,6 +100,19 @@ const LoadingCounter: React.FC<LoadingCounterProps> = ({
         ref={counterRef}
         className="text-center font-tech"
       >
+        {/* Loader Image */}
+        <div className="mb-8">
+          <img
+            src="https://res.cloudinary.com/dvcvxhzmt/image/upload/v1755697023/miscellaneous/loader-lft.jpg"
+            alt="Disruptors Media Loader"
+            className="loader-image w-32 h-32 lg:w-40 lg:h-40 mx-auto mb-6 rounded-lg opacity-90"
+            style={{
+              filter: 'brightness(1.1) contrast(1.1)',
+              boxShadow: '0 0 30px rgba(255, 215, 0, 0.3)'
+            }}
+          />
+        </div>
+
         {/* Main Counter */}
         <div className="mb-8">
           <div className="text-6xl lg:text-8xl font-bold text-gold mb-4">

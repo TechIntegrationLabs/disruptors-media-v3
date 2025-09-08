@@ -50,7 +50,7 @@ const Header: React.FC = () => {
           {/* Logo - PRD Specification */}
           <Link to="/" className="inline-block">
             <img 
-              src="/images/logo.svg" 
+              src="https://res.cloudinary.com/dvcvxhzmt/image/upload/v1755697029/logos/logo-menu.png" 
               alt="Disruptors Media" 
               className="h-auto max-h-10"
             />
