@@ -6,7 +6,7 @@ const InteractiveSection: React.FC = () => {
       className="relative w-full overflow-hidden"
       style={{ 
         padding: '67px 0',
-        background: 'var(--bg-mobile-section) no-repeat center top',
+        background: "url('/assets/images/mobile-sec-bg.jpg') no-repeat center top",
         backgroundSize: 'cover'
       }}
     >

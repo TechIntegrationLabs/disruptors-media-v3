@@ -39,10 +39,7 @@
   --color-text-inverted: #F1EDE9;
   --color-text-accent: #000000;
   
-  /* Background Images */
-  --bg-texture: url('../images/main-bg.jpg');
-  --bg-logo-emboss: url('../images/logo-emboss.png');
-  --bg-mobile-section: url('../images/mobile-sec-bg.jpg');
+  /* Background Images - removed to prevent build issues */
   
   /* Spacing */
   --spacing-xs: 10px;
@@ -57,7 +54,7 @@
 body {
   font-family: var(--font-primary);
   color: var(--color-text-primary);
-  background: var(--bg-texture) repeat;
+  /* Background set via App.tsx */
   line-height: 1.6;
 }
 
@@ -71,10 +68,8 @@ html {
 .text-accent { color: var(--color-pure-black); }
 .bg-dark { background-color: var(--color-brand-charcoal); }
 .bg-light { background-color: var(--color-warm-beige); }
-.bg-texture { background: var(--bg-texture) repeat; }
-.bg-logo-emboss { 
-  background: var(--bg-logo-emboss) center 40px no-repeat; 
-}
+.bg-texture { /* Use inline styles instead */ }
+.bg-logo-emboss { /* Use inline styles instead */ }
 
 /* PRD Container System */
 .container-custom { 

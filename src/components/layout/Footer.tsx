@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
       className="w-full bg-texture bg-logo-emboss text-center"
       style={{ 
         padding: '160px 30px 40px 30px',
-        background: 'var(--bg-texture) repeat, var(--bg-logo-emboss) center 40px no-repeat'
+        background: "url('/assets/images/main-bg.jpg') repeat, url('/assets/images/logos/logo-emboss.png') center 40px no-repeat"
       }}
     >
       <div className="container-custom">

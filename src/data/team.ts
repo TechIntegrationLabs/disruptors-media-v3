@@ -78,7 +78,7 @@ export const companyInfo: CompanyInfo = {
   employees: '25+',
   location: 'North Salt Lake, Utah',
   address: '650 N MAIN ST, NORTH SALT LAKE, UT 84054',
-  phone: '(801) 555-0123'
+  phone: '(801) 555-0123',
   email: 'hello@disruptorsmedia.com',
   social: {
     twitter: 'https://twitter.com/DisruptorsMedia',

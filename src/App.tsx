@@ -24,7 +24,7 @@ import CaseStudyDetail from './pages/CaseStudyDetail';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{ background: "url('/assets/images/main-bg.jpg') repeat" }}>
       <LoadingCounter />
       <ErrorBoundary>
         <Layout>
