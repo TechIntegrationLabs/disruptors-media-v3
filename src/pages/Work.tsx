@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import SEO from '../components/common/SEO';
 import WorkGrid from '../components/sections/WorkGrid';
 

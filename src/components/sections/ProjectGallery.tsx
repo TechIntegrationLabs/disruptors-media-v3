@@ -37,7 +37,7 @@ export default function ProjectGallery({ images, projectName }: ProjectGalleryPr
           >
             <img
               src={image}
-              alt={`${projectName} gallery image ${index + 1}`}
+              alt={`${projectName} ${index + 1}`}
               className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
