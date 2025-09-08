@@ -114,10 +114,8 @@ module.exports = {
       },
       
       backgroundImage: {
-        // PRD Background Specifications
-        'main-texture': "url('../images/main-bg.jpg')",
-        'logo-emboss': "url('../images/logo-emboss.png')",
-        'mobile-section': "url('../images/mobile-sec-bg.jpg')",
+        // PRD Background Specifications - removed to prevent build issues
+        // Use inline styles instead when these backgrounds are needed
       }
     },
   },
