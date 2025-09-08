@@ -55,7 +55,7 @@ export const CLOUDINARY_ASSETS = {
 
   // Videos
   videos: {
-    mainBannerVideo: `${CLOUDINARY_BASE}/video/upload/f_auto,q_auto/main-banner-video_mcr5rd`,
+    mainBannerVideo: `https://res.cloudinary.com/dvcvxhzmt/video/upload/v1757365282/20250908_1156_Heavenly_Sky_Illusion_loop_01k4nazvceffkv2p6qcge80tq8_pbxto2.mp4`,
     mobileVideoBg: `${CLOUDINARY_BASE}/video/upload/f_auto,q_auto/mobile-video-bg_ag7qza`,
     dmAbt: `${CLOUDINARY_BASE}/video/upload/f_auto,q_auto/dm-abt_rwm0ng`,
     showReel: `${CLOUDINARY_BASE}/video/upload/f_auto,q_auto/show-reel_ekfi9c`,

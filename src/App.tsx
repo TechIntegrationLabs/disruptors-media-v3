@@ -18,6 +18,8 @@ import ROICalculator from './pages/ROICalculator';
 import NotFound from './pages/NotFound';
 import AIMarketing from './pages/services/AIMarketing';
 import StudioServices from './pages/services/StudioServices';
+import ContentProduction from './pages/services/ContentProduction';
+import DigitalTransformation from './pages/services/DigitalTransformation';
 import Gallery from './pages/Gallery';
 import Podcast from './pages/Podcast';
 import FAQ from './pages/FAQ';
@@ -43,6 +45,8 @@ function App() {
             <Route path="/roi-calculator" element={<ROICalculator />} />
             <Route path="/services/ai-marketing" element={<AIMarketing />} />
             <Route path="/services/studio" element={<StudioServices />} />
+            <Route path="/services/content-production" element={<ContentProduction />} />
+            <Route path="/services/digital-transformation" element={<DigitalTransformation />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/podcast" element={<Podcast />} />
             <Route path="/case-study/:id" element={<CaseStudyDetail />} />
