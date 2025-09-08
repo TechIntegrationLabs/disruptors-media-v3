@@ -1,4 +1,6 @@
 import React from 'react';
+import { useScrollFadeIn } from '../../hooks/useScrollAnimations';
+import ScrambleText from '../animations/ScrambleText';
 
 interface AboutSectionProps {
   title: string;
@@ -6,8 +8,11 @@ interface AboutSectionProps {
 }
 
 const AboutSection: React.FC<AboutSectionProps> = ({ title, content }) => {
+  const sectionRef = useScrollFadeIn();
+
   return (
     <section 
+      ref={sectionRef}
       className="w-full"
       style={{ 
         padding: '20px 0 40px 0'
@@ -27,7 +32,12 @@ const AboutSection: React.FC<AboutSectionProps> = ({ title, content }) => {
             marginBottom: '30px'
           }}
         >
-          {title}
+          <ScrambleText 
+            text={title}
+            trigger=".section-h2"
+            duration={1.5}
+            className="text-brand-charcoal"
+          />
         </h2>
 
         {/* Content - PRD Body Text Specification */}

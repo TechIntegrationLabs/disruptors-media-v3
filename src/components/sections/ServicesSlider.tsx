@@ -1,4 +1,6 @@
 import React, { useRef } from 'react';
+import { useScrollStagger } from '../../hooks/useScrollAnimations';
+import ScrambleText from '../animations/ScrambleText';
 
 interface Service {
   id: number;
@@ -13,6 +15,7 @@ interface ServicesSliderProps {
 
 const ServicesSlider: React.FC<ServicesSliderProps> = ({ services }) => {
   const sliderRef = useRef<HTMLDivElement>(null);
+  const containerRef = useScrollStagger({ stagger: 0.2 });
 
   const scrollLeft = () => {
     if (sliderRef.current) {
@@ -28,7 +31,7 @@ const ServicesSlider: React.FC<ServicesSliderProps> = ({ services }) => {
 
   return (
     <section className="w-full py-16">
-      <div className="container-custom">
+      <div ref={containerRef} className="container-custom">
         {/* Section Title - PRD Specification */}
         <h2 
           className="section-h2 text-brand-charcoal mb-12"
@@ -42,7 +45,12 @@ const ServicesSlider: React.FC<ServicesSliderProps> = ({ services }) => {
             marginBottom: '54px'
           }}
         >
-          WHAT WE DO
+          <ScrambleText 
+            text="WHAT WE DO"
+            trigger=".section-h2"
+            duration={1.2}
+            className="text-brand-charcoal"
+          />
         </h2>
 
         {/* Horizontal Scrolling Slider - PRD Specification */}

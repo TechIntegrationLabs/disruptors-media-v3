@@ -16,16 +16,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         backgroundImage: `url(https://res.cloudinary.com/dvcvxhzmt/image/upload/v1755697037/backgrounds/main-bg.jpg)`
       }}
     >
-      {/* Dark overlay for better content readability */}
-      <div className="min-h-screen flex flex-col bg-black/70">
-        <Analytics />
-        <Header />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <Footer />
-        <Chat />
-      </div>
+      <Analytics />
+      <Header />
+      <main className="flex-grow">
+        {children}
+      </main>
+      <Footer />
+      <Chat />
     </div>
   );
 };
