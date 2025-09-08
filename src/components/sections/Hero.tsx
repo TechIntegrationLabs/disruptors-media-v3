@@ -6,6 +6,23 @@ import { ChevronDownIcon } from '@heroicons/react/24/outline';
 const Hero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Video Background */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        <source 
+          src="https://res.cloudinary.com/dvcvxhzmt/video/upload/v1757280802/dm-abt_rwm0ng.mp4" 
+          type="video/mp4" 
+        />
+      </video>
+      
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/60"></div>
+      
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
         <motion.div
