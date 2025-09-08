@@ -13,15 +13,9 @@ import SocialProofMetrics from '../components/sections/SocialProofMetrics';
 import { featuredClients } from '../data/clients';
 import { testimonials } from '../data/clients';
 import { blogPosts } from '../data/blog';
-import { legacyFeaturedClients } from '../data/legacy-content';
-
 const Home: React.FC = () => {
-  // Convert real legacy client data to logo format
-  const clientLogos = legacyFeaturedClients.slice(0, 12).map(client => ({
-    name: client.name,
-    src: `/assets/clients/${client.logo}`, // Will be available once assets are copied
-    href: '#' // Real URLs would go here when available
-  }));
+  // Use existing featured clients data
+  const clientLogos = featuredClients;
 
   // Get featured blog posts
   const featuredBlogPosts = blogPosts.filter(post => post.featured).slice(0, 3);
