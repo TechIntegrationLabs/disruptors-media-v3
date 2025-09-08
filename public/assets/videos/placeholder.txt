@@ -1,0 +1,9 @@
+# Video Assets
+
+This directory will contain video assets for the hero background.
+
+For now, the VideoHero component will gracefully handle missing video files and display the poster image instead.
+
+To add the real video:
+1. Copy dm-abt.mp4 from legacy content to this directory
+2. Copy poster-abt.jpg to ../images/ directory

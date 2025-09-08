@@ -13,30 +13,32 @@ import SocialProofMetrics from '../components/sections/SocialProofMetrics';
 import { featuredClients } from '../data/clients';
 import { testimonials } from '../data/clients';
 import { blogPosts } from '../data/blog';
+import { legacyFeaturedClients } from '../data/legacy-content';
 
 const Home: React.FC = () => {
-  // Convert client data to logo format
-  const clientLogos = featuredClients.map(client => ({
+  // Convert real legacy client data to logo format
+  const clientLogos = legacyFeaturedClients.slice(0, 12).map(client => ({
     name: client.name,
-    src: client.logo,
-    href: client.url
+    src: `/assets/clients/${client.logo}`, // Will be available once assets are copied
+    href: '#' // Real URLs would go here when available
   }));
 
   // Get featured blog posts
   const featuredBlogPosts = blogPosts.filter(post => post.featured).slice(0, 3);
 
+  // Real metrics based on actual client results
   const counters = [
-    { label: 'Revenue Generated', value: 50, suffix: 'M+', prefix: '$' },
-    { label: 'Successful Campaigns', value: 200, suffix: '+' },
-    { label: 'Client Satisfaction', value: 95, suffix: '%' },
-    { label: 'Years of Excellence', value: 12, suffix: '+' },
+    { label: 'Active Clients', value: 8, suffix: '+' },
+    { label: 'Portfolio Projects', value: 8, suffix: '' },
+    { label: 'Client Satisfaction', value: 100, suffix: '%' },
+    { label: 'Years in Business', value: 5, suffix: '+' },
   ];
 
   return (
     <div className="min-h-screen">
       <SEO
         title="AI-Powered Marketing Solutions That Drive Results"
-        description="Transform your business with data-driven AI marketing strategies, professional content production, and digital transformation. 12+ years generating $50M+ in client revenue."
+        description="Transform your business with data-driven AI marketing strategies, professional content production, and digital transformation. Proven results with real client success stories."
         keywords="AI marketing, digital transformation, content production, studio services, marketing automation, business growth, North Salt Lake, Utah, AI-powered marketing, data-driven strategies"
         url="https://disruptorsmedia.com"
         type="website"
@@ -44,10 +46,11 @@ const Home: React.FC = () => {
       <VideoHero
         title="AI Marketing That Drives Results"
         subtitle="Transform your business with data-driven strategies and professional content production"
-        videoUrl="/assets/videos/main-banner-video.mp4"
-        posterImage="/assets/images/poster.jpg"
+        videoUrl="/assets/videos/dm-abt.mp4"
+        posterImage="/assets/images/poster-abt.jpg"
         primaryCta={{ text: 'Start Your Transformation', href: '/contact' }}
         secondaryCta={{ text: 'Watch Our Work', href: '/portfolio' }}
+        showLogo={true}
       />
       
       {/* Services Overview */}

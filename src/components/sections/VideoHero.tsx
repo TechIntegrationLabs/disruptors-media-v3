@@ -13,9 +13,10 @@ interface VideoHeroProps {
     text: string;
     href: string;
   };
+  showLogo?: boolean;
 }
 
-export default function VideoHero({ title, subtitle, videoUrl, posterImage, primaryCta, secondaryCta }: VideoHeroProps) {
+export default function VideoHero({ title, subtitle, videoUrl, posterImage, primaryCta, secondaryCta, showLogo = true }: VideoHeroProps) {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -28,14 +29,51 @@ export default function VideoHero({ title, subtitle, videoUrl, posterImage, prim
           muted
           loop
           playsInline
+          onError={(e) => {
+            // Fallback to poster image if video fails to load
+            e.currentTarget.style.display = 'none';
+          }}
         >
           <source src={videoUrl || '/assets/videos/main-banner-video.mp4'} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-dark/80 via-dark/50 to-dark/80" />
+        {/* Fallback background image */}
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-dark"
+          style={{ 
+            backgroundImage: `url(${posterImage || '/assets/images/poster.jpg'})`,
+            backgroundBlendMode: 'overlay'
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-dark/70 via-dark/40 to-dark/70" />
       </div>
 
+      {/* Gold Logo Overlay */}
+      {showLogo && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="absolute top-8 left-1/2 transform -translate-x-1/2 z-20"
+        >
+          <div className="w-24 h-24 md:w-32 md:h-32">
+            <svg viewBox="0 0 100 100" className="w-full h-full text-gold">
+              <circle cx="50" cy="50" r="45" fill="currentColor" opacity="0.9" />
+              <text 
+                x="50" 
+                y="58" 
+                textAnchor="middle" 
+                className="fill-dark font-bold text-2xl"
+                fontSize="24"
+              >
+                DM
+              </text>
+            </svg>
+          </div>
+        </motion.div>
+      )}
+
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-16">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

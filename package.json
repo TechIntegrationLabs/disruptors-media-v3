@@ -41,7 +41,11 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "react-scripts start",
-    "preview": "serve -s build"
+    "preview": "serve -s build",
+    "auto-commit": "node scripts/auto-commit-agent.js commit",
+    "auto-commit:watch": "node scripts/auto-commit-agent.js watch",
+    "auto-commit:status": "node scripts/auto-commit-agent.js status",
+    "commit": "node scripts/auto-commit-agent.js commit"
   },
   "eslintConfig": {
     "extends": [
