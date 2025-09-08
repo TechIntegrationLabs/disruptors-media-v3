@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Layout from './components/layout/Layout';
 import ErrorBoundary from './components/common/ErrorBoundary';
+import { CLOUDINARY_ASSETS } from './constants/cloudinaryAssets';
 import LoadingCounter from './components/animations/LoadingCounter';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -24,7 +25,7 @@ import CaseStudyDetail from './pages/CaseStudyDetail';
 
 function App() {
   return (
-    <div className="App" style={{ background: "url('/assets/images/main-bg.jpg') repeat" }}>
+    <div className="App" style={{ background: `url('${CLOUDINARY_ASSETS.backgrounds.mainBg}') repeat` }}>
       <LoadingCounter />
       <ErrorBoundary>
         <Layout>

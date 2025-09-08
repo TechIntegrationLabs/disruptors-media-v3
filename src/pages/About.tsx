@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import SEO from '../components/common/SEO';
+import { CLOUDINARY_ASSETS } from '../constants/cloudinaryAssets';
 
 const About: React.FC = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -181,7 +182,7 @@ const About: React.FC = () => {
               onPlay={() => setIsVideoPlaying(true)}
               onPause={() => setIsVideoPlaying(false)}
             >
-              <source src="/videos/dm-abt.mp4" type="video/mp4" />
+              <source src={CLOUDINARY_ASSETS.videos.dmAbt} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
 
@@ -209,7 +210,7 @@ const About: React.FC = () => {
                   }}
                 >
                   <img 
-                    src="/images/play-ico.png" 
+                    src={CLOUDINARY_ASSETS.ui.playIco} 
                     alt="Play Video" 
                     className="w-8 h-8 ml-1"
                   />

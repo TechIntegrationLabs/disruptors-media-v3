@@ -1,6 +1,7 @@
 import React from 'react';
 import SEO from '../components/common/SEO';
 import WorkGrid from '../components/sections/WorkGrid';
+import { CLOUDINARY_ASSETS } from '../constants/cloudinaryAssets';
 
 // PRD Work Portfolio Data
 const portfolioProjects = [
@@ -8,42 +9,42 @@ const portfolioProjects = [
     id: 1,
     title: 'TECH INNOVATORS BRAND LAUNCH',
     category: 'BRAND IDENTITY • WEB DESIGN',
-    image: '/images/work-1.jpg',
+    image: CLOUDINARY_ASSETS.portfolio.work1,
     slug: 'tech-innovators-brand-launch'
   },
   {
     id: 2,
     title: 'HEALTHCARE TRANSFORMATION CAMPAIGN',
     category: 'VIDEO PRODUCTION • MARKETING',
-    image: '/images/work-2.jpg',
+    image: CLOUDINARY_ASSETS.portfolio.work2,
     slug: 'healthcare-transformation-campaign'
   },
   {
     id: 3,
     title: 'STARTUP GROWTH ACCELERATOR',
     category: 'DIGITAL STRATEGY • CREATIVE',
-    image: '/images/work-3.jpg',
+    image: CLOUDINARY_ASSETS.portfolio.work3,
     slug: 'startup-growth-accelerator'
   },
   {
     id: 4,
     title: 'E-COMMERCE PLATFORM REDESIGN',
     category: 'WEB DEVELOPMENT • UX/UI',
-    image: '/images/work-4.jpg',
+    image: CLOUDINARY_ASSETS.portfolio.work4,
     slug: 'ecommerce-platform-redesign'
   },
   {
     id: 5,
     title: 'PROFESSIONAL SERVICES BRANDING',
     category: 'PHOTOGRAPHY • BRANDING',
-    image: '/images/work-5.jpg',
+    image: CLOUDINARY_ASSETS.portfolio.work5,
     slug: 'professional-services-branding'
   },
   {
     id: 6,
     title: 'MULTIMEDIA AWARENESS CAMPAIGN',
     category: 'MULTIMEDIA • CAMPAIGN',
-    image: '/images/work-6.jpg',
+    image: CLOUDINARY_ASSETS.portfolio.work6,
     slug: 'multimedia-awareness-campaign'
   }
 ];

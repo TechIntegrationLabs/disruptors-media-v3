@@ -14,6 +14,7 @@ import {
   PhoneIcon,
   PlayIcon
 } from '@heroicons/react/24/outline';
+import { CLOUDINARY_ASSETS } from '../../constants/cloudinaryAssets';
 
 const studioEquipment = [
   {
@@ -96,7 +97,7 @@ const StudioServices: React.FC = () => {
       <section className="relative bg-gradient-to-br from-dark via-dark/95 to-dark/90 text-white py-20">
         <div className="absolute inset-0 overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1920&h=600&fit=crop&crop=center"
+            src={CLOUDINARY_ASSETS.backgrounds.whatWeDoBg}
             alt="Studio background"
             className="w-full h-full object-cover opacity-20"
           />
@@ -242,22 +243,22 @@ const StudioServices: React.FC = () => {
                 className="grid grid-cols-2 gap-4"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=400&h=300&fit=crop&crop=center"
+                  src={CLOUDINARY_ASSETS.features.servicesImg}
                   alt="Main studio area"
                   className="rounded-lg shadow-lg w-full h-48 object-cover"
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=300&fit=crop&crop=center"
+                  src={CLOUDINARY_ASSETS.features.whatWeDoBx1}
                   alt="Control room"
                   className="rounded-lg shadow-lg w-full h-48 object-cover"
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400&h=300&fit=crop&crop=center"
+                  src={CLOUDINARY_ASSETS.features.whatWeDoBx2}
                   alt="Green screen setup"
                   className="rounded-lg shadow-lg w-full h-48 object-cover"
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=400&h=300&fit=crop&crop=center"
+                  src={CLOUDINARY_ASSETS.features.whatWeDoBx3}
                   alt="Podcast recording"
                   className="rounded-lg shadow-lg w-full h-48 object-cover"
                 />

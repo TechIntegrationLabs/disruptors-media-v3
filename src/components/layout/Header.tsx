@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { CLOUDINARY_ASSETS } from '../../constants/cloudinaryAssets';
 
 interface NavigationItem {
   name: string;
@@ -49,11 +50,17 @@ const Header: React.FC = () => {
         <div className="flex justify-between items-center">
           {/* Logo - PRD Specification */}
           <Link to="/" className="inline-block">
-            <img 
-              src="https://res.cloudinary.com/dvcvxhzmt/image/upload/v1755697029/logos/logo-menu.png" 
-              alt="Disruptors Media" 
-              className="h-auto max-h-10"
-            />
+            {CLOUDINARY_ASSETS.logos.mobileMenuLogo ? (
+              <img 
+                src={CLOUDINARY_ASSETS.logos.mobileMenuLogo} 
+                alt="Disruptors Media" 
+                className="h-auto max-h-10"
+              />
+            ) : (
+              <div className="h-10 px-4 bg-dark text-cream rounded flex items-center justify-center font-bold">
+                DM
+              </div>
+            )}
           </Link>
 
           {/* Desktop Navigation - PRD Specification */}

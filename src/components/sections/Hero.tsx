@@ -4,6 +4,7 @@ import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { useHeroAnimations } from '../../hooks/useScrollAnimations';
 import ScrambleText from '../animations/ScrambleText';
 import MagneticCursor from '../animations/MagneticCursor';
+import { CLOUDINARY_ASSETS, getVideoSources } from '../../constants/cloudinaryAssets';
 
 const Hero: React.FC = () => {
   const heroRef = useHeroAnimations();
@@ -20,11 +21,11 @@ const Hero: React.FC = () => {
         loop
         muted
         playsInline
+        poster={CLOUDINARY_ASSETS.backgrounds.poster}
       >
-        <source 
-          src="https://res.cloudinary.com/dvcvxhzmt/video/upload/v1757280802/dm-abt_rwm0ng.mp4" 
-          type="video/mp4" 
-        />
+        {getVideoSources(CLOUDINARY_ASSETS.videos.mainBannerVideo).map((source, index) => (
+          <source key={index} src={source.src} type={source.type} />
+        ))}
       </video>
       
       {/* Overlay */}
@@ -34,12 +35,18 @@ const Hero: React.FC = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
         <div>
           {/* Gold Logo */}
-          <img
-            src="https://res.cloudinary.com/dvcvxhzmt/image/upload/v1755697002/logos/gold-logo.png"
-            alt="Disruptors Media Logo"
-            className="hero-logo w-32 md:w-40 lg:w-48 h-auto mx-auto mb-8"
-            style={{ maxWidth: '200px', height: 'auto' }}
-          />
+          {CLOUDINARY_ASSETS.logos.goldLogo ? (
+            <img
+              src={CLOUDINARY_ASSETS.logos.goldLogo}
+              alt="Disruptors Media Logo"
+              className="hero-logo w-32 md:w-40 lg:w-48 h-auto mx-auto mb-8"
+              style={{ maxWidth: '200px', height: 'auto' }}
+            />
+          ) : (
+            <div className="hero-logo w-32 md:w-40 lg:w-48 h-16 mx-auto mb-8 flex items-center justify-center">
+              <span className="text-gold font-bold text-2xl md:text-3xl">DM</span>
+            </div>
+          )}
           
           <h1 className="hero-title text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
             <span className="text-gold">

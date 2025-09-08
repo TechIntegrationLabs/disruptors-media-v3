@@ -1,4 +1,5 @@
 import React from 'react';
+import { CLOUDINARY_ASSETS } from '../../constants/cloudinaryAssets';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -8,7 +9,7 @@ const Footer: React.FC = () => {
       className="w-full bg-texture bg-logo-emboss text-center"
       style={{ 
         padding: '160px 30px 40px 30px',
-        background: "url('/assets/images/main-bg.jpg') repeat, url('/assets/images/logos/logo-emboss.png') center 40px no-repeat"
+        background: `url('${CLOUDINARY_ASSETS.backgrounds.mainBg}') repeat${CLOUDINARY_ASSETS.logos.logoEmboss ? `, url('${CLOUDINARY_ASSETS.logos.logoEmboss}') center 40px no-repeat` : ''}`
       }}
     >
       <div className="container-custom">

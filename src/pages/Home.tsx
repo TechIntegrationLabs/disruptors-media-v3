@@ -1,5 +1,6 @@
 import React from 'react';
 import SEO from '../components/common/SEO';
+import { CLOUDINARY_ASSETS } from '../constants/cloudinaryAssets';
 
 // GSAP Animated Components
 import Hero from '../components/sections/Hero';
@@ -15,11 +16,11 @@ import WorkGrid from '../components/sections/WorkGrid';
 import VideoGallery from '../components/sections/VideoGallery';
 import PreFooter from '../components/sections/PreFooter';
 const Home: React.FC = () => {
-  // PRD Homepage Content Data
-  const heroData = {
-    title: "DISRUPTORS", // Will be styled with exact PRD specifications
-    subtitle: "CREATIVE STRATEGY & DIGITAL INNOVATION", // Exact PRD subtitle
-  };
+  // PRD Homepage Content Data - Ready for future use
+  // const heroData = {
+  //   title: "DISRUPTORS", // Will be styled with exact PRD specifications
+  //   subtitle: "CREATIVE STRATEGY & DIGITAL INNOVATION", // Exact PRD subtitle
+  // };
 
   const aboutContent = {
     title: "WHO WE ARE",
@@ -31,37 +32,37 @@ const Home: React.FC = () => {
       id: 1,
       title: "Creative Strategy",
       description: "Brand positioning and creative direction that cuts through the noise and connects with your target audience.",
-      backgroundImage: "/images/what-we-do-bx-1.png"
+      backgroundImage: CLOUDINARY_ASSETS.features.whatWeDoBx1
     },
     {
       id: 2, 
       title: "Brand Development",
       description: "Complete identity systems and brand guidelines that establish your unique market position.",
-      backgroundImage: "/images/what-we-do-bx-2.png"
+      backgroundImage: CLOUDINARY_ASSETS.features.whatWeDoBx2
     },
     {
       id: 3,
       title: "Web Development", 
       description: "Custom websites and digital experiences that drive engagement and conversions.",
-      backgroundImage: "/images/what-we-do-bx-3.png"
+      backgroundImage: CLOUDINARY_ASSETS.features.whatWeDoBx3
     },
     {
       id: 4,
       title: "Digital Marketing",
       description: "Data-driven strategies and campaigns that deliver measurable results and ROI.",
-      backgroundImage: "/images/what-we-do-bx.png"
+      backgroundImage: CLOUDINARY_ASSETS.features.whatWeDoBx
     },
     {
       id: 5,
       title: "Video Production",
       description: "Professional video content and animation that tells your story with impact.",
-      backgroundImage: "/images/what-we-do-bx-1.png"
+      backgroundImage: CLOUDINARY_ASSETS.features.whatWeDoBx1
     },
     {
       id: 6,
       title: "Photography",
       description: "Commercial photography and visual content that showcases your brand professionally.",
-      backgroundImage: "/images/what-we-do-bx-2.png"
+      backgroundImage: CLOUDINARY_ASSETS.features.whatWeDoBx2
     }
   ];
 
@@ -70,42 +71,42 @@ const Home: React.FC = () => {
       id: 1,
       title: "Brand Identity System",
       category: "Brand Development",
-      image: "/images/work-1.jpg",
+      image: CLOUDINARY_ASSETS.portfolio.work1,
       slug: "brand-identity-system"
     },
     {
       id: 2,
       title: "E-Commerce Platform",
       category: "Web Development",
-      image: "/images/work-2.jpg", 
+      image: CLOUDINARY_ASSETS.portfolio.work2, 
       slug: "ecommerce-platform"
     },
     {
       id: 3,
       title: "Marketing Campaign",
       category: "Digital Marketing",
-      image: "/images/work-3.jpg",
+      image: CLOUDINARY_ASSETS.portfolio.work3,
       slug: "marketing-campaign"
     },
     {
       id: 4,
       title: "Corporate Video",
       category: "Video Production",
-      image: "/images/work-4.jpg",
+      image: CLOUDINARY_ASSETS.portfolio.work4,
       slug: "corporate-video"
     },
     {
       id: 5,
       title: "Product Photography",
       category: "Photography",
-      image: "/images/work-5.jpg",
+      image: CLOUDINARY_ASSETS.portfolio.work5,
       slug: "product-photography"
     },
     {
       id: 6,
       title: "Creative Strategy",
       category: "Strategy",
-      image: "/images/work-6.jpg",
+      image: CLOUDINARY_ASSETS.portfolio.work6,
       slug: "creative-strategy"
     }
   ];

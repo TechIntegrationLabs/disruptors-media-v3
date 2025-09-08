@@ -11,6 +11,7 @@ import {
   ClockIcon,
   CheckCircleIcon
 } from '@heroicons/react/24/outline';
+import { CLOUDINARY_ASSETS } from '../../constants/cloudinaryAssets';
 
 const aiProcess = [
   {
@@ -193,7 +194,7 @@ const AIMarketing: React.FC = () => {
               className="relative"
             >
               <img
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&crop=center"
+                src={CLOUDINARY_ASSETS.features.whatWeDoAbt1}
                 alt="AI Marketing Dashboard"
                 className="rounded-lg shadow-xl"
               />
