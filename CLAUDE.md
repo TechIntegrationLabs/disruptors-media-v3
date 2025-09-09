@@ -130,10 +130,53 @@ The application uses an ErrorBoundary component wrapping all routes. Individual 
 ### State Management
 The application currently uses React's built-in state management. Complex state is managed at the page level and passed down through props.
 
-## Documentation
+## Repository Documentation System
 
-Comprehensive project documentation is available in the `/docs/` folder:
+This repository uses a comprehensive CLAUDE.md documentation system to provide detailed guidance for each major directory. Each folder contains specialized documentation for working with its components and systems.
+
+### Folder-Specific Documentation
+
+**Source Code Structure (`/src/CLAUDE.md`)**
+- Component architecture with 20+ sections and animations
+- Pages and routing system documentation
+- Data management and Google Sheets integration
+- TypeScript patterns and development workflows
+- Asset management and performance optimization
+
+**Documentation System (`/docs/CLAUDE.md`)**
+- Comprehensive documentation ecosystem overview
+- Project specifications and technical requirements
+- Asset management guides and migration strategies
+- Legacy content archive and brand guidelines
+- Documentation workflows and maintenance procedures
+
+**Public Assets Management (`/public/CLAUDE.md`)**
+- Static asset organization and optimization strategies  
+- Image library with categorized asset structure
+- PWA configuration and SEO management
+- Custom typography system and font integration
+- Asset performance standards and quality guidelines
+
+**Project Management System (`/todo/CLAUDE.md`)**
+- Project status tracking (70% completion metrics)
+- Development roadmap and sprint planning
+- Technical architecture summaries and system overviews
+- Animation implementation guides and best practices
+- Quality assurance processes and launch readiness
+
+**Automation & Scripts System (`/scripts/CLAUDE.md`)**
+- Intelligent Git commit automation with AI-generated messages
+- Content generation tools and AI-powered image creation
+- Development workflow automation and process management
+- Security best practices and performance optimization
+- Script monitoring, debugging, and health checks
+
+### Core Project Documentation
+
+Comprehensive project documentation is also available in the `/docs/` folder:
 - `SESSION_SUMMARY_DECEMBER_2024.md` - Recent implementation details
-- `TODO_ROADMAP.md` - Development priorities
-- `CLOUDINARY_ASSETS_DOCUMENTATION.md` - Asset inventory and patterns
-- `PROJECT_OVERVIEW.md` - Business context
+- `TODO_ROADMAP.md` - Development priorities and timeline
+- `CLOUDINARY_ASSETS_DOCUMENTATION.md` - Asset inventory and optimization patterns
+- `PROJECT_OVERVIEW.md` - Business context and objectives
+- `DM3_STATIC_PRD.md` - Complete product requirements document
+- `TECHNICAL_ARCHITECTURE_SUMMARY.md` - System architecture overview

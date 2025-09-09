@@ -2,7 +2,7 @@
 ## Comprehensive Company Profile & Brand Guide
 
 *Last Updated: December 2024*  
-*Source of Truth Document - Do not modify actual data without verification*
+*Source of Truth Document - Based on actual business data from admin.disruptorsmedia.com database and legacy site*
 
 ---
 
@@ -10,143 +10,135 @@
 
 ### Core Business Information
 - **Company Name:** Disruptors Media
-- **Founded:** 2012 (12+ years in business)
-- **Industry:** Creative Strategy & Digital Marketing Agency
-- **Business Model:** B2B Service Provider with Tiered Pricing
-- **Headquarters:** 650 N MAIN ST, NORTH SALT LAKE, UT 84054
-- **Team Size:** 25+ team members
+- **Full Legal Name:** Disruptors Media Inc.
+- **Industry:** Full-Service Digital Marketing Agency
+- **Business Model:** 360-Degree Marketing Solutions Provider
+- **Headquarters:** 650 N Main St, North Salt Lake, UT 84054
+- **Coordinates:** 40.853400, -111.911790
 - **Website:** https://disruptorsmedia.com
+- **Contact Form:** https://zufh2dc8efb.typeform.com/to/XUfheBdy
 
 ### Mission & Vision
-**Company Mission:** "Founded with a vision to transform how businesses connect with their audiences, Disruptors Media has been at the forefront of creative and digital innovation for over a decade."
+**Company Mission:** "Disruptors Media is on a mission to empower you. We celebrate those who challenge broken systems with fresh ideas. Inspired by leading change makers, we've developed a blueprint for anyone to build their voice and create a positive impact. The world needs you. Join us in taking action, even if it's not perfect. Together, let's shake things up for the better."
 
-**Philosophy:** "We believe that exceptional creative work is born from the intersection of strategic thinking, innovative technology, and deep understanding of human behavior. Our approach combines data-driven insights with creative intuition to deliver campaigns that not only look remarkable but drive meaningful business results."
+**Company Tagline:** "Bringing Your company from the past to future."
 
-**Core Positioning:** "Creative strategists and digital innovators who believe in disrupting traditional approaches"
+**Brand Messaging:** "Dive into the mind of a disruptor and reach your target audience with our data-driven strategies."
+
+**About Philosophy:** "WE'RE NOT JUST ANOTHER AGENCY. WE'RE ARCHITECTS OF DIGITAL LANDSCAPES. TURNING CLICKS INTO CUSTOMERS. A WEBSITE THAT ADAPTS TO EVERY VISITOR. EMAIL CAMPAIGNS THAT FEEL LIKE PERSONAL LETTERS. SOCIAL MEDIA PAGES RECEIVING MILLIONS OF ENGAGEMENT. LAUNCHING BRANDS INTO THE DYNAMIC DIGITAL WORLD. WHERE EVERY INTERACTION IS AN OPPORTUNITY. IT'S NOT JUST MARKETING. IT'S A NEW CHAPTER FOR YOUR BRAND."
 
 ---
 
 ## 📞 CONTACT INFORMATION
 
-### Official Contact Details
-- **Primary Email:** hello@disruptorsmedia.com
-- **General Inquiries:** info@disruptorsmedia.com
-- **New Business:** hello@disruptorsmedia.com
-- **Press & Media:** press@disruptorsmedia.com
-- **Careers:** careers@disruptorsmedia.com
-- **Phone:** +1 (555) 123-4567 / (801) 555-0123
-- **Hours:** Monday-Friday 9:00 AM - 6:00 PM, Saturday-Sunday by appointment
+### Team Email Addresses
+- **Moe:** moe@disruptorsmedia.com (Founder/CEO)
+- **Tyler Gordon:** tyler@disruptorsmedia.com (Creative Director)
+- **Josh:** josh@disruptorsmedia.com
+- **Bailey Latimer:** bailey@disruptorsmedia.com (Web Development, UX/UI)
 
-### Social Media Presence
-- **Twitter:** https://twitter.com/DisruptorsMedia
+### Social Media Presence (Verified from Database)
 - **YouTube:** https://www.youtube.com/channel/UCIS7eKSZMJWnUT1dTLBjOWA
 - **Instagram:** https://www.instagram.com/disruptorsmedia_
+- **Twitter/X:** https://twitter.com/DisruptorsMedia
 - **TikTok:** https://www.tiktok.com/@disruptorsmedia
-- **LinkedIn:** [PLACEHOLDER - Add LinkedIn URL]
-- **Facebook:** [PLACEHOLDER - Add Facebook URL]
 
 ---
 
 ## 🎯 CORE VALUES & BRAND PILLARS
 
-### Company Values
-1. **Innovation** - "We embrace cutting-edge technology and creative solutions to solve complex business challenges"
-2. **Excellence** - "Our commitment to quality drives everything we do"
-3. **Collaboration** - "We believe in true partnership with our clients"
-4. **Integrity** - "Transparency, honesty, and ethical practices are the foundation"
+### Service Philosophy
+**Primary Approach:** "FULL-FUNNEL APPROACH"
 
-### Key Messaging
-- **Primary Tagline:** "Creative Excellence Meets Strategic Innovation"
-- **Results Focus:** "RESULTS SPEAK LOUDER THAN PROMISES"
-- **Transformation Promise:** "We don't just deliver projects – we deliver transformations"
+**Service Description:** "Our approach is simple yet impactful. We combine strategic thinking with creative flair to enhance your digital presence and drive real results. Whether expanding your audience or boosting your online profile, our process is designed to take your brand from ordinary to extraordinary, efficiently and effectively."
 
-### Brand Personality
-- **Disruptive:** Challenging traditional approaches
-- **Strategic:** Data-driven decision making
-- **Innovative:** Embracing cutting-edge technology
-- **Partnership-Focused:** True collaboration with clients
-- **Results-Oriented:** Measurable business outcomes
+**Connection Philosophy:** "Call us traditional, but we believe in the old-fashioned way of connection. And no, we don't mean Myspace. You can have a killer product or service, but that's not what sets you apart. It's how people feel after each interaction."
+
+**Holistic Approach:** "Our holistic, 360-degree approach to marketing sets us apart."
 
 ---
 
 ## 📈 COMPANY STATISTICS & ACHIEVEMENTS
 
-### Core Metrics
-- **12+ Years of Experience**
-- **200+ Projects Completed**
-- **95% Client Satisfaction**
-- **25+ Team Members**
-
-### AI Marketing Results
-- **3.2x Lead Generation Increase**
-- **67% Cost Per Acquisition Reduction**
-- **85% Time Saved on Campaign Management**
-- **92% Prediction Accuracy Rate**
-- **240% Average ROI Increase**
+### Real Portfolio Results (From Database)
+- **Bruce Leeroy:** Millions of views on TikTok and Instagram, 30,000+ followers combined
+- **Desjardins Brands:** $100,000+ revenue per year generated
+- **BYS:** 100,000+ combined social followers
+- **Community Cures:** Salt Lake City podcast with strategic branding and marketing
 
 ### Additional Metrics [PLACEHOLDERS - To Be Filled]
-- **Total Revenue (Annual):** [PLACEHOLDER]
-- **Average Project Value:** [PLACEHOLDER]
+- **Years in Business:** [PLACEHOLDER - Verify founding date]
+- **Total Projects Completed:** [PLACEHOLDER - Get accurate count]
 - **Client Retention Rate:** [PLACEHOLDER]
-- **Industry Awards Won:** [PLACEHOLDER]
-- **Media Mentions:** [PLACEHOLDER]
-- **Speaking Engagements:** [PLACEHOLDER]
-- **Thought Leadership Articles Published:** [PLACEHOLDER]
+- **Team Size:** [PLACEHOLDER - Current team count]
 
 ---
 
 ## 🎨 SERVICES PORTFOLIO
 
-### Core Services
-1. **Creative Strategy** - Brand positioning and creative direction that cuts through the noise
-2. **Brand Development** - Complete identity systems and brand guidelines
-3. **Web Development** - Custom websites and digital experiences
-4. **Digital Marketing** - Data-driven strategies and campaigns
-5. **Video Production** - Professional video content and animation
-6. **Photography** - Commercial photography and visual content
+### Core Services (From Database & FAQ)
+1. **Social Media Management** - Building community across platforms
+2. **Content Creation** - Compelling content that drives engagement
+3. **SEO (Search Engine Optimization)** - Unlocking search engine power for organic traffic
+4. **PPC Advertising** - Paid advertising campaigns
+5. **Email and SMS Marketing** - Direct communication strategies
+6. **Data Analytics** - Performance tracking and optimization
+7. **Podcast Production** - Professional studio recording and distribution
+8. **Web Development & E-commerce** - High-performing websites as foundation for online success
+9. **Digital Marketing & Presence** - Comprehensive online strategy
+10. **Creative & Strategy Services** - Brand positioning and creative direction
+11. **Photography & Videography** - Professional visual content creation
+12. **Branding & Design** - Complete identity systems and brand guidelines
 
-### Specialized Service Offerings
+### Portfolio Categories (From Admin Database)
+1. **Marketing** - Digital marketing strategies and campaigns
+2. **UX/UI** - User experience and interface design
+3. **Web Development** - Custom website development
+4. **Branding** - Brand identity and design systems
+5. **Podcast** - Audio/video podcast production and strategy
+6. **Photography/Videography** - Professional media production
 
-#### AI Marketing Solutions
-- **Starter:** $2,500/month
-- **Professional:** $5,000/month (Most Popular)
-- **Enterprise:** Custom pricing
+### Business Process
+1. **DISCOVERY CALL** - Understanding brand needs
+2. **SEND PROPOSAL** - Customized strategic blueprint
+3. **SCOPE OF WORK** - Building competitive advantage
+4. **START DESIGN + CREATIVE WORK** - Executing the vision
 
-#### Studio Services (North Salt Lake Facility)
-- **Hourly Rate:** $99/hour (2-hour minimum)
-- **Half Day:** $350 (4 hours)
-- **Full Day:** $650 (8 hours) - Most Popular
-- **Weekly:** $2,800 (5 days)
-
-#### Content Production
-- **Content Starter:** $1,500/month
-- **Content Pro:** $3,500/month (Most Popular)
-- **Content Enterprise:** Custom pricing
-
-### Additional Services
-- **Digital Transformation** - Comprehensive business modernization for the AI era
-- **SEO** - Organic search traffic optimization
-- **Podcast Production** - Professional studio recording and distribution
-- **Marketing Strategy** - AI-driven strategic planning
-- **Social Media Management** - Community building across platforms
-- **E-commerce Solutions** - Online shopping experience development
+### Service Differentiators
+- Continuous analysis and optimization
+- Creative and innovative team approach
+- AI-powered tools and strategies integration
+- Personalized attention for all project sizes
+- Flexible pricing based on project scope
 
 ---
 
 ## 👥 TEAM STRUCTURE
 
-### Key Leadership
-1. **Moe** - CEO & Founder (12+ years experience)
-2. **Tyler Gordon** - Chief Creative Officer (Content strategy specialist)
-3. **Josh** - Head of Technology (Digital transformation leader)
-4. **Bailey Latimer** - Lead Developer & UX Designer
-5. **Carson Ireland** - Creative Director (Video production specialist)
+### Core Team (From Database)
+1. **Moe** - Founder/CEO (moe@disruptorsmedia.com)
+2. **Tyler Gordon** - Creative Director (tyler@disruptorsmedia.com)
+   - Content strategy specialist
+   - Creative direction
+   - Media production
+   - Marketing lead
+3. **Josh** - Technology Lead (josh@disruptorsmedia.com)
+4. **Bailey Latimer** - Lead Developer & UX Designer (bailey@disruptorsmedia.com)
+   - Web Development
+   - UX/UI Design
+   - Website architecture
+5. **Carson Ireland** - Marketing & Creative Direction
+   - Video production specialist
+   - Creative direction
+   - Marketing campaigns
+6. **Mustafa Qureshi** - Web Development
+7. **Chad Coleman** - Videography
+8. **Matheus Barbosa-Costa** - Photography
 
 ### Department Structure [PLACEHOLDERS - To Be Filled]
-- **Creative Department:** [PLACEHOLDER - List team members and roles]
-- **Technology Department:** [PLACEHOLDER - List team members and roles]
+- **Creative Department:** Tyler Gordon (Lead), Carson Ireland, Chad Coleman, Matheus Barbosa-Costa
+- **Technology Department:** Josh (Lead), Bailey Latimer, Mustafa Qureshi
 - **Account Management:** [PLACEHOLDER - List team members and roles]
-- **Production Department:** [PLACEHOLDER - List team members and roles]
 - **Business Development:** [PLACEHOLDER - List team members and roles]
 
 ### Company Culture [PLACEHOLDERS - To Be Filled]
@@ -159,34 +151,47 @@
 
 ## 🏆 CLIENT PORTFOLIO & CASE STUDIES
 
-### Featured Client Success Stories
+### Featured Client Success Stories (From Admin Database)
+
+#### Desjardins Brands (LA-Based Luxury Food & Beverage)
+- **Description:** "Disruptors Media: The key ingredient to Desjardins Brands' success: Desjardins Brands, a LA-based luxury food and beverage distributor, sought our expertise to elevate their brand and amplify their reach. Our strategic guidance and viral digital campaigns fueled their success, propelling them to generate over $100,000 in revenue per year."
+- **Team:** Creative Direction: Tyler Gordon, Marketing: Tyler Gordon, UX/UI: Bailey Latimer
+- **Categories:** Branding, Social Media, Marketing, Creative, Design
+
+#### Community Cures (Salt Lake City Podcast)
+- **Description:** "In the heart of Salt Lake City, Utah, lies Community Curescast, a podcast with a powerful mission: to weave riveting stories that bridge divides and foster connection within communities. But their vision needed a voice, a visual identity, and a strategic path to reach the hearts and minds they aimed to touch. That's where Disruptors Media came in. We became partners in purpose, crafting a compelling brand, developing engaging marketing campaigns to amplify their message, and bringing their stories to life through captivating videography."
+- **Team:** Creative Direction: Bailey Latimer, Tyler Gordon; Marketing: Tyler Gordon, Carson Ireland; Website: Bailey Latimer, Mustafa Qureshi
+- **Categories:** Branding, UX/UI, Marketing, Web Development, Videography
+
+#### E-District (Commercial Building - Airport Area)
+- **Description:** "E-District is a commerical building located just north of Salt Lake City International Airport. Disruptors Media was tasked with helping them grow more clients for their podcast studio and LED billboard. Through this collaboration, we have reviltalized their branding and helped increased clientele."
+- **Team:** Creative Direction: Carson Ireland; Marketing: Tyler Gordon, Carson Ireland; Web Development: Tyler Gordon, Bailey Latimer
+- **Categories:** Branding, Photography, Marketing, Videography
+
+#### Bruce Leeroy (MMA Fighter - Los Angeles)
+- **Description:** "Bruce Leeroy is an up and coming MMA fighter out of Los Angeles, California. With the help of Disruptors Media, he saw millions of views on both TikTok and Instagram. Now with over 30,000 followers combined on multiple platforms, he aims to make his professional debut later this year."
+- **Team:** Creative Direction: Tyler Gordon; Media Production: Tyler Gordon; Marketing: Tyler Gordon
+- **Categories:** Branding, Photography, Marketing, Videography
 
 #### BF4Real Podcast
-- **Achievement:** 50K+ downloads per episode
-- **Notable:** A-list guest appearances
+- **Description:** "The BF4Real Podcast transcends borders by featuring high-profile guests with millions of followers. From acclaimed artists and cultural leaders to captivating storytellers and everyday heroes, the podcast offers a unique space for diverse perspectives to come together."
+- **Team:** Media Production: Carson Ireland, Tyler Gordon; Creative Direction: Tyler Gordon, Carson Ireland
+- **Categories:** Photography, Videography, Branding, Marketing, Podcast
 
-#### Bruce Leeroy (Professional Fighter)
-- **Results:** 2M+ social media views, 30K+ followers
-- **Testimonial:** "Going from unknown to millions of views seemed impossible until I worked with Disruptors Media. They understood my vision and helped me build a fanbase of over 30,000 followers."
+#### Master Lu's Health Center (Martial Arts & Acupuncture)
+- **Description:** "Master Lu's Health Center sought out Disruptors Media to increase clients for their martial arts studio and acupuncture practice. From our campaign, we have been able to generate thousands of engagement and an increase of clients."
+- **Team:** Marketing: Tyler Gordon; Creative Direction: Carson Ireland; Videography: Chad Coleman; Photography: Matheus Barbosa-Costa
+- **Categories:** Photography, Videography, Branding, Marketing, Podcast
 
-#### E-District (Property Management)
-- **Results:** 120% studio booking increase, 95% billboard revenue increase
-- **Testimonial:** "Our unique property needed unique marketing. Disruptors Media's revitalization campaign increased our studio bookings by 120% and billboard revenue by 95%." - Robert Chen, Property Manager
+#### Psyched Out Clothing (Florida-Based Fashion Brand)
+- **Description:** "Psyched Out Clothing is an up and coming clothing brand based out of Florida. They specialize in custom pieces tailored to every day fashion. Disruptors Media was tasked with creating a beautiful website and developing the branding for the company."
+- **Team:** Creative Direction: Tyler Gordon; UX/UI: Tyler Gordon; Web Development: Bailey Latimer; Marketing: Tyler Gordon
+- **Categories:** Branding, UI/UX, Marketing, Web Development, Photography
 
-#### Master Lu's Health Center
-- **Result:** 85% client growth increase
-
-#### Community Cures Podcast
-- **Results:** 25K+ podcast downloads, 320% brand recognition increase
-- **Testimonial:** "Our podcast needed more than just production – it needed a voice, an identity, and a strategy. Disruptors Media delivered all three, helping us reach 25,000+ downloads." - Dr. Jennifer Walsh, Host & Founder
-
-#### Desjardins Brands (Luxury Food)
-- **Result:** $100K+ annual revenue generation
-- **Testimonial:** "Disruptors Media didn't just market our luxury food products – they crafted a digital presence that resonates with our target audience. The $100K+ in annual revenue speaks for itself." - Marcus Desjardins, CEO
-
-### Additional Portfolio Metrics
-- **BYS:** 100K+ combined social followers
-- **Psyched Out Clothing:** Fashion brand transformation
+#### BYS (Sports Promotion - Los Angeles)
+- **Description:** "BYS is a sports promotion focused on teaching self defense through martial arts and preventing gun violence in Los Angeles - to over 100,000 combined followers across various social media platforms. Through working with BYS, Disruptors Media developed a passion for marketing and making a positive impact in local communities."
+- **Team:** Creative Direction: Tyler Gordon; Marketing: Tyler Gordon; Web Development: Tyler Gordon
+- **Categories:** Branding, UX/UI, Marketing, Web Development
 
 ### Industry Verticals [PLACEHOLDERS - To Be Filled]
 - **Healthcare:** [PLACEHOLDER - List clients and case studies]
@@ -198,55 +203,35 @@
 
 ---
 
-## 🎬 STUDIO FACILITY
-
-### Location & Specifications
-- **Address:** 650 N MAIN ST, NORTH SALT LAKE, UT 84054
-- **Size:** 2,000 sq ft facility
-- **Established:** 2015
-
-### Equipment Inventory
-- **3x BlackMagic Cinema Cameras (4K)**
-- **4x Shure SM7B Microphones**
-- **3x HD TV monitors**
-- **Professional lighting grid**
-- **Green screen setup**
-- **Acoustic treatment panels**
-
-### Amenities & Features
-- Climate controlled environment
-- Makeup & green room
-- High-speed internet (1GB fiber)
-- Free parking
-- Complimentary refreshments
-- Post-production suite with Adobe Creative Suite, Final Cut Pro, DaVinci Resolve
-
----
-
 ## 🔧 TECHNOLOGY STACK & CAPABILITIES
 
-### AI & Technology Infrastructure
-- **OpenAI GPT-4** for content generation
-- **Custom ML models** for audience segmentation
-- **Predictive analytics** for customer lifetime value
-- **Automated bid optimization** algorithms
-- **Natural language processing** for sentiment analysis
-- **Computer vision** for visual content optimization
+### Current Technology Infrastructure (From Legacy Site Analysis)
+- **Frontend:** React with jQuery, Bootstrap framework
+- **Backend:** Laravel 9 PHP framework  
+- **Database:** MySQL
+- **Admin Panel:** Custom Laravel CMS
+- **Typography:** OT Neue Montreal, PP Supply Mono fonts
 
-### Development Capabilities
-- Custom website development
-- Mobile-first responsive design
+### Development Capabilities (Verified from Portfolio)
+- Custom website development (Bailey Latimer, Mustafa Qureshi)
+- Mobile-responsive design implementation
 - E-commerce platform development
-- CMS integration
+- Content management system integration
 - Performance optimization
-- Multi-platform content strategy
+- Multi-platform social media strategy
 
 ### Technology Partnerships [PLACEHOLDERS - To Be Filled]
-- **CRM Platform:** [PLACEHOLDER - HubSpot, Salesforce, etc.]
-- **Marketing Automation:** [PLACEHOLDER - Marketo, Pardot, etc.]
-- **Analytics Platforms:** [PLACEHOLDER - GA4, Adobe Analytics, etc.]
-- **Design Tools:** [PLACEHOLDER - Adobe Creative Suite, Figma, etc.]
-- **Development Frameworks:** [PLACEHOLDER - React, Node.js, etc.]
+- **CRM Platform:** [PLACEHOLDER - Verify current CRM solution]
+- **Marketing Automation:** [PLACEHOLDER - Verify current automation tools]
+- **Analytics Platforms:** [PLACEHOLDER - Verify current analytics setup]
+- **Design Tools:** [PLACEHOLDER - Verify current creative software stack]
+- **Development Frameworks:** [PLACEHOLDER - Verify current development stack]
+
+### Studio & Production Capabilities [PLACEHOLDERS - To Be Filled]
+- **Photography Equipment:** [PLACEHOLDER - Verify studio equipment list]
+- **Videography Setup:** [PLACEHOLDER - Verify video production capabilities] 
+- **Studio Location:** [PLACEHOLDER - Verify current studio facilities]
+- **Post-Production Suite:** [PLACEHOLDER - Verify editing software and capabilities]
 
 ---
 
