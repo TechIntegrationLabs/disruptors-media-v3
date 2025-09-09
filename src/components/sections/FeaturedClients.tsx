@@ -1,23 +1,60 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { gsap } from 'gsap';
+import { sampleClients } from '../../data/clients-sample';
 
 const FeaturedClients: React.FC = () => {
-  // PRD Client Logos - placeholder data matching PRD specifications
-  const clientLogos = [
-    { name: 'Client 1', src: '/images/client-1.png', alt: 'Client 1 Logo' },
-    { name: 'Client 2', src: '/images/client-2.png', alt: 'Client 2 Logo' },
-    { name: 'Gold Banner', src: '/images/gold-logo-banner.png', alt: 'Gold Banner Logo' },
-  ];
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [hoveredClient, setHoveredClient] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!carouselRef.current) return;
+
+    // Duplicate the clients array to create seamless loop
+    const duplicatedClients = [...sampleClients, ...sampleClients];
+    
+    // Calculate carousel width
+    const itemWidth = 220; // 200px logo + 20px gap
+    const totalWidth = itemWidth * sampleClients.length;
+    
+    // Create infinite scroll animation
+    const animation = gsap.to(carouselRef.current, {
+      x: -totalWidth,
+      duration: 30,
+      ease: "none",
+      repeat: -1,
+      modifiers: {
+        x: gsap.utils.unitize(x => parseFloat(x) % totalWidth)
+      }
+    });
+
+    // Pause on hover
+    const handleMouseEnter = () => animation.pause();
+    const handleMouseLeave = () => animation.play();
+
+    const carousel = carouselRef.current;
+    carousel.addEventListener('mouseenter', handleMouseEnter);
+    carousel.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      animation.kill();
+      carousel.removeEventListener('mouseenter', handleMouseEnter);
+      carousel.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
+
+  // Duplicate clients for seamless loop
+  const displayClients = [...sampleClients, ...sampleClients];
 
   return (
     <section 
-      className="w-full bg-brand-charcoal"
+      className="w-full bg-brand-charcoal overflow-hidden"
       style={{
         background: 'var(--color-brand-charcoal)',
-        padding: '70px 170px'
+        padding: '70px 0'
       }}
     >
       <div className="container-custom">
-        {/* Section Title - PRD Specification */}
+        {/* Section Title */}
         <h2 
           className="text-brand-cream mb-16"
           style={{
@@ -33,44 +70,91 @@ const FeaturedClients: React.FC = () => {
           FEATURED CLIENTS
         </h2>
 
-        {/* Logo Grid - PRD Specification */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center">
-          {clientLogos.map((client, index) => (
-            <div 
-              key={index}
-              className="flex items-center justify-center"
-              style={{ marginBottom: '86px' }}
-            >
-              <img 
-                src={client.src}
-                alt={client.alt}
-                className="max-w-full h-auto filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity duration-300"
-                style={{
-                  maxHeight: '80px',
-                  objectFit: 'contain'
-                }}
-              />
-            </div>
-          ))}
+        {/* Client Logo Carousel */}
+        <div className="relative w-full overflow-hidden" style={{ height: '150px' }}>
+          <div 
+            ref={carouselRef}
+            className="flex items-center gap-5 absolute"
+            style={{ 
+              width: 'fit-content',
+              willChange: 'transform'
+            }}
+          >
+            {displayClients.map((client, index) => (
+              <div 
+                key={`client-${index}`}
+                className="flex-shrink-0 relative group cursor-pointer"
+                style={{ width: '200px', height: '100px' }}
+                onMouseEnter={() => setHoveredClient(index % sampleClients.length)}
+                onMouseLeave={() => setHoveredClient(null)}
+              >
+                {/* Logo Image */}
+                <img 
+                  src={client.logoUrl}
+                  alt={`${client.companyName} logo`}
+                  className="w-full h-full object-contain transition-all duration-300"
+                  style={{
+                    filter: hoveredClient === (index % sampleClients.length) 
+                      ? 'grayscale(0%) brightness(100%)' 
+                      : 'grayscale(100%) brightness(90%)',
+                    transform: hoveredClient === (index % sampleClients.length)
+                      ? 'scale(1.1)'
+                      : 'scale(1)'
+                  }}
+                />
+
+                {/* Company Name on Hover */}
+                <div 
+                  className="absolute inset-x-0 -bottom-8 text-center transition-opacity duration-300"
+                  style={{
+                    opacity: hoveredClient === (index % sampleClients.length) ? 1 : 0,
+                    pointerEvents: 'none'
+                  }}
+                >
+                  <p 
+                    className="text-brand-cream"
+                    style={{
+                      fontFamily: 'var(--font-primary)',
+                      fontSize: '14px',
+                      fontWeight: 400,
+                      textTransform: 'uppercase'
+                    }}
+                  >
+                    {client.companyName}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Additional rows for more client logos */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center mt-12">
-          {[1, 2, 3, 4].map((item) => (
-            <div 
-              key={item}
-              className="flex items-center justify-center p-4"
-            >
-              <div 
-                className="bg-gray-600 rounded-lg flex items-center justify-center text-gray-400"
-                style={{ width: '160px', height: '80px' }}
-              >
-                Client {item + 3}
-              </div>
-            </div>
-          ))}
+        {/* Additional Info */}
+        <div className="text-center mt-20">
+          <p 
+            className="text-brand-cream opacity-80"
+            style={{
+              fontFamily: 'var(--font-primary)',
+              fontSize: '16px',
+              fontWeight: 400,
+              lineHeight: '24px'
+            }}
+          >
+            Trusted by leading brands across industries
+          </p>
         </div>
       </div>
+
+      {/* CSS for grayscale filter support */}
+      <style jsx>{`
+        @supports not (filter: grayscale(100%)) {
+          img {
+            opacity: 0.7;
+          }
+          img:hover {
+            opacity: 1;
+          }
+        }
+      `}</style>
     </section>
   );
 };

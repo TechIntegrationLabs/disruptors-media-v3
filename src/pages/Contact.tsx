@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import SEO from '../components/common/SEO';
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
@@ -426,11 +427,17 @@ const Contact: React.FC = () => {
                   >
                     FIRST NAME *
                   </label>
-                  <input
+                  <motion.input
                     type="text"
                     required
                     value={formData.firstName}
                     onChange={(e) => handleInputChange('firstName', e.target.value)}
+                    whileFocus={{
+                      scale: 1.02,
+                      borderColor: "#FFD700",
+                      boxShadow: "0 0 20px rgba(255, 215, 0, 0.3)"
+                    }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
                     style={{
                       fontFamily: 'var(--font-primary)',
                       fontSize: '16px',
@@ -438,7 +445,8 @@ const Contact: React.FC = () => {
                       border: '1px solid var(--color-brand-charcoal)',
                       background: 'transparent',
                       color: 'var(--color-brand-charcoal)',
-                      width: '100%'
+                      width: '100%',
+                      transition: 'all 0.2s ease'
                     }}
                     placeholder="First Name"
                   />
@@ -748,14 +756,28 @@ const Contact: React.FC = () => {
                 />
               </div>
 
-              {/* Submit Button - PRD Specification */}
+              {/* Submit Button - Enhanced with Animations */}
               <div className="text-center pt-6">
-                <button
+                <motion.button
                   type="submit"
                   disabled={formStatus === 'loading'}
                   className="submit-btn"
+                  whileHover={formStatus === 'idle' ? { 
+                    scale: 1.05,
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.3)"
+                  } : {}}
+                  whileTap={formStatus === 'idle' ? { scale: 0.95 } : {}}
+                  animate={{
+                    background: formStatus === 'success' ? '#28a745' : 
+                               formStatus === 'error' ? '#dc3545' : 
+                               'var(--color-brand-charcoal)'
+                  }}
+                  transition={{ 
+                    type: "spring", 
+                    bounce: 0.4,
+                    duration: 0.3
+                  }}
                   style={{
-                    background: formStatus === 'success' ? '#28a745' : formStatus === 'error' ? '#dc3545' : 'var(--color-brand-charcoal)',
                     color: 'var(--color-brand-cream)',
                     fontFamily: 'var(--font-primary)',
                     fontSize: '20px',
@@ -822,8 +844,18 @@ const Contact: React.FC = () => {
             Schedule a free 30-minute consultation to discuss your project.
           </p>
 
-          <button 
+          <motion.button 
             className="cta-large"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 15px 50px rgba(0,0,0,0.3)"
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ 
+              type: "spring", 
+              bounce: 0.4,
+              duration: 0.3
+            }}
             style={{
               background: 'var(--color-brand-charcoal)',
               color: 'var(--color-brand-cream)',
@@ -843,12 +875,14 @@ const Contact: React.FC = () => {
             onClick={() => window.open('https://cal.com/disruptors-media/strategy-session', '_blank')}
           >
             <span>SCHEDULE CALL</span>
-            <svg 
+            <motion.svg 
               width="24" 
               height="24" 
               viewBox="0 0 24 24" 
               fill="none"
               className="ml-4"
+              whileHover={{ x: 8, rotate: 5 }}
+              transition={{ duration: 0.2 }}
             >
               <path 
                 d="M7 17L17 7M17 7H7M17 7V17" 
@@ -857,8 +891,8 @@ const Contact: React.FC = () => {
                 strokeLinecap="round" 
                 strokeLinejoin="round"
               />
-            </svg>
-          </button>
+            </motion.svg>
+          </motion.button>
         </div>
       </section>
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 // import { CLOUDINARY_ASSETS } from '../../constants/cloudinaryAssets';
 
 interface NavigationItem {
@@ -115,26 +116,88 @@ const Header: React.FC = () => {
                       </Link>
                     )}
                     
-                    {/* Dropdown Menu */}
-                    {item.submenu && activeDropdown === item.name && (
-                      <div className="absolute top-full left-0 mt-2 w-64 bg-brand-cream border border-brand-charcoal shadow-lg z-50">
-                        <ul className="list-none p-0 m-0">
-                          {item.submenu.map((subItem, subIndex) => (
-                            <li key={subIndex}>
-                              <Link
-                                to={subItem.href}
-                                className={`block px-4 py-3 font-pp-supply-mono text-sm text-brand-charcoal no-underline transition-colors duration-200 ${
-                                  isActive(subItem.href) ? 'bg-brand-charcoal text-brand-cream' : 'hover:bg-gray-100'
-                                }`}
-                                onClick={handleDropdownClose}
+                    {/* Animated Dropdown Menu */}
+                    <AnimatePresence>
+                      {item.submenu && activeDropdown === item.name && (
+                        <motion.div 
+                          initial={{ 
+                            opacity: 0, 
+                            y: -10,
+                            scaleY: 0.8
+                          }}
+                          animate={{ 
+                            opacity: 1, 
+                            y: 0,
+                            scaleY: 1
+                          }}
+                          exit={{ 
+                            opacity: 0, 
+                            y: -10,
+                            scaleY: 0.8
+                          }}
+                          transition={{ 
+                            duration: 0.25,
+                            ease: "easeOut"
+                          }}
+                          className="absolute top-full left-0 mt-2 w-64 bg-brand-cream border border-brand-charcoal shadow-lg z-50 origin-top"
+                        >
+                          <motion.ul 
+                            className="list-none p-0 m-0"
+                            initial="closed"
+                            animate="open"
+                            exit="closed"
+                            variants={{
+                              open: {
+                                transition: { 
+                                  staggerChildren: 0.05,
+                                  delayChildren: 0.1
+                                }
+                              },
+                              closed: {
+                                transition: { 
+                                  staggerChildren: 0.02,
+                                  staggerDirection: -1
+                                }
+                              }
+                            }}
+                          >
+                            {item.submenu.map((subItem, subIndex) => (
+                              <motion.li 
+                                key={subIndex}
+                                variants={{
+                                  open: {
+                                    opacity: 1,
+                                    x: 0,
+                                    transition: { 
+                                      type: "spring",
+                                      bounce: 0,
+                                      duration: 0.3
+                                    }
+                                  },
+                                  closed: {
+                                    opacity: 0,
+                                    x: -20,
+                                    transition: { 
+                                      duration: 0.2
+                                    }
+                                  }
+                                }}
                               >
-                                {subItem.name}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                                <Link
+                                  to={subItem.href}
+                                  className={`block px-4 py-3 font-pp-supply-mono text-sm text-brand-charcoal no-underline transition-all duration-300 ${
+                                    isActive(subItem.href) ? 'bg-brand-charcoal text-brand-cream' : 'hover:bg-gray-100 hover:px-6'
+                                  }`}
+                                  onClick={handleDropdownClose}
+                                >
+                                  {subItem.name}
+                                </Link>
+                              </motion.li>
+                            ))}
+                          </motion.ul>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </li>
                 ))}
               </ul>
@@ -158,47 +221,114 @@ const Header: React.FC = () => {
           )}
         </div>
 
-        {/* Mobile Navigation - Enhanced with submenus */}
-        {isMobile && (
-          <nav className={`fixed top-0 left-0 w-full h-screen bg-brand-cream transform transition-transform duration-400 ease-in-out z-[999] pt-24 ${
-            isMenuOpen ? 'translate-x-0' : '-translate-x-full'
-          }`}>
-            <ul className="list-none p-0 m-0 text-center">
-              {navigation.map((item, index) => (
-                <li key={index} className="my-2">
-                  <Link 
-                    to={item.href}
-                    className={`font-pp-supply-mono text-2xl font-normal text-brand-charcoal no-underline uppercase block p-4 transition-colors duration-300 ${
-                      isActive(item.href) ? 'font-semibold' : ''
-                    } hover:bg-black/10`}
-                    onClick={() => setIsMenuOpen(false)}
+        {/* Mobile Navigation - Smooth Animations */}
+        <AnimatePresence>
+          {isMobile && isMenuOpen && (
+            <motion.nav 
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ 
+                type: 'spring',
+                bounce: 0,
+                duration: 0.4
+              }}
+              className="fixed top-0 left-0 w-full h-screen bg-brand-cream z-[999] pt-24"
+            >
+              <motion.ul 
+                className="list-none p-0 m-0 text-center"
+                initial="closed"
+                animate="open"
+                exit="closed"
+                variants={{
+                  open: {
+                    transition: { 
+                      staggerChildren: 0.07,
+                      delayChildren: 0.2
+                    }
+                  },
+                  closed: {
+                    transition: { 
+                      staggerChildren: 0.05,
+                      staggerDirection: -1
+                    }
+                  }
+                }}
+              >
+                {navigation.map((item, index) => (
+                  <motion.li 
+                    key={index} 
+                    className="my-2"
+                    variants={{
+                      open: {
+                        y: 0,
+                        opacity: 1,
+                        transition: {
+                          type: "spring",
+                          bounce: 0,
+                          duration: 0.4
+                        }
+                      },
+                      closed: {
+                        y: 20,
+                        opacity: 0,
+                        transition: {
+                          duration: 0.3
+                        }
+                      }
+                    }}
                   >
-                    {item.name}
-                  </Link>
-                  
-                  {/* Mobile Submenu */}
-                  {item.submenu && (
-                    <ul className="list-none p-0 m-0 bg-gray-50">
-                      {item.submenu.map((subItem, subIndex) => (
-                        <li key={subIndex}>
-                          <Link
-                            to={subItem.href}
-                            className={`font-pp-supply-mono text-lg text-brand-charcoal no-underline block p-3 transition-colors duration-300 ${
-                              isActive(subItem.href) ? 'font-semibold bg-brand-charcoal text-brand-cream' : 'hover:bg-gray-200'
-                            }`}
-                            onClick={() => setIsMenuOpen(false)}
+                    <Link 
+                      to={item.href}
+                      className={`font-pp-supply-mono text-2xl font-normal text-brand-charcoal no-underline uppercase block p-4 transition-all duration-300 ${
+                        isActive(item.href) ? 'font-semibold' : ''
+                      } hover:bg-black/10 hover:scale-105`}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                    
+                    {/* Mobile Submenu */}
+                    {item.submenu && (
+                      <motion.ul 
+                        className="list-none p-0 m-0 bg-gray-50 overflow-hidden"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        transition={{ 
+                          duration: 0.3,
+                          delay: 0.1,
+                          ease: "easeOut"
+                        }}
+                      >
+                        {item.submenu.map((subItem, subIndex) => (
+                          <motion.li 
+                            key={subIndex}
+                            initial={{ x: -20, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ 
+                              delay: 0.2 + (subIndex * 0.1),
+                              duration: 0.3
+                            }}
                           >
-                            {subItem.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </nav>
-        )}
+                            <Link
+                              to={subItem.href}
+                              className={`font-pp-supply-mono text-lg text-brand-charcoal no-underline block p-3 transition-all duration-300 ${
+                                isActive(subItem.href) ? 'font-semibold bg-brand-charcoal text-brand-cream' : 'hover:bg-gray-200 hover:pl-6'
+                              }`}
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              {subItem.name}
+                            </Link>
+                          </motion.li>
+                        ))}
+                      </motion.ul>
+                    )}
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );

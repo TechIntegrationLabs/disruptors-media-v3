@@ -1,7 +1,75 @@
-/* Additional component-specific styles */
+/* Enhanced App styles with smooth animations */
 .App {
   min-height: 100vh;
   background: linear-gradient(135deg, #f1ede9 0%, #ffffff 100%);
+}
+
+/* Smooth scrolling for the entire document */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Enhanced focus styles for accessibility and aesthetics */
+*:focus {
+  outline: 2px solid #FFD700;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Global smooth transitions */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Enhanced button states */
+button, .btn, .cta-large {
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover, .btn:hover, .cta-large:hover {
+  transform: translateY(-2px);
+}
+
+button:active, .btn:active, .cta-large:active {
+  transform: translateY(0);
+}
+
+/* Enhanced link hover effects */
+a {
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+/* Glass morphism utility */
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+/* Enhanced shadow utility */
+.enhanced-shadow {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.enhanced-shadow:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
 }
 
 /* Hero video styles */

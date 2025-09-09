@@ -8,6 +8,10 @@ import {
   ComputerDesktopIcon
 } from '@heroicons/react/24/outline';
 
+// OpenAI Configuration
+const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
+const API_URL = 'https://api.openai.com/v1/chat/completions';
+
 interface Message {
   id: string;
   text: string;
@@ -33,8 +37,81 @@ const Chat: React.FC = () => {
     setMessages([welcomeMessage]);
   }, []);
 
-  // Auto-responses for common questions
-  const getAutoResponse = (userMessage: string): string => {
+  // Company knowledge base
+  const COMPANY_KNOWLEDGE = `
+    Disruptors Media is a leading AI-powered marketing agency with 12+ years of experience.
+    
+    Services:
+    1. AI Marketing Solutions - Predictive analytics, automated personalization, intelligent campaign optimization. Average ROI increase of 240%.
+    2. Digital Transformation - Business process optimization, technology integration, data analytics.
+    3. Content Production - Video, podcast, photography, written content creation with professional studio.
+    4. Studio Services - Professional studio in North Salt Lake with BlackMagic 4K cameras, professional lighting, acoustic treatment. Hourly rentals at $99/hour.
+    
+    Key Stats:
+    - Generated over $50M in revenue for clients
+    - Average 85% increase in conversion rates
+    - Average 120% revenue growth for clients
+    - 12+ years in business
+    
+    Pricing:
+    - Small business packages start at $5K
+    - Enterprise solutions available
+    - Free 30-minute strategy sessions
+    
+    Contact:
+    - Strategy session booking: cal.com/disruptors-media/strategy-session
+    - Contact form available on website
+    - ROI calculator available for potential returns estimation
+    
+    Location: North Salt Lake, Utah
+    
+    Specialties: AI integration, marketing automation, video production, podcast production, business intelligence
+  `;
+
+  // OpenAI API integration
+  const getOpenAIResponse = async (userMessage: string): Promise<string> => {
+    if (!OPENAI_API_KEY) {
+      return getFallbackResponse(userMessage);
+    }
+
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${OPENAI_API_KEY}`
+        },
+        body: JSON.stringify({
+          model: 'gpt-3.5-turbo',
+          messages: [
+            {
+              role: 'system',
+              content: `You are a helpful assistant for Disruptors Media. Use this knowledge base to answer questions accurately and conversationally. Always be helpful, professional, and encourage users to book a consultation or use our tools when appropriate. Knowledge base: ${COMPANY_KNOWLEDGE}`
+            },
+            {
+              role: 'user',
+              content: userMessage
+            }
+          ],
+          max_tokens: 300,
+          temperature: 0.7
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`OpenAI API error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data.choices[0]?.message?.content || getFallbackResponse(userMessage);
+    } catch (error) {
+      console.warn('OpenAI API failed, using fallback:', error);
+      return getFallbackResponse(userMessage);
+    }
+  };
+
+  // Fallback responses when OpenAI is unavailable
+  const getFallbackResponse = (userMessage: string): string => {
     const message = userMessage.toLowerCase();
     
     if (message.includes('pricing') || message.includes('cost') || message.includes('price')) {
@@ -115,7 +192,7 @@ const Chat: React.FC = () => {
     setInputValue('');
 
     // Generate and send bot response
-    const response = getAutoResponse(currentInput);
+    const response = await getOpenAIResponse(currentInput);
     await simulateTyping(response);
   };
 
@@ -237,7 +314,7 @@ const Chat: React.FC = () => {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Type your message..."
-                  className="flex-1 px-3 py-2 bg-dark-light border border-white/20 rounded-lg text-white text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent"
+                  className="flex-1 px-3 py-2 bg-gray-800 border border-gold/30 rounded-lg text-white text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold focus:border-gold !text-white"
                   disabled={isTyping}
                 />
                 <button

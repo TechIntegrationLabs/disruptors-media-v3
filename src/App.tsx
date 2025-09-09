@@ -1,8 +1,10 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import './App.css';
 import Layout from './components/layout/Layout';
 import ErrorBoundary from './components/common/ErrorBoundary';
+import PageTransition from './components/common/PageTransition';
 import { CLOUDINARY_ASSETS } from './constants/cloudinaryAssets';
 import LoadingCounter from './components/animations/LoadingCounter';
 import Home from './pages/Home';
@@ -26,33 +28,37 @@ import FAQ from './pages/FAQ';
 import CaseStudyDetail from './pages/CaseStudyDetail';
 
 function App() {
+  const location = useLocation();
+
   return (
     <div className="App" style={{ background: `url('${CLOUDINARY_ASSETS.backgrounds.mainBg}') repeat` }}>
       <LoadingCounter />
       <ErrorBoundary>
         <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/work" element={<Work />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/assessment" element={<AIAssessment />} />
-            <Route path="/roi-calculator" element={<ROICalculator />} />
-            <Route path="/services/ai-marketing" element={<AIMarketing />} />
-            <Route path="/services/studio" element={<StudioServices />} />
-            <Route path="/services/content-production" element={<ContentProduction />} />
-            <Route path="/services/digital-transformation" element={<DigitalTransformation />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/podcast" element={<Podcast />} />
-            <Route path="/case-study/:id" element={<CaseStudyDetail />} />
-            <Route path="/work/:slug" element={<CaseStudyDetail />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+              <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+              <Route path="/services" element={<PageTransition><Services /></PageTransition>} />
+              <Route path="/work" element={<PageTransition><Work /></PageTransition>} />
+              <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+              <Route path="/faq" element={<PageTransition><FAQ /></PageTransition>} />
+              <Route path="/portfolio" element={<PageTransition><Portfolio /></PageTransition>} />
+              <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
+              <Route path="/blog/:slug" element={<PageTransition><BlogPost /></PageTransition>} />
+              <Route path="/assessment" element={<PageTransition><AIAssessment /></PageTransition>} />
+              <Route path="/roi-calculator" element={<PageTransition><ROICalculator /></PageTransition>} />
+              <Route path="/services/ai-marketing" element={<PageTransition><AIMarketing /></PageTransition>} />
+              <Route path="/services/studio" element={<PageTransition><StudioServices /></PageTransition>} />
+              <Route path="/services/content-production" element={<PageTransition><ContentProduction /></PageTransition>} />
+              <Route path="/services/digital-transformation" element={<PageTransition><DigitalTransformation /></PageTransition>} />
+              <Route path="/gallery" element={<PageTransition><Gallery /></PageTransition>} />
+              <Route path="/podcast" element={<PageTransition><Podcast /></PageTransition>} />
+              <Route path="/case-study/:id" element={<PageTransition><CaseStudyDetail /></PageTransition>} />
+              <Route path="/work/:slug" element={<PageTransition><CaseStudyDetail /></PageTransition>} />
+              <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+            </Routes>
+          </AnimatePresence>
         </Layout>
       </ErrorBoundary>
     </div>

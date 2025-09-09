@@ -1,6 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useScrollStagger } from '../../hooks/useScrollAnimations';
 import ScrambleText from '../animations/ScrambleText';
+import { motion } from 'framer-motion';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface Service {
   id: number;
@@ -16,6 +21,37 @@ interface ServicesSliderProps {
 const ServicesSlider: React.FC<ServicesSliderProps> = ({ services }) => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const containerRef = useScrollStagger({ stagger: 0.2 });
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!sliderRef.current || !sectionRef.current) return;
+
+    const slider = sliderRef.current;
+    const section = sectionRef.current;
+    
+    // Calculate the maximum scroll distance
+    const maxScroll = slider.scrollWidth - slider.clientWidth;
+    
+    // Create the scroll-triggered animation
+    const scrollAnimation = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: 'top bottom', // Start when section enters viewport
+        end: 'bottom top',   // End when section leaves viewport
+        scrub: 1,            // Smooth animation tied to scroll
+        onUpdate: (self) => {
+          // Calculate progress based on scroll position
+          const progress = self.progress;
+          // Scroll the slider based on scroll progress
+          slider.scrollLeft = progress * maxScroll;
+        }
+      }
+    });
+
+    return () => {
+      scrollAnimation.kill();
+    };
+  }, [services]);
 
   const scrollLeft = () => {
     if (sliderRef.current) {
@@ -30,7 +66,7 @@ const ServicesSlider: React.FC<ServicesSliderProps> = ({ services }) => {
   };
 
   return (
-    <section className="w-full py-16">
+    <section ref={sectionRef} className="w-full py-16">
       <div ref={containerRef} className="container-custom">
         {/* Section Title - PRD Specification */}
         <h2 
@@ -57,17 +93,28 @@ const ServicesSlider: React.FC<ServicesSliderProps> = ({ services }) => {
         <div className="relative">
           <div 
             ref={sliderRef}
-            className="flex overflow-x-auto scrollbar-hide gap-4"
+            className="flex overflow-x-hidden scrollbar-hide gap-4"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
-              WebkitOverflowScrolling: 'touch'
+              WebkitOverflowScrolling: 'touch',
+              scrollBehavior: 'auto'
             }}
           >
             {services.map((service) => (
-              <div 
+              <motion.div 
                 key={service.id}
-                className="flex-shrink-0 relative"
+                className="flex-shrink-0 relative cursor-pointer overflow-hidden"
+                whileHover={{
+                  scale: 1.02,
+                  y: -5,
+                  boxShadow: "0 20px 60px rgba(0,0,0,0.4)"
+                }}
+                transition={{
+                  type: "spring",
+                  bounce: 0.4,
+                  duration: 0.4
+                }}
                 style={{
                   width: '752px',
                   height: '930px',
@@ -77,18 +124,26 @@ const ServicesSlider: React.FC<ServicesSliderProps> = ({ services }) => {
                   backgroundRepeat: 'no-repeat'
                 }}
               >
-                {/* Content positioned at bottom - PRD Specification */}
-                <div 
+                {/* Content positioned at bottom with hover animations */}
+                <motion.div 
                   className="absolute w-full"
+                  initial={{ y: 20, opacity: 0.8 }}
+                  whileHover={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                   style={{
                     bottom: '105px',
                     paddingRight: '111px',
                     paddingLeft: '40px'
                   }}
                 >
-                  {/* Service Title - PRD H3 Specification */}
-                  <h3 
+                  {/* Service Title with hover animation */}
+                  <motion.h3 
                     className="text-brand-cream mb-4"
+                    whileHover={{ 
+                      scale: 1.05,
+                      textShadow: "0 0 20px rgba(255,255,255,0.5)"
+                    }}
+                    transition={{ duration: 0.2 }}
                     style={{
                       fontFamily: 'var(--font-secondary)',
                       fontSize: '65px',
@@ -99,11 +154,14 @@ const ServicesSlider: React.FC<ServicesSliderProps> = ({ services }) => {
                     }}
                   >
                     {service.title}
-                  </h3>
+                  </motion.h3>
 
-                  {/* Service Description - PRD Body Text */}
-                  <p 
+                  {/* Service Description with reveal animation */}
+                  <motion.p 
                     className="text-brand-cream"
+                    initial={{ opacity: 0.8 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
                     style={{
                       fontFamily: 'var(--font-primary)',
                       fontSize: '20px',
@@ -114,32 +172,12 @@ const ServicesSlider: React.FC<ServicesSliderProps> = ({ services }) => {
                     }}
                   >
                     {service.description}
-                  </p>
-                </div>
-              </div>
+                  </motion.p>
+                </motion.div>
+              </motion.div>
             ))}
           </div>
 
-          {/* Navigation Arrows - Optional Enhancement */}
-          <button
-            onClick={scrollLeft}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-brand-charcoal text-brand-cream p-3 rounded-full opacity-80 hover:opacity-100 transition-opacity"
-            aria-label="Previous slide"
-          >
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 18l-6-6 6-6"/>
-            </svg>
-          </button>
-
-          <button
-            onClick={scrollRight}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-brand-charcoal text-brand-cream p-3 rounded-full opacity-80 hover:opacity-100 transition-opacity"
-            aria-label="Next slide"
-          >
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 18l6-6-6-6"/>
-            </svg>
-          </button>
         </div>
       </div>
     </section>
