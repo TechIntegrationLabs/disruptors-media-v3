@@ -1,10 +1,11 @@
 [build]
   publish = "build"
-  command = "CI=false npm run build"
+  command = "CI=false NODE_OPTIONS='--max-old-space-size=4096' npm run build"
   
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
   GENERATE_SOURCEMAP = "false"
+  NODE_OPTIONS = "--max-old-space-size=4096"
 
 [[redirects]]
   from = "/*"

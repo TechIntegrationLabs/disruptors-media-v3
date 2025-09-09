@@ -279,17 +279,17 @@ const Chat: React.FC = () => {
                             animate={{ opacity: [0.5, 1, 0.5] }}
                             transition={{ duration: 1, repeat: Infinity }}
                             className="w-2 h-2 bg-gray-400 rounded-full"
-                          />
+                          ></motion.div>
                           <motion.div
                             animate={{ opacity: [0.5, 1, 0.5] }}
                             transition={{ duration: 1, repeat: Infinity, delay: 0.2 }}
                             className="w-2 h-2 bg-gray-400 rounded-full"
-                          />
+                          ></motion.div>
                           <motion.div
                             animate={{ opacity: [0.5, 1, 0.5] }}
                             transition={{ duration: 1, repeat: Infinity, delay: 0.4 }}
                             className="w-2 h-2 bg-gray-400 rounded-full"
-                          />
+                          ></motion.div>
                         </div>
                       ) : (
                         <p className="text-sm">{message.text}</p>
