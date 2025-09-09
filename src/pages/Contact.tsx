@@ -35,26 +35,54 @@ const Contact: React.FC = () => {
     e.preventDefault();
     setFormStatus('loading');
 
-    // Simulate form submission
-    setTimeout(() => {
-      setFormStatus('success');
-      setTimeout(() => {
-        setFormStatus('idle');
-        // Reset form
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          phone: '',
-          company: '',
-          projectType: '',
-          budget: '',
-          timeline: '',
-          message: '',
-          howDidYouHear: ''
-        });
-      }, 3000);
-    }, 1500);
+    try {
+      // Netlify Forms submission
+      const formDataToSubmit = new FormData();
+      formDataToSubmit.append('form-name', 'contact');
+      formDataToSubmit.append('firstName', formData.firstName);
+      formDataToSubmit.append('lastName', formData.lastName);
+      formDataToSubmit.append('email', formData.email);
+      formDataToSubmit.append('phone', formData.phone);
+      formDataToSubmit.append('company', formData.company);
+      formDataToSubmit.append('projectType', formData.projectType);
+      formDataToSubmit.append('budget', formData.budget);
+      formDataToSubmit.append('timeline', formData.timeline);
+      formDataToSubmit.append('message', formData.message);
+      formDataToSubmit.append('howDidYouHear', formData.howDidYouHear);
+
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formDataToSubmit as any).toString()
+      });
+
+      if (response.ok) {
+        setFormStatus('success');
+        // Reset form after success
+        setTimeout(() => {
+          setFormStatus('idle');
+          setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            company: '',
+            projectType: '',
+            budget: '',
+            timeline: '',
+            message: '',
+            howDidYouHear: ''
+          });
+        }, 3000);
+      } else {
+        setFormStatus('error');
+        setTimeout(() => setFormStatus('idle'), 3000);
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setFormStatus('error');
+      setTimeout(() => setFormStatus('idle'), 3000);
+    }
   };
 
   const handleInputChange = (field: keyof FormData, value: string) => {
@@ -368,7 +396,20 @@ const Contact: React.FC = () => {
               GET IN TOUCH
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form 
+              name="contact" 
+              method="POST" 
+              data-netlify="true" 
+              data-netlify-honeypot="bot-field"
+              onSubmit={handleSubmit} 
+              className="space-y-6"
+            >
+              <input type="hidden" name="form-name" value="contact" />
+              <div style={{ display: 'none' }}>
+                <label>
+                  Don't fill this out if you're human: <input name="bot-field" />
+                </label>
+              </div>
               {/* Personal Information */}
               <div className="grid md:grid-cols-2 gap-6">
                 <div>

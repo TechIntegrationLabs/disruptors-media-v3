@@ -64,7 +64,7 @@ const Footer: React.FC = () => {
         {/* Social Media Icons - PRD Specification */}
         <div className="flex justify-center space-x-6">
           <a 
-            href="https://facebook.com" 
+            href="https://facebook.com/disruptorsmedia" 
             target="_blank" 
             rel="noopener noreferrer"
             className="hover:opacity-80 transition-opacity"
@@ -77,7 +77,7 @@ const Footer: React.FC = () => {
             />
           </a>
           <a 
-            href="https://instagram.com" 
+            href="https://instagram.com/disruptorsmedia" 
             target="_blank" 
             rel="noopener noreferrer"
             className="hover:opacity-80 transition-opacity"
@@ -90,7 +90,7 @@ const Footer: React.FC = () => {
             />
           </a>
           <a 
-            href="https://twitter.com" 
+            href="https://x.com/disruptorsmedia" 
             target="_blank" 
             rel="noopener noreferrer"
             className="hover:opacity-80 transition-opacity"
@@ -103,7 +103,7 @@ const Footer: React.FC = () => {
             />
           </a>
           <a 
-            href="https://youtube.com" 
+            href="https://youtube.com/@disruptorsmedia" 
             target="_blank" 
             rel="noopener noreferrer"
             className="hover:opacity-80 transition-opacity"
@@ -112,6 +112,19 @@ const Footer: React.FC = () => {
             <img 
               src="/images/youtube.svg" 
               alt="YouTube" 
+              className="w-6 h-6"
+            />
+          </a>
+          <a 
+            href="https://linkedin.com/company/disruptorsmedia" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hover:opacity-80 transition-opacity"
+            style={{ margin: '0 13px' }}
+          >
+            <img 
+              src="/images/linkedin.svg" 
+              alt="LinkedIn" 
               className="w-6 h-6"
             />
           </a>

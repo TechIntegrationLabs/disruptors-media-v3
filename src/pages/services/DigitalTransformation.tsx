@@ -7,7 +7,6 @@ import {
   ShieldCheckIcon,
   SparklesIcon,
   ArrowPathIcon,
-  ChartBarIcon,
   CheckCircleIcon,
   ArrowRightIcon
 } from '@heroicons/react/24/outline';
