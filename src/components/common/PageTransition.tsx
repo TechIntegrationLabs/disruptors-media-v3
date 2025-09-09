@@ -9,23 +9,23 @@ const pageVariants = {
   initial: { 
     opacity: 0,
     y: 50,
-    filter: "blur(5px)"
+    scale: 0.98
   },
   in: { 
     opacity: 1,
     y: 0,
-    filter: "blur(0px)"
+    scale: 1
   },
   out: { 
     opacity: 0,
     y: -50,
-    filter: "blur(5px)"
+    scale: 0.98
   }
 };
 
 const pageTransition = {
   type: "tween",
-  ease: "anticipate",
+  ease: "easeInOut",
   duration: 0.6
 };
 

@@ -427,17 +427,11 @@ const Contact: React.FC = () => {
                   >
                     FIRST NAME *
                   </label>
-                  <motion.input
+                  <input
                     type="text"
                     required
                     value={formData.firstName}
                     onChange={(e) => handleInputChange('firstName', e.target.value)}
-                    whileFocus={{
-                      scale: 1.02,
-                      borderColor: "#FFD700",
-                      boxShadow: "0 0 20px rgba(255, 215, 0, 0.3)"
-                    }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
                     style={{
                       fontFamily: 'var(--font-primary)',
                       fontSize: '16px',
@@ -448,6 +442,7 @@ const Contact: React.FC = () => {
                       width: '100%',
                       transition: 'all 0.2s ease'
                     }}
+                    className="focus:scale-105 focus:border-yellow-500 focus:shadow-lg"
                     placeholder="First Name"
                   />
                 </div>

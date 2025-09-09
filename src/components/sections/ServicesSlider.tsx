@@ -140,8 +140,7 @@ const ServicesSlider: React.FC<ServicesSliderProps> = ({ services }) => {
                   <motion.h3 
                     className="text-brand-cream mb-4"
                     whileHover={{ 
-                      scale: 1.05,
-                      textShadow: "0 0 20px rgba(255,255,255,0.5)"
+                      scale: 1.05
                     }}
                     transition={{ duration: 0.2 }}
                     style={{
