@@ -1,11 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import { useScrollStagger } from '../../hooks/useScrollAnimations';
-import ScrambleText from '../animations/ScrambleText';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 interface Service {
   id: number;
@@ -20,38 +14,6 @@ interface ServicesSliderProps {
 
 const ServicesSlider: React.FC<ServicesSliderProps> = ({ services }) => {
   const sliderRef = useRef<HTMLDivElement>(null);
-  const containerRef = useScrollStagger({ stagger: 0.2 });
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!sliderRef.current || !sectionRef.current) return;
-
-    const slider = sliderRef.current;
-    const section = sectionRef.current;
-    
-    // Calculate the maximum scroll distance
-    const maxScroll = slider.scrollWidth - slider.clientWidth;
-    
-    // Create the scroll-triggered animation
-    const scrollAnimation = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top bottom', // Start when section enters viewport
-        end: 'bottom top',   // End when section leaves viewport
-        scrub: 1,            // Smooth animation tied to scroll
-        onUpdate: (self) => {
-          // Calculate progress based on scroll position
-          const progress = self.progress;
-          // Scroll the slider based on scroll progress
-          slider.scrollLeft = progress * maxScroll;
-        }
-      }
-    });
-
-    return () => {
-      scrollAnimation.kill();
-    };
-  }, [services]);
 
   const scrollLeft = () => {
     if (sliderRef.current) {
@@ -66,9 +28,9 @@ const ServicesSlider: React.FC<ServicesSliderProps> = ({ services }) => {
   };
 
   return (
-    <section ref={sectionRef} className="w-full py-16">
-      <div ref={containerRef} className="container-custom">
-        {/* Section Title - PRD Specification */}
+    <section className="w-full py-16">
+      <div className="container-custom">
+        {/* Section Title */}
         <h2 
           className="section-h2 text-brand-charcoal mb-12"
           style={{
@@ -77,106 +39,83 @@ const ServicesSlider: React.FC<ServicesSliderProps> = ({ services }) => {
             fontWeight: 600,
             lineHeight: '68.6px',
             textTransform: 'uppercase',
-            textAlign: 'center',
-            marginBottom: '54px'
+            textAlign: 'center'
           }}
         >
-          <ScrambleText 
-            text="WHAT WE DO"
-            trigger=".section-h2"
-            duration={1.2}
-            className="text-brand-charcoal"
-          />
+          What We Do
         </h2>
 
-        {/* Horizontal Scrolling Slider - PRD Specification */}
+        {/* Horizontal Slider */}
         <div className="relative">
+          {/* Navigation Buttons */}
+          <button 
+            onClick={scrollLeft}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-gold hover:bg-gold-light text-dark w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+
+          <button 
+            onClick={scrollRight}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-gold hover:bg-gold-light text-dark w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+
+          {/* Services Slider */}
           <div 
             ref={sliderRef}
-            className="flex overflow-x-hidden scrollbar-hide gap-4"
-            style={{
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-              WebkitOverflowScrolling: 'touch',
-              scrollBehavior: 'auto'
-            }}
+            className="flex gap-8 overflow-x-hidden scroll-smooth px-16"
+            style={{ scrollBehavior: 'smooth' }}
           >
             {services.map((service) => (
-              <motion.div 
+              <motion.div
                 key={service.id}
-                className="flex-shrink-0 relative cursor-pointer overflow-hidden"
-                whileHover={{
-                  scale: 1.02,
-                  y: -5,
-                  boxShadow: "0 20px 60px rgba(0,0,0,0.4)"
+                className="flex-shrink-0 relative group"
+                style={{ 
+                  width: '752px', 
+                  height: '500px',
+                  background: `url('${service.backgroundImage}') center/cover`
                 }}
-                transition={{
-                  type: "spring",
-                  bounce: 0.4,
-                  duration: 0.4
-                }}
-                style={{
-                  width: '752px',
-                  height: '930px',
-                  backgroundImage: `url(${service.backgroundImage})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat'
-                }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
               >
-                {/* Content positioned at bottom with hover animations */}
-                <motion.div 
-                  className="absolute w-full"
-                  initial={{ y: 20, opacity: 0.8 }}
-                  whileHover={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                  style={{
-                    bottom: '105px',
-                    paddingRight: '111px',
-                    paddingLeft: '40px'
-                  }}
-                >
-                  {/* Service Title with hover animation */}
-                  <motion.h3 
-                    className="text-brand-cream mb-4"
-                    whileHover={{ 
-                      scale: 1.05
-                    }}
-                    transition={{ duration: 0.2 }}
+                {/* Service Content */}
+                <div className="absolute inset-0 bg-dark/60 flex flex-col justify-end p-8">
+                  <h3 
+                    className="text-cream mb-4"
                     style={{
                       fontFamily: 'var(--font-secondary)',
-                      fontSize: '65px',
+                      fontSize: '39px',
                       fontWeight: 600,
-                      lineHeight: '68.6px',
-                      textTransform: 'uppercase',
-                      marginBottom: '15px'
+                      lineHeight: '42px',
+                      textTransform: 'uppercase'
                     }}
                   >
                     {service.title}
-                  </motion.h3>
-
-                  {/* Service Description with reveal animation */}
-                  <motion.p 
-                    className="text-brand-cream"
-                    initial={{ opacity: 0.8 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
+                  </h3>
+                  <p 
+                    className="text-cream"
                     style={{
                       fontFamily: 'var(--font-primary)',
-                      fontSize: '20px',
+                      fontSize: '16px',
                       fontWeight: 400,
-                      lineHeight: '28px',
-                      textAlign: 'justify',
-                      textTransform: 'none'
+                      lineHeight: '24px'
                     }}
                   >
                     {service.description}
-                  </motion.p>
-                </motion.div>
+                  </p>
+                </div>
+
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-gold/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.div>
             ))}
           </div>
-
         </div>
       </div>
     </section>
