@@ -787,7 +787,7 @@ const Contact: React.FC = () => {
                    formStatus === 'success' ? 'MESSAGE SENT!' :
                    formStatus === 'error' ? 'TRY AGAIN' :
                    'SEND MESSAGE'}
-                </button>
+                </motion.button>
 
                 {formStatus === 'success' && (
                   <div 
