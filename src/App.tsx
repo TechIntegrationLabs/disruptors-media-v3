@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { HelmetProvider } from 'react-helmet-async';
 import './App.css';
 import Layout from './components/layout/Layout';
 import ErrorBoundary from './components/common/ErrorBoundary';
@@ -31,9 +32,10 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className="App" style={{ background: `url('${CLOUDINARY_ASSETS.backgrounds.mainBg}') repeat` }}>
-      <LoadingCounter />
-      <ErrorBoundary>
+    <HelmetProvider>
+      <div className="App" style={{ background: `url('${CLOUDINARY_ASSETS.backgrounds.mainBg}') repeat` }}>
+        <LoadingCounter />
+        <ErrorBoundary>
         <Layout>
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
@@ -61,7 +63,8 @@ function App() {
           </AnimatePresence>
         </Layout>
       </ErrorBoundary>
-    </div>
+      </div>
+    </HelmetProvider>
   );
 }
 

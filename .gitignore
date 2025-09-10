@@ -58,3 +58,5 @@ jspm_packages/
 
 # MCP server config (contains sensitive tokens)
 .cursor/mcp.json
+# Local Netlify folder
+.netlify
