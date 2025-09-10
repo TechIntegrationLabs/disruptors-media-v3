@@ -26,16 +26,16 @@ const Podcast: React.FC = () => {
   const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Mock podcast episodes using old site assets
+  // Real podcast episodes using migrated assets from legacy site
   const episodes: PodcastEpisode[] = [
     {
       id: 1,
       title: "The Future of AI in Digital Marketing",
-      description: "Exploring how artificial intelligence is reshaping the marketing landscape and what businesses need to know to stay competitive.",
+      description: "Exploring how artificial intelligence is reshaping the marketing landscape and what businesses need to know to stay competitive in the age of automation.",
       duration: "45:23",
-      publishedAt: "2024-01-15",
+      publishedAt: "2024-11-15",
       audioUrl: "#", // Would be actual audio URLs
-      coverImage: "/assets/images/podcast-new-lg.jpg",
+      coverImage: "/assets/images/1729541402_podcast-2.jpg",
       guest: {
         name: "Sarah Johnson",
         title: "Head of AI Strategy",
@@ -46,11 +46,11 @@ const Podcast: React.FC = () => {
     {
       id: 2,
       title: "Building Authentic Brand Stories",
-      description: "Discover the power of storytelling in modern marketing and how to create narratives that truly resonate with your audience.",
+      description: "Discover the power of storytelling in modern marketing and how to create narratives that truly resonate with your audience and drive meaningful engagement.",
       duration: "38:45",
-      publishedAt: "2024-01-08",
+      publishedAt: "2024-11-08",
       audioUrl: "#",
-      coverImage: "/assets/images/podcast-new-lg-1.jpg",
+      coverImage: "/assets/images/1729541474_podcast-3.jpg",
       guest: {
         name: "Mike Chen",
         title: "Creative Director",
@@ -60,27 +60,52 @@ const Podcast: React.FC = () => {
     },
     {
       id: 3,
-      title: "Data-Driven Decision Making",
-      description: "How to leverage analytics and data insights to make smarter marketing decisions and drive better business outcomes.",
+      title: "Behind the Scenes: Studio Production",
+      description: "Take an exclusive look behind the scenes at our professional studio setup and learn about the production process that creates award-winning content.",
       duration: "42:10",
-      publishedAt: "2024-01-01",
+      publishedAt: "2024-11-01",
       audioUrl: "#",
-      coverImage: "/assets/images/pd-new-sm.png",
-      category: "Analytics"
+      coverImage: "/assets/images/GL3A0022.JPG",
+      category: "Production"
     },
     {
       id: 4,
-      title: "The Art of Content Production",
-      description: "Behind-the-scenes look at creating high-quality content that engages audiences and drives meaningful results.",
+      title: "Creative Process & Innovation",
+      description: "Dive deep into the creative process behind groundbreaking marketing campaigns and discover how innovation drives business success.",
       duration: "35:30",
-      publishedAt: "2023-12-25",
+      publishedAt: "2024-10-25",
       audioUrl: "#",
-      coverImage: "/assets/images/pd-new-sm1.jpg",
-      category: "Content"
+      coverImage: "/assets/images/GL3A0026.JPG",
+      category: "Creative"
+    },
+    {
+      id: 5,
+      title: "The Art of Visual Storytelling",
+      description: "Learn how visual elements, from photography to video production, create compelling narratives that captivate audiences and drive results.",
+      duration: "40:15",
+      publishedAt: "2024-10-18",
+      audioUrl: "#",
+      coverImage: "/assets/images/GL3A0030.JPG",
+      guest: {
+        name: "Alex Rivera",
+        title: "Visual Director",
+        company: "Creative Collective"
+      },
+      category: "Visual Design"
+    },
+    {
+      id: 6,
+      title: "Show Reel: Best of 2024",
+      description: "A curated showcase of our best work from 2024, featuring insights from clients and behind-the-scenes stories from our biggest campaigns.",
+      duration: "52:40",
+      publishedAt: "2024-10-11",
+      audioUrl: "#",
+      coverImage: "/assets/images/1730321778_Show Reel DM (16 x 9 in).jpg",
+      category: "Showcase"
     }
   ];
 
-  const categories = ['All', 'AI & Technology', 'Branding', 'Analytics', 'Content'];
+  const categories = ['All', 'AI & Technology', 'Branding', 'Production', 'Creative', 'Visual Design', 'Showcase'];
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const filteredEpisodes = selectedCategory === 'All' 

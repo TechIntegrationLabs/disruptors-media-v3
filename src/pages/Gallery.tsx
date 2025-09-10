@@ -53,28 +53,55 @@ const Gallery: React.FC = () => {
       thumbnail: '/assets/images/portfolio/case-study-4.jpg',
       category: 'work'
     },
-    // Behind the Scenes & Culture
+    // Behind the Scenes & Culture - Real Studio Photos from Legacy Site
     {
       id: 5,
-      title: 'Technology Meets Humanity',
+      title: 'Professional Studio Setup',
       type: 'image',
-      src: '/assets/images/hand-robot.png',
-      thumbnail: '/assets/images/hand-robot.png',
-      category: 'culture',
-      description: 'Our core philosophy: bridging technology and human connection'
+      src: '/assets/images/GL3A0022.JPG',
+      thumbnail: '/assets/images/GL3A0022.JPG',
+      category: 'behind-scenes',
+      description: 'Behind the scenes of our professional studio production process'
     },
     {
       id: 6,
-      title: 'Human Touch in Digital World',
+      title: 'Creative Production Environment',
       type: 'image',
-      src: '/assets/images/hand-human.png',
-      thumbnail: '/assets/images/hand-human.png',
-      category: 'culture',
-      description: 'Every digital solution starts with human insight'
+      src: '/assets/images/GL3A0026.JPG',
+      thumbnail: '/assets/images/GL3A0026.JPG',
+      category: 'behind-scenes',
+      description: 'Our creative team at work in the studio environment'
     },
-    // Studio Work
     {
       id: 7,
+      title: 'Studio Equipment & Setup',
+      type: 'image',
+      src: '/assets/images/GL3A0030.JPG',
+      thumbnail: '/assets/images/GL3A0030.JPG',
+      category: 'behind-scenes',
+      description: 'Professional grade equipment and lighting setup'
+    },
+    {
+      id: 8,
+      title: 'Production Workflow',
+      type: 'image',
+      src: '/assets/images/GL3A0042.JPG',
+      thumbnail: '/assets/images/GL3A0042.JPG',
+      category: 'behind-scenes',
+      description: 'Capturing the magic of content creation in real-time'
+    },
+    {
+      id: 9,
+      title: 'Recent Studio Session',
+      type: 'image',
+      src: '/assets/images/Photo Nov 15 2024, 3 36 11 PM.jpg',
+      thumbnail: '/assets/images/Photo Nov 15 2024, 3 36 11 PM.jpg',
+      category: 'behind-scenes',
+      description: 'Latest studio session captured in November 2024'
+    },
+    // Studio Work & Content
+    {
+      id: 10,
       title: 'Service Framework',
       type: 'image',
       src: '/assets/images/services/what-we-do-abt.png',
@@ -83,16 +110,43 @@ const Gallery: React.FC = () => {
       description: 'Our comprehensive service methodology'
     },
     {
-      id: 8,
+      id: 11,
       title: 'Studio Overview',
       type: 'image',
       src: '/assets/images/services/services-img.png',
       thumbnail: '/assets/images/services/services-img.png',
       category: 'studio'
     },
+    {
+      id: 12,
+      title: 'Podcast Production - Episode 2',
+      type: 'image',
+      src: '/assets/images/1729541402_podcast-2.jpg',
+      thumbnail: '/assets/images/1729541402_podcast-2.jpg',
+      category: 'studio',
+      description: 'Professional podcast episode production setup'
+    },
+    {
+      id: 13,
+      title: 'Podcast Production - Episode 3',
+      type: 'image',
+      src: '/assets/images/1729541474_podcast-3.jpg',
+      thumbnail: '/assets/images/1729541474_podcast-3.jpg',
+      category: 'studio',
+      description: 'Behind the scenes of podcast episode recording'
+    },
+    {
+      id: 14,
+      title: 'Show Reel 2024',
+      type: 'image',
+      src: '/assets/images/1730321778_Show Reel DM (16 x 9 in).jpg',
+      thumbnail: '/assets/images/1730321778_Show Reel DM (16 x 9 in).jpg',
+      category: 'work',
+      description: 'Our 2024 show reel highlighting best work and achievements'
+    },
     // More Portfolio Items
     ...Array.from({ length: 6 }, (_, i) => ({
-      id: 9 + i,
+      id: 15 + i,
       title: `Work ${i + 1}`,
       type: 'image' as const,
       src: `/assets/images/portfolio/work-${i + 1}.jpg`,

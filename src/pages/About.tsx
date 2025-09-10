@@ -470,6 +470,46 @@ const About: React.FC = () => {
           </button>
         </div>
       </section>
+
+      {/* Company Logo Section - Added from Legacy Site */}
+      <section className="w-full py-16 bg-white">
+        <div className="container-custom">
+          <div className="text-center">
+            <h3 
+              className="text-brand-charcoal mb-8"
+              style={{
+                fontFamily: 'var(--font-secondary)',
+                fontSize: '39px',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                marginBottom: '30px'
+              }}
+            >
+              DISRUPTING THE STATUS QUO
+            </h3>
+            <div className="flex justify-center mb-8">
+              <img 
+                src="/assets/images/Disrupting.png" 
+                alt="Disrupting Logo" 
+                className="max-w-xs h-auto"
+                style={{ maxWidth: '300px' }}
+              />
+            </div>
+            <p 
+              className="text-brand-charcoal max-w-3xl mx-auto"
+              style={{
+                fontFamily: 'var(--font-primary)',
+                fontSize: '18px',
+                fontWeight: 400,
+                lineHeight: '28px',
+                textAlign: 'center'
+              }}
+            >
+              We don't just follow trends – we create them. Our mission is to disrupt traditional marketing approaches with innovative solutions that deliver exceptional results for forward-thinking brands.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
