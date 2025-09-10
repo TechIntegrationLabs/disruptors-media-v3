@@ -3,8 +3,9 @@
   command = "npm install && npm run build"
   
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
   CI = "false"
+  NODE_ENV = "production"
 
 [[redirects]]
   from = "/*"
