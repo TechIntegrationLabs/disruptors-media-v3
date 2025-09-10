@@ -3,7 +3,7 @@
   command = "CI=false NODE_OPTIONS='--max-old-space-size=8192' npm run build"
   
 [build.environment]
-  NODE_VERSION = "24"
+  NODE_VERSION = "20"
   GENERATE_SOURCEMAP = "false"
   NODE_OPTIONS = "--max-old-space-size=8192"
   SKIP_PREFLIGHT_CHECK = "true"
