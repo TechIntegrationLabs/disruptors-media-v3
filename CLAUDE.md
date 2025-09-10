@@ -14,9 +14,9 @@ npm run preview     # Preview production build (requires `npm install -g serve`)
 npm run dev         # Alias for npm start
 ```
 
-### Specialized Workflows
+### Automated Development Workflows
 ```bash
-npm run auto-commit         # Automated git commits with message generation
+npm run auto-commit         # Automated git commits with AI-generated messages
 npm run auto-commit:watch   # Watch mode for automatic commits
 npm run auto-commit:status  # Check auto-commit system status
 npm run dev:auto           # Development server with auto-commit enabled
@@ -35,6 +35,7 @@ npm run clients:backup     # Backup client data from Google Sheets
 npm test -- --testNamePattern="specific test name"  # Run specific test by name
 npm test -- path/to/test.test.tsx                  # Run specific test file
 npm test -- --coverage                             # Run with coverage report
+npm test -- --watch                               # Watch mode for test files
 ```
 
 ### Type Checking
@@ -45,35 +46,46 @@ npx tsc --noEmit    # Check types without building
 ## Architecture
 
 ### Technology Stack
-- **React 19.1.1** with TypeScript 4.9.5
+- **React 18.2.0** with TypeScript 4.9.5
 - **React Router DOM 7.8.2** for client-side routing
 - **Framer Motion 12.23.12** + **GSAP 3.13.0** for animations
-- **Tailwind CSS 3.4.17** with custom design tokens in `tailwind.config.js`
+- **Tailwind CSS 3.4.17** with PRD-compliant design system
 - **Cloudinary** (cloud name: dvcvxhzmt) for asset management
 - **React Hook Form 7.62.0** + **Yup 1.7.0** for form handling
-- **Google Generative AI** integration for automated content workflows
+- **Google Generative AI** + **OpenAI** for AI-powered features
+- **Axios 1.7.2** for HTTP requests
+- **React Helmet Async 2.0.5** for SEO management
 
 ### Project Structure
 ```
 src/
 ├── components/
 │   ├── layout/         # Header, Footer, Layout wrapper
-│   ├── sections/       # Reusable page sections (Hero, Testimonials, etc.)
-│   ├── common/         # Shared components (SEO, ErrorBoundary, Chat)
+│   ├── sections/       # Reusable page sections (20+ components)
+│   ├── common/         # Shared components (SEO, ErrorBoundary, Chat, PageTransition)
 │   └── animations/     # Animation components (ScrambleText, LoadingCounter)
 ├── pages/
 │   ├── services/       # Service-specific pages
 │   └── [pages].tsx     # Route-level components
-├── data/               # Static data files
+├── data/               # Static data files and client information
 └── App.tsx            # Main router configuration
+```
+
+### Environment Configuration
+Required environment variables:
+```bash
+REACT_APP_API_URL              # API endpoint
+REACT_APP_OPENAI_API_KEY       # OpenAI integration
+REACT_APP_GOOGLE_SHEETS_API_KEY # Google Sheets client sync
+REACT_APP_GOOGLE_SHEETS_CLIENT_ID
+REACT_APP_CLOUDINARY_CLOUD_NAME # Cloudinary asset management
 ```
 
 ### Routing Pattern
 All routes are defined in `src/App.tsx`. The application uses a Layout wrapper that provides consistent Header and Footer across all pages. Routes include nested service pages under `/services/` and dynamic routes for blog posts (`/blog/:slug`) and case studies (`/case-study/:id`).
 
 ### Navigation System
-The Header component (`src/components/layout/Header.tsx`) implements a dropdown navigation system with TypeScript interfaces:
-
+The Header component implements a dropdown navigation system with TypeScript interfaces:
 ```typescript
 interface NavigationItem {
   name: string;
@@ -82,25 +94,31 @@ interface NavigationItem {
 }
 ```
 
-Dropdowns are implemented for Services and Tools sections with click-outside handlers and mobile-responsive accordion behavior.
-
 ### Asset Management Strategy
-- **Studio Photography**: Use documented Cloudinary assets from `/photos/studio/`
-- **Service Illustrations**: Professional Unsplash stock images with optimization
-- **URL Pattern**: `https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto,w_[width],h_[height]/[path]`
-- **Stock Images**: Use Unsplash with parameters like `?w=600&h=400&fit=crop&crop=center`
+- **Cloudinary Integration**: All images served via Cloudinary CDN
+- **Optimization Pattern**: `f_auto,q_auto,w_[width],h_[height]`
+- **Responsive Images**: Use srcSet and sizes attributes
+- **Local fallbacks**: Public folder contains backup assets
 
 ### Animation Patterns
-The application uses Framer Motion for animations with standard patterns:
-- Fade-in with upward motion: `initial={{ opacity: 0, y: 20 }}` 
-- Stagger children animations for lists
-- Custom animations defined in `tailwind.config.js` (scramble-text, loading-counter)
+Framer Motion animations follow consistent patterns:
+```typescript
+// Standard fade-in animation
+initial={{ opacity: 0, y: 20 }}
+animate={{ opacity: 1, y: 0 }}
+transition={{ duration: 0.6 }}
 
-### Form Handling
-Forms use React Hook Form with Yup validation. Pattern:
+// GSAP for complex timeline animations
+gsap.timeline()
+  .to(element, { duration: 1, x: 100 })
+  .to(element, { duration: 0.5, opacity: 0 })
+```
+
+### Form Handling Pattern
 ```typescript
 const schema = yup.object({
   email: yup.string().email().required(),
+  name: yup.string().required()
 });
 
 const { register, handleSubmit, formState: { errors } } = useForm({
@@ -108,75 +126,77 @@ const { register, handleSubmit, formState: { errors } } = useForm({
 });
 ```
 
-### Design System
-- **Primary Colors**: Gold (#FFD700), Dark (#2B2B2B), Cream (#F1EDE9)
-- **Typography**: Inter for body, OT Neue Montreal for headlines, PP Supply Mono for tech elements
-- **Spacing**: Standard Tailwind with custom extensions (88: 22rem, 128: 32rem)
+### Design System (PRD-Compliant)
+- **Primary Colors**: 
+  - brand-charcoal: #222222
+  - brand-cream: #FAFAFA
+  - warm-beige: #F5F5DC
+  - accent-gold: #FFD700
+- **Typography**: 
+  - Headlines: OT Neue Montreal
+  - Body: Inter
+  - Monospace: PP Supply Mono
+- **Spacing**: Extended scale up to 128 (32rem)
 
 ## Key Implementation Details
 
 ### TypeScript Configuration
-Strict mode is enabled in `tsconfig.json` with target ES5 for compatibility. All components should use proper TypeScript interfaces for props.
+- Target: ES2015 with DOM libraries
+- Strict mode enabled with additional type checking
+- Absolute imports from `src/` directory
+- JSX: react-jsx
+
+### Auto-Commit System
+The project includes an intelligent auto-commit agent (`scripts/auto-commit.js`) that:
+- Monitors file changes and categorizes them
+- Generates contextual commit messages using AI
+- Automatically stages, commits, and pushes changes
+- Maintains detailed activity logs
+- Configurable thresholds for major/minor changes
+
+### MCP Server Integrations
+Extensive MCP server configuration in `mcp-servers.json` for:
+- **Deployment**: Vercel integration
+- **AI Services**: Firecrawl, DataForSEO, Cloudinary AI
+- **Automation**: n8n workflows, GoHighLevel CRM
+- **Content Creation**: Nano Banana, Dumpling AI
+- **Web Scraping**: Puppeteer, Playwright
+- **Data Access**: Filesystem, memory persistence
 
 ### Performance Optimizations
-- Code splitting enabled via React.lazy() and Suspense
-- Images use responsive loading with Cloudinary transformations
-- PWA manifest configured for offline capabilities
-- Tailwind CSS purging removes unused styles in production
+- Code splitting via React.lazy() and Suspense
+- Cloudinary automatic format selection and quality optimization
+- Tailwind CSS purging in production builds
+- Web Vitals monitoring integration
+- Netlify edge caching and compression
 
-### Error Handling
-The application uses an ErrorBoundary component wrapping all routes. Individual pages should handle their own loading and error states appropriately.
+### Build and Deployment
+- **Netlify Configuration**: Custom headers, redirects, and build settings
+- **Node Version**: 18.x required for builds
+- **Build Command**: `npm run build`
+- **Publish Directory**: `build/`
+- **Environment Variables**: Managed via Netlify dashboard
 
-### State Management
-The application currently uses React's built-in state management. Complex state is managed at the page level and passed down through props.
+### Testing Strategy
+- Jest with Create React App configuration
+- React Testing Library for component tests
+- Coverage reporting with `--coverage` flag
+- No custom Jest configuration needed
 
-## Repository Documentation System
+### Client Data Integration
+The project syncs client information from Google Sheets:
+- `scripts/sync-client-data.js` handles synchronization
+- Data stored in `src/data/clients.json`
+- Automatic validation and backup capabilities
+- Integration with portfolio and testimonial components
 
-This repository uses a comprehensive CLAUDE.md documentation system to provide detailed guidance for each major directory. Each folder contains specialized documentation for working with its components and systems.
+## Specialized Documentation
 
-### Folder-Specific Documentation
+The repository contains specialized CLAUDE.md files in subdirectories:
+- `/src/CLAUDE.md` - Component architecture details
+- `/docs/CLAUDE.md` - Documentation ecosystem overview
+- `/public/CLAUDE.md` - Asset management guidelines
+- `/todo/CLAUDE.md` - Project status and roadmap
+- `/scripts/CLAUDE.md` - Automation tools documentation
 
-**Source Code Structure (`/src/CLAUDE.md`)**
-- Component architecture with 20+ sections and animations
-- Pages and routing system documentation
-- Data management and Google Sheets integration
-- TypeScript patterns and development workflows
-- Asset management and performance optimization
-
-**Documentation System (`/docs/CLAUDE.md`)**
-- Comprehensive documentation ecosystem overview
-- Project specifications and technical requirements
-- Asset management guides and migration strategies
-- Legacy content archive and brand guidelines
-- Documentation workflows and maintenance procedures
-
-**Public Assets Management (`/public/CLAUDE.md`)**
-- Static asset organization and optimization strategies  
-- Image library with categorized asset structure
-- PWA configuration and SEO management
-- Custom typography system and font integration
-- Asset performance standards and quality guidelines
-
-**Project Management System (`/todo/CLAUDE.md`)**
-- Project status tracking (70% completion metrics)
-- Development roadmap and sprint planning
-- Technical architecture summaries and system overviews
-- Animation implementation guides and best practices
-- Quality assurance processes and launch readiness
-
-**Automation & Scripts System (`/scripts/CLAUDE.md`)**
-- Intelligent Git commit automation with AI-generated messages
-- Content generation tools and AI-powered image creation
-- Development workflow automation and process management
-- Security best practices and performance optimization
-- Script monitoring, debugging, and health checks
-
-### Core Project Documentation
-
-Comprehensive project documentation is also available in the `/docs/` folder:
-- `SESSION_SUMMARY_DECEMBER_2024.md` - Recent implementation details
-- `TODO_ROADMAP.md` - Development priorities and timeline
-- `CLOUDINARY_ASSETS_DOCUMENTATION.md` - Asset inventory and optimization patterns
-- `PROJECT_OVERVIEW.md` - Business context and objectives
-- `DM3_STATIC_PRD.md` - Complete product requirements document
-- `TECHNICAL_ARCHITECTURE_SUMMARY.md` - System architecture overview
+Each provides domain-specific guidance for working within that directory.
