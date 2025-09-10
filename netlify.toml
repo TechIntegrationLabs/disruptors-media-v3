@@ -1,12 +1,10 @@
 [build]
   publish = "build"
-  command = "npm install --legacy-peer-deps && npm run build"
+  command = "npm ci && npm run build"
   
 [build.environment]
-  NODE_VERSION = "18"
-  GENERATE_SOURCEMAP = "false"
-  NODE_OPTIONS = "--max-old-space-size=8192"
-  SKIP_PREFLIGHT_CHECK = "true"
+  NODE_VERSION = "16"
+  CI = "false"
 
 [[redirects]]
   from = "/*"
