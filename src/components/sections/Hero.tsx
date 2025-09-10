@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
-import { useHeroAnimations } from '../../hooks/useScrollAnimations';
-import ScrambleText from '../animations/ScrambleText';
-import MagneticCursor from '../animations/MagneticCursor';
+// import { useHeroAnimations } from '../../hooks/useScrollAnimations';
+// import ScrambleText from '../animations/ScrambleText';
+// import MagneticCursor from '../animations/MagneticCursor';
 import { CLOUDINARY_ASSETS, getVideoSources } from '../../constants/cloudinaryAssets';
 
 const Hero: React.FC = () => {
-  const heroRef = useHeroAnimations();
+  // const heroRef = useHeroAnimations();
+  const heroRef = React.useRef<HTMLDivElement>(null);
   
   // Debug: Log when component mounts
   console.log('Hero component mounted with GSAP animations');

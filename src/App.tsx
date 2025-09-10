@@ -7,7 +7,7 @@ import Layout from './components/layout/Layout';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import PageTransition from './components/common/PageTransition';
 import { CLOUDINARY_ASSETS } from './constants/cloudinaryAssets';
-import LoadingCounter from './components/animations/LoadingCounter';
+// import LoadingCounter from './components/animations/LoadingCounter';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -34,7 +34,7 @@ function App() {
   return (
     <HelmetProvider>
       <div className="App" style={{ background: `url('${CLOUDINARY_ASSETS.backgrounds.mainBg}') repeat` }}>
-        <LoadingCounter />
+        {/* <LoadingCounter /> */}
         <ErrorBoundary>
         <Layout>
           <AnimatePresence mode="wait">
