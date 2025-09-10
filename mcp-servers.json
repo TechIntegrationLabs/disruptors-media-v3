@@ -1,0 +1,207 @@
+{
+  "mcpServers": {
+    "vercel": {
+      "url": "https://mcp.vercel.com/will-4496s-projects/public"
+    },
+    "MCP_DOCKER": {
+      "command": "docker",
+      "args": [
+        "mcp",
+        "gateway",
+        "run"
+      ]
+    },
+    "firecrawl": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "firecrawl-mcp"
+      ],
+      "env": {
+        "FIRECRAWL_API_KEY": "fc-d10185109a594cc98618d28aad99c231"
+      }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest",
+        "--caps=pdf"
+      ]
+    },
+    "dataforseo": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "dataforseo-mcp-server"
+      ],
+      "env": {
+        "DATAFORSEO_USERNAME": "will@disruptorsmedia.com",
+        "DATAFORSEO_PASSWORD": "e1ea5e75ba659fe8"
+      }
+    },
+    "n8n-mcp": {
+      "command": "node",
+      "args": [
+        "/Users/disruptors/n8n-mcp/dist/mcp/index.js"
+      ],
+      "env": {
+        "NODE_ENV": "production",
+        "LOG_LEVEL": "error",
+        "MCP_MODE": "stdio",
+        "DISABLE_CONSOLE_OUTPUT": "true",
+        "N8N_API_URL": "https://willdisrupt.app.n8n.cloud/api/v1",
+        "N8N_API_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyOGJmN2MwMi1jYzI5LTQ3ZWMtYjlkYS1kODllN2FjYjk3NjAiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwiaWF0IjoxNzU0MTk2NDUxfQ._okSQBBk6OlLnVsAzUPnwSmd0QrPUHvaWNAuUku-1_w"
+      }
+    },
+    "gohighlevel": {
+      "command": "node",
+      "args": [
+        "/Users/disruptors/gohighlevel-mcp-repo/dist/server.js"
+      ],
+      "env": {
+        "GHL_API_KEY": "pit-3b7ddf94-4e92-4e76-b842-331f276b525c",
+        "GHL_BASE_URL": "https://services.leadconnectorhq.com",
+        "GHL_LOCATION_ID": "1DrJ590uuFroxuiy2iME",
+        "NODE_ENV": "production"
+      }
+    },
+    "cloudinary": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@felores/cloudinary-mcp-server@latest"
+      ],
+      "env": {
+        "CLOUDINARY_CLOUD_NAME": "dvcvxhzmt",
+        "CLOUDINARY_API_KEY": "935251962635945",
+        "CLOUDINARY_API_SECRET": "CNppaSbbi3IevxjuRvg5-8CKCds"
+      }
+    },
+    "memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory@latest"
+      ]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "@modelcontextprotocol/server-filesystem@latest",
+        "/Users/disruptors/Documents/ProjectsD"
+      ]
+    },
+    "fetch": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-fetch@latest"
+      ]
+    },
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github@latest"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "your_github_personal_access_token_here"
+      }
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking@latest"
+      ]
+    },
+    "google-drive": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-gdrive@latest"
+      ],
+      "env": {
+        "GDRIVE_SERVICE_ACCOUNT_KEY_JSON": ""
+      }
+    },
+    "wordpress": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@automattic/wordpress-mcp@latest"
+      ],
+      "env": {
+        "WORDPRESS_URL": "",
+        "WORDPRESS_USERNAME": "",
+        "WORDPRESS_PASSWORD": ""
+      }
+    },
+    "netlify": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@netlify/mcp@latest"
+      ],
+      "env": {
+        "NETLIFY_AUTH_TOKEN": "nfp_MLwjLNbFh8cHfP6Bdoy4fTmBaUP5EPEi61d7"
+      }
+    },
+    "digitalocean": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@digitalocean/mcp",
+        "--services",
+        "apps,databases,droplets"
+      ],
+      "env": {
+        "DIGITALOCEAN_API_TOKEN": "your_digitalocean_api_token_here"
+      }
+    },
+    "apify-modern": {
+      "url": "https://mcp.apify.com"
+    },
+    "nano-banana": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@GuilhermeAumo/mcp-nano-banana@latest"
+      ],
+      "env": {
+        "GOOGLE_API_KEY": ""
+      }
+    },
+    "dumpling-ai": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@Dumpling-AI/mcp-server-dumplingai@latest"
+      ],
+      "env": {
+        "DUMPLING_AI_API_KEY": ""
+      }
+    },
+    "content-creation": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@preangelleo/content-creation-mcp@latest"
+      ],
+      "env": {
+        "GHOST_ADMIN_API_KEY": "",
+        "GHOST_API_URL": "",
+        "GOOGLE_API_KEY": "",
+        "REPLICATE_API_TOKEN": ""
+      }
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "puppeteer-mcp-claude"
+      ]
+    }
+  }
+}
