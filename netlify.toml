@@ -1,9 +1,9 @@
 [build]
   publish = "build"
-  command = "rm -rf node_modules package-lock.json && npm install --legacy-peer-deps && CI=false NODE_OPTIONS='--max-old-space-size=8192' npm run build"
+  command = "npm install && npm run build"
   
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "18"
   GENERATE_SOURCEMAP = "false"
   NODE_OPTIONS = "--max-old-space-size=8192"
   SKIP_PREFLIGHT_CHECK = "true"
