@@ -1,6 +1,6 @@
 [build]
   publish = "build"
-  command = "CI=false NODE_OPTIONS='--max-old-space-size=8192' npm run build"
+  command = "npm ci --verbose && CI=false NODE_OPTIONS='--max-old-space-size=8192' npm run build"
   
 [build.environment]
   NODE_VERSION = "20"
