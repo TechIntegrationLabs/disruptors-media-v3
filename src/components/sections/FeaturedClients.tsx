@@ -44,18 +44,18 @@ const FeaturedClients: React.FC = () => {
           {/* Duplicate the clients array for seamless infinite scroll */}
           {[...sampleClients, ...sampleClients].map((client, index) => (
             <div
-              key={`${client.id}-${index}`}
+              key={`${client.clientId}-${index}`}
               className="flex-shrink-0 group cursor-pointer"
               style={{ width: '200px', height: '120px' }}
-              onMouseEnter={() => setHoveredClient(client.id)}
+              onMouseEnter={() => setHoveredClient(client.clientId)}
               onMouseLeave={() => setHoveredClient(null)}
             >
               <div className="w-full h-full flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
                 <img
-                  src={client.logo}
-                  alt={client.name}
+                  src={client.logoUrl}
+                  alt={client.companyName}
                   className={`max-w-full max-h-full object-contain transition-all duration-500 ${
-                    hoveredClient === client.id 
+                    hoveredClient === client.clientId 
                       ? 'grayscale-0 scale-110' 
                       : 'grayscale hover:grayscale-0'
                   }`}
@@ -67,7 +67,7 @@ const FeaturedClients: React.FC = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes scroll {
           0% {
             transform: translateX(0);

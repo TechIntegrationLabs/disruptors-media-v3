@@ -1,0 +1,135 @@
+{
+  "subagents": {
+    "component-architect": {
+      "enabled": true,
+      "triggers": [
+        "file_created:src/components/**/*.tsx",
+        "file_modified:src/components/**/*.tsx",
+        "keyword:component",
+        "keyword:typescript"
+      ],
+      "tools": ["Read", "Edit", "MultiEdit", "Grep", "Glob"],
+      "description": "Manages component architecture, TypeScript patterns, and React best practices",
+      "autoRun": true,
+      "priority": "high"
+    },
+    "cloudinary-optimizer": {
+      "enabled": true,
+      "triggers": [
+        "file_created:src/**/*.tsx",
+        "file_modified:src/**/*.tsx",
+        "keyword:cloudinary",
+        "keyword:image",
+        "keyword:asset"
+      ],
+      "tools": ["Read", "Edit", "MultiEdit", "Grep", "Glob", "WebFetch"],
+      "description": "Optimizes Cloudinary asset URLs and manages image loading patterns",
+      "autoRun": true,
+      "priority": "medium"
+    },
+    "auto-commit-manager": {
+      "enabled": true,
+      "triggers": [
+        "file_modified:**/*",
+        "interval:300000",
+        "keyword:commit",
+        "keyword:git"
+      ],
+      "tools": ["Bash", "Read", "Grep"],
+      "description": "Manages intelligent git commits and repository automation",
+      "autoRun": true,
+      "priority": "low"
+    },
+    "gsap-animation-expert": {
+      "enabled": true,
+      "triggers": [
+        "file_created:src/components/animations/**/*.tsx",
+        "file_modified:src/components/animations/**/*.tsx",
+        "keyword:gsap",
+        "keyword:timeline",
+        "keyword:animation"
+      ],
+      "tools": ["Read", "Edit", "MultiEdit", "Grep", "Glob"],
+      "description": "Specializes in GSAP animations, timelines, and performance optimization",
+      "autoRun": true,
+      "priority": "high"
+    },
+    "framer-motion-specialist": {
+      "enabled": true,
+      "triggers": [
+        "file_created:src/**/*.tsx",
+        "file_modified:src/**/*.tsx",
+        "keyword:motion",
+        "keyword:framer",
+        "keyword:animate"
+      ],
+      "tools": ["Read", "Edit", "MultiEdit", "Grep", "Glob"],
+      "description": "Handles Framer Motion component animations and transitions",
+      "autoRun": true,
+      "priority": "medium"
+    },
+    "content-generator": {
+      "enabled": true,
+      "triggers": [
+        "file_created:src/data/**/*.ts",
+        "file_modified:src/data/**/*.ts",
+        "keyword:content",
+        "keyword:blog",
+        "keyword:generate"
+      ],
+      "tools": ["Read", "Write", "Edit", "Bash", "WebFetch"],
+      "description": "Automates content generation using AI and manages data integration",
+      "autoRun": false,
+      "priority": "medium"
+    },
+    "form-integration-expert": {
+      "enabled": true,
+      "triggers": [
+        "file_created:src/components/**/*form*.tsx",
+        "file_modified:src/components/**/*form*.tsx",
+        "keyword:form",
+        "keyword:submit",
+        "keyword:validation"
+      ],
+      "tools": ["Read", "Edit", "MultiEdit", "Bash", "WebFetch"],
+      "description": "Handles form backend integration, validation, and submission workflows",
+      "autoRun": true,
+      "priority": "critical"
+    },
+    "performance-auditor": {
+      "enabled": true,
+      "triggers": [
+        "interval:3600000",
+        "keyword:performance",
+        "keyword:optimize",
+        "keyword:lighthouse"
+      ],
+      "tools": ["Bash", "Read", "Grep", "Glob"],
+      "description": "Performs automated performance audits and optimization suggestions",
+      "autoRun": true,
+      "priority": "medium"
+    },
+    "seo-optimizer": {
+      "enabled": true,
+      "triggers": [
+        "file_created:src/pages/**/*.tsx",
+        "file_modified:src/pages/**/*.tsx",
+        "keyword:seo",
+        "keyword:meta",
+        "keyword:structured"
+      ],
+      "tools": ["Read", "Edit", "MultiEdit", "Grep", "Glob"],
+      "description": "Optimizes SEO implementation, meta tags, and structured data",
+      "autoRun": true,
+      "priority": "high"
+    }
+  },
+  "global": {
+    "logLevel": "info",
+    "maxConcurrentAgents": 3,
+    "triggerDelay": 1000,
+    "enableKeywordTriggers": true,
+    "enableFileTriggers": true,
+    "enableIntervalTriggers": true
+  }
+}
