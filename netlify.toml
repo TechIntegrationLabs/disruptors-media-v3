@@ -1,9 +1,9 @@
 [build]
   publish = "build"
-  command = "npm install && npm run build"
+  command = "npm ci --legacy-peer-deps && npm run build"
   
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "18"
   CI = "false"
   NODE_ENV = "production"
 
