@@ -1,6 +1,6 @@
 // Real blog content based on Disruptors Media expertise
 export interface BlogPost {
-  id: string;
+  id: string | number;
   title: string;
   excerpt: string;
   category: string;
@@ -8,9 +8,12 @@ export interface BlogPost {
   image: string;
   slug: string;
   author: string;
-  readTime: number;
+  readTime: number | string;
   tags: string[];
   featured: boolean;
+  content?: string; // Optional content field for Google Docs URL
+  postUrl?: string; // Optional post URL field
+  primaryKeyword?: string; // Optional keyword field
 }
 
 export const blogPosts: BlogPost[] = [
@@ -23,7 +26,7 @@ export const blogPosts: BlogPost[] = [
     image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto/v1/blog/bruce-leeroy-case-study.jpg',
     slug: 'mma-fighter-viral-content-strategy',
     author: 'Tyler Gordon',
-    readTime: 8,
+    readTime: '8',
     tags: ['Social Media', 'Content Strategy', 'Sports Marketing', 'Viral Marketing'],
     featured: true
   },
@@ -36,7 +39,7 @@ export const blogPosts: BlogPost[] = [
     image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto/v1/blog/desjardins-transformation.jpg',
     slug: 'luxury-food-brand-digital-transformation',
     author: 'Moe',
-    readTime: 12,
+    readTime: '12',
     tags: ['B2B Marketing', 'Brand Development', 'Revenue Growth', 'Digital Strategy'],
     featured: true
   },
@@ -49,7 +52,7 @@ export const blogPosts: BlogPost[] = [
     image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto/v1/blog/podcast-production-guide.jpg',
     slug: 'professional-podcast-production-guide-2024',
     author: 'Carson Ireland',
-    readTime: 15,
+    readTime: '15',
     tags: ['Podcast Production', 'Audio Engineering', 'Studio Setup', 'Content Creation'],
     featured: false
   },
@@ -62,7 +65,7 @@ export const blogPosts: BlogPost[] = [
     image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto/v1/blog/wellness-marketing.jpg',
     slug: 'traditional-wellness-modern-marketing',
     author: 'Tyler Gordon',
-    readTime: 10,
+    readTime: '10',
     tags: ['Healthcare Marketing', 'Traditional Business', 'Digital Transformation', 'Local Marketing'],
     featured: false
   },
@@ -75,7 +78,7 @@ export const blogPosts: BlogPost[] = [
     image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto/v1/blog/community-podcast-strategy.jpg',
     slug: 'building-community-through-podcasting',
     author: 'Bailey Latimer',
-    readTime: 7,
+    readTime: '7',
     tags: ['Podcast Marketing', 'Brand Identity', 'Community Building', 'Mission-Driven Marketing'],
     featured: false
   },
@@ -88,7 +91,7 @@ export const blogPosts: BlogPost[] = [
     image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto/v1/blog/e-district-success.jpg',
     slug: 'commercial-real-estate-marketing-transformation',
     author: 'Carson Ireland',
-    readTime: 9,
+    readTime: '9',
     tags: ['Real Estate Marketing', 'Commercial Properties', 'Revenue Growth', 'Innovative Marketing'],
     featured: false
   },
@@ -101,7 +104,7 @@ export const blogPosts: BlogPost[] = [
     image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto/v1/blog/fashion-ecommerce-launch.jpg',
     slug: 'fashion-brand-ecommerce-launch-strategy',
     author: 'Bailey Latimer',
-    readTime: 11,
+    readTime: '11',
     tags: ['E-commerce', 'Fashion Marketing', 'Brand Launch', 'Conversion Optimization'],
     featured: true
   },
@@ -114,7 +117,7 @@ export const blogPosts: BlogPost[] = [
     image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto/v1/blog/high-profile-podcast-guests.jpg',
     slug: 'attract-high-profile-podcast-guests-strategy',
     author: 'Tyler Gordon',
-    readTime: 13,
+    readTime: '13',
     tags: ['Podcast Growth', 'Guest Booking', 'Audience Building', 'Content Strategy'],
     featured: false
   },
@@ -127,7 +130,7 @@ export const blogPosts: BlogPost[] = [
     image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto/v1/blog/digital-marketing-evolution.jpg',
     slug: 'digital-marketing-evolution-12-years',
     author: 'Moe',
-    readTime: 16,
+    readTime: '16',
     tags: ['Digital Marketing', 'Industry Evolution', 'Business Growth', 'Marketing Trends'],
     featured: false
   },
@@ -140,7 +143,7 @@ export const blogPosts: BlogPost[] = [
     image: 'https://res.cloudinary.com/dvcvxhzmt/image/upload/f_auto,q_auto/v1/blog/studio-behind-scenes.jpg',
     slug: 'north-salt-lake-studio-setup-location',
     author: 'Carson Ireland',
-    readTime: 6,
+    readTime: '6',
     tags: ['Studio Production', 'Behind the Scenes', 'Location Strategy', 'Equipment'],
     featured: false
   }

@@ -9,7 +9,7 @@ import {
   ArrowLeftIcon,
   ShareIcon,
   ArrowRightIcon,
-  ExternalLinkIcon
+  ArrowTopRightOnSquareIcon
 } from '@heroicons/react/24/outline';
 import { blogPosts as staticBlogPosts } from '../data/blog';
 import { fetchBlogPostsFromSheet } from '../services/googleSheetsService';
@@ -238,7 +238,7 @@ const BlogPost: React.FC = () => {
                 {post.content && post.content.includes('docs.google.com') && (
                   <div className="bg-dark p-6 rounded-lg my-8 border border-gold/20">
                     <div className="flex items-center mb-4">
-                      <ExternalLinkIcon className="h-5 w-5 text-gold mr-2" />
+                      <ArrowTopRightOnSquareIcon className="h-5 w-5 text-gold mr-2" />
                       <h3 className="text-lg font-bold text-gold">Read Full Article</h3>
                     </div>
                     <p className="text-gray-300 mb-4">
@@ -251,7 +251,7 @@ const BlogPost: React.FC = () => {
                       className="btn-primary inline-flex items-center"
                     >
                       Open Full Article
-                      <ExternalLinkIcon className="h-4 w-4 ml-2" />
+                      <ArrowTopRightOnSquareIcon className="h-4 w-4 ml-2" />
                     </a>
                   </div>
                 )}

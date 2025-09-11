@@ -1,11 +1,11 @@
 // Google Sheets API Service for DM3 Blog Integration
 // This service fetches blog posts from Google Sheets and filters by post date
 
-const SHEET_ID = '1KWGeHUOjKtYINSqeneEF8U9hKjEs3U1UTUPaff6OWpA'; // Blog Content Sheet ID
+const SHEET_ID = process.env.REACT_APP_BLOG_GOOGLE_SHEET_ID || '1KWGeHUOjKtYINSqeneEF8U9hKjEs3U1UTUPaff6OWpA'; // Blog Content Sheet ID
 const SHEET_GID = '0'; // Content tab (gid 0)
 const SHEET_NAME = 'Content'; // Content sheet name
 const API_KEY = process.env.REACT_APP_GOOGLE_SHEETS_API_KEY || '';
-const RANGE = 'A1:Z100'; // Adjust based on your data range
+const RANGE = process.env.REACT_APP_BLOG_GOOGLE_SHEET_RANGE || 'A1:Z100'; // Adjust based on your data range
 
 export const fetchBlogPostsFromSheet = async () => {
   try {
@@ -94,7 +94,9 @@ export const fetchBlogPostsFromSheet = async () => {
           readTime: calculateReadTime(excerpt),
           content: contentUrl, // Store the Google Docs link
           postUrl: contentUrl,
-          primaryKeyword: primaryKeyword
+          primaryKeyword: primaryKeyword,
+          tags: [], // Required by BlogPost type
+          featured: false // Required by BlogPost type
         };
 
         console.log('Adding approved blog post:', blogPost);
@@ -209,7 +211,9 @@ export const fetchBlogPostsFromCSV = async () => {
           readTime: calculateReadTime(excerpt),
           content: contentUrl, // Store the Google Docs link
           postUrl: contentUrl,
-          primaryKeyword: primaryKeyword
+          primaryKeyword: primaryKeyword,
+          tags: [], // Required by BlogPost type
+          featured: false // Required by BlogPost type
         };
 
         blogPosts.push(blogPost);
