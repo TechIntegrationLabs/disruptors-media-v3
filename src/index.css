@@ -2,8 +2,11 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-/* PRD Font Loading - Optimized for Performance */
-/* Fonts are loaded from public/fonts directory - using absolute paths for production */
+/* Figma Font Integration - Typography Hierarchy from Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Premium Fonts - Google Fonts fallbacks for now */
+/* TODO: Add custom font files to public/fonts directory when available */
 
 /* PRD CSS Variables */
 :root {
@@ -17,8 +20,17 @@
   --color-warm-beige: #CAC1B8;
   
   /* Typography */
-  --font-primary: 'PP Supply Mono', monospace;
-  --font-secondary: 'OT Neue Montreal', sans-serif;
+  --font-primary: 'Inter', sans-serif;
+  --font-secondary: 'Inter', sans-serif;
+  
+  /* Typography Scale from Figma */
+  --text-display: 75.08px;      /* OT Neue Montreal 600 */
+  --text-hero: 88.56px;         /* Editorial New 300 */
+  --text-creative: 1000px;      /* Cabazon 500 - scaled for display */
+  --text-large: 61px;           /* Editorial New 400 */
+  --text-accent: 39px;          /* Black-Paint 400 */
+  --text-xl: 20px;              /* Inter/Neue Montreal */
+  --text-base: 16px;            /* Inter/Cera Pro */
   --color-text-primary: #2B2B2B;
   --color-text-inverted: #F1EDE9;
   --color-text-accent: #000000;

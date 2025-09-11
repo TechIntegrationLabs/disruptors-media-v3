@@ -1,6 +1,5 @@
 import React from 'react';
 import { useScrollFadeIn } from '../../hooks/useScrollAnimations';
-import ScrambleText from '../animations/ScrambleText';
 
 interface AboutSectionProps {
   title: string;
@@ -21,23 +20,17 @@ const AboutSection: React.FC<AboutSectionProps> = ({ title, content }) => {
       <div className="container-custom">
         {/* Section Title - PRD H2 Specification */}
         <h2 
-          className="section-h2 text-brand-charcoal mb-8"
+          className="section-h2 text-brand-charcoal mb-12"
           style={{
             fontFamily: 'var(--font-secondary)',
             fontSize: '63px',
             fontWeight: 600,
             lineHeight: '68.6px',
             textTransform: 'uppercase',
-            textAlign: 'center',
-            marginBottom: '30px'
+            textAlign: 'center'
           }}
         >
-          <ScrambleText 
-            text={title}
-            trigger=".section-h2"
-            duration={1.5}
-            className="text-brand-charcoal"
-          />
+          {title}
         </h2>
 
         {/* Content - PRD Body Text Specification */}

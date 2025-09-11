@@ -202,6 +202,17 @@
         "-y",
         "puppeteer-mcp-claude"
       ]
+    },
+    "gsap-master": {
+      "command": "node",
+      "args": [
+        "/Users/disruptors/Documents/ProjectsD/DisruptorEcosystem/DM3/disruptors-media-v3/gsap-master-mcp-server/dist/index.js"
+      ],
+      "env": {
+        "NODE_ENV": "production",
+        "MCP_MODE": "stdio"
+      },
+      "description": "Ultimate GSAP animation expert with AI-powered intent analysis and 60fps performance optimization"
     }
   }
 }

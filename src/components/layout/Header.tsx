@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import SecretCommandModal from '../common/SecretCommandModal';
+import ScrambleText from '../animations/ScrambleText';
 // import { CLOUDINARY_ASSETS } from '../../constants/cloudinaryAssets';
 
 interface NavigationItem {
@@ -144,7 +145,12 @@ const Header: React.FC = () => {
                           isActive(item.href) ? 'font-semibold' : ''
                         } hover:after:w-full after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-brand-charcoal after:transition-all after:duration-300 after:ease-out`}
                       >
-                        {item.name}
+                        <ScrambleText 
+                          text={item.name}
+                          randomGlitch={true}
+                          glitchInterval={8}
+                          glitchDuration={120}
+                        />
                       </span>
                     ) : (
                       <Link 
@@ -153,7 +159,12 @@ const Header: React.FC = () => {
                           isActive(item.href) ? 'font-semibold' : ''
                         } hover:after:w-full after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-brand-charcoal after:transition-all after:duration-300 after:ease-out`}
                       >
-                        {item.name}
+                        <ScrambleText 
+                          text={item.name}
+                          randomGlitch={true}
+                          glitchInterval={8}
+                          glitchDuration={120}
+                        />
                       </Link>
                     )}
                     
@@ -231,7 +242,12 @@ const Header: React.FC = () => {
                                   }`}
                                   onClick={handleDropdownClose}
                                 >
-                                  {subItem.name}
+                                  <ScrambleText 
+                                    text={subItem.name}
+                                    randomGlitch={true}
+                                    glitchInterval={12}
+                                    glitchDuration={100}
+                                  />
                                 </Link>
                               </motion.li>
                             ))}
@@ -326,7 +342,12 @@ const Header: React.FC = () => {
                       } hover:bg-black/10 hover:scale-105`}
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      {item.name}
+                      <ScrambleText 
+                        text={item.name}
+                        randomGlitch={true}
+                        glitchInterval={10}
+                        glitchDuration={130}
+                      />
                     </Link>
                     
                     {/* Mobile Submenu */}
@@ -358,7 +379,12 @@ const Header: React.FC = () => {
                               }`}
                               onClick={() => setIsMenuOpen(false)}
                             >
-                              {subItem.name}
+                              <ScrambleText 
+                                text={subItem.name}
+                                randomGlitch={true}
+                                glitchInterval={15}
+                                glitchDuration={110}
+                              />
                             </Link>
                           </motion.li>
                         ))}

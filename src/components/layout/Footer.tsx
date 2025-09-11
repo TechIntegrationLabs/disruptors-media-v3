@@ -1,5 +1,6 @@
 import React from 'react';
 import { CLOUDINARY_ASSETS } from '../../constants/cloudinaryAssets';
+import ScrambleText from '../animations/ScrambleText';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -24,7 +25,12 @@ const Footer: React.FC = () => {
             lineHeight: 1.8
           }}
         >
-          © {currentYear} DISRUPTORS MEDIA. ALL RIGHTS RESERVED.
+          <ScrambleText 
+            text={`© ${currentYear} DISRUPTORS MEDIA. ALL RIGHTS RESERVED.`}
+            randomGlitch={true}
+            glitchInterval={20}
+            glitchDuration={140}
+          />
         </p>
 
         {/* Contact Information - PRD Specification */}
@@ -44,7 +50,12 @@ const Footer: React.FC = () => {
               href="mailto:hello@disruptorsmedia.com"
               className="text-brand-charcoal no-underline hover:opacity-80 transition-opacity"
             >
-              HELLO@DISRUPTORSMEDIA.COM
+              <ScrambleText 
+                text="HELLO@DISRUPTORSMEDIA.COM"
+                randomGlitch={true}
+                glitchInterval={25}
+                glitchDuration={120}
+              />
             </a>
           </p>
           <p className="mb-2">
@@ -52,12 +63,28 @@ const Footer: React.FC = () => {
               href="tel:+1234567890"
               className="text-brand-charcoal no-underline hover:opacity-80 transition-opacity"
             >
-              +1 (XXX) XXX-XXXX
+              <ScrambleText 
+                text="+1 (XXX) XXX-XXXX"
+                randomGlitch={true}
+                glitchInterval={30}
+                glitchDuration={110}
+              />
             </a>
           </p>
           <p className="mb-4">
-            [BUSINESS ADDRESS]<br />
-            [CITY, STATE ZIP CODE]
+            <ScrambleText 
+              text="[BUSINESS ADDRESS]"
+              randomGlitch={true}
+              glitchInterval={35}
+              glitchDuration={130}
+            />
+            <br />
+            <ScrambleText 
+              text="[CITY, STATE ZIP CODE]"
+              randomGlitch={true}
+              glitchInterval={40}
+              glitchDuration={125}
+            />
           </p>
         </div>
 

@@ -36,36 +36,30 @@ const Hero: React.FC = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
         <div>
           {/* Gold Logo */}
-          {CLOUDINARY_ASSETS.logos.goldLogo ? (
-            <img
-              src={CLOUDINARY_ASSETS.logos.goldLogo}
-              alt="Disruptors Media Logo"
-              className="hero-logo w-32 md:w-40 lg:w-48 h-auto mx-auto mb-8"
-              style={{ maxWidth: '200px', height: 'auto' }}
-            />
-          ) : (
-            <div className="hero-logo w-32 md:w-40 lg:w-48 h-16 mx-auto mb-8 flex items-center justify-center">
-              <span className="text-gold font-bold text-2xl md:text-3xl">DM</span>
-            </div>
-          )}
+          <img
+            src="https://res.cloudinary.com/dvcvxhzmt/image/upload/v1755696782/logos/gold-logo-banner.png"
+            alt="Disruptors Media Logo"
+            className="hero-logo w-32 md:w-40 lg:w-48 h-auto mx-auto mb-8"
+            style={{ maxWidth: '200px', height: 'auto' }}
+          />
           
-          <h1 className="hero-title font-ot-neue-montreal text-4xl md:text-6xl lg:text-7xl font-semibold mb-6">
+          <h1 className="hero-title font-display text-display font-semibold mb-6 text-center">
             <span className="text-gold">
               <ScrambleText 
                 text="AI-POWERED" 
                 duration={2}
                 delay={1}
-                className="text-gold font-ot-neue-montreal font-semibold"
+                className="text-gold font-display font-semibold"
               />
             </span><br />
             <ScrambleText 
               text="MARKETING SOLUTIONS" 
               duration={2.5}
               delay={2}
-              className="text-white font-ot-neue-montreal font-semibold"
+              className="text-white font-display font-semibold"
             />
           </h1>
-          <p className="hero-subtitle font-pp-supply-mono text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+          <p className="hero-subtitle font-body text-xl-body text-gray-300 mb-8 max-w-3xl mx-auto text-center">
             Transform your business with cutting-edge AI marketing strategies
             and professional studio services.
           </p>

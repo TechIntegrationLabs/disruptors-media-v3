@@ -28,16 +28,26 @@ module.exports = {
         'container-custom': '1430px', // PRD Container specification
       },
       fontFamily: {
-        // Figma-Exact Typography Specifications
-        'ot-neue-montreal': ['OT Neue Montreal', 'Neue Montreal', 'sans-serif'], // Headlines, titles, major text elements
-        'neue-montreal': ['Neue Montreal', 'OT Neue Montreal', 'sans-serif'], // Figma alias for Neue Montreal
-        'pp-supply-mono': ['PP Supply Mono', 'monospace'], // Body text, navigation, buttons, general content
+        // Figma Typography Hierarchy - Extracted from Design System
+        'display': ['OT Neue Montreal', 'sans-serif'], // Main headings (75.08px)
+        'heading': ['Editorial New', 'serif'],          // Secondary headings (61px, 88px)
+        'creative': ['Cabazon', 'display'],             // Creative headings (1000px scaled)
+        'accent': ['Black-Paint', 'display'],           // Accent text (39px)
+        'body': ['Inter', 'sans-serif'],                // Body text (16px, 20px)
+        'mono': ['PP Supply Mono', 'monospace'],        // Code/technical text
         
-        // Primary font assignments (Figma specification)
-        sans: ['OT Neue Montreal', 'Neue Montreal', 'ui-sans-serif', 'system-ui', 'sans-serif'], // Default sans-serif
-        headline: ['OT Neue Montreal', 'Neue Montreal', 'ui-sans-serif', 'system-ui', 'sans-serif'], // Headlines
-        body: ['PP Supply Mono', 'ui-monospace', 'system-ui', 'monospace'], // Body text
-        mono: ['PP Supply Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
+        // Figma-Exact Typography Specifications (Legacy)
+        'ot-neue-montreal': ['OT Neue Montreal', 'sans-serif'], 
+        'neue-montreal': ['Neue Montreal', 'OT Neue Montreal', 'sans-serif'], 
+        'pp-supply-mono': ['PP Supply Mono', 'monospace'],
+        'editorial-new': ['Editorial New', 'serif'],
+        'cabazon': ['Cabazon', 'display'],
+        'black-paint': ['Black-Paint', 'display'],
+        'inter': ['Inter', 'sans-serif'],
+        
+        // Primary font assignments (Updated for Figma hierarchy)
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'], // Default - Inter for body
+        headline: ['OT Neue Montreal', 'ui-sans-serif', 'system-ui', 'sans-serif'], // Headlines
         
         // Legacy compatibility
         tech: ['PP Supply Mono', 'ui-monospace', 'SFMono-Regular', 'monospace']
@@ -63,7 +73,16 @@ module.exports = {
       },
       
       fontSize: {
-        // PRD Typography Hierarchy
+        // Figma Typography Scale - Exact measurements from design system
+        'display': ['75.08px', { lineHeight: '90.10px', fontWeight: '600' }], // OT Neue Montreal - Main headings
+        'hero': ['88.56px', { lineHeight: '106px', fontWeight: '300' }],        // Editorial New - Hero text
+        'creative': ['200px', { lineHeight: '180px', fontWeight: '500' }],      // Cabazon - Creative displays (scaled down from 1000px)
+        'large': ['61px', { lineHeight: '73px', fontWeight: '400' }],           // Editorial New - Large headings
+        'accent': ['39px', { lineHeight: '47px', fontWeight: '400' }],          // Black-Paint - Accent text
+        'xl-body': ['20px', { lineHeight: '28px', fontWeight: '400' }],         // Inter/Neue Montreal - Large body
+        'base-body': ['16px', { lineHeight: '24px', fontWeight: '400' }],       // Inter/Cera Pro - Base body text
+        
+        // PRD Typography Hierarchy (Legacy - keeping for compatibility)
         'hero-h1': ['220.302px', { lineHeight: '198.59px', fontWeight: '600' }], // Main Headlines
         'section-h2': ['63px', { lineHeight: '68.6px', fontWeight: '600' }], // Section Headers  
         'section-h3': ['65px', { lineHeight: '68.6px', fontWeight: '600' }], // Subsection Headers

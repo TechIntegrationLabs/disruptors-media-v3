@@ -11,6 +11,9 @@ interface ScrambleTextProps {
   delay?: number;
   trigger?: string;
   scrambleChars?: string;
+  randomGlitch?: boolean;
+  glitchInterval?: number; // seconds between random glitches
+  glitchDuration?: number; // milliseconds for glitch effect
 }
 
 const ScrambleText: React.FC<ScrambleTextProps> = ({
@@ -19,7 +22,10 @@ const ScrambleText: React.FC<ScrambleTextProps> = ({
   duration = 2,
   delay = 0,
   trigger,
-  scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*'
+  scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*',
+  randomGlitch = false,
+  glitchInterval = 5, // default 5 seconds between glitches
+  glitchDuration = 150 // default 150ms glitch duration
 }) => {
   const textRef = useRef<HTMLSpanElement>(null);
   const originalText = useRef(text);
@@ -58,6 +64,46 @@ const ScrambleText: React.FC<ScrambleTextProps> = ({
       return () => clearInterval(interval);
     };
 
+    // Quick glitch effect for random glitches
+    const quickGlitch = () => {
+      let glitchIteration = 0;
+      const maxGlitchChars = Math.min(3, textLength); // Only scramble first few characters
+      
+      const glitchInterval = setInterval(() => {
+        element.textContent = originalText.current
+          .split('')
+          .map((char, index) => {
+            if (char === ' ') return ' ';
+            if (index < maxGlitchChars && glitchIteration < 5) { // Only glitch first few chars
+              return chars[Math.floor(Math.random() * chars.length)];
+            }
+            return originalText.current[index];
+          })
+          .join('');
+        
+        glitchIteration++;
+        if (glitchIteration >= 5) {
+          clearInterval(glitchInterval);
+          element.textContent = originalText.current; // Restore original text
+        }
+      }, 30);
+    };
+
+    // Set up random glitch intervals
+    let randomGlitchInterval: NodeJS.Timeout;
+    if (randomGlitch) {
+      const scheduleRandomGlitch = () => {
+        const randomDelay = (glitchInterval + Math.random() * glitchInterval) * 1000;
+        randomGlitchInterval = setTimeout(() => {
+          quickGlitch();
+          scheduleRandomGlitch(); // Schedule next glitch
+        }, randomDelay);
+      };
+      
+      // Start random glitching after initial delay
+      setTimeout(scheduleRandomGlitch, glitchInterval * 1000);
+    }
+
     if (trigger) {
       // Use ScrollTrigger if trigger is specified
       ScrollTrigger.create({
@@ -71,9 +117,17 @@ const ScrambleText: React.FC<ScrambleTextProps> = ({
     } else {
       // Use timeout if no trigger specified
       const timeoutId = setTimeout(scrambleAnimation, delay * 1000);
-      return () => clearTimeout(timeoutId);
+      return () => {
+        clearTimeout(timeoutId);
+        if (randomGlitchInterval) clearTimeout(randomGlitchInterval);
+      };
     }
-  }, [text, duration, delay, trigger, scrambleChars]);
+
+    // Cleanup function
+    return () => {
+      if (randomGlitchInterval) clearTimeout(randomGlitchInterval);
+    };
+  }, [text, duration, delay, trigger, scrambleChars, randomGlitch, glitchInterval, glitchDuration]);
 
   return (
     <span
