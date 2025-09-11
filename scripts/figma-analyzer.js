@@ -7,6 +7,7 @@
  * Usage: node scripts/figma-analyzer.js
  */
 
+require('dotenv').config();
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');

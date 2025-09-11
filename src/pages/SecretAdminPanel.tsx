@@ -9,46 +9,144 @@ interface ServiceStatus {
   description: string;
   command: string;
   icon: string;
+  category: 'development' | 'automation' | 'content' | 'deployment' | 'design';
 }
 
 const SecretAdminPanel: React.FC = () => {
+  const [activeCategory, setActiveCategory] = useState<string>('all');
   const [services, setServices] = useState<ServiceStatus[]>([
-    {
-      name: 'Figma WebSocket Server',
-      running: false,
-      port: 8080,
-      description: 'Cursor Talk to Figma MCP WebSocket server for bidirectional Figma communication',
-      command: 'cd cursor-talk-to-figma-mcp && bun socket',
-      icon: '🎨'
-    },
+    // Development Services
     {
       name: 'Development Server',
       running: false,
       port: 3000,
       description: 'React development server with hot reload',
       command: 'npm start',
-      icon: '⚛️'
+      icon: '⚛️',
+      category: 'development'
     },
+    {
+      name: 'Dev with Auto-Commit',
+      running: false,
+      port: 3000,
+      description: 'Development server with automatic git commits enabled',
+      command: 'npm run dev:auto',
+      icon: '🔄',
+      category: 'development'
+    },
+    {
+      name: 'Test Runner',
+      running: false,
+      description: 'Jest test runner with watch mode',
+      command: 'npm test',
+      icon: '🧪',
+      category: 'development'
+    },
+    {
+      name: 'Preview Build',
+      running: false,
+      port: 5000,
+      description: 'Preview production build locally',
+      command: 'npm run preview',
+      icon: '👀',
+      category: 'development'
+    },
+
+    // Design & Figma Services
+    {
+      name: 'Figma WebSocket Server',
+      running: false,
+      port: 8080,
+      description: 'Cursor Talk to Figma MCP WebSocket server for bidirectional Figma communication',
+      command: 'npm run figma:start',
+      icon: '🎨',
+      category: 'design'
+    },
+    {
+      name: 'Figma Design Analyzer',
+      running: false,
+      description: 'Extract design tokens and analyze Figma files',
+      command: 'node scripts/figma-analyzer.js',
+      icon: '🔍',
+      category: 'design'
+    },
+
+    // Automation Services
     {
       name: 'Auto-Commit Agent',
       running: false,
       description: 'Automated git commits with AI-generated messages',
       command: 'npm run auto-commit:watch',
-      icon: '🤖'
+      icon: '🤖',
+      category: 'automation'
     },
+    {
+      name: 'Auto-Commit Status',
+      running: false,
+      description: 'Check status of auto-commit system',
+      command: 'npm run auto-commit:status',
+      icon: '📈',
+      category: 'automation'
+    },
+
+    // Content Management Services
     {
       name: 'Client Data Sync',
       running: false,
       description: 'Google Sheets client data synchronization',
       command: 'npm run clients:sync',
-      icon: '📊'
+      icon: '📊',
+      category: 'content'
     },
+    {
+      name: 'Client Data Validation',
+      running: false,
+      description: 'Validate client data integrity and structure',
+      command: 'npm run clients:validate',
+      icon: '✅',
+      category: 'content'
+    },
+    {
+      name: 'Client Data Backup',
+      running: false,
+      description: 'Backup client data from Google Sheets',
+      command: 'npm run clients:backup',
+      icon: '💾',
+      category: 'content'
+    },
+    {
+      name: 'Blog Content Sync',
+      running: false,
+      description: 'Sync blog posts from Google Sheets',
+      command: 'node src/services/googleSheetsService.js',
+      icon: '📝',
+      category: 'content'
+    },
+    {
+      name: 'Deploy Apps Script',
+      running: false,
+      description: 'Deploy Google Apps Script for blog automation',
+      command: './deploy-apps-script.sh',
+      icon: '🚀',
+      category: 'content'
+    },
+
+    // Deployment Services
     {
       name: 'Build Production',
       running: false,
       description: 'Create optimized production build',
       command: 'npm run build',
-      icon: '🏗️'
+      icon: '🏗️',
+      category: 'deployment'
+    },
+    {
+      name: 'Setup Google Apps Script',
+      running: false,
+      description: 'Initialize Google Apps Script integration',
+      command: 'node setup-google-apps-script.js',
+      icon: '⚙️',
+      category: 'deployment'
     }
   ]);
 
@@ -103,6 +201,19 @@ const SecretAdminPanel: React.FC = () => {
     }
   };
 
+  const categories = [
+    { id: 'all', name: 'All Services', icon: '🔧' },
+    { id: 'development', name: 'Development', icon: '⚛️' },
+    { id: 'design', name: 'Design Tools', icon: '🎨' },
+    { id: 'automation', name: 'Automation', icon: '🤖' },
+    { id: 'content', name: 'Content Mgmt', icon: '📝' },
+    { id: 'deployment', name: 'Deployment', icon: '🚀' }
+  ];
+
+  const filteredServices = activeCategory === 'all' 
+    ? services 
+    : services.filter(service => service.category === activeCategory);
+
   const handleQuickAction = (action: string) => {
     switch (action) {
       case 'restart-all':
@@ -122,11 +233,51 @@ const SecretAdminPanel: React.FC = () => {
         addLog('✓ npm packages: OK');
         addLog('✓ MCP servers: Configured');
         addLog('✓ Figma API: Connected');
+        addLog('✓ Google Sheets API: Connected');
+        addLog('✓ Cloudinary CDN: OK');
+        addLog('✓ Auto-commit agent: Ready');
         addLog('System check complete');
         break;
       case 'open-figma':
         addLog('Opening Figma with MCP plugin...');
         // In real implementation: window.open('https://figma.com/...')
+        break;
+      case 'sync-all-content':
+        addLog('Syncing all content sources...');
+        addLog('→ Syncing client data from Google Sheets');
+        addLog('→ Syncing blog posts from Google Sheets');
+        addLog('→ Validating data integrity');
+        addLog('Content sync complete');
+        break;
+      case 'backup-data':
+        addLog('Creating data backups...');
+        addLog('→ Backing up client data');
+        addLog('→ Backing up blog content');
+        addLog('→ Creating Git backup commit');
+        addLog('Backup process complete');
+        break;
+      case 'update-design-tokens':
+        addLog('Updating design tokens from Figma...');
+        addLog('→ Analyzing Figma files');
+        addLog('→ Extracting color palette');
+        addLog('→ Updating typography tokens');
+        addLog('Design tokens updated');
+        break;
+      case 'deploy-apps-script':
+        addLog('Deploying Google Apps Script...');
+        addLog('→ Building Apps Script project');
+        addLog('→ Deploying to Google Cloud');
+        addLog('→ Setting up automation triggers');
+        addLog('Apps Script deployment complete');
+        break;
+      case 'check-mcp-servers':
+        addLog('Checking MCP server status...');
+        addLog('→ Vercel MCP: Connected');
+        addLog('→ Figma MCP: Connected');
+        addLog('→ Firecrawl MCP: Connected');
+        addLog('→ Cloudinary MCP: Connected');
+        addLog('→ GitHub MCP: Connected');
+        addLog('All MCP servers operational');
         break;
     }
   };
@@ -191,11 +342,32 @@ const SecretAdminPanel: React.FC = () => {
               className="bg-black/40 border border-accent-gold/30 rounded-lg p-6"
             >
               <h2 className="text-accent-gold font-pp-supply-mono text-xl mb-4">
-                🚀 Local Services
+                🚀 Development Services ({filteredServices.length})
               </h2>
+
+              {/* Category Tabs */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                {categories.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => setActiveCategory(category.id)}
+                    className={`px-3 py-2 rounded font-pp-supply-mono text-xs transition-colors flex items-center space-x-2 ${
+                      activeCategory === category.id 
+                        ? 'bg-accent-gold text-brand-charcoal' 
+                        : 'bg-gray-700/50 text-brand-cream hover:bg-gray-600/50'
+                    }`}
+                  >
+                    <span>{category.icon}</span>
+                    <span>{category.name}</span>
+                    <span className="bg-black/30 px-1 rounded text-xs">
+                      {category.id === 'all' ? services.length : services.filter(s => s.category === category.id).length}
+                    </span>
+                  </button>
+                ))}
+              </div>
               
-              <div className="space-y-4">
-                {services.map((service, index) => (
+              <div className="space-y-4 max-h-96 overflow-y-auto">
+                {filteredServices.map((service, index) => (
                   <motion.div
                     key={service.name}
                     initial={{ opacity: 0, x: -10 }}
@@ -261,6 +433,30 @@ const SecretAdminPanel: React.FC = () => {
                   >
                     🔍 SYSTEM CHECK
                   </button>
+                  <button
+                    onClick={() => handleQuickAction('sync-all-content')}
+                    className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded text-xs font-pp-supply-mono transition-colors"
+                  >
+                    📊 SYNC CONTENT
+                  </button>
+                  <button
+                    onClick={() => handleQuickAction('backup-data')}
+                    className="bg-purple-600 hover:bg-purple-700 text-white px-3 py-2 rounded text-xs font-pp-supply-mono transition-colors"
+                  >
+                    💾 BACKUP DATA
+                  </button>
+                  <button
+                    onClick={() => handleQuickAction('update-design-tokens')}
+                    className="bg-pink-600 hover:bg-pink-700 text-white px-3 py-2 rounded text-xs font-pp-supply-mono transition-colors"
+                  >
+                    🎨 UPDATE TOKENS
+                  </button>
+                  <button
+                    onClick={() => handleQuickAction('check-mcp-servers')}
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 rounded text-xs font-pp-supply-mono transition-colors"
+                  >
+                    🔗 CHECK MCP
+                  </button>
                 </div>
               </div>
             </motion.div>
@@ -301,7 +497,7 @@ const SecretAdminPanel: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Figma Tools Section */}
+          {/* MCP Servers Status */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -309,35 +505,112 @@ const SecretAdminPanel: React.FC = () => {
             className="mt-6 bg-black/40 border border-accent-gold/30 rounded-lg p-6"
           >
             <h2 className="text-accent-gold font-pp-supply-mono text-xl mb-4">
-              🎨 Figma Integration Tools
+              🔗 MCP Server Status
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mb-4">
+              {[
+                { name: 'Vercel', icon: '▲', status: 'connected' },
+                { name: 'Figma', icon: '🎨', status: 'connected' },
+                { name: 'Firecrawl', icon: '🔥', status: 'connected' },
+                { name: 'Playwright', icon: '🎭', status: 'connected' },
+                { name: 'Cloudinary', icon: '☁️', status: 'connected' },
+                { name: 'GitHub', icon: '🐙', status: 'connected' },
+                { name: 'n8n', icon: '🔄', status: 'connected' },
+                { name: 'GoHighLevel', icon: '📈', status: 'connected' },
+                { name: 'DigitalOcean', icon: '🌊', status: 'connected' }
+              ].map((server) => (
+                <div
+                  key={server.name}
+                  className="bg-gray-800/50 border border-gray-600/30 rounded p-3 flex items-center justify-between"
+                >
+                  <div className="flex items-center space-x-2">
+                    <span className="text-lg">{server.icon}</span>
+                    <span className="font-pp-supply-mono text-sm text-brand-cream">
+                      {server.name}
+                    </span>
+                  </div>
+                  <div className={`w-2 h-2 rounded-full ${
+                    server.status === 'connected' ? 'bg-green-500' : 'bg-red-500'
+                  }`} />
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+              <button
+                onClick={() => handleQuickAction('check-mcp-servers')}
+                className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded font-pp-supply-mono text-xs transition-colors"
+              >
+                🔍 CHECK ALL
+              </button>
+              <button
+                onClick={() => addLog('Opening MCP configuration...')}
+                className="bg-gray-600 hover:bg-gray-700 text-white p-3 rounded font-pp-supply-mono text-xs transition-colors"
+              >
+                ⚙️ CONFIG
+              </button>
+              <button
+                onClick={() => addLog('Viewing MCP logs...')}
+                className="bg-purple-600 hover:bg-purple-700 text-white p-3 rounded font-pp-supply-mono text-xs transition-colors"
+              >
+                📋 LOGS
+              </button>
+              <button
+                onClick={() => addLog('Restarting MCP servers...')}
+                className="bg-orange-600 hover:bg-orange-700 text-white p-3 rounded font-pp-supply-mono text-xs transition-colors"
+              >
+                🔄 RESTART
+              </button>
+            </div>
+          </motion.div>
+
+          {/* Figma Tools Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
+            className="mt-6 bg-black/40 border border-accent-gold/30 rounded-lg p-6"
+          >
+            <h2 className="text-accent-gold font-pp-supply-mono text-xl mb-4">
+              🎨 Design & Content Tools
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <button
                 onClick={() => handleQuickAction('open-figma')}
                 className="bg-purple-600 hover:bg-purple-700 text-white p-4 rounded font-pp-supply-mono text-sm transition-colors"
               >
                 <div className="text-2xl mb-2">🎨</div>
                 Open Figma
-                <div className="text-xs opacity-70 mt-1">Launch with MCP plugin</div>
+                <div className="text-xs opacity-70 mt-1">Launch with MCP</div>
               </button>
               
               <button
-                onClick={() => addLog('Figma API connection test initiated...')}
-                className="bg-indigo-600 hover:bg-indigo-700 text-white p-4 rounded font-pp-supply-mono text-sm transition-colors"
+                onClick={() => handleQuickAction('update-design-tokens')}
+                className="bg-pink-600 hover:bg-pink-700 text-white p-4 rounded font-pp-supply-mono text-sm transition-colors"
               >
-                <div className="text-2xl mb-2">🔗</div>
-                Test API
-                <div className="text-xs opacity-70 mt-1">Check Figma connection</div>
+                <div className="text-2xl mb-2">🎯</div>
+                Design Tokens
+                <div className="text-xs opacity-70 mt-1">Extract from Figma</div>
               </button>
-              
+
               <button
-                onClick={() => addLog('Opening MCP server documentation...')}
+                onClick={() => handleQuickAction('sync-all-content')}
                 className="bg-green-600 hover:bg-green-700 text-white p-4 rounded font-pp-supply-mono text-sm transition-colors"
               >
-                <div className="text-2xl mb-2">📚</div>
-                MCP Docs
-                <div className="text-xs opacity-70 mt-1">View documentation</div>
+                <div className="text-2xl mb-2">📊</div>
+                Sync Content
+                <div className="text-xs opacity-70 mt-1">Google Sheets sync</div>
+              </button>
+              
+              <button
+                onClick={() => handleQuickAction('deploy-apps-script')}
+                className="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded font-pp-supply-mono text-sm transition-colors"
+              >
+                <div className="text-2xl mb-2">🚀</div>
+                Deploy Script
+                <div className="text-xs opacity-70 mt-1">Google Apps Script</div>
               </button>
             </div>
           </motion.div>

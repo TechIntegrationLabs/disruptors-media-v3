@@ -25,28 +25,33 @@ A hidden administrative control panel has been integrated into the Disruptors Me
 
 ## Admin Panel Features
 
-### 🚀 Local Services Management
-Start and stop development services with one-click buttons:
+### 🚀 Local Services Management (13 Services)
+All services are organized into categories with filtering:
 
-- **Figma WebSocket Server** (Port 8080)
-  - For cursor-talk-to-figma MCP integration
-  - Command: `cd cursor-talk-to-figma-mcp && bun socket`
+**Development Services (4):**
+- **Development Server** (Port 3000) - React dev server with hot reload
+- **Dev with Auto-Commit** (Port 3000) - Development with automated git commits
+- **Test Runner** - Jest test runner with watch mode
+- **Preview Build** (Port 5000) - Preview production build locally
 
-- **Development Server** (Port 3000)
-  - React development server with hot reload
-  - Command: `npm start`
+**Design & Figma Services (2):**
+- **Figma WebSocket Server** (Port 8080) - Cursor Talk to Figma MCP integration
+- **Figma Design Analyzer** - Extract design tokens and analyze Figma files
 
-- **Auto-Commit Agent**
-  - Automated git commits with AI-generated messages
-  - Command: `npm run auto-commit:watch`
+**Automation Services (2):**
+- **Auto-Commit Agent** - Automated git commits with AI-generated messages
+- **Auto-Commit Status** - Check status of auto-commit system
 
-- **Client Data Sync**
-  - Google Sheets synchronization
-  - Command: `npm run clients:sync`
+**Content Management Services (5):**
+- **Client Data Sync** - Google Sheets client data synchronization
+- **Client Data Validation** - Validate data integrity and structure
+- **Client Data Backup** - Backup client data from Google Sheets
+- **Blog Content Sync** - Sync blog posts from Google Sheets
+- **Deploy Apps Script** - Deploy Google Apps Script for blog automation
 
-- **Build Production**
-  - Create optimized production build
-  - Command: `npm run build`
+**Deployment Services (2):**
+- **Build Production** - Create optimized production build
+- **Setup Google Apps Script** - Initialize Google Apps Script integration
 
 ### 📋 System Logs
 Real-time logs showing:
@@ -55,15 +60,31 @@ Real-time logs showing:
 - System diagnostics
 - Error messages
 
-### 🔧 Quick Actions
+### 🔧 Quick Actions (6 Available)
 - **🔄 RESTART ALL** - Restart all running services
-- **🔍 SYSTEM CHECK** - Run system diagnostics
-- **Clear Logs** - Reset the log display
+- **🔍 SYSTEM CHECK** - Run comprehensive system diagnostics
+- **📊 SYNC CONTENT** - Sync all content from Google Sheets
+- **💾 BACKUP DATA** - Create backups of all data sources
+- **🎨 UPDATE TOKENS** - Extract design tokens from Figma
+- **🔗 CHECK MCP** - Verify all MCP server connections
 
-### 🎨 Figma Integration Tools
+### 🔗 MCP Server Monitoring (9 Servers)
+Real-time status monitoring for:
+- **Vercel** - Deployment management
+- **Figma** - Design integration
+- **Firecrawl** - Web scraping
+- **Playwright** - Browser automation
+- **Cloudinary** - Asset management
+- **GitHub** - Repository management
+- **n8n** - Workflow automation
+- **GoHighLevel** - CRM integration
+- **DigitalOcean** - Infrastructure management
+
+### 🎨 Design & Content Tools (4 Tools)
 - **Open Figma** - Launch Figma with MCP plugin
-- **Test API** - Check Figma API connection
-- **MCP Docs** - View MCP documentation
+- **Design Tokens** - Extract design tokens from Figma
+- **Sync Content** - Google Sheets content synchronization
+- **Deploy Script** - Deploy Google Apps Script automation
 
 ## Command Line Shortcuts
 

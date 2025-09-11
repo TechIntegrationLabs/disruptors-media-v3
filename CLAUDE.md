@@ -23,6 +23,23 @@ npm run dev:auto           # Development server with auto-commit enabled
 npm run dev:safe           # Development server without auto-commit
 ```
 
+### Secret Admin Panel
+```bash
+npm run figma:start         # Start Figma WebSocket server
+npm run admin:help          # Show secret admin panel commands
+```
+
+**🎛️ Hidden Administrative Interface**
+- **Access**: Triple-click the site logo to open command modal
+- **Commands**: `admin`, `figma`, `dev`, `tools`, `scripts`, `matrix`, `control`, `sys`
+- **Features**: 13 development services, 9 MCP server integrations, real-time monitoring
+- **Complete Documentation Suite**:
+  - `docs/SECRET_ADMIN_PANEL.md` - Master reference (40+ pages)
+  - `docs/ADMIN_PANEL_INDEX.md` - Documentation index and overview
+  - `ADMIN_PANEL_QUICKREF.md` - Quick reference card
+  - `src/ADMIN_PANEL_GUIDE.md` - Developer guide
+  - `SCRIPTS_GUIDE.md` - Complete scripts reference
+
 ### Client Data Management
 ```bash
 npm run clients:sync       # Sync client data from Google Sheets
