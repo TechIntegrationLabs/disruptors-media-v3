@@ -1,33 +1,21 @@
 [build]
-  publish = "build"
-  command = "npm ci --legacy-peer-deps && npm run build"
+  # Build command
+  command = "npm ci --legacy-peer-deps --silent && npm run build"
   
+  # Publish directory
+  publish = "build"
+  
+  # Functions directory
+  functions = "netlify/functions"
+
 [build.environment]
-  NODE_VERSION = "18"
-  CI = "false"
-  NODE_ENV = "production"
-  GENERATE_SOURCEMAP = "false"
+  # Node.js options for build performance
+  NODE_OPTIONS = "--max_old_space_size=4096"
+  
+  # Enable React app environment variables
+  REACT_APP_API_URL = "https://disruptorsmediav3.netlify.app"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[build.processing]
-  skip_processing = false
-
-[build.processing.css]
-  bundle = true
-  minify = true
-
-[build.processing.js]
-  bundle = true
-  minify = true
-
-[build.processing.html]
-  pretty_urls = true
-
-# Headers for better performance
+# Headers for security and performance
 [[headers]]
   for = "/*"
   [headers.values]
@@ -35,23 +23,71 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
+# Headers for static assets
 [[headers]]
   for = "/static/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Headers for API endpoints (Netlify Functions)
 [[headers]]
-  for = "*.js"
+  for = "/.netlify/functions/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+    Cache-Control = "no-cache"
 
-[[headers]]
-  for = "*.css"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+# Redirects for SPA routing
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
 
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+# SPA fallback - must be last
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Function-specific configurations
+[functions]
+  # Global function settings
+  node_bundler = "esbuild"
+  
+  # Individual function settings
+  [functions."blog-posts"]
+    timeout = 30
+    memory = 1024
+  
+  [functions."google-docs-content"]
+    timeout = 30
+    memory = 1024
+  
+  [functions."ai-chat"]
+    timeout = 30
+    memory = 512
+  
+  [functions."contact-form"]
+    timeout = 10
+    memory = 256
+  
+  [functions."validate-image"]
+    timeout = 15
+    memory = 256
+  
+  [functions."health-check"]
+    timeout = 10
+    memory = 256
+
+# Environment-specific settings
+[context.production.environment]
+  NODE_ENV = "production"
+
+[context.deploy-preview.environment]
+  NODE_ENV = "development"
+
+[context.branch-deploy.environment]
+  NODE_ENV = "development"
