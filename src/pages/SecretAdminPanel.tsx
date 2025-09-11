@@ -31,6 +31,7 @@ const SecretAdminPanel: React.FC = () => {
   const [chatMessages, setChatMessages] = useState<Array<{ role: 'user' | 'assistant'; content: string; timestamp: Date }>>([]);
   const [inputMessage, setInputMessage] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [mcpStatus, setMcpStatus] = useState<Record<string, boolean>>({});
   
   const [services, setServices] = useState<ServiceStatus[]>([
