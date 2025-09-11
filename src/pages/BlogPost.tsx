@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useParams } from 'react-router-dom';
 import {
@@ -8,13 +8,82 @@ import {
   TagIcon,
   ArrowLeftIcon,
   ShareIcon,
-  ArrowRightIcon
+  ArrowRightIcon,
+  ExternalLinkIcon
 } from '@heroicons/react/24/outline';
-import { blogPosts } from '../data/blog';
+import { blogPosts as staticBlogPosts } from '../data/blog';
+import { fetchBlogPostsFromSheet } from '../services/googleSheetsService';
+import { fetchGoogleDocsContent } from '../services/contentService';
 
 const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
+  const [blogPosts, setBlogPosts] = useState(staticBlogPosts);
+  const [postContent, setPostContent] = useState<string>('');
+  const [loading, setLoading] = useState(true);
+  const [contentLoading, setContentLoading] = useState(false);
+  
   const post = blogPosts.find(p => p.slug === slug);
+
+  // Load blog posts and specific post content
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        setLoading(true);
+        
+        // Try to load posts from Google Sheets
+        const dynamicPosts = await fetchBlogPostsFromSheet();
+        if (dynamicPosts && dynamicPosts.length > 0) {
+          setBlogPosts(dynamicPosts);
+        }
+      } catch (error) {
+        console.error('Error loading blog posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  // Load post content from Google Docs if available
+  useEffect(() => {
+    const loadPostContent = async () => {
+      if (!post || !post.content) return;
+
+      try {
+        setContentLoading(true);
+        
+        // If the content field contains a Google Docs URL, fetch the content
+        if (post.content.includes('docs.google.com')) {
+          const content = await fetchGoogleDocsContent(post.content);
+          setPostContent(content.html);
+        } else {
+          // Use the content field as-is (for static content)
+          setPostContent(post.content);
+        }
+      } catch (error) {
+        console.error('Error loading post content:', error);
+        setPostContent(post.content || 'Content not available.');
+      } finally {
+        setContentLoading(false);
+      }
+    };
+
+    if (post) {
+      loadPostContent();
+    }
+  }, [post]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-dark flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gold mx-auto mb-4"></div>
+          <p className="text-gray-300">Loading article...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!post) {
     return (
@@ -106,14 +175,16 @@ const BlogPost: React.FC = () => {
             </div>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-2">
-              {post.tags.map(tag => (
-                <span key={tag} className="px-3 py-1 bg-white/10 text-gray-300 text-sm rounded-full">
-                  <TagIcon className="h-3 w-3 inline mr-1" />
-                  {tag}
-                </span>
-              ))}
-            </div>
+            {post.tags && post.tags.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                {post.tags.map(tag => (
+                  <span key={tag} className="px-3 py-1 bg-white/10 text-gray-300 text-sm rounded-full">
+                    <TagIcon className="h-3 w-3 inline mr-1" />
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
           </motion.div>
         </div>
       </section>
@@ -146,56 +217,52 @@ const BlogPost: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="prose prose-lg prose-invert max-w-none"
           >
-            {/* This would normally be MDX content, but we'll simulate it */}
-            <div className="text-gray-300 space-y-6 leading-relaxed">
-              <p className="text-xl text-white font-medium">
-                {post.excerpt}
-              </p>
-              
-              <p>
-                This comprehensive case study dives deep into the strategies, challenges, and remarkable results 
-                we achieved with our client. Through innovative approaches and data-driven decision making, 
-                we were able to transform their digital presence and drive significant business growth.
-              </p>
-
-              <h2 className="text-2xl font-bold text-white mt-8 mb-4">The Challenge</h2>
-              <p>
-                Every successful campaign starts with understanding the unique challenges our clients face. 
-                In this case, we needed to develop a comprehensive strategy that would address multiple 
-                pain points while staying true to the brand's core values and mission.
-              </p>
-
-              <h2 className="text-2xl font-bold text-white mt-8 mb-4">Our Approach</h2>
-              <p>
-                Our team developed a multi-faceted approach combining cutting-edge AI technology with 
-                time-tested marketing principles. We focused on creating authentic connections with 
-                the target audience while optimizing for measurable business outcomes.
-              </p>
-
-              <h2 className="text-2xl font-bold text-white mt-8 mb-4">Results & Impact</h2>
-              <p>
-                The results speak for themselves. Through strategic implementation and continuous 
-                optimization, we were able to exceed all initial goals and create a sustainable 
-                framework for long-term success.
-              </p>
-
-              <div className="bg-dark p-6 rounded-lg my-8 border border-gold/20">
-                <h3 className="text-xl font-bold text-gold mb-4">Key Takeaways</h3>
-                <ul className="list-disc list-inside space-y-2 text-gray-300">
-                  <li>Data-driven strategies consistently outperform intuition-based approaches</li>
-                  <li>Authentic brand storytelling creates deeper customer connections</li>
-                  <li>Continuous optimization is essential for sustained growth</li>
-                  <li>Cross-platform integration amplifies campaign effectiveness</li>
-                </ul>
+            {/* Dynamic Content from Google Docs or Static Content */}
+            {contentLoading ? (
+              <div className="text-center py-12">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gold mx-auto mb-4"></div>
+                <p className="text-gray-300">Loading content...</p>
               </div>
-
-              <h2 className="text-2xl font-bold text-white mt-8 mb-4">What's Next?</h2>
-              <p>
-                This success story demonstrates the power of combining strategic thinking with 
-                innovative execution. If you're ready to transform your business results, 
-                we'd love to discuss how our proven methodologies can work for your brand.
-              </p>
-            </div>
+            ) : postContent ? (
+              <div 
+                className="text-gray-300 space-y-6 leading-relaxed prose-content"
+                dangerouslySetInnerHTML={{ __html: postContent }}
+              />
+            ) : (
+              <div className="text-gray-300 space-y-6 leading-relaxed">
+                <p className="text-xl text-white font-medium">
+                  {post.excerpt}
+                </p>
+                
+                {/* Show link to Google Docs if available */}
+                {post.content && post.content.includes('docs.google.com') && (
+                  <div className="bg-dark p-6 rounded-lg my-8 border border-gold/20">
+                    <div className="flex items-center mb-4">
+                      <ExternalLinkIcon className="h-5 w-5 text-gold mr-2" />
+                      <h3 className="text-lg font-bold text-gold">Read Full Article</h3>
+                    </div>
+                    <p className="text-gray-300 mb-4">
+                      This article is available as a detailed document. Click below to read the complete content.
+                    </p>
+                    <a 
+                      href={post.content}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary inline-flex items-center"
+                    >
+                      Open Full Article
+                      <ExternalLinkIcon className="h-4 w-4 ml-2" />
+                    </a>
+                  </div>
+                )}
+                
+                <p>
+                  This comprehensive case study dives deep into the strategies, challenges, and remarkable results 
+                  we achieved with our client. Through innovative approaches and data-driven decision making, 
+                  we were able to transform their digital presence and drive significant business growth.
+                </p>
+              </div>
+            )}
 
             {/* Share Buttons */}
             <div className="flex items-center gap-4 mt-12 pt-8 border-t border-white/20">

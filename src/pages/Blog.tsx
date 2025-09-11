@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
@@ -8,14 +8,47 @@ import {
   TagIcon,
   CalendarDaysIcon,
   UserIcon,
-  ArrowRightIcon
+  ArrowRightIcon,
+  ExclamationTriangleIcon
 } from '@heroicons/react/24/outline';
-import { blogPosts } from '../data/blog';
+import { blogPosts as staticBlogPosts } from '../data/blog';
+import { fetchBlogPostsFromSheet } from '../services/googleSheetsService';
 
 const Blog: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [showFilters, setShowFilters] = useState(false);
+  const [blogPosts, setBlogPosts] = useState(staticBlogPosts);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Fetch blog posts from Google Sheets on component mount
+  useEffect(() => {
+    const loadBlogPosts = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        const dynamicPosts = await fetchBlogPostsFromSheet();
+        
+        if (dynamicPosts && dynamicPosts.length > 0) {
+          setBlogPosts(dynamicPosts);
+          console.log('Successfully loaded blog posts from Google Sheets:', dynamicPosts.length);
+        } else {
+          console.log('No posts from Google Sheets, using static data');
+          setBlogPosts(staticBlogPosts);
+        }
+      } catch (err) {
+        console.error('Error loading blog posts from Google Sheets:', err);
+        setError('Failed to load latest blog posts. Showing cached content.');
+        setBlogPosts(staticBlogPosts);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadBlogPosts();
+  }, []);
 
   // Get unique categories
   const categories = Array.from(new Set(blogPosts.map(post => post.category)));
@@ -25,17 +58,17 @@ const Blog: React.FC = () => {
     return blogPosts.filter(post => {
       const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+                           (post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase())));
       
       const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory;
       
       return matchesSearch && matchesCategory;
     });
-  }, [searchTerm, selectedCategory]);
+  }, [searchTerm, selectedCategory, blogPosts]);
 
   // Separate featured and regular posts
-  const featuredPosts = filteredPosts.filter(post => post.featured);
-  const regularPosts = filteredPosts.filter(post => !post.featured);
+  const featuredPosts = filteredPosts.filter(post => post.featured === true);
+  const regularPosts = filteredPosts.filter(post => post.featured !== true);
 
   const clearFilters = () => {
     setSearchTerm('');
@@ -63,6 +96,21 @@ const Blog: React.FC = () => {
                 <TagIcon className="h-6 w-6 mr-2" />
                 <span>Over {blogPosts.length} articles on marketing, strategy, and growth</span>
               </div>
+              
+              {/* Status indicator */}
+              {loading && (
+                <div className="mt-4 flex items-center justify-center text-gray-400">
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-gold mr-2"></div>
+                  <span className="text-sm">Loading latest articles...</span>
+                </div>
+              )}
+              
+              {error && (
+                <div className="mt-4 flex items-center justify-center text-yellow-400">
+                  <ExclamationTriangleIcon className="h-4 w-4 mr-2" />
+                  <span className="text-sm">{error}</span>
+                </div>
+              )}
             </motion.div>
           </div>
         </div>
@@ -197,13 +245,15 @@ const Blog: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {post.tags.slice(0, 3).map(tag => (
-                        <span key={tag} className="px-2 py-1 bg-dark text-gray-300 text-xs rounded">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                    {post.tags && post.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {post.tags.slice(0, 3).map(tag => (
+                          <span key={tag} className="px-2 py-1 bg-dark text-gray-300 text-xs rounded">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
 
                     <Link 
                       to={`/blog/${post.slug}`} 
@@ -274,13 +324,15 @@ const Blog: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {post.tags.slice(0, 2).map(tag => (
-                      <span key={tag} className="px-2 py-1 bg-dark text-gray-400 text-xs rounded">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  {post.tags && post.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-1 mb-4">
+                      {post.tags.slice(0, 2).map(tag => (
+                        <span key={tag} className="px-2 py-1 bg-dark text-gray-400 text-xs rounded">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
 
                   <Link 
                     to={`/blog/${post.slug}`} 
