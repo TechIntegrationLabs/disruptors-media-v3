@@ -49,23 +49,23 @@ const Hero: React.FC = () => {
             </div>
           )}
           
-          <h1 className="hero-title text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+          <h1 className="hero-title font-ot-neue-montreal text-4xl md:text-6xl lg:text-7xl font-semibold mb-6">
             <span className="text-gold">
               <ScrambleText 
                 text="AI-POWERED" 
                 duration={2}
                 delay={1}
-                className="text-gold"
+                className="text-gold font-ot-neue-montreal font-semibold"
               />
             </span><br />
             <ScrambleText 
               text="MARKETING SOLUTIONS" 
               duration={2.5}
               delay={2}
-              className="text-white"
+              className="text-white font-ot-neue-montreal font-semibold"
             />
           </h1>
-          <p className="hero-subtitle text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+          <p className="hero-subtitle font-pp-supply-mono text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
             Transform your business with cutting-edge AI marketing strategies
             and professional studio services.
           </p>
@@ -73,7 +73,7 @@ const Hero: React.FC = () => {
             <MagneticCursor strength={0.2}>
               <Link
                 to="/services/ai-marketing"
-                className="bg-gold text-dark px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gold-light transition-all duration-300 transform hover:scale-105 block"
+                className="bg-gold text-dark px-8 py-4 rounded-lg font-pp-supply-mono font-medium text-lg hover:bg-gold-light transition-all duration-300 transform hover:scale-105 block"
               >
                 Explore AI Marketing
               </Link>
@@ -81,7 +81,7 @@ const Hero: React.FC = () => {
             <MagneticCursor strength={0.2}>
               <Link
                 to="/services/studio"
-                className="border-2 border-gold text-gold px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gold hover:text-dark transition-all duration-300 block"
+                className="border-2 border-gold text-gold px-8 py-4 rounded-lg font-pp-supply-mono font-medium text-lg hover:bg-gold hover:text-dark transition-all duration-300 block"
               >
                 Book Studio Time
               </Link>

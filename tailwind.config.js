@@ -28,15 +28,38 @@ module.exports = {
         'container-custom': '1430px', // PRD Container specification
       },
       fontFamily: {
-        // PRD Typography Specifications
-        'ot-neue-montreal': ['OT Neue Montreal', 'sans-serif'], // Headlines, titles, major text elements
+        // Figma-Exact Typography Specifications
+        'ot-neue-montreal': ['OT Neue Montreal', 'Neue Montreal', 'sans-serif'], // Headlines, titles, major text elements
+        'neue-montreal': ['Neue Montreal', 'OT Neue Montreal', 'sans-serif'], // Figma alias for Neue Montreal
         'pp-supply-mono': ['PP Supply Mono', 'monospace'], // Body text, navigation, buttons, general content
         
-        // Legacy fonts for backward compatibility  
-        sans: ['PP Supply Mono', 'ui-monospace', 'system-ui', 'sans-serif'],
-        headline: ['OT Neue Montreal', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        // Primary font assignments (Figma specification)
+        sans: ['OT Neue Montreal', 'Neue Montreal', 'ui-sans-serif', 'system-ui', 'sans-serif'], // Default sans-serif
+        headline: ['OT Neue Montreal', 'Neue Montreal', 'ui-sans-serif', 'system-ui', 'sans-serif'], // Headlines
+        body: ['PP Supply Mono', 'ui-monospace', 'system-ui', 'monospace'], // Body text
         mono: ['PP Supply Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
+        
+        // Legacy compatibility
         tech: ['PP Supply Mono', 'ui-monospace', 'SFMono-Regular', 'monospace']
+      },
+      
+      fontWeight: {
+        // Figma Font Weights
+        'normal': '400',
+        'medium': '500', 
+        'semibold': '600',
+        'bold': '700',
+        
+        // Standard weights
+        '100': '100',
+        '200': '200',
+        '300': '300',
+        '400': '400',
+        '500': '500',
+        '600': '600',
+        '700': '700',
+        '800': '800',
+        '900': '900'
       },
       
       fontSize: {

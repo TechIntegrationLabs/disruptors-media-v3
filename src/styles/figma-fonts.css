@@ -1,0 +1,58 @@
+/* Figma Typography Specification */
+
+/* Global font defaults to match Figma design */
+* {
+  font-family: 'OT Neue Montreal', 'Neue Montreal', sans-serif;
+}
+
+/* Specific typography classes matching Figma */
+.font-figma-heading {
+  font-family: 'OT Neue Montreal', 'Neue Montreal', sans-serif;
+  font-weight: 600;
+}
+
+.font-figma-body {
+  font-family: 'PP Supply Mono', monospace;
+  font-weight: 400;
+}
+
+.font-figma-navigation {
+  font-family: 'PP Supply Mono', monospace;
+  font-weight: 400;
+}
+
+.font-figma-button {
+  font-family: 'PP Supply Mono', monospace;
+  font-weight: 500;
+}
+
+/* Figma font weights */
+.font-figma-regular { font-weight: 400; }
+.font-figma-medium { font-weight: 500; }
+.font-figma-semibold { font-weight: 600; }
+.font-figma-bold { font-weight: 700; }
+
+/* Figma font sizes (mapped from analysis) */
+.text-figma-hero { font-size: 220.30px; line-height: 1; } /* Large hero text */
+.text-figma-h1 { font-size: 75.09px; line-height: 1.1; } /* Main headings */
+.text-figma-h2 { font-size: 65px; line-height: 1.1; } /* Section headings */
+.text-figma-h3 { font-size: 45px; line-height: 1.2; } /* Subsection headings */
+.text-figma-h4 { font-size: 37.13px; line-height: 1.2; } /* Smaller headings */
+.text-figma-large { font-size: 25.91px; line-height: 1.3; } /* Large text */
+.text-figma-body { font-size: 22px; line-height: 1.4; } /* Body text */
+.text-figma-medium { font-size: 20px; line-height: 1.4; } /* Medium text */
+.text-figma-small { font-size: 18.04px; line-height: 1.4; } /* Small text */
+.text-figma-caption { font-size: 16px; line-height: 1.5; } /* Caption text */
+.text-figma-tiny { font-size: 14px; line-height: 1.5; } /* Very small text */
+
+/* Responsive font sizes for mobile */
+@media (max-width: 768px) {
+  .text-figma-hero { font-size: 120px; }
+  .text-figma-h1 { font-size: 50px; }
+  .text-figma-h2 { font-size: 40px; }
+  .text-figma-h3 { font-size: 32px; }
+  .text-figma-h4 { font-size: 28px; }
+  .text-figma-large { font-size: 22px; }
+  .text-figma-body { font-size: 18px; }
+  .text-figma-medium { font-size: 16px; }
+}
