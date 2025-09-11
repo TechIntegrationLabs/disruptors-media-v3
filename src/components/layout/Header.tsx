@@ -148,8 +148,10 @@ const Header: React.FC = () => {
                         <ScrambleText 
                           text={item.name}
                           randomGlitch={true}
-                          glitchInterval={8}
+                          glitchInterval={25}
                           glitchDuration={120}
+                          slowGlitch={true}
+                          slowGlitchInterval={240}
                         />
                       </span>
                     ) : (
@@ -162,8 +164,10 @@ const Header: React.FC = () => {
                         <ScrambleText 
                           text={item.name}
                           randomGlitch={true}
-                          glitchInterval={8}
+                          glitchInterval={25}
                           glitchDuration={120}
+                          slowGlitch={true}
+                          slowGlitchInterval={240}
                         />
                       </Link>
                     )}
@@ -245,7 +249,7 @@ const Header: React.FC = () => {
                                   <ScrambleText 
                                     text={subItem.name}
                                     randomGlitch={true}
-                                    glitchInterval={12}
+                                    glitchInterval={35}
                                     glitchDuration={100}
                                   />
                                 </Link>
@@ -345,8 +349,10 @@ const Header: React.FC = () => {
                       <ScrambleText 
                         text={item.name}
                         randomGlitch={true}
-                        glitchInterval={10}
+                        glitchInterval={30}
                         glitchDuration={130}
+                        slowGlitch={true}
+                        slowGlitchInterval={300}
                       />
                     </Link>
                     
@@ -382,7 +388,7 @@ const Header: React.FC = () => {
                               <ScrambleText 
                                 text={subItem.name}
                                 randomGlitch={true}
-                                glitchInterval={15}
+                                glitchInterval={45}
                                 glitchDuration={110}
                               />
                             </Link>

@@ -28,8 +28,10 @@ const Footer: React.FC = () => {
           <ScrambleText 
             text={`© ${currentYear} DISRUPTORS MEDIA. ALL RIGHTS RESERVED.`}
             randomGlitch={true}
-            glitchInterval={20}
+            glitchInterval={60}
             glitchDuration={140}
+            slowGlitch={true}
+            slowGlitchInterval={400}
           />
         </p>
 
@@ -53,8 +55,10 @@ const Footer: React.FC = () => {
               <ScrambleText 
                 text="HELLO@DISRUPTORSMEDIA.COM"
                 randomGlitch={true}
-                glitchInterval={25}
+                glitchInterval={70}
                 glitchDuration={120}
+                slowGlitch={true}
+                slowGlitchInterval={500}
               />
             </a>
           </p>
@@ -66,7 +70,7 @@ const Footer: React.FC = () => {
               <ScrambleText 
                 text="+1 (XXX) XXX-XXXX"
                 randomGlitch={true}
-                glitchInterval={30}
+                glitchInterval={80}
                 glitchDuration={110}
               />
             </a>
@@ -75,14 +79,14 @@ const Footer: React.FC = () => {
             <ScrambleText 
               text="[BUSINESS ADDRESS]"
               randomGlitch={true}
-              glitchInterval={35}
+              glitchInterval={90}
               glitchDuration={130}
             />
             <br />
             <ScrambleText 
               text="[CITY, STATE ZIP CODE]"
               randomGlitch={true}
-              glitchInterval={40}
+              glitchInterval={100}
               glitchDuration={125}
             />
           </p>

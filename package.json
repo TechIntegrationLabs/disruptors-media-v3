@@ -21,6 +21,9 @@
     "autoprefixer": "^10.4.21",
     "axios": "^1.11.0",
     "cloudinary": "^2.7.0",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
     "framer-motion": "^12.23.12",
     "gsap": "^3.13.0",
     "postcss": "^8.5.6",
@@ -33,6 +36,7 @@
     "tailwindcss": "^3.4.17",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4",
+    "ws": "^8.18.0",
     "yup": "^1.7.0"
   },
   "scripts": {
@@ -52,7 +56,13 @@
     "clients:validate": "node src/data/clients/clients-sync.js",
     "clients:backup": "node -e \"require('./src/data/clients/clients-sync.js').fetchFromGoogleSheets().then(console.log)\"",
     "figma:start": "node scripts/start-figma-websocket.js",
-    "admin:help": "echo '🎨 Secret Admin Panel Commands:\n- npm run figma:start (Start Figma WebSocket)\n- Triple-click logo to access admin panel'"
+    "admin:help": "echo '🎨 Secret Admin Panel Commands:\n- npm run figma:start (Start Figma WebSocket)\n- Triple-click logo to access admin panel'",
+    "claude-bridge": "node src/backend/claude-bridge/server.js",
+    "claude-bridge:dev": "nodemon src/backend/claude-bridge/server.js",
+    "dev:full": "concurrently \"npm start\" \"npm run claude-bridge\"",
+    "dev:full:auto": "concurrently \"npm run dev:auto\" \"npm run claude-bridge\"",
+    "claude:status": "curl -s http://localhost:3456/health | jq .",
+    "claude:test": "curl -f http://localhost:3456/health && echo 'Claude Bridge is running!' || echo 'Claude Bridge is not running. Start with: npm run claude-bridge'"
   },
   "eslintConfig": {
     "extends": [
@@ -73,6 +83,10 @@
     ]
   },
   "devDependencies": {
-    "cross-fetch": "^4.1.0"
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/ws": "^8.5.12",
+    "cross-fetch": "^4.1.0",
+    "nodemon": "^3.1.7"
   }
 }

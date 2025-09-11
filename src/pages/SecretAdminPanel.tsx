@@ -27,6 +27,12 @@ const SecretAdminPanel: React.FC = () => {
   const [activeDbTab, setActiveDbTab] = useState<string>('clients');
   const [selectedRecord, setSelectedRecord] = useState<any | null>(null);
   
+  // AI Assistant states
+  const [chatMessages, setChatMessages] = useState<Array<{ role: 'user' | 'assistant'; content: string; timestamp: Date }>>([]);
+  const [inputMessage, setInputMessage] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [mcpStatus, setMcpStatus] = useState<Record<string, boolean>>({});
+  
   const [services, setServices] = useState<ServiceStatus[]>([
     // Core Development Services
     {
@@ -170,6 +176,18 @@ const SecretAdminPanel: React.FC = () => {
       category: 'development'
     }
   ]);
+  
+  // MCP Servers configuration
+  const mcpServers = [
+    { id: 'dataforseo', name: 'DataForSEO', icon: '📊', description: 'SEO analytics and keyword research' },
+    { id: 'firecrawl', name: 'Firecrawl', icon: '🔥', description: 'Web scraping and content extraction' },
+    { id: 'cloudinary', name: 'Cloudinary', icon: '☁️', description: 'Image and asset management' },
+    { id: 'gohighlevel', name: 'GoHighLevel', icon: '🚀', description: 'CRM and marketing automation' },
+    { id: 'n8n-mcp', name: 'n8n Workflows', icon: '🔄', description: 'Workflow automation' },
+    { id: 'netlify', name: 'Netlify', icon: '▲', description: 'Deployment and hosting' },
+    { id: 'filesystem', name: 'Filesystem', icon: '📁', description: 'Local file operations' },
+    { id: 'gsap-master', name: 'GSAP Master', icon: '✨', description: 'Animation expertise' }
+  ];
 
   // Ecosystem Agents (Global DisruptorEcosystem)
   const ecosystemAgents = [
@@ -654,7 +672,8 @@ const SecretAdminPanel: React.FC = () => {
                   { id: 'wiki', name: 'Team Wiki', icon: '📚' },
                   { id: 'subagents', name: 'Subagents', icon: '🤖' },
                   { id: 'modules', name: 'Site Modules', icon: '🧩' },
-                  { id: 'database', name: 'Database', icon: '💾' }
+                  { id: 'database', name: 'Database', icon: '💾' },
+                  { id: 'ai-assistant', name: 'AI Assistant', icon: '🤖' }
                 ].map((tab) => (
                   <button
                     key={tab.id}
@@ -1915,6 +1934,211 @@ const SecretAdminPanel: React.FC = () => {
                       </pre>
                     </motion.div>
                   </motion.div>
+                )}
+              </div>
+            </motion.div>
+          )}
+
+          {/* AI Assistant Tab */}
+          {activeTab === 'ai-assistant' && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="space-y-6"
+            >
+              <div className="bg-black/40 border border-accent-gold/30 rounded-lg p-6">
+                <h2 className="text-accent-gold font-pp-supply-mono text-xl mb-4">
+                  🤖 AI Assistant (Claude Code Integration)
+                </h2>
+                
+                {/* Local development check */}
+                {window.location.hostname === 'localhost' ? (
+                  <div className="space-y-6">
+                    <p className="text-brand-cream/70 mb-6">
+                      Chat directly with Claude Code using your local MCP server configurations. This interface provides access to all your configured MCP servers and local development tools.
+                    </p>
+                    
+                    {/* MCP Status Grid */}
+                    <div className="bg-gray-800/30 border border-gray-600/20 rounded-lg p-4 mb-6">
+                      <h3 className="text-brand-cream font-pp-supply-mono text-sm mb-3">
+                        🔗 MCP Server Status
+                      </h3>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        {mcpServers.map((server) => (
+                          <div 
+                            key={server.id}
+                            className="bg-black/30 border border-gray-600/30 rounded p-3"
+                          >
+                            <div className="flex items-center justify-between mb-1">
+                              <span className="text-lg">{server.icon}</span>
+                              <div className={`w-2 h-2 rounded-full ${
+                                mcpStatus[server.id] ? 'bg-green-500' : 'bg-gray-500'
+                              }`} />
+                            </div>
+                            <p className="text-xs text-brand-cream font-pp-supply-mono">
+                              {server.name}
+                            </p>
+                            <p className="text-xs text-brand-cream/60 mt-1">
+                              {server.description}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Chat Interface */}
+                    <div className="bg-gray-800/30 border border-gray-600/20 rounded-lg overflow-hidden">
+                      {/* Chat Messages */}
+                      <div className="h-96 overflow-y-auto p-4 space-y-4">
+                        {chatMessages.length === 0 ? (
+                          <div className="text-center text-brand-cream/60 py-8">
+                            <p className="text-sm">Start a conversation with Claude Code</p>
+                            <p className="text-xs mt-2">Try: "Help me analyze the performance of my components"</p>
+                          </div>
+                        ) : (
+                          chatMessages.map((message, index) => (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                            >
+                              <div className={`max-w-3xl ${
+                                message.role === 'user' 
+                                  ? 'bg-blue-600/20 border-blue-500' 
+                                  : 'bg-gray-700/50 border-gray-600'
+                              } border rounded-lg p-4`}>
+                                <div className="flex items-center mb-2">
+                                  <span className="text-xs font-pp-supply-mono text-brand-cream/60">
+                                    {message.role === 'user' ? 'You' : 'Claude Code'}
+                                  </span>
+                                  <span className="text-xs text-brand-cream/40 ml-2">
+                                    {new Date(message.timestamp).toLocaleTimeString()}
+                                  </span>
+                                </div>
+                                <div className="text-sm text-brand-cream whitespace-pre-wrap">
+                                  {message.content}
+                                </div>
+                              </div>
+                            </motion.div>
+                          ))
+                        )}
+                        {isLoading && (
+                          <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            className="flex justify-start"
+                          >
+                            <div className="bg-gray-700/50 border border-gray-600 rounded-lg p-4">
+                              <div className="flex items-center space-x-2">
+                                <div className="w-2 h-2 bg-brand-cream/60 rounded-full animate-pulse" />
+                                <div className="w-2 h-2 bg-brand-cream/60 rounded-full animate-pulse delay-75" />
+                                <div className="w-2 h-2 bg-brand-cream/60 rounded-full animate-pulse delay-150" />
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </div>
+                      
+                      {/* Input Area */}
+                      <div className="border-t border-gray-600/30 p-4">
+                        <form 
+                          onSubmit={(e) => {
+                            e.preventDefault();
+                            if (inputMessage.trim() && !isLoading) {
+                              setChatMessages(prev => [...prev, {
+                                role: 'user',
+                                content: inputMessage,
+                                timestamp: new Date()
+                              }]);
+                              setIsLoading(true);
+                              setInputMessage('');
+                              // TODO: Send message to Claude Code bridge server
+                              setTimeout(() => {
+                                setChatMessages(prev => [...prev, {
+                                  role: 'assistant',
+                                  content: 'Claude Code integration is pending implementation. This will connect to your local Claude Code instance with full MCP server access.',
+                                  timestamp: new Date()
+                                }]);
+                                setIsLoading(false);
+                              }, 1000);
+                            }
+                          }}
+                          className="flex space-x-2"
+                        >
+                          <input
+                            type="text"
+                            value={inputMessage}
+                            onChange={(e) => setInputMessage(e.target.value)}
+                            placeholder="Ask Claude Code anything..."
+                            className="flex-1 bg-black/50 border border-gray-600 rounded-lg px-4 py-2 text-sm text-brand-cream placeholder-brand-cream/40 focus:outline-none focus:border-accent-gold"
+                            disabled={isLoading}
+                          />
+                          <button
+                            type="submit"
+                            disabled={isLoading || !inputMessage.trim()}
+                            className="bg-accent-gold hover:bg-yellow-600 disabled:bg-gray-600 text-brand-charcoal px-4 py-2 rounded-lg font-pp-supply-mono text-sm transition-colors disabled:cursor-not-allowed"
+                          >
+                            Send
+                          </button>
+                        </form>
+                        
+                        {/* Quick Commands */}
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          <span className="text-xs text-brand-cream/60">Quick:</span>
+                          {[
+                            '@analyze-component',
+                            '@generate-blog',
+                            '@seo-check',
+                            '@sync-data'
+                          ].map((cmd) => (
+                            <button
+                              key={cmd}
+                              onClick={() => setInputMessage(cmd + ' ')}
+                              className="text-xs bg-black/30 hover:bg-black/50 text-accent-gold px-2 py-1 rounded transition-colors"
+                            >
+                              {cmd}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Connection Status */}
+                    <div className="bg-yellow-900/20 border border-yellow-600/30 rounded-lg p-4">
+                      <div className="flex items-center space-x-3">
+                        <span className="text-yellow-500">⚠️</span>
+                        <div>
+                          <p className="text-sm text-yellow-400 font-medium">
+                            Claude Code Bridge Not Connected
+                          </p>
+                          <p className="text-xs text-brand-cream/70 mt-1">
+                            Run <code className="bg-black/50 px-1 py-0.5 rounded">npm run claude-bridge</code> to enable Claude Code integration
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  /* Production Fallback */
+                  <div className="bg-gray-800/30 border border-gray-600/20 rounded-lg p-8 text-center">
+                    <span className="text-4xl mb-4 block">🔒</span>
+                    <h3 className="text-brand-cream font-pp-supply-mono text-lg mb-3">
+                      Local Development Only
+                    </h3>
+                    <p className="text-brand-cream/70 text-sm mb-6 max-w-md mx-auto">
+                      The AI Assistant requires a local Claude Code instance and MCP server access. This feature is only available when running the admin panel locally.
+                    </p>
+                    <div className="bg-black/30 rounded-lg p-4 text-left max-w-md mx-auto">
+                      <p className="text-xs text-brand-cream/80 font-pp-supply-mono mb-2">To use locally:</p>
+                      <ol className="space-y-1 text-xs text-brand-cream/70">
+                        <li>1. Run <code className="text-green-400">npm start</code></li>
+                        <li>2. Run <code className="text-green-400">npm run claude-bridge</code></li>
+                        <li>3. Ensure Claude Code is installed</li>
+                        <li>4. Access admin panel at localhost:3000</li>
+                      </ol>
+                    </div>
+                  </div>
                 )}
               </div>
             </motion.div>
