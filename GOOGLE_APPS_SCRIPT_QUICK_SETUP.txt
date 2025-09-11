@@ -1,0 +1,353 @@
+
+GOOGLE APPS SCRIPT QUICK SETUP
+==============================
+
+1. OPEN GOOGLE APPS SCRIPT:
+   https://script.google.com
+
+2. CREATE NEW PROJECT:
+   - Click "New Project"
+   - Name it: "DM3 Blog Auto-Population"
+
+3. COPY THE SCRIPT:
+   - Delete all default code
+   - Copy everything from google-apps-script-auto-populate.js
+   - Paste into the editor
+   - Save (Ctrl+S or Cmd+S)
+
+4. AUTHORIZE & TEST:
+   - Select function dropdown → choose "testSync"
+   - Click "Run" button
+   - Grant permissions when prompted
+   - Check execution log for success
+
+5. ENABLE AUTO-SYNC:
+   - Select function dropdown → choose "setupTriggers"
+   - Click "Run" button
+   - This sets up hourly sync + edit triggers
+
+6. VERIFY IT'S WORKING:
+   - Check your main sheet for new "Blog Posts" tab
+   - Approved posts should appear there
+   - Check "Sync Metadata" tab for status
+
+SHEET IDs CONFIGURED:
+- Blog Content Sheet: 1KWGeHUOjKtYINSqeneEF8U9hKjEs3U1UTUPaff6OWpA
+- Main Sheet: 1xkoXzGy4q-xkMZRQpqGCN4QR3o-FHOI_4YcTxBUDQYg
+
+THAT'S IT! Your blog posts will now auto-sync every hour.
+
+
+SCRIPT CONTENT:
+
+/**
+ * Google Apps Script for Auto-Populating Main Sheet with Blog Data
+ * 
+ * This script reads approved blog posts from the Blog Content Sheet
+ * and populates the main sheet with the required information for DM3 website integration.
+ * 
+ * Setup Instructions:
+ * 1. Open Google Apps Script (script.google.com)
+ * 2. Create a new project
+ * 3. Replace the default code with this script
+ * 4. Update the SHEET_IDS constants below
+ * 5. Run setupTriggers() once to set up automatic sync
+ * 6. Grant necessary permissions when prompted
+ */
+
+// Configuration - UPDATE THESE VALUES
+const BLOG_CONTENT_SHEET_ID = '1KWGeHUOjKtYINSqeneEF8U9hKjEs3U1UTUPaff6OWpA'; // Source sheet
+const MAIN_SHEET_ID = '1xkoXzGy4q-xkMZRQpqGCN4QR3o-FHOI_4YcTxBUDQYg'; // Destination sheet
+
+// Sheet tab names
+const BLOG_CONTENT_TAB = 'Content'; // Source tab
+const MAIN_SHEET_BLOG_TAB = 'Blog Posts'; // Destination tab (will be created if it doesn't exist)
+
+/**
+ * Main function to sync blog posts from content sheet to main sheet
+ */
+function syncBlogPosts() {
+  try {
+    Logger.log('Starting blog post sync...');
+    
+    // Open source and destination spreadsheets
+    const blogContentSheet = SpreadsheetApp.openById(BLOG_CONTENT_SHEET_ID);
+    const mainSheet = SpreadsheetApp.openById(MAIN_SHEET_ID);
+    
+    // Get the source tab (Content)
+    const contentTab = blogContentSheet.getSheetByName(BLOG_CONTENT_TAB);
+    if (!contentTab) {
+      throw new Error(`Content tab "${BLOG_CONTENT_TAB}" not found in blog content sheet`);
+    }
+    
+    // Get or create the destination tab in main sheet
+    let blogTab = mainSheet.getSheetByName(MAIN_SHEET_BLOG_TAB);
+    if (!blogTab) {
+      blogTab = mainSheet.insertSheet(MAIN_SHEET_BLOG_TAB);
+      setupBlogTabHeaders(blogTab);
+    }
+    
+    // Get all data from content sheet
+    const contentData = contentTab.getDataRange().getValues();
+    if (contentData.length < 2) {
+      Logger.log('No data found in content sheet');
+      return;
+    }
+    
+    const headers = contentData[0];
+    const rows = contentData.slice(1);
+    
+    // Map column indices from content sheet
+    const sourceColumns = {
+      title: headers.indexOf('Title'),
+      postUrl: headers.indexOf('Post URL'),
+      client: headers.indexOf('Client'),
+      status: headers.indexOf('Status'),
+      primaryKeyword: headers.indexOf('Primary Keyword'),
+      secondaryKeyword: headers.indexOf('Secondary Keyword'),
+      targetUrl: headers.indexOf('Target URL'),
+      publishDate: headers.indexOf('Publish date'),
+      contentType: headers.indexOf('Content type'),
+      platform: headers.indexOf('Platform'),
+      button: headers.indexOf('Button'),
+      keywordStrategy: headers.indexOf('Keyword Strategy'),
+      approved: headers.indexOf('Approved?'),
+      featureImage: headers.indexOf('Feature Image ')
+    };
+    
+    Logger.log('Source columns mapped:', sourceColumns);
+    
+    // Filter and process approved posts
+    const approvedPosts = [];
+    
+    rows.forEach((row, index) => {
+      const rowNum = index + 2; // +2 because we skipped header and arrays are 0-indexed
+      
+      // Skip empty rows
+      if (!row[sourceColumns.title] || row[sourceColumns.title].trim() === '') {
+        return;
+      }
+      
+      // Only process approved posts
+      const approved = row[sourceColumns.approved] || '';
+      if (approved.toString().toLowerCase() !== 'yes') {
+        Logger.log(`Skipping non-approved post (row ${rowNum}): ${row[sourceColumns.title]}`);
+        return;
+      }
+      
+      // Extract data for main sheet
+      const blogPost = {
+        title: row[sourceColumns.title] || '',
+        content: row[sourceColumns.postUrl] || '', // Google Docs URL
+        image: row[sourceColumns.featureImage] || '',
+        postDate: row[sourceColumns.publishDate] || '',
+        client: row[sourceColumns.client] || 'Disruptors Media',
+        primaryKeyword: row[sourceColumns.primaryKeyword] || '',
+        category: determineCategoryFromKeyword(row[sourceColumns.primaryKeyword] || '', row[sourceColumns.title] || ''),
+        excerpt: createExcerptFromTitle(row[sourceColumns.title] || '', row[sourceColumns.primaryKeyword] || ''),
+        slug: createSlugFromTitle(row[sourceColumns.title] || ''),
+        lastUpdated: new Date()
+      };
+      
+      approvedPosts.push(blogPost);
+      Logger.log(`Processed approved post: ${blogPost.title}`);
+    });
+    
+    Logger.log(`Found ${approvedPosts.length} approved posts to sync`);
+    
+    // Clear existing data in blog tab (except headers)
+    if (blogTab.getLastRow() > 1) {
+      blogTab.getRange(2, 1, blogTab.getLastRow() - 1, blogTab.getLastColumn()).clearContent();
+    }
+    
+    // Write new data to blog tab
+    if (approvedPosts.length > 0) {
+      const outputData = approvedPosts.map(post => [
+        post.title,
+        post.content,
+        post.image,
+        post.postDate,
+        post.client,
+        post.primaryKeyword,
+        post.category,
+        post.excerpt,
+        post.slug,
+        post.lastUpdated
+      ]);
+      
+      blogTab.getRange(2, 1, outputData.length, outputData[0].length).setValues(outputData);
+      Logger.log(`Successfully wrote ${outputData.length} blog posts to main sheet`);
+    }
+    
+    // Update sync metadata
+    updateSyncMetadata(mainSheet, approvedPosts.length);
+    
+    Logger.log('Blog post sync completed successfully');
+    
+  } catch (error) {
+    Logger.log('Error during blog post sync: ' + error.toString());
+    throw error;
+  }
+}
+
+/**
+ * Set up headers for the blog tab in main sheet
+ */
+function setupBlogTabHeaders(sheet) {
+  const headers = [
+    'Title',
+    'Content',
+    'Image',
+    'Post Date',
+    'Client',
+    'Primary Keyword',
+    'Category',
+    'Excerpt',
+    'Slug',
+    'Last Updated'
+  ];
+  
+  sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+  sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold');
+  sheet.setFrozenRows(1);
+  
+  Logger.log('Blog tab headers set up');
+}
+
+/**
+ * Update sync metadata in the main sheet
+ */
+function updateSyncMetadata(mainSheet, postCount) {
+  let metadataSheet = mainSheet.getSheetByName('Sync Metadata');
+  if (!metadataSheet) {
+    metadataSheet = mainSheet.insertSheet('Sync Metadata');
+    metadataSheet.getRange(1, 1, 1, 3).setValues([['Last Sync', 'Posts Synced', 'Status']]);
+    metadataSheet.getRange(1, 1, 1, 3).setFontWeight('bold');
+  }
+  
+  metadataSheet.getRange(2, 1, 1, 3).setValues([[
+    new Date(),
+    postCount,
+    'Success'
+  ]]);
+}
+
+/**
+ * Helper function to determine category from keyword and title
+ */
+function determineCategoryFromKeyword(keyword, title) {
+  const searchText = `${keyword} ${title}`.toLowerCase();
+  
+  if (searchText.includes('tech') || searchText.includes('digital') || searchText.includes('software')) return 'technology';
+  if (searchText.includes('design') || searchText.includes('visual') || searchText.includes('creative')) return 'design';
+  if (searchText.includes('brand') || searchText.includes('identity') || searchText.includes('logo')) return 'branding';
+  if (searchText.includes('strategy') || searchText.includes('strategic') || searchText.includes('plan')) return 'strategy';
+  if (searchText.includes('system') || searchText.includes('automation') || searchText.includes('workflow')) return 'systems';
+  if (searchText.includes('ai') || searchText.includes('artificial intelligence') || searchText.includes('machine learning')) return 'ai';
+  if (searchText.includes('social') || searchText.includes('media') || searchText.includes('instagram') || searchText.includes('facebook')) return 'social media';
+  if (searchText.includes('seo') || searchText.includes('search') || searchText.includes('ranking')) return 'seo';
+  if (searchText.includes('content') || searchText.includes('blog') || searchText.includes('writing')) return 'content';
+  
+  return 'marketing';
+}
+
+/**
+ * Helper function to create excerpt from title and keyword
+ */
+function createExcerptFromTitle(title, keyword) {
+  if (title.length > 150) return title.substring(0, 150) + '...';
+  
+  if (keyword && keyword.length > 10) {
+    return `Discover how ${keyword.toLowerCase()} can transform your business. Learn practical strategies and insights that drive real results.`;
+  }
+  
+  return `Explore insights and strategies to help grow your business through effective ${title.toLowerCase().includes('content') ? 'content creation' : 'marketing'} approaches.`;
+}
+
+/**
+ * Helper function to create URL-friendly slug from title
+ */
+function createSlugFromTitle(title) {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9 -]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+/**
+ * Set up automatic triggers for the sync process
+ * Run this function once to set up triggers
+ */
+function setupTriggers() {
+  // Delete existing triggers
+  ScriptApp.getProjectTriggers().forEach(trigger => {
+    if (trigger.getHandlerFunction() === 'syncBlogPosts') {
+      ScriptApp.deleteTrigger(trigger);
+    }
+  });
+  
+  // Create new triggers
+  
+  // Trigger every hour
+  ScriptApp.newTrigger('syncBlogPosts')
+    .timeBased()
+    .everyHours(1)
+    .create();
+  
+  // Trigger when blog content sheet is edited
+  ScriptApp.newTrigger('syncBlogPosts')
+    .for(SpreadsheetApp.openById(BLOG_CONTENT_SHEET_ID))
+    .onEdit()
+    .create();
+  
+  Logger.log('Triggers set up successfully');
+}
+
+/**
+ * Remove all triggers (use if you need to stop automatic sync)
+ */
+function removeTriggers() {
+  ScriptApp.getProjectTriggers().forEach(trigger => {
+    if (trigger.getHandlerFunction() === 'syncBlogPosts') {
+      ScriptApp.deleteTrigger(trigger);
+    }
+  });
+  
+  Logger.log('All triggers removed');
+}
+
+/**
+ * Test function to run sync manually
+ */
+function testSync() {
+  Logger.log('Running manual test sync...');
+  syncBlogPosts();
+}
+
+/**
+ * Function to get sync status and information
+ */
+function getSyncStatus() {
+  try {
+    const mainSheet = SpreadsheetApp.openById(MAIN_SHEET_ID);
+    const metadataSheet = mainSheet.getSheetByName('Sync Metadata');
+    
+    if (!metadataSheet) {
+      return 'No sync metadata found. Sync may not have run yet.';
+    }
+    
+    const lastSyncData = metadataSheet.getRange(2, 1, 1, 3).getValues()[0];
+    
+    return {
+      lastSync: lastSyncData[0],
+      postsSynced: lastSyncData[1],
+      status: lastSyncData[2]
+    };
+    
+  } catch (error) {
+    Logger.log('Error getting sync status: ' + error.toString());
+    return 'Error retrieving sync status';
+  }
+}

@@ -50,7 +50,9 @@
     "dev:safe": "./scripts/dev-with-auto-commit.sh",
     "clients:sync": "node src/data/clients/clients-sync.js",
     "clients:validate": "node src/data/clients/clients-sync.js",
-    "clients:backup": "node -e \"require('./src/data/clients/clients-sync.js').fetchFromGoogleSheets().then(console.log)\""
+    "clients:backup": "node -e \"require('./src/data/clients/clients-sync.js').fetchFromGoogleSheets().then(console.log)\"",
+    "figma:start": "node scripts/start-figma-websocket.js",
+    "admin:help": "echo '🎨 Secret Admin Panel Commands:\n- npm run figma:start (Start Figma WebSocket)\n- Triple-click logo to access admin panel'"
   },
   "eslintConfig": {
     "extends": [

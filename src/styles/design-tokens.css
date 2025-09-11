@@ -1,0 +1,145 @@
+/* Design Tokens from Figma Analysis */
+/* Replace these values with exact Figma specifications */
+
+:root {
+  /* === COLORS === */
+  /* Primary Brand Colors - Update with exact Figma values */
+  --brand-charcoal: #2B2B2B;
+  --brand-cream: #F1EDE9;
+  --warm-beige: #CAC1B8;
+  --pure-black: #000000;
+  --pure-white: #FFFFFF;
+  --accent-gold: #FFD700;
+  
+  /* Interactive States - Extract from Figma */
+  --color-hover: ; /* Add hover color */
+  --color-active: ; /* Add active color */
+  --color-focus: ; /* Add focus color */
+  --color-disabled: ; /* Add disabled color */
+  
+  /* Status Colors - If defined in Figma */
+  --color-success: ;
+  --color-warning: ;
+  --color-error: ;
+  
+  /* Background Variations */
+  --bg-primary: var(--brand-cream);
+  --bg-secondary: var(--warm-beige);
+  --bg-dark: var(--brand-charcoal);
+  
+  /* === TYPOGRAPHY === */
+  /* Font Families */
+  --font-headline: 'OT Neue Montreal', sans-serif;
+  --font-body: 'PP Supply Mono', monospace;
+  --font-mono: 'PP Supply Mono', ui-monospace, monospace;
+  
+  /* Font Sizes - Update with exact Figma values */
+  --text-hero-h1: 220.302px;
+  --text-section-h2: 63px;
+  --text-section-h3: 65px;
+  --text-section-h3-small: 39px;
+  --text-body-primary: 22px;
+  --text-body-secondary: 20px;
+  --text-body-small: 16px;
+  --text-cta-large: 39.645px;
+  
+  /* Line Heights - Extract from Figma */
+  --line-height-hero: 198.59px;
+  --line-height-section: 68.6px;
+  --line-height-body: 30px;
+  --line-height-small: 28px;
+  --line-height-cta: 47.65px;
+  
+  /* Letter Spacing - Extract from Figma */
+  --letter-spacing-hero: ; /* Add if specified */
+  --letter-spacing-headline: ;
+  --letter-spacing-body: ;
+  
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700; /* If used */
+  
+  /* === SPACING === */
+  /* Base Spacing Scale - Verify with Figma */
+  --space-xs: 10px;
+  --space-sm: 20px;
+  --space-md: 40px;
+  --space-lg: 60px;
+  --space-xl: 130px;
+  
+  /* Component-Specific Spacing - Extract from Figma */
+  --space-header-padding: 25px;
+  --space-hero-padding-top: 130px;
+  --space-hero-padding-bottom: 21px;
+  --space-section-padding: 60px;
+  --space-content-padding: 30px;
+  --space-footer-padding: 160px;
+  
+  /* === LAYOUT === */
+  /* Container Sizes */
+  --container-max-width: 1430px;
+  --container-padding: 20px;
+  
+  /* Breakpoints - Verify with Figma responsive design */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  
+  /* === VISUAL EFFECTS === */
+  /* Border Radius - Extract from Figma */
+  --radius-small: ; /* Add if specified */
+  --radius-medium: ;
+  --radius-large: ;
+  --radius-full: 9999px;
+  
+  /* Shadows - Extract from Figma */
+  --shadow-sm: ; /* Add if specified */
+  --shadow-md: ;
+  --shadow-lg: ;
+  
+  /* Z-Index Scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1010;
+  --z-modal: 1020;
+  --z-toast: 1030;
+  
+  /* === ANIMATIONS === */
+  /* Duration Values - Extract from Figma */
+  --duration-fast: 0.15s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.6s;
+  
+  /* Easing Functions - Check Figma motion settings */
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Mode Variations - If specified in Figma */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Override colors for dark mode if defined in Figma */
+  }
+}
+
+/* Component-Specific CSS Custom Properties */
+.hero-section {
+  --hero-bg-color: ; /* Extract from Figma */
+  --hero-text-color: ;
+}
+
+.navigation {
+  --nav-bg-color: ;
+  --nav-text-color: ;
+  --nav-hover-color: ;
+}
+
+.cta-button {
+  --btn-bg-primary: ;
+  --btn-bg-hover: ;
+  --btn-text-color: ;
+  --btn-border-radius: ;
+}

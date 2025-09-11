@@ -27,6 +27,7 @@ import Gallery from './pages/Gallery';
 import Podcast from './pages/Podcast';
 import FAQ from './pages/FAQ';
 import CaseStudyDetail from './pages/CaseStudyDetail';
+import SecretAdminPanel from './pages/SecretAdminPanel';
 
 function App() {
   const location = useLocation();
@@ -58,6 +59,17 @@ function App() {
               <Route path="/podcast" element={<PageTransition><Podcast /></PageTransition>} />
               <Route path="/case-study/:id" element={<PageTransition><CaseStudyDetail /></PageTransition>} />
               <Route path="/work/:slug" element={<PageTransition><CaseStudyDetail /></PageTransition>} />
+              
+              {/* Secret Routes - Accessible via command modal */}
+              <Route path="/secret/admin" element={<PageTransition><SecretAdminPanel /></PageTransition>} />
+              <Route path="/secret/tools" element={<PageTransition><SecretAdminPanel /></PageTransition>} />
+              <Route path="/secret/dev" element={<PageTransition><SecretAdminPanel /></PageTransition>} />
+              <Route path="/secret/scripts" element={<PageTransition><SecretAdminPanel /></PageTransition>} />
+              <Route path="/secret/figma-tools" element={<PageTransition><SecretAdminPanel /></PageTransition>} />
+              <Route path="/secret/matrix" element={<PageTransition><SecretAdminPanel /></PageTransition>} />
+              <Route path="/secret/control-panel" element={<PageTransition><SecretAdminPanel /></PageTransition>} />
+              <Route path="/secret/system" element={<PageTransition><SecretAdminPanel /></PageTransition>} />
+              
               <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
             </Routes>
           </AnimatePresence>

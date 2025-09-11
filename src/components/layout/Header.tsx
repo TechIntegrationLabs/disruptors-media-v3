@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import SecretCommandModal from '../common/SecretCommandModal';
 // import { CLOUDINARY_ASSETS } from '../../constants/cloudinaryAssets';
 
 interface NavigationItem {
@@ -13,6 +14,9 @@ const Header: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [showSecretModal, setShowSecretModal] = useState(false);
+  const [logoClickCount, setLogoClickCount] = useState(0);
+  const [logoClickTimer, setLogoClickTimer] = useState<NodeJS.Timeout | null>(null);
   const location = useLocation();
 
   // PRD Navigation Items - Enhanced with dropdowns
@@ -73,16 +77,53 @@ const Header: React.FC = () => {
     setActiveDropdown(null);
   };
 
+  // Easter egg: Triple-click logo to open secret command modal
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    setLogoClickCount(prev => prev + 1);
+    
+    // Clear existing timer
+    if (logoClickTimer) {
+      clearTimeout(logoClickTimer);
+    }
+    
+    // Set new timer to reset click count
+    const timer = setTimeout(() => {
+      setLogoClickCount(0);
+    }, 1000); // Reset after 1 second
+    
+    setLogoClickTimer(timer);
+    
+    // Check if triple-clicked
+    if (logoClickCount + 1 === 3) {
+      setShowSecretModal(true);
+      setLogoClickCount(0);
+      if (logoClickTimer) clearTimeout(logoClickTimer);
+    }
+  };
+
   return (
     <header className="relative w-full z-1000" style={{ padding: '25px 0' }}>
       <div className="container-custom">
         <div className="flex justify-between items-center">
-          {/* Logo - PRD Specification */}
-          <Link to="/" className="inline-block">
-            <img 
+          {/* Logo - PRD Specification with Easter Egg */}
+          <Link 
+            to="/" 
+            className="inline-block cursor-pointer select-none"
+            onClick={handleLogoClick}
+            title="Disruptors Media"
+          >
+            <motion.img 
               src="https://res.cloudinary.com/dvcvxhzmt/image/upload/v1755697031/logos/logo.svg" 
               alt="Disruptors Media" 
-              className="h-auto max-h-10"
+              className="h-auto max-h-10 transition-transform duration-200"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              animate={logoClickCount > 0 ? { 
+                rotate: [0, -5, 5, 0],
+                transition: { duration: 0.3 }
+              } : {}}
             />
           </Link>
 
@@ -330,6 +371,12 @@ const Header: React.FC = () => {
           )}
         </AnimatePresence>
       </div>
+
+      {/* Secret Command Modal */}
+      <SecretCommandModal 
+        isOpen={showSecretModal}
+        onClose={() => setShowSecretModal(false)}
+      />
     </header>
   );
 };
