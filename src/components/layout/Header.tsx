@@ -250,10 +250,8 @@ const Header: React.FC = () => {
                                 >
                                   <ScrambleText 
                                     text={subItem.name}
-                                    randomGlitch={true}
-                                    glitchInterval={35}
-                                    glitchDuration={100}
-                                    hoverScramble={true}
+                                    randomGlitch={false}
+                                    hoverScramble={false}
                                   />
                                 </Link>
                               </motion.li>
@@ -356,7 +354,7 @@ const Header: React.FC = () => {
                         glitchDuration={130}
                         slowGlitch={true}
                         slowGlitchInterval={300}
-                        hoverScramble={true}
+                        hoverScramble={false}
                       />
                     </Link>
                     
@@ -394,7 +392,7 @@ const Header: React.FC = () => {
                                 randomGlitch={true}
                                 glitchInterval={45}
                                 glitchDuration={110}
-                                hoverScramble={true}
+                                hoverScramble={false}
                               />
                             </Link>
                           </motion.li>

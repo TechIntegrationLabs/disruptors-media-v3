@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
             glitchDuration={140}
             slowGlitch={true}
             slowGlitchInterval={400}
-            hoverScramble={true}
+            hoverScramble={false}
           />
         </p>
 
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
                 glitchDuration={120}
                 slowGlitch={true}
                 slowGlitchInterval={500}
-                hoverScramble={true}
+                hoverScramble={false}
               />
             </a>
           </p>
@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
                 randomGlitch={true}
                 glitchInterval={80}
                 glitchDuration={110}
-                hoverScramble={true}
+                hoverScramble={false}
               />
             </a>
           </p>
@@ -84,7 +84,7 @@ const Footer: React.FC = () => {
               randomGlitch={true}
               glitchInterval={90}
               glitchDuration={130}
-              hoverScramble={true}
+              hoverScramble={false}
             />
             <br />
             <ScrambleText 
@@ -92,7 +92,7 @@ const Footer: React.FC = () => {
               randomGlitch={true}
               glitchInterval={100}
               glitchDuration={125}
-              hoverScramble={true}
+              hoverScramble={false}
             />
           </p>
         </div>
