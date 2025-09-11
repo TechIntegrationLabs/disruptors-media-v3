@@ -14,6 +14,8 @@
   
   # Enable React app environment variables
   REACT_APP_API_URL = "https://disruptorsmediav3.netlify.app"
+  REACT_APP_NETLIFY = "true"
+  REACT_APP_DEPLOYMENT_PLATFORM = "netlify"
 
 # Headers for security and performance
 [[headers]]
@@ -85,9 +87,15 @@
 # Environment-specific settings
 [context.production.environment]
   NODE_ENV = "production"
+  REACT_APP_NETLIFY = "true"
+  REACT_APP_DEPLOYMENT_PLATFORM = "netlify"
 
 [context.deploy-preview.environment]
   NODE_ENV = "development"
+  REACT_APP_NETLIFY = "true"
+  REACT_APP_DEPLOYMENT_PLATFORM = "netlify"
 
 [context.branch-deploy.environment]
   NODE_ENV = "development"
+  REACT_APP_NETLIFY = "true" 
+  REACT_APP_DEPLOYMENT_PLATFORM = "netlify"

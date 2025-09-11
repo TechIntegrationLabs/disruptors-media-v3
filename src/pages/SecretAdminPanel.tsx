@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import SEO from '../components/common/SEO';
 
+// Import deployment context and feature wrappers
+import { useDeploymentContext } from '../utils/deploymentContext';
+import { FeatureWrapper, FeatureButton, FeatureTab, DeploymentStatus } from '../components/common/FeatureWrapper';
+
 // Import data for database management
 import { featuredClients, testimonials } from '../data/clients';
 import { detailedServices } from '../data/services';
@@ -20,12 +24,33 @@ interface ServiceStatus {
 }
 
 const SecretAdminPanel: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>('services');
+  // Deployment context detection
+  const { context: deploymentContext, loading: contextLoading } = useDeploymentContext();
+  
+  const [activeTab, setActiveTab] = useState<string>('deployment');
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [expandedAgent, setExpandedAgent] = useState<string | null>(null);
   const [expandedModule, setExpandedModule] = useState<string | null>(null);
   const [activeDbTab, setActiveDbTab] = useState<string>('clients');
   const [selectedRecord, setSelectedRecord] = useState<any | null>(null);
+  
+  // View toggle states for list/card views
+  const [modulesViewMode, setModulesViewMode] = useState<'list' | 'card'>('card');
+  const [subagentsViewMode, setSubagentsViewMode] = useState<'list' | 'card'>('card');
+  const [servicesViewMode, setServicesViewMode] = useState<'list' | 'card'>('list');
+  const [dbViewMode, setDbViewMode] = useState<'table' | 'card'>('table');
+  
+  // Module detail and configuration states
+  const [selectedModuleDetail, setSelectedModuleDetail] = useState<string | null>(null);
+  const [moduleConfigs, setModuleConfigs] = useState<Record<string, {
+    status: 'testing' | 'approved' | 'review';
+    systemPrompt: string;
+    parameters: Record<string, any>;
+    featureImage: string | null;
+    cardImage: string | null;
+    displayConfig: Record<string, any>;
+  }>>({});
+  const [isGeneratingImage, setIsGeneratingImage] = useState<string | null>(null);
   
   // AI Assistant states
   const [chatMessages, setChatMessages] = useState<Array<{ role: 'user' | 'assistant'; content: string; timestamp: Date }>>([]);
@@ -1129,6 +1154,114 @@ const SecretAdminPanel: React.FC = () => {
     }
   };
 
+  // Initialize module config if it doesn't exist
+  const getModuleConfig = (moduleId: string) => {
+    if (!moduleConfigs[moduleId]) {
+      setModuleConfigs(prev => ({
+        ...prev,
+        [moduleId]: {
+          status: 'testing',
+          systemPrompt: `You are an AI assistant specialized in ${moduleId.replace(/-/g, ' ')}. Help users effectively utilize this module.`,
+          parameters: {},
+          featureImage: null,
+          cardImage: null,
+          displayConfig: {
+            theme: 'modern',
+            layout: 'default',
+            showBranding: true
+          }
+        }
+      }));
+      return {
+        status: 'testing' as const,
+        systemPrompt: `You are an AI assistant specialized in ${moduleId.replace(/-/g, ' ')}. Help users effectively utilize this module.`,
+        parameters: {},
+        featureImage: null,
+        cardImage: null,
+        displayConfig: {
+          theme: 'modern',
+          layout: 'default',
+          showBranding: true
+        }
+      };
+    }
+    return moduleConfigs[moduleId];
+  };
+
+  // Generate images using available AI services
+  const generateModuleImage = async (moduleId: string, imageType: 'feature' | 'card') => {
+    setIsGeneratingImage(`${moduleId}-${imageType}`);
+    addLog(`Generating ${imageType} image for module: ${moduleId}`);
+    
+    try {
+      // Find the module to get its details
+      const module = Object.values(siteModules)
+        .flatMap(category => category.modules)
+        .find(m => m.id === moduleId);
+      
+      if (!module) throw new Error('Module not found');
+      
+      const prompt = imageType === 'feature' 
+        ? `Create a modern, professional feature image for "${module.name}" - ${module.description}. Style: clean, minimal, tech-focused, gradient background, no text overlay.`
+        : `Create a compact card thumbnail for "${module.name}" - ${module.description}. Style: minimal icon-based design, solid background, professional colors.`;
+      
+      // Simulate API call (replace with actual implementation)
+      await new Promise(resolve => setTimeout(resolve, 3000));
+      
+      // Mock generated image URL (replace with actual generated URL)
+      const mockImageUrl = `https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop&q=80`;
+      
+      setModuleConfigs(prev => ({
+        ...prev,
+        [moduleId]: {
+          ...getModuleConfig(moduleId),
+          [imageType === 'feature' ? 'featureImage' : 'cardImage']: mockImageUrl
+        }
+      }));
+      
+      addLog(`✓ Generated ${imageType} image for ${module.name}`);
+    } catch (error) {
+      addLog(`✗ Failed to generate ${imageType} image: ${error}`);
+    } finally {
+      setIsGeneratingImage(null);
+    }
+  };
+
+  // Update module configuration
+  const updateModuleConfig = (moduleId: string, updates: Partial<typeof moduleConfigs[string]>) => {
+    setModuleConfigs(prev => ({
+      ...prev,
+      [moduleId]: {
+        ...getModuleConfig(moduleId),
+        ...updates
+      }
+    }));
+  };
+
+  // Modern View Toggle Component
+  const ViewToggle: React.FC<{
+    currentView: 'list' | 'card' | 'table';
+    onToggle: (view: 'list' | 'card' | 'table') => void;
+    options: Array<{ value: 'list' | 'card' | 'table'; icon: string; label: string }>;
+  }> = ({ currentView, onToggle, options }) => (
+    <div className="flex items-center bg-black/20 backdrop-blur-sm border border-accent-gold/20 rounded-lg p-1">
+      {options.map(({ value, icon, label }) => (
+        <button
+          key={value}
+          onClick={() => onToggle(value)}
+          className={`px-3 py-2 rounded-md text-xs font-pp-supply-mono transition-all duration-200 flex items-center space-x-2 ${
+            currentView === value
+              ? 'bg-accent-gold text-brand-charcoal shadow-lg shadow-accent-gold/25'
+              : 'text-brand-cream/60 hover:text-brand-cream hover:bg-white/5'
+          }`}
+        >
+          <span className="text-sm">{icon}</span>
+          <span>{label}</span>
+        </button>
+      ))}
+    </div>
+  );
+
   return (
     <>
       <SEO 
@@ -1164,34 +1297,125 @@ const SecretAdminPanel: React.FC = () => {
           >
             <div className="border-b border-accent-gold/20">
               <nav className="flex space-x-8">
-                {[
-                  { id: 'services', name: 'Development Services', icon: '🚀' },
-                  { id: 'wiki', name: 'Team Wiki', icon: '📚' },
-                  { id: 'subagents', name: 'Subagents', icon: '🤖' },
-                  { id: 'modules', name: 'Site Modules', icon: '🧩' },
-                  { id: 'database', name: 'Database', icon: '💾' },
-                  { id: 'ai-assistant', name: 'AI Assistant', icon: '🤖' }
-                ].map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`py-3 px-1 border-b-2 font-pp-supply-mono text-sm transition-colors flex items-center space-x-2 ${
-                      activeTab === tab.id
-                        ? 'border-accent-gold text-accent-gold'
-                        : 'border-transparent text-brand-cream/60 hover:text-brand-cream'
-                    }`}
-                  >
-                    <span>{tab.icon}</span>
-                    <span>{tab.name}</span>
-                  </button>
-                ))}
+                {/* Show loading state while context loads */}
+                {contextLoading ? (
+                  <div className="flex items-center space-x-4 py-3">
+                    <div className="w-4 h-4 border-2 border-gold border-t-transparent rounded-full animate-spin"></div>
+                    <span className="text-gray-400 text-sm">Loading deployment context...</span>
+                  </div>
+                ) : (
+                  [
+                    { id: 'deployment', name: 'Deployment Status', icon: '🌍', feature: null },
+                    { id: 'services', name: 'Development Services', icon: '🚀', feature: 'serviceManagement' },
+                    { id: 'wiki', name: 'Team Wiki', icon: '📚', feature: null },
+                    { id: 'subagents', name: 'Subagents', icon: '🤖', feature: null },
+                    { id: 'modules', name: 'Site Modules', icon: '🧩', feature: 'dataSync' },
+                    { id: 'database', name: 'Database', icon: '💾', feature: 'dataSync' },
+                    { id: 'ai-assistant', name: 'AI Assistant', icon: '🧠', feature: 'claudeIntegration' }
+                  ].map((tab) => (
+                    deploymentContext && tab.feature ? (
+                      <FeatureTab
+                        key={tab.id}
+                        feature={tab.feature as keyof typeof deploymentContext.features}
+                        context={deploymentContext}
+                        isActive={activeTab === tab.id}
+                        onClick={() => setActiveTab(tab.id)}
+                      >
+                        <span>{tab.icon}</span>
+                        <span>{tab.name}</span>
+                      </FeatureTab>
+                    ) : (
+                      <button
+                        key={tab.id}
+                        onClick={() => setActiveTab(tab.id)}
+                        className={`py-3 px-1 border-b-2 font-pp-supply-mono text-sm transition-colors flex items-center space-x-2 ${
+                          activeTab === tab.id
+                            ? 'border-accent-gold text-accent-gold'
+                            : 'border-transparent text-brand-cream/60 hover:text-brand-cream'
+                        }`}
+                      >
+                        <span>{tab.icon}</span>
+                        <span>{tab.name}</span>
+                      </button>
+                    )
+                  ))
+                )}
               </nav>
             </div>
           </motion.div>
 
+          {/* Deployment Status Tab */}
+          {activeTab === 'deployment' && deploymentContext && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="space-y-6"
+            >
+              <DeploymentStatus context={deploymentContext} />
+              
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Feature Availability */}
+                <div className="bg-gray-800 rounded-lg p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">🎛️ Feature Availability</h3>
+                  <div className="space-y-3">
+                    {Object.entries(deploymentContext.features).map(([feature, available]) => (
+                      <div key={feature} className="flex items-center justify-between">
+                        <span className="text-gray-300 capitalize">
+                          {feature.replace(/([A-Z])/g, ' $1').toLowerCase()}
+                        </span>
+                        <div className={`px-3 py-1 rounded-full text-xs font-medium ${
+                          available 
+                            ? 'bg-green-900 text-green-200' 
+                            : 'bg-red-900 text-red-200'
+                        }`}>
+                          {available ? '✅ Available' : '❌ Limited'}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Deployment Commands */}
+                <div className="bg-gray-800 rounded-lg p-6">
+                  <h3 className="text-xl font-bold text-white mb-4">🚀 Deployment Commands</h3>
+                  <div className="space-y-3">
+                    <div className="bg-gray-900 rounded-lg p-3">
+                      <p className="text-sm text-gray-400 mb-2">Local Development (Full Features)</p>
+                      <code className="text-xs text-green-400 break-all">
+                        npm run dev:full
+                      </code>
+                    </div>
+                    <div className="bg-gray-900 rounded-lg p-3">
+                      <p className="text-sm text-gray-400 mb-2">Deploy to Railway (Full-Stack)</p>
+                      <code className="text-xs text-blue-400 break-all">
+                        npm run deploy:railway
+                      </code>
+                    </div>
+                    <div className="bg-gray-900 rounded-lg p-3">
+                      <p className="text-sm text-gray-400 mb-2">Deploy to Netlify (Frontend)</p>
+                      <code className="text-xs text-purple-400 break-all">
+                        npm run deploy:netlify
+                      </code>
+                    </div>
+                    <div className="bg-gray-900 rounded-lg p-3">
+                      <p className="text-sm text-gray-400 mb-2">Health Check</p>
+                      <code className="text-xs text-yellow-400 break-all">
+                        npm run claude:status
+                      </code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
           {/* Services Tab */}
-          {activeTab === 'services' && (
-            <>
+          {activeTab === 'services' && deploymentContext && (
+            <FeatureWrapper
+              feature="serviceManagement"
+              context={deploymentContext}
+              className="space-y-6"
+            >
               {/* System Info */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -1331,7 +1555,7 @@ const SecretAdminPanel: React.FC = () => {
                   </div>
                 </motion.div>
               </div>
-            </>
+            </FeatureWrapper>
           )}
 
           {/* Subagents Tab */}
@@ -1530,25 +1754,150 @@ const SecretAdminPanel: React.FC = () => {
               className="space-y-6"
             >
               <div className="bg-black/40 border border-accent-gold/30 rounded-lg p-6">
-                <h2 className="text-accent-gold font-pp-supply-mono text-xl mb-4">
-                  🧩 Site Modules System
-                </h2>
-                <p className="text-brand-cream/70 mb-6">
-                  Plug-and-play website modules for SEO, content generation, automation, and lead generation. Each module is configurable and reusable across different client sites.
-                </p>
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <h2 className="text-accent-gold font-pp-supply-mono text-xl mb-2">
+                      🧩 Site Modules System
+                    </h2>
+                    <p className="text-brand-cream/70">
+                      Plug-and-play website modules for SEO, content generation, automation, and lead generation. Each module is configurable and reusable across different client sites.
+                    </p>
+                  </div>
+                  <ViewToggle
+                    currentView={modulesViewMode}
+                    onToggle={(view) => setModulesViewMode(view as 'list' | 'card')}
+                    options={[
+                      { value: 'card', icon: '▦', label: 'Cards' },
+                      { value: 'list', icon: '☰', label: 'List' }
+                    ]}
+                  />
+                </div>
                 
-                <div className="space-y-6">
-                  {Object.entries(siteModules).map(([categoryId, category], categoryIndex) => (
-                    <div key={categoryId} className="bg-gray-800/30 border border-gray-600/20 rounded-lg p-6">
-                      <h3 className="text-accent-gold font-pp-supply-mono text-lg mb-4 flex items-center">
-                        <span className="mr-3 text-2xl">{category.icon}</span>
-                        {category.name}
-                        <span className="ml-3 text-sm bg-black/30 px-2 py-1 rounded">
-                          {category.modules.length} modules
-                        </span>
-                      </h3>
-                      
-                      <div className="space-y-4">
+                {/* Modern Modules Display */}
+                {modulesViewMode === 'card' ? (
+                  <div className="space-y-8">
+                    {Object.entries(siteModules).map(([categoryId, category], categoryIndex) => (
+                      <motion.div
+                        key={categoryId}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: categoryIndex * 0.1 }}
+                        className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 border border-accent-gold/10 rounded-xl p-6 backdrop-blur-sm"
+                      >
+                        <div className="flex items-center justify-between mb-6">
+                          <h3 className="text-accent-gold font-pp-supply-mono text-lg flex items-center">
+                            <span className="mr-3 text-2xl">{category.icon}</span>
+                            {category.name}
+                          </h3>
+                          <div className="text-xs bg-accent-gold/20 text-accent-gold px-3 py-1 rounded-full font-pp-supply-mono">
+                            {category.modules.length} modules
+                          </div>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                          {category.modules.map((module, moduleIndex) => {
+                            const config = getModuleConfig(module.id);
+                            return (
+                              <motion.div
+                                key={module.id}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: (categoryIndex * 3 + moduleIndex) * 0.05 }}
+                                className="group bg-black/20 border border-gray-600/30 rounded-lg overflow-hidden hover:border-accent-gold/30 transition-all duration-300 hover:shadow-lg hover:shadow-accent-gold/10"
+                              >
+                                {/* Card Image */}
+                                {config.cardImage && (
+                                  <div className="h-32 bg-cover bg-center relative" style={{backgroundImage: `url(${config.cardImage})`}}>
+                                    <div className="absolute top-2 right-2">
+                                      <span className={`px-2 py-1 rounded-full text-xs font-pp-supply-mono ${
+                                        config.status === 'approved' ? 'bg-green-500/20 text-green-400' :
+                                        config.status === 'review' ? 'bg-yellow-500/20 text-yellow-400' :
+                                        'bg-blue-500/20 text-blue-400'
+                                      }`}>
+                                        {config.status}
+                                      </span>
+                                    </div>
+                                  </div>
+                                )}
+                                
+                                <div className="p-4">
+                                  <button
+                                    onClick={() => setSelectedModuleDetail(module.id)}
+                                    className="w-full text-left"
+                                  >
+                                    <div className="flex items-start justify-between mb-2">
+                                      <h4 className="font-pp-supply-mono text-brand-cream font-medium text-sm group-hover:text-accent-gold transition-colors">
+                                        {module.name}
+                                      </h4>
+                                      <span className="text-accent-gold/60 text-xs ml-2 group-hover:text-accent-gold transition-colors">
+                                        ⚙️
+                                      </span>
+                                    </div>
+                                    <p className="text-xs text-brand-cream/60 leading-relaxed mb-3">
+                                      {module.description}
+                                    </p>
+                                    <div className="flex items-center justify-between">
+                                      <div className={`w-2 h-2 rounded-full ${
+                                        config.status === 'approved' ? 'bg-green-400' :
+                                        config.status === 'review' ? 'bg-yellow-400' :
+                                        'bg-blue-400'
+                                      }`}></div>
+                                      <span className="text-xs text-brand-cream/40">Click to configure</span>
+                                    </div>
+                                  </button>
+                                </div>
+                              
+                              {expandedModule === module.id && (
+                                <motion.div
+                                  initial={{ opacity: 0, height: 0 }}
+                                  animate={{ opacity: 1, height: 'auto' }}
+                                  exit={{ opacity: 0, height: 0 }}
+                                  className="mt-4 pt-4 border-t border-gray-600/20"
+                                >
+                                  <div className="space-y-3">
+                                    <div>
+                                      <h5 className="text-accent-gold font-pp-supply-mono text-xs mb-2">Features:</h5>
+                                      <div className="space-y-1">
+                                        {module.features.slice(0, 3).map((feature, i) => (
+                                          <div key={i} className="text-xs text-brand-cream/70 flex items-start">
+                                            <span className="text-accent-gold mr-1 text-xs">•</span>
+                                            <span className="line-clamp-2">{feature}</span>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </div>
+                                    <div>
+                                      <h5 className="text-accent-gold font-pp-supply-mono text-xs mb-2">Commands:</h5>
+                                      <div className="flex flex-wrap gap-1">
+                                        {module.commands.slice(0, 2).map((command, i) => (
+                                          <code key={i} className="text-xs bg-black/40 text-green-400 px-2 py-1 rounded">
+                                            {command.length > 15 ? command.substring(0, 15) + '...' : command}
+                                          </code>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </motion.div>
+                              )}
+                            </motion.div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="space-y-6">
+                    {Object.entries(siteModules).map(([categoryId, category], categoryIndex) => (
+                      <div key={categoryId} className="bg-gray-800/30 border border-gray-600/20 rounded-lg p-6">
+                        <h3 className="text-accent-gold font-pp-supply-mono text-lg mb-4 flex items-center">
+                          <span className="mr-3 text-2xl">{category.icon}</span>
+                          {category.name}
+                          <span className="ml-3 text-sm bg-black/30 px-2 py-1 rounded">
+                            {category.modules.length} modules
+                          </span>
+                        </h3>
+                        
+                        <div className="space-y-2">
                         {category.modules.map((module, moduleIndex) => (
                           <motion.div
                             key={module.id}
@@ -1649,6 +1998,218 @@ const SecretAdminPanel: React.FC = () => {
                   ))}
                 </div>
               </div>
+              
+              {/* Module Detail Modal */}
+              {selectedModuleDetail && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+                  onClick={() => setSelectedModuleDetail(null)}
+                >
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                    onClick={(e) => e.stopPropagation()}
+                    className="bg-gradient-to-br from-brand-charcoal to-gray-900 border border-accent-gold/30 rounded-xl max-w-5xl w-full max-h-[90vh] overflow-y-auto"
+                  >
+                    {(() => {
+                      const module = Object.values(siteModules)
+                        .flatMap(category => category.modules)
+                        .find(m => m.id === selectedModuleDetail);
+                      
+                      if (!module) return null;
+                      const config = getModuleConfig(module.id);
+                      
+                      return (
+                        <div className="p-6">
+                          {/* Header */}
+                          <div className="flex items-center justify-between mb-6">
+                            <div className="flex items-center space-x-4">
+                              <h2 className="text-2xl font-pp-supply-mono text-accent-gold">
+                                {module.name}
+                              </h2>
+                              <select
+                                value={config.status}
+                                onChange={(e) => updateModuleConfig(module.id, { status: e.target.value as any })}
+                                className="bg-black/40 border border-accent-gold/30 rounded px-3 py-1 text-sm font-pp-supply-mono text-brand-cream"
+                              >
+                                <option value="testing">🧪 Testing</option>
+                                <option value="review">👀 Review</option>
+                                <option value="approved">✅ Approved</option>
+                              </select>
+                            </div>
+                            <button
+                              onClick={() => setSelectedModuleDetail(null)}
+                              className="text-brand-cream/60 hover:text-brand-cream text-xl"
+                            >
+                              ✕
+                            </button>
+                          </div>
+
+                          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            {/* Left Column - Images */}
+                            <div className="space-y-4">
+                              <div>
+                                <h3 className="text-accent-gold font-pp-supply-mono text-sm mb-2">Feature Image</h3>
+                                <div className="bg-gray-800/40 border border-gray-600/30 rounded-lg p-3">
+                                  {config.featureImage ? (
+                                    <img 
+                                      src={config.featureImage} 
+                                      alt="Feature" 
+                                      className="w-full h-32 object-cover rounded mb-2"
+                                    />
+                                  ) : (
+                                    <div className="w-full h-32 bg-gray-700/40 rounded flex items-center justify-center mb-2">
+                                      <span className="text-brand-cream/40 text-sm">No image</span>
+                                    </div>
+                                  )}
+                                  <div className="flex space-x-2">
+                                    <button
+                                      onClick={() => generateModuleImage(module.id, 'feature')}
+                                      disabled={isGeneratingImage === `${module.id}-feature`}
+                                      className="flex-1 bg-accent-gold/20 hover:bg-accent-gold/30 text-accent-gold px-3 py-2 rounded text-xs font-pp-supply-mono disabled:opacity-50"
+                                    >
+                                      {isGeneratingImage === `${module.id}-feature` ? '⏳ Generating...' : '🎨 Generate'}
+                                    </button>
+                                    <button
+                                      onClick={() => generateModuleImage(module.id, 'feature')}
+                                      className="bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 px-3 py-2 rounded text-xs font-pp-supply-mono"
+                                    >
+                                      🔄
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div>
+                                <h3 className="text-accent-gold font-pp-supply-mono text-sm mb-2">Card Image</h3>
+                                <div className="bg-gray-800/40 border border-gray-600/30 rounded-lg p-3">
+                                  {config.cardImage ? (
+                                    <img 
+                                      src={config.cardImage} 
+                                      alt="Card" 
+                                      className="w-full h-24 object-cover rounded mb-2"
+                                    />
+                                  ) : (
+                                    <div className="w-full h-24 bg-gray-700/40 rounded flex items-center justify-center mb-2">
+                                      <span className="text-brand-cream/40 text-sm">No image</span>
+                                    </div>
+                                  )}
+                                  <div className="flex space-x-2">
+                                    <button
+                                      onClick={() => generateModuleImage(module.id, 'card')}
+                                      disabled={isGeneratingImage === `${module.id}-card`}
+                                      className="flex-1 bg-accent-gold/20 hover:bg-accent-gold/30 text-accent-gold px-3 py-2 rounded text-xs font-pp-supply-mono disabled:opacity-50"
+                                    >
+                                      {isGeneratingImage === `${module.id}-card` ? '⏳ Generating...' : '🎨 Generate'}
+                                    </button>
+                                    <button
+                                      onClick={() => generateModuleImage(module.id, 'card')}
+                                      className="bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 px-3 py-2 rounded text-xs font-pp-supply-mono"
+                                    >
+                                      🔄
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Right Column - Configuration */}
+                            <div className="lg:col-span-2 space-y-4">
+                              <div>
+                                <h3 className="text-accent-gold font-pp-supply-mono text-sm mb-2">System Prompt</h3>
+                                <textarea
+                                  value={config.systemPrompt}
+                                  onChange={(e) => updateModuleConfig(module.id, { systemPrompt: e.target.value })}
+                                  className="w-full h-24 bg-black/40 border border-gray-600/30 rounded p-3 text-sm text-brand-cream font-mono resize-none focus:border-accent-gold/50"
+                                  placeholder="Enter system prompt for AI assistance..."
+                                />
+                              </div>
+
+                              <div>
+                                <h3 className="text-accent-gold font-pp-supply-mono text-sm mb-2">Display Configuration</h3>
+                                <div className="grid grid-cols-2 gap-4">
+                                  <div>
+                                    <label className="text-xs text-brand-cream/60 mb-1 block">Theme</label>
+                                    <select
+                                      value={config.displayConfig.theme || 'modern'}
+                                      onChange={(e) => updateModuleConfig(module.id, { 
+                                        displayConfig: { ...config.displayConfig, theme: e.target.value }
+                                      })}
+                                      className="w-full bg-black/40 border border-gray-600/30 rounded px-2 py-1 text-xs text-brand-cream"
+                                    >
+                                      <option value="modern">Modern</option>
+                                      <option value="minimal">Minimal</option>
+                                      <option value="professional">Professional</option>
+                                    </select>
+                                  </div>
+                                  <div>
+                                    <label className="text-xs text-brand-cream/60 mb-1 block">Layout</label>
+                                    <select
+                                      value={config.displayConfig.layout || 'default'}
+                                      onChange={(e) => updateModuleConfig(module.id, { 
+                                        displayConfig: { ...config.displayConfig, layout: e.target.value }
+                                      })}
+                                      className="w-full bg-black/40 border border-gray-600/30 rounded px-2 py-1 text-xs text-brand-cream"
+                                    >
+                                      <option value="default">Default</option>
+                                      <option value="compact">Compact</option>
+                                      <option value="expanded">Expanded</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div>
+                                <h3 className="text-accent-gold font-pp-supply-mono text-sm mb-2">Module Details</h3>
+                                <div className="bg-gray-800/30 border border-gray-600/20 rounded p-3 space-y-3">
+                                  <div>
+                                    <h4 className="text-xs text-accent-gold mb-1">Features:</h4>
+                                    <ul className="space-y-1">
+                                      {module.features.map((feature, i) => (
+                                        <li key={i} className="text-xs text-brand-cream/80 flex items-start">
+                                          <span className="text-accent-gold mr-2">•</span>
+                                          {feature}
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                  
+                                  <div>
+                                    <h4 className="text-xs text-accent-gold mb-1">Commands:</h4>
+                                    <div className="flex flex-wrap gap-1">
+                                      {module.commands.map((command, i) => (
+                                        <code key={i} className="text-xs bg-black/40 text-green-400 px-2 py-1 rounded">
+                                          {command}
+                                        </code>
+                                      ))}
+                                    </div>
+                                  </div>
+                                  
+                                  <div>
+                                    <h4 className="text-xs text-accent-gold mb-1">Configurable Options:</h4>
+                                    <ul className="space-y-1">
+                                      {module.configurable.map((option, i) => (
+                                        <li key={i} className="text-xs text-brand-cream/80 flex items-start">
+                                          <span className="text-blue-400 mr-2">⚙️</span>
+                                          {option}
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })()}
+                  </motion.div>
+                </motion.div>
+              )}
             </motion.div>
           )}
 
@@ -2437,11 +2998,16 @@ const SecretAdminPanel: React.FC = () => {
           )}
 
           {/* AI Assistant Tab */}
-          {activeTab === 'ai-assistant' && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+          {activeTab === 'ai-assistant' && deploymentContext && (
+            <FeatureWrapper
+              feature="claudeIntegration"
+              context={deploymentContext}
               className="space-y-6"
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="space-y-6"
             >
               <div className="bg-black/40 border border-accent-gold/30 rounded-lg p-6">
                 <h2 className="text-accent-gold font-pp-supply-mono text-xl mb-4">
@@ -2639,6 +3205,7 @@ const SecretAdminPanel: React.FC = () => {
                 )}
               </div>
             </motion.div>
+            </FeatureWrapper>
           )}
         </div>
       </div>

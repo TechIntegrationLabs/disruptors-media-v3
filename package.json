@@ -62,7 +62,13 @@
     "dev:full": "concurrently \"npm start\" \"npm run claude-bridge\"",
     "dev:full:auto": "concurrently \"npm run dev:auto\" \"npm run claude-bridge\"",
     "claude:status": "curl -s http://localhost:3456/health | jq .",
-    "claude:test": "curl -f http://localhost:3456/health && echo 'Claude Bridge is running!' || echo 'Claude Bridge is not running. Start with: npm run claude-bridge'"
+    "claude:test": "curl -f http://localhost:3456/health && echo 'Claude Bridge is running!' || echo 'Claude Bridge is not running. Start with: npm run claude-bridge'",
+    "deploy:railway": "railway deploy",
+    "deploy:netlify": "netlify deploy --prod",
+    "deploy:do": "doctl apps create --spec .do/app.yaml",
+    "deploy:all": "npm run deploy:railway && npm run deploy:netlify",
+    "env:setup": "echo 'Setting up environment variables for deployment...'",
+    "health:check": "curl -f http://localhost:3000 && npm run claude:test"
   },
   "eslintConfig": {
     "extends": [

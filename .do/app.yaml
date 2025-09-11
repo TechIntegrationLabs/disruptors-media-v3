@@ -1,0 +1,89 @@
+# DigitalOcean App Platform Configuration
+name: disruptors-media-v3
+region: nyc
+
+services:
+  # Frontend React Application
+  - name: frontend
+    source_dir: /
+    github:
+      repo: TechIntegrationLabs/disruptors-media-v3
+      branch: main
+      deploy_on_push: true
+    
+    build_command: npm run build
+    run_command: npm start
+    
+    environment_slug: node-js
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    
+    domains:
+      - domain: disruptorsmedia.com
+        type: PRIMARY
+        wildcard: false
+        zone: disruptorsmedia.com
+    
+    envs:
+      - key: NODE_ENV
+        value: production
+        scope: RUN_AND_BUILD_TIME
+      - key: REACT_APP_DIGITALOCEAN
+        value: "true"
+        scope: RUN_AND_BUILD_TIME
+      - key: REACT_APP_CLAUDE_BRIDGE_URL
+        value: wss://${claude-bridge.PRIVATE_URL}
+        scope: RUN_TIME
+
+  # Claude Bridge Backend Service  
+  - name: claude-bridge
+    source_dir: /
+    github:
+      repo: TechIntegrationLabs/disruptors-media-v3
+      branch: main
+      deploy_on_push: true
+    
+    build_command: npm install
+    run_command: npm run claude-bridge
+    
+    environment_slug: node-js
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    
+    internal_ports:
+      - 3456
+    
+    envs:
+      - key: NODE_ENV
+        value: production
+        scope: RUN_AND_BUILD_TIME
+      - key: CLAUDE_BRIDGE_PORT
+        value: "3456"
+        scope: RUN_TIME
+      - key: MCP_CONFIG_PATH
+        value: ./mcp-servers.json
+        scope: RUN_TIME
+
+# Database (if needed in future)
+# databases:
+#   - name: postgres-db
+#     engine: PG
+#     version: "13"
+#     production: false
+#     size: basic-xs
+
+# Static site option for frontend-only deployment
+# static_sites:
+#   - name: frontend-static
+#     source_dir: /
+#     github:
+#       repo: TechIntegrationLabs/disruptors-media-v3
+#       branch: main
+#       deploy_on_push: true
+#     build_command: npm run build
+#     output_dir: build
+#     index_document: index.html
+#     error_document: index.html
+#     domains:
+#       - domain: disruptorsmedia.com
+#         type: PRIMARY
