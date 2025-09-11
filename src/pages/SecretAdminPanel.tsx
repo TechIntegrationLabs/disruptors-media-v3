@@ -157,6 +157,60 @@ const SecretAdminPanel: React.FC = () => {
       category: 'content'
     },
 
+    // Backend & Integration Services
+    {
+      name: 'Claude Bridge Server',
+      running: false,
+      port: 3456,
+      description: 'Start Claude Code integration bridge server',
+      command: 'npm run claude-bridge',
+      icon: '🌉',
+      category: 'automation'
+    },
+    {
+      name: 'Claude Bridge Dev Mode',
+      running: false,
+      port: 3456,
+      description: 'Start Claude Bridge with auto-reload (nodemon)',
+      command: 'npm run claude-bridge:dev',
+      icon: '🔄',
+      category: 'automation'
+    },
+    {
+      name: 'Full Development Stack',
+      running: false,
+      port: 3000,
+      description: 'Start React dev server + Claude Bridge simultaneously',
+      command: 'npm run dev:full',
+      icon: '🚀',
+      category: 'development'
+    },
+    {
+      name: 'Full Stack with Auto-Commit',
+      running: false,
+      port: 3000,
+      description: 'Full stack development with automated git commits',
+      command: 'npm run dev:full:auto',
+      icon: '⚡',
+      category: 'automation'
+    },
+    {
+      name: 'Claude Status Check',
+      running: false,
+      description: 'Check Claude Bridge server health status',
+      command: 'npm run claude:status',
+      icon: '📊',
+      category: 'automation'
+    },
+    {
+      name: 'Claude Connection Test',
+      running: false,
+      description: 'Test connection to Claude Bridge server',
+      command: 'npm run claude:test',
+      icon: '🧪',
+      category: 'automation'
+    },
+
     // Design & Integration Services
     {
       name: 'Figma WebSocket Server',
@@ -538,6 +592,38 @@ const SecretAdminPanel: React.FC = () => {
             'Industry and niche focus parameters',
             'Keyword volume thresholds'
           ]
+        },
+        {
+          id: 'meta-optimizer',
+          name: 'Meta Tags Optimizer',
+          description: 'Automatic meta tag generation and optimization',
+          features: [
+            'Dynamic meta title and description generation',
+            'Open Graph and Twitter Card optimization',
+            'Schema markup generation for rich snippets'
+          ],
+          commands: ['npm run seo:meta', 'npm run seo:validate'],
+          configurable: [
+            'Brand name and default descriptions',
+            'Social media image templates',
+            'Schema.org markup types'
+          ]
+        },
+        {
+          id: 'sitemap-generator',
+          name: 'Smart Sitemap Generator',
+          description: 'Automated XML sitemap creation with priority weighting',
+          features: [
+            'Dynamic sitemap generation from React routes',
+            'Priority and change frequency optimization',
+            'Multi-language sitemap support'
+          ],
+          commands: ['npm run seo:sitemap', 'npm run seo:submit'],
+          configurable: [
+            'Page priority weights by type',
+            'Update frequency settings',
+            'Language and regional variants'
+          ]
         }
       ]
     },
@@ -559,6 +645,308 @@ const SecretAdminPanel: React.FC = () => {
             'Connected Google Sheets ID and range',
             'Content tone and style parameters',
             'AI model selection (GPT-4, Claude)'
+          ]
+        },
+        {
+          id: 'content-calendar',
+          name: 'Content Calendar Automation',
+          description: 'Automated content scheduling and publishing workflow',
+          features: [
+            'Social media content calendar management',
+            'Multi-platform scheduling and publishing',
+            'Content performance analytics and optimization'
+          ],
+          commands: ['npm run content:schedule', 'npm run content:publish'],
+          configurable: [
+            'Publishing platforms and API keys',
+            'Content categories and tags',
+            'Scheduling preferences and timing'
+          ]
+        },
+        {
+          id: 'newsletter-generator',
+          name: 'Newsletter Generator',
+          description: 'Automated newsletter creation from blog content',
+          features: [
+            'AI-powered newsletter content summarization',
+            'Email template generation and customization',
+            'Subscriber segmentation and personalization'
+          ],
+          commands: ['npm run newsletter:generate', 'npm run newsletter:send'],
+          configurable: [
+            'Email service provider integration',
+            'Template design preferences',
+            'Subscriber segment criteria'
+          ]
+        }
+      ]
+    },
+    'lead-generation': {
+      name: 'Lead Generation',
+      icon: '🎯',
+      modules: [
+        {
+          id: 'contact-forms',
+          name: 'Smart Contact Forms',
+          description: 'Intelligent contact forms with validation and CRM integration',
+          features: [
+            'Multi-step form wizard with progress indicators',
+            'Real-time validation and error handling',
+            'CRM and email marketing integration'
+          ],
+          commands: ['npm run forms:generate', 'npm run forms:integrate'],
+          configurable: [
+            'Form fields and validation rules',
+            'CRM integration settings',
+            'Email notification preferences'
+          ]
+        },
+        {
+          id: 'popup-builder',
+          name: 'Conversion Popup Builder',
+          description: 'Exit-intent and time-based popup campaigns',
+          features: [
+            'Exit-intent detection and popup triggering',
+            'A/B testing for popup variations',
+            'Lead magnet integration and delivery'
+          ],
+          commands: ['npm run popup:create', 'npm run popup:test'],
+          configurable: [
+            'Trigger conditions and timing',
+            'Design templates and colors',
+            'Lead magnet delivery settings'
+          ]
+        },
+        {
+          id: 'roi-calculator',
+          name: 'ROI Calculator Widget',
+          description: 'Interactive ROI calculators for lead qualification',
+          features: [
+            'Customizable calculation formulas and inputs',
+            'Lead capture integration with results',
+            'Industry-specific calculator templates'
+          ],
+          commands: ['npm run calculator:build', 'npm run calculator:deploy'],
+          configurable: [
+            'Calculation parameters and formulas',
+            'Industry templates and presets',
+            'Results delivery and follow-up'
+          ]
+        }
+      ]
+    },
+    'performance': {
+      name: 'Performance & Analytics',
+      icon: '📊',
+      modules: [
+        {
+          id: 'speed-optimizer',
+          name: 'Page Speed Optimizer',
+          description: 'Automated performance optimization and monitoring',
+          features: [
+            'Image compression and lazy loading optimization',
+            'Critical CSS extraction and inlining',
+            'JavaScript bundling and code splitting'
+          ],
+          commands: ['npm run perf:audit', 'npm run perf:optimize'],
+          configurable: [
+            'Performance budget thresholds',
+            'Optimization strategy preferences',
+            'Monitoring and alert settings'
+          ]
+        },
+        {
+          id: 'analytics-dashboard',
+          name: 'Analytics Dashboard',
+          description: 'Comprehensive website analytics and reporting',
+          features: [
+            'Google Analytics 4 integration and setup',
+            'Custom event tracking and goal conversion',
+            'Real-time performance monitoring'
+          ],
+          commands: ['npm run analytics:setup', 'npm run analytics:report'],
+          configurable: [
+            'Tracking goals and conversion events',
+            'Custom dimensions and metrics',
+            'Reporting frequency and recipients'
+          ]
+        },
+        {
+          id: 'heatmap-tracker',
+          name: 'User Behavior Heatmaps',
+          description: 'Visual user interaction tracking and analysis',
+          features: [
+            'Click tracking and scroll depth analysis',
+            'Form abandonment and completion tracking',
+            'Mobile vs desktop behavior insights'
+          ],
+          commands: ['npm run heatmap:install', 'npm run heatmap:analyze'],
+          configurable: [
+            'Tracking services and API keys',
+            'Page selection and sampling rates',
+            'Analysis report frequency'
+          ]
+        }
+      ]
+    },
+    'e-commerce': {
+      name: 'E-commerce & Sales',
+      icon: '🛒',
+      modules: [
+        {
+          id: 'product-catalog',
+          name: 'Product Catalog Manager',
+          description: 'Dynamic product listing and inventory management',
+          features: [
+            'Product import from CSV/API sources',
+            'Dynamic pricing and discount management',
+            'Inventory tracking and low-stock alerts'
+          ],
+          commands: ['npm run products:import', 'npm run products:sync'],
+          configurable: [
+            'Product data sources and formats',
+            'Pricing rules and discount strategies',
+            'Inventory management preferences'
+          ]
+        },
+        {
+          id: 'shopping-cart',
+          name: 'Shopping Cart Integration',
+          description: 'Full-featured shopping cart with payment processing',
+          features: [
+            'Multiple payment gateway support',
+            'Cart abandonment recovery emails',
+            'Shipping calculator and tax integration'
+          ],
+          commands: ['npm run cart:setup', 'npm run payments:configure'],
+          configurable: [
+            'Payment processor settings',
+            'Shipping and tax calculations',
+            'Email automation triggers'
+          ]
+        },
+        {
+          id: 'review-system',
+          name: 'Product Review System',
+          description: 'Customer review collection and display system',
+          features: [
+            'Review request automation after purchase',
+            'Photo and video review support',
+            'Review moderation and spam filtering'
+          ],
+          commands: ['npm run reviews:setup', 'npm run reviews:moderate'],
+          configurable: [
+            'Review request timing and templates',
+            'Moderation rules and filters',
+            'Display preferences and layouts'
+          ]
+        }
+      ]
+    },
+    'social-media': {
+      name: 'Social Media Integration',
+      icon: '📱',
+      modules: [
+        {
+          id: 'social-feeds',
+          name: 'Social Media Feed Aggregator',
+          description: 'Display social media content across platforms',
+          features: [
+            'Multi-platform feed aggregation (Instagram, Twitter, LinkedIn)',
+            'Content filtering and moderation',
+            'Real-time updates and caching'
+          ],
+          commands: ['npm run social:connect', 'npm run social:sync'],
+          configurable: [
+            'Social platform API credentials',
+            'Content filtering preferences',
+            'Update frequency and caching'
+          ]
+        },
+        {
+          id: 'share-buttons',
+          name: 'Social Sharing Optimization',
+          description: 'Advanced social sharing buttons and tracking',
+          features: [
+            'Platform-optimized sharing buttons',
+            'Social share tracking and analytics',
+            'Custom sharing templates and images'
+          ],
+          commands: ['npm run social:buttons', 'npm run social:track'],
+          configurable: [
+            'Supported social platforms',
+            'Button styles and placement',
+            'Tracking and analytics setup'
+          ]
+        },
+        {
+          id: 'social-login',
+          name: 'Social Login Integration',
+          description: 'OAuth login with major social platforms',
+          features: [
+            'Google, Facebook, LinkedIn, Twitter login',
+            'User profile data synchronization',
+            'Account linking and management'
+          ],
+          commands: ['npm run auth:setup', 'npm run auth:configure'],
+          configurable: [
+            'OAuth provider credentials',
+            'User data mapping preferences',
+            'Account linking strategies'
+          ]
+        }
+      ]
+    },
+    'security': {
+      name: 'Security & Privacy',
+      icon: '🔒',
+      modules: [
+        {
+          id: 'gdpr-compliance',
+          name: 'GDPR Compliance Suite',
+          description: 'Complete GDPR compliance tools and documentation',
+          features: [
+            'Cookie consent banner and management',
+            'Privacy policy generator and updates',
+            'Data request handling automation'
+          ],
+          commands: ['npm run gdpr:setup', 'npm run gdpr:audit'],
+          configurable: [
+            'Cookie categories and descriptions',
+            'Privacy policy customization',
+            'Data retention policies'
+          ]
+        },
+        {
+          id: 'security-headers',
+          name: 'Security Headers Manager',
+          description: 'HTTP security headers configuration and monitoring',
+          features: [
+            'Content Security Policy generation',
+            'Security header optimization',
+            'Vulnerability scanning and alerts'
+          ],
+          commands: ['npm run security:headers', 'npm run security:scan'],
+          configurable: [
+            'CSP policy configuration',
+            'Security header preferences',
+            'Scanning frequency and alerts'
+          ]
+        },
+        {
+          id: 'ssl-monitor',
+          name: 'SSL Certificate Monitor',
+          description: 'SSL certificate monitoring and renewal alerts',
+          features: [
+            'Certificate expiration tracking',
+            'Automated renewal reminders',
+            'SSL configuration validation'
+          ],
+          commands: ['npm run ssl:check', 'npm run ssl:monitor'],
+          configurable: [
+            'Certificate monitoring domains',
+            'Alert timing and recipients',
+            'Renewal workflow preferences'
           ]
         }
       ]
