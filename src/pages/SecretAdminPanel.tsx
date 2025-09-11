@@ -16,7 +16,7 @@ interface ServiceStatus {
   description: string;
   command: string;
   icon: string;
-  category: 'development' | 'automation' | 'content' | 'deployment' | 'design';
+  category: 'development' | 'automation' | 'content' | 'design';
 }
 
 const SecretAdminPanel: React.FC = () => {
@@ -28,6 +28,7 @@ const SecretAdminPanel: React.FC = () => {
   const [selectedRecord, setSelectedRecord] = useState<any | null>(null);
   
   const [services, setServices] = useState<ServiceStatus[]>([
+    // Core Development Services
     {
       name: 'Development Server',
       running: false,
@@ -38,6 +39,42 @@ const SecretAdminPanel: React.FC = () => {
       category: 'development'
     },
     {
+      name: 'Development Server (Alternative)',
+      running: false,
+      port: 3000,
+      description: 'Alternative React development server command',
+      command: 'npm run dev',
+      icon: '🔧',
+      category: 'development'
+    },
+    {
+      name: 'Production Build',
+      running: false,
+      description: 'Create optimized production build',
+      command: 'npm run build',
+      icon: '🏗️',
+      category: 'development'
+    },
+    {
+      name: 'Preview Build',
+      running: false,
+      port: 3001,
+      description: 'Serve production build locally for testing',
+      command: 'npm run preview',
+      icon: '👀',
+      category: 'development'
+    },
+    {
+      name: 'Test Suite',
+      running: false,
+      description: 'Run Jest tests with React Testing Library',
+      command: 'npm test',
+      icon: '🧪',
+      category: 'development'
+    },
+
+    // Automation Services
+    {
       name: 'Auto-Commit Agent',
       running: false,
       description: 'Automated git commits with AI-generated messages',
@@ -46,12 +83,91 @@ const SecretAdminPanel: React.FC = () => {
       category: 'automation'
     },
     {
+      name: 'Single Auto-Commit',
+      running: false,
+      description: 'Execute one-time automated commit',
+      command: 'npm run auto-commit',
+      icon: '📝',
+      category: 'automation'
+    },
+    {
+      name: 'Manual Commit',
+      running: false,
+      description: 'Manual commit with AI-generated message',
+      command: 'npm run commit',
+      icon: '✍️',
+      category: 'automation'
+    },
+    {
+      name: 'Auto-Commit Status',
+      running: false,
+      description: 'Check auto-commit agent status',
+      command: 'npm run auto-commit:status',
+      icon: '📊',
+      category: 'automation'
+    },
+    {
+      name: 'Dev with Auto-Commit',
+      running: false,
+      port: 3000,
+      description: 'Start development server with auto-commit enabled',
+      command: 'npm run dev:auto',
+      icon: '🚀',
+      category: 'automation'
+    },
+    {
+      name: 'Dev Safe Mode',
+      running: false,
+      port: 3000,
+      description: 'Start development server without auto-commit',
+      command: 'npm run dev:safe',
+      icon: '🛡️',
+      category: 'development'
+    },
+
+    // Content Management
+    {
       name: 'Client Data Sync',
       running: false,
-      description: 'Google Sheets client data synchronization',
+      description: 'Sync client data from Google Sheets',
       command: 'npm run clients:sync',
-      icon: '📊',
+      icon: '🔄',
       category: 'content'
+    },
+    {
+      name: 'Client Data Validation',
+      running: false,
+      description: 'Validate client data structure and integrity',
+      command: 'npm run clients:validate',
+      icon: '✅',
+      category: 'content'
+    },
+    {
+      name: 'Client Data Backup',
+      running: false,
+      description: 'Backup client data from Google Sheets',
+      command: 'npm run clients:backup',
+      icon: '💾',
+      category: 'content'
+    },
+
+    // Design & Integration Services
+    {
+      name: 'Figma WebSocket Server',
+      running: false,
+      port: 8080,
+      description: 'Start Figma WebSocket server for design sync',
+      command: 'npm run figma:start',
+      icon: '🎨',
+      category: 'design'
+    },
+    {
+      name: 'Admin Panel Help',
+      running: false,
+      description: 'Display admin panel commands and usage guide',
+      command: 'npm run admin:help',
+      icon: '❓',
+      category: 'development'
     }
   ]);
 
@@ -476,7 +592,8 @@ const SecretAdminPanel: React.FC = () => {
     { id: 'all', name: 'All Services', icon: '🔧' },
     { id: 'development', name: 'Development', icon: '⚛️' },
     { id: 'automation', name: 'Automation', icon: '🤖' },
-    { id: 'content', name: 'Content Mgmt', icon: '📝' }
+    { id: 'content', name: 'Content Mgmt', icon: '📝' },
+    { id: 'design', name: 'Design Tools', icon: '🎨' }
   ];
 
   const filteredServices = activeCategory === 'all' 
@@ -1014,6 +1131,328 @@ const SecretAdminPanel: React.FC = () => {
                       </div>
                     </div>
                   ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Wiki Tab */}
+          {activeTab === 'wiki' && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="space-y-6"
+            >
+              <div className="bg-black/40 border border-accent-gold/30 rounded-lg p-6">
+                <h2 className="text-accent-gold font-pp-supply-mono text-xl mb-4">
+                  📚 Team Wiki & Getting Started Guide
+                </h2>
+                <p className="text-brand-cream/70 mb-6">
+                  Complete guide for team members to understand and use the admin panel, development tools, and project resources.
+                </p>
+                
+                <div className="space-y-8">
+                  {/* Quick Start Section */}
+                  <div className="bg-gray-800/30 border border-gray-600/20 rounded-lg p-6">
+                    <h3 className="text-accent-gold font-pp-supply-mono text-lg mb-4 flex items-center">
+                      <span className="mr-3 text-2xl">🚀</span>
+                      Quick Start Guide
+                    </h3>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <h4 className="text-brand-cream font-pp-supply-mono text-md mb-3">
+                          🔓 How to Access This Panel
+                        </h4>
+                        <div className="space-y-2 text-sm text-brand-cream/80">
+                          <p className="bg-black/30 p-3 rounded border-l-4 border-blue-500">
+                            <strong className="text-blue-400">Step 1:</strong> Triple-click the Disruptors Media logo in the header
+                          </p>
+                          <p className="bg-black/30 p-3 rounded border-l-4 border-green-500">
+                            <strong className="text-green-400">Step 2:</strong> Enter one of these commands:
+                          </p>
+                          <div className="grid grid-cols-2 gap-2 ml-4">
+                            {[
+                              { cmd: 'admin', desc: 'Main admin panel' },
+                              { cmd: 'tools', desc: 'Development tools' },
+                              { cmd: 'dev', desc: 'Developer mode' },
+                              { cmd: 'scripts', desc: 'Script manager' }
+                            ].map((item) => (
+                              <code key={item.cmd} className="text-xs bg-black/50 text-accent-gold px-2 py-1 rounded">
+                                {item.cmd}
+                              </code>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <h4 className="text-brand-cream font-pp-supply-mono text-md mb-3">
+                          ⚡ Essential Commands
+                        </h4>
+                        <div className="space-y-2 text-sm">
+                          <div className="bg-black/30 p-3 rounded">
+                            <code className="text-green-400">npm start</code>
+                            <p className="text-brand-cream/70 text-xs mt-1">Start development server</p>
+                          </div>
+                          <div className="bg-black/30 p-3 rounded">
+                            <code className="text-green-400">npm run clients:sync</code>
+                            <p className="text-brand-cream/70 text-xs mt-1">Sync client data from Google Sheets</p>
+                          </div>
+                          <div className="bg-black/30 p-3 rounded">
+                            <code className="text-green-400">npm run auto-commit:watch</code>
+                            <p className="text-brand-cream/70 text-xs mt-1">Enable automatic git commits</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Admin Panel Features */}
+                  <div className="bg-gray-800/30 border border-gray-600/20 rounded-lg p-6">
+                    <h3 className="text-accent-gold font-pp-supply-mono text-lg mb-4 flex items-center">
+                      <span className="mr-3 text-2xl">🎛️</span>
+                      Admin Panel Features
+                    </h3>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {[
+                        {
+                          icon: '🚀',
+                          name: 'Development Services',
+                          desc: 'Start/stop local development servers and automation services',
+                          features: ['React dev server (Port 3000)', 'Auto-commit agent', 'Client data sync']
+                        },
+                        {
+                          icon: '🤖',
+                          name: 'AI Subagents',
+                          desc: 'Specialized AI agents for development automation',
+                          features: ['Component architecture', 'Performance auditing', 'SEO optimization', 'Content generation']
+                        },
+                        {
+                          icon: '🧩',
+                          name: 'Site Modules',
+                          desc: 'Plug-and-play website modules for client projects',
+                          features: ['SEO optimization tools', 'Content generation', 'Lead generation forms']
+                        },
+                        {
+                          icon: '💾',
+                          name: 'Database Management',
+                          desc: 'View and manage all project data',
+                          features: ['Client information', 'Portfolio projects', 'Blog posts', 'Team members']
+                        }
+                      ].map((feature, index) => (
+                        <motion.div
+                          key={feature.name}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                          className="bg-gray-700/40 border border-gray-600/30 rounded-lg p-4"
+                        >
+                          <div className="flex items-center mb-3">
+                            <span className="text-2xl mr-3">{feature.icon}</span>
+                            <h4 className="font-pp-supply-mono text-brand-cream font-medium text-sm">
+                              {feature.name}
+                            </h4>
+                          </div>
+                          <p className="text-xs text-brand-cream/70 mb-3">{feature.desc}</p>
+                          <ul className="space-y-1">
+                            {feature.features.map((feat, i) => (
+                              <li key={i} className="text-xs text-brand-cream/80 flex items-start">
+                                <span className="text-accent-gold mr-2">•</span>
+                                {feat}
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Development Workflow */}
+                  <div className="bg-gray-800/30 border border-gray-600/20 rounded-lg p-6">
+                    <h3 className="text-accent-gold font-pp-supply-mono text-lg mb-4 flex items-center">
+                      <span className="mr-3 text-2xl">⚙️</span>
+                      Development Workflow
+                    </h3>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <h4 className="text-brand-cream font-pp-supply-mono text-md mb-3">
+                          📝 Daily Development Process
+                        </h4>
+                        <div className="space-y-3">
+                          {[
+                            { step: '1', action: 'Access admin panel', detail: 'Triple-click logo → enter "admin"' },
+                            { step: '2', action: 'Start development server', detail: 'Click "START" on Development Server' },
+                            { step: '3', action: 'Enable auto-commits', detail: 'Start Auto-Commit Agent for automated git workflow' },
+                            { step: '4', action: 'Sync client data', detail: 'Run Client Data Sync before making changes' },
+                            { step: '5', action: 'Monitor logs', detail: 'Watch System Logs panel for real-time feedback' }
+                          ].map((item) => (
+                            <div key={item.step} className="bg-black/30 p-3 rounded flex items-start">
+                              <span className="bg-accent-gold text-brand-charcoal w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5">
+                                {item.step}
+                              </span>
+                              <div>
+                                <p className="text-brand-cream text-sm font-medium">{item.action}</p>
+                                <p className="text-brand-cream/70 text-xs mt-1">{item.detail}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <h4 className="text-brand-cream font-pp-supply-mono text-md mb-3">
+                          🔧 Troubleshooting Guide
+                        </h4>
+                        <div className="space-y-3">
+                          {[
+                            {
+                              issue: 'Server won\'t start',
+                              solution: 'Check port 3000 is available, restart terminal'
+                            },
+                            {
+                              issue: 'Auto-commit not working',
+                              solution: 'Ensure git is configured and repository is clean'
+                            },
+                            {
+                              issue: 'Client data sync fails',
+                              solution: 'Verify Google Sheets API credentials are configured'
+                            },
+                            {
+                              issue: 'Admin panel won\'t open',
+                              solution: 'Clear browser cache and try triple-clicking logo again'
+                            }
+                          ].map((item, index) => (
+                            <div key={index} className="bg-red-900/20 border-l-4 border-red-500 p-3 rounded">
+                              <p className="text-red-300 text-sm font-medium mb-1">⚠️ {item.issue}</p>
+                              <p className="text-brand-cream/70 text-xs">💡 {item.solution}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Project Resources */}
+                  <div className="bg-gray-800/30 border border-gray-600/20 rounded-lg p-6">
+                    <h3 className="text-accent-gold font-pp-supply-mono text-lg mb-4 flex items-center">
+                      <span className="mr-3 text-2xl">📚</span>
+                      Project Resources & Documentation
+                    </h3>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      {[
+                        {
+                          category: 'Core Documentation',
+                          icon: '📋',
+                          items: [
+                            'CLAUDE.md - Main project guide',
+                            'README.md - Getting started',
+                            'Package.json - Available scripts',
+                            'Tailwind.config.js - Design system'
+                          ]
+                        },
+                        {
+                          category: 'Development Tools',
+                          icon: '🛠️',
+                          items: [
+                            'MCP Servers - External integrations',
+                            'Google Sheets API - Client data sync',
+                            'Cloudinary - Asset management',
+                            'Framer Motion - Animations'
+                          ]
+                        },
+                        {
+                          category: 'Deployment & Production',
+                          icon: '🚀',
+                          items: [
+                            'Netlify - Hosting platform',
+                            'Environment variables - Configuration',
+                            'Build scripts - Production optimization',
+                            'Performance monitoring - Analytics'
+                          ]
+                        }
+                      ].map((resource, index) => (
+                        <div key={resource.category} className="bg-gray-700/40 border border-gray-600/30 rounded-lg p-4">
+                          <div className="flex items-center mb-3">
+                            <span className="text-xl mr-2">{resource.icon}</span>
+                            <h4 className="font-pp-supply-mono text-brand-cream font-medium text-sm">
+                              {resource.category}
+                            </h4>
+                          </div>
+                          <ul className="space-y-2">
+                            {resource.items.map((item, i) => (
+                              <li key={i} className="text-xs text-brand-cream/80 flex items-start">
+                                <span className="text-blue-400 mr-2">•</span>
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Team Contact & Support */}
+                  <div className="bg-gray-800/30 border border-gray-600/20 rounded-lg p-6">
+                    <h3 className="text-accent-gold font-pp-supply-mono text-lg mb-4 flex items-center">
+                      <span className="mr-3 text-2xl">👥</span>
+                      Team Contact & Support
+                    </h3>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <h4 className="text-brand-cream font-pp-supply-mono text-md mb-3">
+                          🆘 Need Help?
+                        </h4>
+                        <div className="space-y-3 text-sm">
+                          <div className="bg-black/30 p-3 rounded">
+                            <p className="text-green-400 font-medium">Technical Issues</p>
+                            <p className="text-brand-cream/70 text-xs">Check System Logs panel for error details</p>
+                          </div>
+                          <div className="bg-black/30 p-3 rounded">
+                            <p className="text-blue-400 font-medium">Development Questions</p>
+                            <p className="text-brand-cream/70 text-xs">Refer to CLAUDE.md and component documentation</p>
+                          </div>
+                          <div className="bg-black/30 p-3 rounded">
+                            <p className="text-purple-400 font-medium">Client Data Issues</p>
+                            <p className="text-brand-cream/70 text-xs">Use Database tab to verify data integrity</p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <h4 className="text-brand-cream font-pp-supply-mono text-md mb-3">
+                          📞 Support Contacts
+                        </h4>
+                        <div className="space-y-2 text-sm">
+                          <div className="bg-black/30 p-3 rounded flex items-center">
+                            <span className="text-xl mr-3">👨‍💻</span>
+                            <div>
+                              <p className="text-brand-cream font-medium">Lead Developer</p>
+                              <p className="text-brand-cream/70 text-xs">Admin panel & automation</p>
+                            </div>
+                          </div>
+                          <div className="bg-black/30 p-3 rounded flex items-center">
+                            <span className="text-xl mr-3">🎨</span>
+                            <div>
+                              <p className="text-brand-cream font-medium">Design Team</p>
+                              <p className="text-brand-cream/70 text-xs">UI/UX and visual assets</p>
+                            </div>
+                          </div>
+                          <div className="bg-black/30 p-3 rounded flex items-center">
+                            <span className="text-xl mr-3">📊</span>
+                            <div>
+                              <p className="text-brand-cream font-medium">Content Manager</p>
+                              <p className="text-brand-cream/70 text-xs">Client data & Google Sheets</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
