@@ -152,6 +152,7 @@ const Header: React.FC = () => {
                           glitchDuration={120}
                           slowGlitch={true}
                           slowGlitchInterval={240}
+                          hoverScramble={true}
                         />
                       </span>
                     ) : (
@@ -168,6 +169,7 @@ const Header: React.FC = () => {
                           glitchDuration={120}
                           slowGlitch={true}
                           slowGlitchInterval={240}
+                          hoverScramble={true}
                         />
                       </Link>
                     )}
@@ -251,6 +253,7 @@ const Header: React.FC = () => {
                                     randomGlitch={true}
                                     glitchInterval={35}
                                     glitchDuration={100}
+                                    hoverScramble={true}
                                   />
                                 </Link>
                               </motion.li>
@@ -353,6 +356,7 @@ const Header: React.FC = () => {
                         glitchDuration={130}
                         slowGlitch={true}
                         slowGlitchInterval={300}
+                        hoverScramble={true}
                       />
                     </Link>
                     
@@ -390,6 +394,7 @@ const Header: React.FC = () => {
                                 randomGlitch={true}
                                 glitchInterval={45}
                                 glitchDuration={110}
+                                hoverScramble={true}
                               />
                             </Link>
                           </motion.li>

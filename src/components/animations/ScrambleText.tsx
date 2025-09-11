@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -16,6 +16,7 @@ interface ScrambleTextProps {
   glitchDuration?: number; // milliseconds for glitch effect
   slowGlitch?: boolean; // enable occasional slow glitches
   slowGlitchInterval?: number; // seconds between slow glitches
+  hoverScramble?: boolean; // enable hover scramble effect
 }
 
 const ScrambleText: React.FC<ScrambleTextProps> = ({
@@ -29,10 +30,52 @@ const ScrambleText: React.FC<ScrambleTextProps> = ({
   glitchInterval = 5, // default 5 seconds between glitches
   glitchDuration = 150, // default 150ms glitch duration
   slowGlitch = false,
-  slowGlitchInterval = 180 // default 3 minutes between slow glitches
+  slowGlitchInterval = 180, // default 3 minutes between slow glitches
+  hoverScramble = false
 }) => {
   const textRef = useRef<HTMLSpanElement>(null);
   const originalText = useRef(text);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  // Hover scramble effect - classic left-to-right deceleration
+  const hoverScrambleEffect = () => {
+    const element = textRef.current;
+    if (!element || isAnimating) return;
+    
+    setIsAnimating(true);
+    const chars = scrambleChars.split('');
+    const textLength = originalText.current.length;
+    let frameCount = 0;
+    const totalFrames = 35; // Total animation frames
+    
+    const scrambleInterval = setInterval(() => {
+      element.textContent = originalText.current
+        .split('')
+        .map((char, index) => {
+          if (char === ' ') return ' ';
+          
+          // Calculate when this character should stop scrambling (left to right)
+          const stopFrame = Math.floor((index / textLength) * 15) + 8; // Characters stop between frame 8-23
+          
+          if (frameCount < stopFrame) {
+            // Still scrambling - fast random characters
+            return chars[Math.floor(Math.random() * chars.length)];
+          } else {
+            // Stopped scrambling - show original character
+            return originalText.current[index];
+          }
+        })
+        .join('');
+      
+      frameCount++;
+      
+      if (frameCount >= totalFrames) {
+        clearInterval(scrambleInterval);
+        element.textContent = originalText.current;
+        setIsAnimating(false);
+      }
+    }, 25); // Fast frame rate for smooth effect
+  };
 
   useEffect(() => {
     const element = textRef.current;
@@ -174,13 +217,15 @@ const ScrambleText: React.FC<ScrambleTextProps> = ({
       if (randomGlitchInterval) clearTimeout(randomGlitchInterval);
       if (slowGlitchIntervalId) clearTimeout(slowGlitchIntervalId);
     };
-  }, [text, duration, delay, trigger, scrambleChars, randomGlitch, glitchInterval, glitchDuration, slowGlitch, slowGlitchInterval]);
+  }, [text, duration, delay, trigger, scrambleChars, randomGlitch, glitchInterval, glitchDuration, slowGlitch, slowGlitchInterval, isAnimating]);
 
   return (
     <span
       ref={textRef}
       className={`font-tech ${className}`}
       data-text={text}
+      onMouseEnter={hoverScramble ? hoverScrambleEffect : undefined}
+      style={{ cursor: hoverScramble ? 'pointer' : 'inherit' }}
     >
       {text}
     </span>

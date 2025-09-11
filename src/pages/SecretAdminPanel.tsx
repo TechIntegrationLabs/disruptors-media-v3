@@ -789,56 +789,110 @@ const SecretAdminPanel: React.FC = () => {
         }
       ]
     },
-    'e-commerce': {
-      name: 'E-commerce & Sales',
-      icon: '🛒',
+    'email-marketing': {
+      name: 'Email Marketing',
+      icon: '📧',
       modules: [
         {
-          id: 'product-catalog',
-          name: 'Product Catalog Manager',
-          description: 'Dynamic product listing and inventory management',
+          id: 'email-campaigns',
+          name: 'Email Campaign Builder',
+          description: 'Drag-and-drop email campaign creation with automation',
           features: [
-            'Product import from CSV/API sources',
-            'Dynamic pricing and discount management',
-            'Inventory tracking and low-stock alerts'
+            'Visual email template builder with brand customization',
+            'A/B testing for subject lines and content variations',
+            'Automated drip campaigns and welcome sequences'
           ],
-          commands: ['npm run products:import', 'npm run products:sync'],
+          commands: ['npm run email:create', 'npm run email:automate'],
           configurable: [
-            'Product data sources and formats',
-            'Pricing rules and discount strategies',
-            'Inventory management preferences'
+            'Email service provider integration (Mailchimp, Klaviyo)',
+            'Template designs and brand colors',
+            'Automation trigger conditions and timing'
           ]
         },
         {
-          id: 'shopping-cart',
-          name: 'Shopping Cart Integration',
-          description: 'Full-featured shopping cart with payment processing',
+          id: 'list-segmentation',
+          name: 'Smart List Segmentation',
+          description: 'AI-powered audience segmentation for targeted campaigns',
           features: [
-            'Multiple payment gateway support',
-            'Cart abandonment recovery emails',
-            'Shipping calculator and tax integration'
+            'Behavioral segmentation based on website interactions',
+            'Demographic and psychographic audience clustering',
+            'Predictive engagement scoring and list hygiene'
           ],
-          commands: ['npm run cart:setup', 'npm run payments:configure'],
+          commands: ['npm run segments:analyze', 'npm run segments:create'],
           configurable: [
-            'Payment processor settings',
-            'Shipping and tax calculations',
-            'Email automation triggers'
+            'Segmentation criteria and behavioral triggers',
+            'Custom audience attributes and tags',
+            'Engagement scoring algorithms'
           ]
         },
         {
-          id: 'review-system',
-          name: 'Product Review System',
-          description: 'Customer review collection and display system',
+          id: 'email-analytics',
+          name: 'Email Performance Analytics',
+          description: 'Comprehensive email marketing performance tracking',
           features: [
-            'Review request automation after purchase',
-            'Photo and video review support',
-            'Review moderation and spam filtering'
+            'Open rates, click-through rates, and conversion tracking',
+            'Revenue attribution and customer lifetime value analysis',
+            'Automated reporting and optimization recommendations'
           ],
-          commands: ['npm run reviews:setup', 'npm run reviews:moderate'],
+          commands: ['npm run email:analytics', 'npm run email:optimize'],
           configurable: [
-            'Review request timing and templates',
-            'Moderation rules and filters',
-            'Display preferences and layouts'
+            'Analytics dashboard customization',
+            'Attribution models and conversion goals',
+            'Reporting frequency and recipients'
+          ]
+        }
+      ]
+    },
+    'conversion-optimization': {
+      name: 'Conversion Optimization',
+      icon: '🎯',
+      modules: [
+        {
+          id: 'ab-testing',
+          name: 'A/B Testing Platform',
+          description: 'Advanced split testing for landing pages and elements',
+          features: [
+            'Visual editor for creating test variations',
+            'Statistical significance testing and automatic winners',
+            'Multi-variate testing and traffic allocation'
+          ],
+          commands: ['npm run ab:create', 'npm run ab:analyze'],
+          configurable: [
+            'Test duration and traffic split percentages',
+            'Success metrics and conversion goals',
+            'Statistical confidence thresholds'
+          ]
+        },
+        {
+          id: 'funnel-optimizer',
+          name: 'Sales Funnel Optimizer',
+          description: 'End-to-end funnel analysis and optimization tools',
+          features: [
+            'Funnel visualization and bottleneck identification',
+            'Drop-off analysis and conversion rate optimization',
+            'Multi-channel attribution and customer journey mapping'
+          ],
+          commands: ['npm run funnel:track', 'npm run funnel:optimize'],
+          configurable: [
+            'Funnel stages and conversion events',
+            'Attribution models and touchpoint weighting',
+            'Optimization goals and success metrics'
+          ]
+        },
+        {
+          id: 'personalization',
+          name: 'Dynamic Content Personalization',
+          description: 'AI-powered content personalization based on user behavior',
+          features: [
+            'Real-time content adaptation based on visitor data',
+            'Geographic and demographic content variations',
+            'Behavioral triggers and dynamic CTAs'
+          ],
+          commands: ['npm run personalize:setup', 'npm run personalize:optimize'],
+          configurable: [
+            'Personalization rules and trigger conditions',
+            'Content variations and template designs',
+            'User data sources and privacy settings'
           ]
         }
       ]
@@ -897,56 +951,110 @@ const SecretAdminPanel: React.FC = () => {
         }
       ]
     },
-    'security': {
-      name: 'Security & Privacy',
-      icon: '🔒',
+    'marketing-automation': {
+      name: 'Marketing Automation',
+      icon: '🚀',
       modules: [
         {
-          id: 'gdpr-compliance',
-          name: 'GDPR Compliance Suite',
-          description: 'Complete GDPR compliance tools and documentation',
+          id: 'behavior-tracking',
+          name: 'Customer Behavior Tracking',
+          description: 'Advanced visitor behavior analytics and trigger automation',
           features: [
-            'Cookie consent banner and management',
-            'Privacy policy generator and updates',
-            'Data request handling automation'
+            'Real-time user journey mapping and session recording',
+            'Behavioral triggers for email and retargeting campaigns',
+            'Customer scoring based on engagement patterns'
           ],
-          commands: ['npm run gdpr:setup', 'npm run gdpr:audit'],
+          commands: ['npm run behavior:track', 'npm run behavior:automate'],
           configurable: [
-            'Cookie categories and descriptions',
-            'Privacy policy customization',
-            'Data retention policies'
+            'Tracking events and custom goals',
+            'Automation triggers and scoring algorithms',
+            'Data retention and privacy settings'
           ]
         },
         {
-          id: 'security-headers',
-          name: 'Security Headers Manager',
-          description: 'HTTP security headers configuration and monitoring',
+          id: 'lead-scoring',
+          name: 'AI Lead Scoring Engine',
+          description: 'Machine learning-powered lead qualification and prioritization',
           features: [
-            'Content Security Policy generation',
-            'Security header optimization',
-            'Vulnerability scanning and alerts'
+            'Predictive lead scoring based on behavior and demographics',
+            'Automated lead routing to sales teams',
+            'Lead nurturing workflows and follow-up sequences'
           ],
-          commands: ['npm run security:headers', 'npm run security:scan'],
+          commands: ['npm run leads:score', 'npm run leads:route'],
           configurable: [
-            'CSP policy configuration',
-            'Security header preferences',
-            'Scanning frequency and alerts'
+            'Scoring criteria and model training data',
+            'Sales team assignment rules',
+            'Nurturing campaign templates'
           ]
         },
         {
-          id: 'ssl-monitor',
-          name: 'SSL Certificate Monitor',
-          description: 'SSL certificate monitoring and renewal alerts',
+          id: 'crm-integration',
+          name: 'CRM Integration Hub',
+          description: 'Seamless integration with major CRM platforms',
           features: [
-            'Certificate expiration tracking',
-            'Automated renewal reminders',
-            'SSL configuration validation'
+            'Two-way sync with Salesforce, HubSpot, Pipedrive',
+            'Automated data enrichment and deduplication',
+            'Custom field mapping and workflow automation'
           ],
-          commands: ['npm run ssl:check', 'npm run ssl:monitor'],
+          commands: ['npm run crm:sync', 'npm run crm:enrich'],
           configurable: [
-            'Certificate monitoring domains',
-            'Alert timing and recipients',
-            'Renewal workflow preferences'
+            'CRM platform credentials and endpoints',
+            'Field mapping and synchronization rules',
+            'Data enrichment providers and sources'
+          ]
+        }
+      ]
+    },
+    'advertising-optimization': {
+      name: 'Advertising & PPC',
+      icon: '💰',
+      modules: [
+        {
+          id: 'ad-campaign-manager',
+          name: 'Multi-Platform Ad Campaign Manager',
+          description: 'Unified management for Google Ads, Facebook, LinkedIn campaigns',
+          features: [
+            'Cross-platform campaign creation and optimization',
+            'Automated bid management and budget allocation',
+            'Performance tracking and ROI analysis across channels'
+          ],
+          commands: ['npm run ads:manage', 'npm run ads:optimize'],
+          configurable: [
+            'Platform API credentials and account access',
+            'Bidding strategies and budget constraints',
+            'Performance metrics and optimization goals'
+          ]
+        },
+        {
+          id: 'landing-page-optimizer',
+          name: 'Landing Page Performance Optimizer',
+          description: 'AI-powered landing page optimization for ad campaigns',
+          features: [
+            'Dynamic headline and CTA testing based on traffic source',
+            'Real-time conversion rate optimization suggestions',
+            'Mobile-first responsive design optimization'
+          ],
+          commands: ['npm run landing:optimize', 'npm run landing:test'],
+          configurable: [
+            'Traffic source mapping and personalization rules',
+            'Optimization goals and success metrics',
+            'Design variations and testing parameters'
+          ]
+        },
+        {
+          id: 'retargeting-engine',
+          name: 'Advanced Retargeting Engine',
+          description: 'Sophisticated audience retargeting across multiple platforms',
+          features: [
+            'Behavioral-based audience segmentation for retargeting',
+            'Dynamic product/service ads based on browsing history',
+            'Cross-device and cross-platform audience matching'
+          ],
+          commands: ['npm run retarget:setup', 'npm run retarget:optimize'],
+          configurable: [
+            'Audience definition criteria and exclusions',
+            'Creative templates and dynamic content rules',
+            'Platform-specific optimization settings'
           ]
         }
       ]
