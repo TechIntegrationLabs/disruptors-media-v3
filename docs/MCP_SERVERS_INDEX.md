@@ -15,6 +15,7 @@ This document tracks all MCP (Model Context Protocol) servers configured for the
 - **GSAP Master** - Advanced animation control and sequencing
 
 ### 🚀 Deployment & Infrastructure
+- **Railway** - 🆕 Railway platform deployment and management
 - **Vercel** - Deployment and hosting management
 - **Netlify** - Static site deployment
 - **DigitalOcean** - Cloud infrastructure management
@@ -66,6 +67,31 @@ This document tracks all MCP (Model Context Protocol) servers configured for the
 - Material and lighting control
 - Runtime code generation (JS, React, Next.js)
 - Webhook integration for real-time data
+
+### Railway MCP Server
+**Status**: ✅ Installed and Configured  
+**Location**: `/Users/disruptors/Documents/ProjectsD/DisruptorEcosystem/DM3/disruptors-media-v3/railway-mcp-server/`  
+**Purpose**: Comprehensive Railway platform management and deployment automation  
+**Documentation**: `docs/RAILWAY_DEPLOYMENT.md`
+
+**Key Features**:
+- Project and service management
+- Environment variable configuration
+- Template deployment from Railway library
+- Domain generation and management
+- Build and deployment logs
+- Environment creation and linking
+
+**Prerequisites**:
+- Railway CLI installed (`npm install -g @railway/cli`)
+- Railway account authentication (`railway login`)
+- Project context (directory linked to Railway project)
+
+**Example Tools**:
+- `check-railway-status` - Verify CLI and authentication
+- `deploy-template` - Deploy databases, queues, etc.
+- `create-environment` - Set up staging/production environments
+- `get-logs` - Monitor deployments and troubleshoot issues
 
 ### GSAP Master MCP Server
 **Status**: ✅ Configured  
@@ -125,6 +151,6 @@ cat ~/.cursor/mcp.json | jq .
 
 ---
 
-*Last Updated: January 11, 2025*  
-*Total Servers: 24*  
+*Last Updated: January 12, 2025*  
+*Total Servers: 25 (Added Railway MCP Server)*  
 *Status: Production Ready*

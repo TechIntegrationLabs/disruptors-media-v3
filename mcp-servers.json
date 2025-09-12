@@ -213,6 +213,16 @@
         "MCP_MODE": "stdio"
       },
       "description": "Ultimate GSAP animation expert with AI-powered intent analysis and 60fps performance optimization"
+    },
+    "railway": {
+      "command": "node",
+      "args": [
+        "/Users/disruptors/Documents/ProjectsD/DisruptorEcosystem/DM3/disruptors-media-v3/railway-mcp-server/dist/index.js"
+      ],
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "description": "Railway deployment platform MCP server for managing projects, services, environments, and deployments"
     }
   }
 }
