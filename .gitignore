@@ -60,3 +60,12 @@ jspm_packages/
 .cursor/mcp.json
 # Local Netlify folder
 .netlify
+
+# Image upload queue - temporary files only
+/image-upload-queue/*
+!/image-upload-queue/.gitkeep
+!/image-upload-queue/README.md
+
+# Image tracking spreadsheet (contains sensitive URLs)
+/image-assets-tracker.csv
+/image-assets-tracker.xlsx

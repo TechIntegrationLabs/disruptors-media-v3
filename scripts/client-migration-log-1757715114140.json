@@ -1,0 +1,48 @@
+{
+  "timestamp": "2025-09-12T22:11:54.139Z",
+  "type": "clients",
+  "googleSheetsCount": 10,
+  "airtableCount": 10,
+  "records": [
+    {
+      "id": "recf0c3MHOFxbJah9",
+      "company": "SegPro Solutions"
+    },
+    {
+      "id": "recI1wNI2rjzH6ZJq",
+      "company": "AI Sound"
+    },
+    {
+      "id": "recHlSgVzuM9mxgcz",
+      "company": "We Eat Clay"
+    },
+    {
+      "id": "recey1d8uvFEqhkBQ",
+      "company": "Jay Webb"
+    },
+    {
+      "id": "recNUnozvQvtF481l",
+      "company": "Exit Engine"
+    },
+    {
+      "id": "recedWzVvqkeGZNVs",
+      "company": "Timberview Capital"
+    },
+    {
+      "id": "recaVNvT56PywdoCm",
+      "company": "Tyler Hill"
+    },
+    {
+      "id": "recrJHKZEUIfGgxRB",
+      "company": "DotEdison"
+    },
+    {
+      "id": "rec1ZvQIa477kzMVI",
+      "company": "TradeWorx"
+    },
+    {
+      "id": "recfBvUqvPyjmGm5i",
+      "company": "Acumen Media"
+    }
+  ]
+}

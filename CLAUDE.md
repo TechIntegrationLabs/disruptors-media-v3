@@ -47,6 +47,19 @@ npm run clients:validate   # Validate client data structure
 npm run clients:backup     # Backup client data from Google Sheets
 ```
 
+### Image Management (Cloudinary-Only)
+```bash
+npm run cloudinary:watch    # Watch upload queue for automatic processing
+npm run cloudinary:process  # Process existing files in upload queue
+npm run cloudinary:tracker  # Open image tracking spreadsheet
+```
+
+**🖼️ IMPORTANT: This project uses Cloudinary exclusively for all images**
+- **NO images in repository** - All assets hosted on Cloudinary
+- **Upload workflow**: Drop images in `/image-upload-queue/` folder
+- **Automatic processing**: Script uploads to Cloudinary and updates tracking
+- **Documentation**: See `docs/CLOUDINARY_ONLY_IMAGE_MANAGEMENT.md`
+
 ### Running Tests
 ```bash
 npm test -- --testNamePattern="specific test name"  # Run specific test by name

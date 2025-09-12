@@ -12,31 +12,14 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     
-    <!-- Custom Fonts - Figma Specification -->
+    <!-- Custom Fonts - Available Font Files -->
     <style>
-      /* OT Neue Montreal - Multiple Weights */
+      /* OT Neue Montreal - Using Available Font Files */
       @font-face {
         font-family: 'OT Neue Montreal';
-        src: url('%PUBLIC_URL%/fonts/OTNeueMontreal-Regular.woff2') format('woff2'),
-             url('%PUBLIC_URL%/fonts/OTNeueMontreal-Regular.woff') format('woff');
-        font-weight: 400;
-        font-style: normal;
-        font-display: swap;
-      }
-      
-      @font-face {
-        font-family: 'OT Neue Montreal';
-        src: url('%PUBLIC_URL%/fonts/OTNeueMontreal-Medium.woff2') format('woff2'),
-             url('%PUBLIC_URL%/fonts/OTNeueMontreal-Medium.woff') format('woff');
-        font-weight: 500;
-        font-style: normal;
-        font-display: swap;
-      }
-      
-      @font-face {
-        font-family: 'OT Neue Montreal';
-        src: url('%PUBLIC_URL%/fonts/OTNeueMontreal-SemiBoldSemiSqueezed.woff2') format('woff2'),
-             url('%PUBLIC_URL%/fonts/OTNeueMontreal-SemiBoldSemiSqueezed.woff') format('woff');
+        src: url('%PUBLIC_URL%/fonts/OTNeueMontreal-SemiBoldSqueezed.woff2') format('woff2'),
+             url('%PUBLIC_URL%/fonts/OTNeueMontreal-SemiBoldSqueezed.woff') format('woff'),
+             url('%PUBLIC_URL%/fonts/OTNeueMontreal-SemiBoldSqueezed.ttf') format('truetype');
         font-weight: 600;
         font-style: normal;
         font-display: swap;
@@ -44,85 +27,28 @@
       
       @font-face {
         font-family: 'OT Neue Montreal';
-        src: url('%PUBLIC_URL%/fonts/OTNeueMontreal-Bold.woff2') format('woff2'),
-             url('%PUBLIC_URL%/fonts/OTNeueMontreal-Bold.woff') format('woff');
+        src: url('%PUBLIC_URL%/fonts/OTNeueMontreal-SemiBoldSemiSqueezed.woff2') format('woff2'),
+             url('%PUBLIC_URL%/fonts/OTNeueMontreal-SemiBoldSemiSqueezed.woff') format('woff'),
+             url('%PUBLIC_URL%/fonts/OTNeueMontreal-SemiBoldSemiSqueezed.ttf') format('truetype');
         font-weight: 700;
         font-style: normal;
         font-display: swap;
       }
       
-      /* PP Supply Mono - Multiple Weights */
+      /* PP Supply Mono - Using Available Font Files */
       @font-face {
         font-family: 'PP Supply Mono';
         src: url('%PUBLIC_URL%/fonts/PPSupplyMono-Regular.woff2') format('woff2'),
-             url('%PUBLIC_URL%/fonts/PPSupplyMono-Regular.woff') format('woff');
+             url('%PUBLIC_URL%/fonts/PPSupplyMono-Regular.woff') format('woff'),
+             url('%PUBLIC_URL%/fonts/PPSupplyMono-Regular.ttf') format('truetype');
         font-weight: 400;
         font-style: normal;
         font-display: swap;
       }
       
-      @font-face {
-        font-family: 'PP Supply Mono';
-        src: url('%PUBLIC_URL%/fonts/PPSupplyMono-Medium.woff2') format('woff2'),
-             url('%PUBLIC_URL%/fonts/PPSupplyMono-Medium.woff') format('woff');
-        font-weight: 500;
-        font-style: normal;
-        font-display: swap;
-      }
-      
-      @font-face {
-        font-family: 'PP Supply Mono';
-        src: url('%PUBLIC_URL%/fonts/PPSupplyMono-SemiBold.woff2') format('woff2'),
-             url('%PUBLIC_URL%/fonts/PPSupplyMono-SemiBold.woff') format('woff');
-        font-weight: 600;
-        font-style: normal;
-        font-display: swap;
-      }
-      
-      @font-face {
-        font-family: 'PP Supply Mono';
-        src: url('%PUBLIC_URL%/fonts/PPSupplyMono-Bold.woff2') format('woff2'),
-             url('%PUBLIC_URL%/fonts/PPSupplyMono-Bold.woff') format('woff');
-        font-weight: 700;
-        font-style: normal;
-        font-display: swap;
-      }
-      
-      /* Neue Montreal Alias - For Figma Compatibility */
-      @font-face {
-        font-family: 'Neue Montreal';
-        src: url('%PUBLIC_URL%/fonts/OTNeueMontreal-Regular.woff2') format('woff2'),
-             url('%PUBLIC_URL%/fonts/OTNeueMontreal-Regular.woff') format('woff');
-        font-weight: 400;
-        font-style: normal;
-        font-display: swap;
-      }
-      
-      @font-face {
-        font-family: 'Neue Montreal';
-        src: url('%PUBLIC_URL%/fonts/OTNeueMontreal-Medium.woff2') format('woff2'),
-             url('%PUBLIC_URL%/fonts/OTNeueMontreal-Medium.woff') format('woff');
-        font-weight: 500;
-        font-style: normal;
-        font-display: swap;
-      }
-      
-      @font-face {
-        font-family: 'Neue Montreal';
-        src: url('%PUBLIC_URL%/fonts/OTNeueMontreal-SemiBoldSemiSqueezed.woff2') format('woff2'),
-             url('%PUBLIC_URL%/fonts/OTNeueMontreal-SemiBoldSemiSqueezed.woff') format('woff');
-        font-weight: 600;
-        font-style: normal;
-        font-display: swap;
-      }
-      
-      @font-face {
-        font-family: 'Neue Montreal';
-        src: url('%PUBLIC_URL%/fonts/OTNeueMontreal-Bold.woff2') format('woff2'),
-             url('%PUBLIC_URL%/fonts/OTNeueMontreal-Bold.woff') format('woff');
-        font-weight: 700;
-        font-style: normal;
-        font-display: swap;
+      /* Fallback to system fonts if custom fonts fail */
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
       }
     </style>
     

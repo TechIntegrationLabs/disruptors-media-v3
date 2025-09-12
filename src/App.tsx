@@ -35,7 +35,7 @@ function App() {
 
   return (
     <HelmetProvider>
-      <div className="App" style={{ background: `url('${CLOUDINARY_ASSETS.backgrounds.mainBg}') repeat` }}>
+      <div className="App" style={{ background: `url('${CLOUDINARY_ASSETS.main_bg}') repeat` }}>
         {/* <LoadingCounter /> */}
         <ErrorBoundary>
         <Layout>

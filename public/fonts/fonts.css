@@ -1,0 +1,32 @@
+/* OT Neue Montreal Font Family */
+
+@font-face {
+  font-family: 'OT Neue Montreal';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('./OTNeueMontreal-SemiBoldSqueezed.woff2') format('woff2'),
+       url('./OTNeueMontreal-SemiBoldSqueezed.woff') format('woff'),
+       url('./OTNeueMontreal-SemiBoldSqueezed.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'OT Neue Montreal';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('./OTNeueMontreal-SemiBoldSemiSqueezed.woff2') format('woff2'),
+       url('./OTNeueMontreal-SemiBoldSemiSqueezed.woff') format('woff'),
+       url('./OTNeueMontreal-SemiBoldSemiSqueezed.ttf') format('truetype');
+}
+
+/* PP Supply Mono Font Family */
+@font-face {
+  font-family: 'PP Supply Mono';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('./PPSupplyMono-Regular.woff2') format('woff2'),
+       url('./PPSupplyMono-Regular.woff') format('woff'),
+       url('./PPSupplyMono-Regular.ttf') format('truetype');
+}

@@ -9,42 +9,42 @@ const portfolioProjects = [
     id: 1,
     title: 'TECH INNOVATORS BRAND LAUNCH',
     category: 'BRAND IDENTITY • WEB DESIGN',
-    image: CLOUDINARY_ASSETS.portfolio.work1,
+    image: CLOUDINARY_ASSETS.work_1,
     slug: 'tech-innovators-brand-launch'
   },
   {
     id: 2,
     title: 'HEALTHCARE TRANSFORMATION CAMPAIGN',
     category: 'VIDEO PRODUCTION • MARKETING',
-    image: CLOUDINARY_ASSETS.portfolio.work2,
+    image: CLOUDINARY_ASSETS.work_2,
     slug: 'healthcare-transformation-campaign'
   },
   {
     id: 3,
     title: 'STARTUP GROWTH ACCELERATOR',
     category: 'DIGITAL STRATEGY • CREATIVE',
-    image: CLOUDINARY_ASSETS.portfolio.work3,
+    image: CLOUDINARY_ASSETS.work_3,
     slug: 'startup-growth-accelerator'
   },
   {
     id: 4,
     title: 'E-COMMERCE PLATFORM REDESIGN',
     category: 'WEB DEVELOPMENT • UX/UI',
-    image: CLOUDINARY_ASSETS.portfolio.work4,
+    image: CLOUDINARY_ASSETS.work_4,
     slug: 'ecommerce-platform-redesign'
   },
   {
     id: 5,
     title: 'PROFESSIONAL SERVICES BRANDING',
     category: 'PHOTOGRAPHY • BRANDING',
-    image: CLOUDINARY_ASSETS.portfolio.work5,
+    image: CLOUDINARY_ASSETS.work_5,
     slug: 'professional-services-branding'
   },
   {
     id: 6,
     title: 'MULTIMEDIA AWARENESS CAMPAIGN',
     category: 'MULTIMEDIA • CAMPAIGN',
-    image: CLOUDINARY_ASSETS.portfolio.work6,
+    image: CLOUDINARY_ASSETS.work_6,
     slug: 'multimedia-awareness-campaign'
   }
 ];

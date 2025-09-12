@@ -12,7 +12,7 @@ import {
   ArrowTopRightOnSquareIcon
 } from '@heroicons/react/24/outline';
 import { blogPosts as staticBlogPosts } from '../data/blog';
-import { fetchBlogPostsFromSheet } from '../services/googleSheetsService';
+import { fetchBlogPostsFromAirtable } from '../services/airtableService';
 import { fetchGoogleDocsContent } from '../services/contentService';
 
 const BlogPost: React.FC = () => {
@@ -31,7 +31,7 @@ const BlogPost: React.FC = () => {
         setLoading(true);
         
         // Try to load posts from Google Sheets
-        const dynamicPosts = await fetchBlogPostsFromSheet();
+        const dynamicPosts = await fetchBlogPostsFromAirtable();
         if (dynamicPosts && dynamicPosts.length > 0) {
           setBlogPosts(dynamicPosts);
         }

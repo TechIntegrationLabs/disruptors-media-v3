@@ -233,8 +233,12 @@ railway domain list
     "dev:full": "concurrently \"npm start\" \"npm run claude-bridge\"",
     "claude-bridge": "node src/backend/claude-bridge/server.js",
     "deploy:railway": "railway deploy",
+    "build:railway": "npm run build && npm run claude-bridge:build",
+    "start:production": "concurrently \"serve -s build -l 3000\" \"npm run claude-bridge\"",
     "railway:logs": "railway logs",
-    "railway:status": "railway status"
+    "railway:status": "railway status",
+    "airtable:migrate": "node scripts/migrate-to-airtable.js",
+    "assets:reorganize": "node scripts/reorganize-dmsite-assets.js"
   }
 }
 ```
@@ -246,7 +250,8 @@ Railway deployment includes full MCP server support, now including the Railway M
 ```javascript
 // Configured MCP servers (mcp-servers.json):
 {
-  "railway": "Railway deployment platform management - NEW!",
+  "railway": "Railway deployment platform management - ✅ CONFIGURED!",
+  "airtable": "Database management and content sync - NEW!",
   "dataforseo": "SEO keyword research and analysis",
   "firecrawl": "Web scraping and content extraction", 
   "cloudinary": "Image optimization and management",
@@ -506,8 +511,22 @@ A successful Railway deployment should show:
 ✅ **Frontend**: Marketing site loads at custom domain  
 ✅ **Admin Panel**: All tabs accessible with appropriate feature indicators  
 ✅ **WebSocket**: Real-time connection established  
-✅ **MCP Integration**: Server status showing green  
-✅ **Health Checks**: All endpoints responding  
+✅ **MCP Integration**: Railway MCP server configured and operational  
+✅ **Health Checks**: All endpoints responding (`/health` implemented)  
 ✅ **Performance**: Sub-2s page load times  
+✅ **Environment Variables**: All MCP server API keys configured  
+✅ **Build System**: Production builds successful with Cloudinary-only assets  
+
+## 🎯 **Current Deployment Status (January 2025)**
+
+**✅ READY FOR PRODUCTION DEPLOYMENT**
+
+**Recent Updates:**
+- Railway MCP server integrated into global MCP configuration
+- Environment variables configured from `.env.railway` file
+- Project linked to Railway with GitHub repo connection
+- Airtable integration added for enhanced data management
+- Cloudinary-only asset management fully implemented
+- All documentation updated to reflect current configuration
 
 Railway provides the perfect balance of full-stack capabilities with deployment simplicity for this project!

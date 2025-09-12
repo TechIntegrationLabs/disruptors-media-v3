@@ -12,7 +12,7 @@ import {
   ExclamationTriangleIcon
 } from '@heroicons/react/24/outline';
 import { blogPosts as staticBlogPosts } from '../data/blog';
-import { fetchBlogPostsFromSheet } from '../services/googleSheetsService';
+import { fetchBlogPostsFromAirtable } from '../services/airtableService';
 
 const Blog: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -29,17 +29,17 @@ const Blog: React.FC = () => {
         setLoading(true);
         setError(null);
         
-        const dynamicPosts = await fetchBlogPostsFromSheet();
+        const dynamicPosts = await fetchBlogPostsFromAirtable();
         
         if (dynamicPosts && dynamicPosts.length > 0) {
           setBlogPosts(dynamicPosts);
-          console.log('Successfully loaded blog posts from Google Sheets:', dynamicPosts.length);
+          console.log('Successfully loaded blog posts from Airtable:', dynamicPosts.length);
         } else {
-          console.log('No posts from Google Sheets, using static data');
+          console.log('No posts from Airtable, using static data');
           setBlogPosts(staticBlogPosts);
         }
       } catch (err) {
-        console.error('Error loading blog posts from Google Sheets:', err);
+        console.error('Error loading blog posts from Airtable:', err);
         setError('Failed to load latest blog posts. Showing cached content.');
         setBlogPosts(staticBlogPosts);
       } finally {

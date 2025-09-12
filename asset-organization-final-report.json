@@ -1,0 +1,756 @@
+{
+  "correctionDate": "2025-09-12T22:14:47.618Z",
+  "summary": {
+    "totalCorrected": 52,
+    "totalErrors": 0,
+    "correctMappings": {
+      "bg-what-we-do": "disruptors-media/ui/backgrounds",
+      "book-a-call-bg": "disruptors-media/ui/backgrounds",
+      "main-bg": "disruptors-media/ui/backgrounds",
+      "mobile-sec-bg": "disruptors-media/ui/backgrounds",
+      "poster": "disruptors-media/ui/backgrounds",
+      "poster-abt": "disruptors-media/ui/backgrounds",
+      "gold-logo": "disruptors-media/brand/logos",
+      "gold-logo-banner": "disruptors-media/brand/logos",
+      "logo": "disruptors-media/brand/logos",
+      "logo-emboss": "disruptors-media/brand/logos",
+      "logo-menu": "disruptors-media/brand/logos",
+      "mobile-menu-logo": "disruptors-media/brand/logos",
+      "fb": "disruptors-media/ui/icons/social",
+      "insta": "disruptors-media/ui/icons/social",
+      "twitter": "disruptors-media/ui/icons/social",
+      "youtube": "disruptors-media/ui/icons/social",
+      "arrow-cta": "disruptors-media/ui/elements",
+      "favicon": "disruptors-media/ui/elements",
+      "minus-icon": "disruptors-media/ui/elements",
+      "mute-icon": "disruptors-media/ui/elements",
+      "pause-icon": "disruptors-media/ui/elements",
+      "play-ico": "disruptors-media/ui/elements",
+      "play-icon": "disruptors-media/ui/elements",
+      "plus-icon": "disruptors-media/ui/elements",
+      "prev-arrow": "disruptors-media/ui/elements",
+      "after-phone-sec": "disruptors-media/services/graphics",
+      "hand-human": "disruptors-media/services/graphics",
+      "hand-robot": "disruptors-media/services/graphics",
+      "hand-srv": "disruptors-media/services/graphics",
+      "phone": "disruptors-media/services/graphics",
+      "services-img": "disruptors-media/services/graphics",
+      "what-we-do-abt": "disruptors-media/services/graphics",
+      "what-we-do-abt-1": "disruptors-media/services/graphics",
+      "what-we-do-abt-2": "disruptors-media/services/graphics",
+      "what-we-do-abt-3": "disruptors-media/services/graphics",
+      "what-we-do-bx": "disruptors-media/services/graphics",
+      "what-we-do-bx-1": "disruptors-media/services/graphics",
+      "what-we-do-bx-2": "disruptors-media/services/graphics",
+      "what-we-do-bx-3": "disruptors-media/services/graphics",
+      "what-we-do-frame": "disruptors-media/services/graphics",
+      "pd-new-sm": "disruptors-media/content/podcast",
+      "pd-new-sm-1": "disruptors-media/content/podcast",
+      "pd-new-sm-2": "disruptors-media/content/podcast",
+      "pd-new-sm-3": "disruptors-media/content/podcast",
+      "pd-new-sm1": "disruptors-media/content/podcast",
+      "pd-new-sm1-1": "disruptors-media/content/podcast",
+      "pd-new-sm1-2": "disruptors-media/content/podcast",
+      "pd-new-sm1-3": "disruptors-media/content/podcast",
+      "podcast-new-lg": "disruptors-media/content/podcast",
+      "podcast-new-lg-1": "disruptors-media/content/podcast",
+      "client-1": "disruptors-media/clients/assets",
+      "client-2": "disruptors-media/clients/assets"
+    }
+  },
+  "correctedAssets": [
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/client-1",
+      "newPublicId": "disruptors-media/clients/assets/client-1",
+      "correctFolderPath": "disruptors-media/clients/assets",
+      "filename": "client-1",
+      "correctedAt": "2025-09-12T22:14:27.378Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/favicon",
+      "newPublicId": "disruptors-media/ui/elements/favicon",
+      "correctFolderPath": "disruptors-media/ui/elements",
+      "filename": "favicon",
+      "correctedAt": "2025-09-12T22:14:27.397Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/arrow-cta",
+      "newPublicId": "disruptors-media/ui/elements/arrow-cta",
+      "correctFolderPath": "disruptors-media/ui/elements",
+      "filename": "arrow-cta",
+      "correctedAt": "2025-09-12T22:14:27.463Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/fb",
+      "newPublicId": "disruptors-media/ui/icons/social/fb",
+      "correctFolderPath": "disruptors-media/ui/icons/social",
+      "filename": "fb",
+      "correctedAt": "2025-09-12T22:14:27.474Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/gold-logo",
+      "newPublicId": "disruptors-media/brand/logos/gold-logo",
+      "correctFolderPath": "disruptors-media/brand/logos",
+      "filename": "gold-logo",
+      "correctedAt": "2025-09-12T22:14:27.484Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/book-a-call-bg",
+      "newPublicId": "disruptors-media/ui/backgrounds/book-a-call-bg",
+      "correctFolderPath": "disruptors-media/ui/backgrounds",
+      "filename": "book-a-call-bg",
+      "correctedAt": "2025-09-12T22:14:27.525Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/after-phone-sec",
+      "newPublicId": "disruptors-media/services/graphics/after-phone-sec",
+      "correctFolderPath": "disruptors-media/services/graphics",
+      "filename": "after-phone-sec",
+      "correctedAt": "2025-09-12T22:14:27.768Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/client-2",
+      "newPublicId": "disruptors-media/clients/assets/client-2",
+      "correctFolderPath": "disruptors-media/clients/assets",
+      "filename": "client-2",
+      "correctedAt": "2025-09-12T22:14:27.778Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/bg-what-we-do",
+      "newPublicId": "disruptors-media/ui/backgrounds/bg-what-we-do",
+      "correctFolderPath": "disruptors-media/ui/backgrounds",
+      "filename": "bg-what-we-do",
+      "correctedAt": "2025-09-12T22:14:28.214Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/gold-logo-banner",
+      "newPublicId": "disruptors-media/brand/logos/gold-logo-banner",
+      "correctFolderPath": "disruptors-media/brand/logos",
+      "filename": "gold-logo-banner",
+      "correctedAt": "2025-09-12T22:14:28.521Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/logo-menu",
+      "newPublicId": "disruptors-media/brand/logos/logo-menu",
+      "correctFolderPath": "disruptors-media/brand/logos",
+      "filename": "logo-menu",
+      "correctedAt": "2025-09-12T22:14:31.097Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/insta",
+      "newPublicId": "disruptors-media/ui/icons/social/insta",
+      "correctFolderPath": "disruptors-media/ui/icons/social",
+      "filename": "insta",
+      "correctedAt": "2025-09-12T22:14:31.180Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/minus-icon",
+      "newPublicId": "disruptors-media/ui/elements/minus-icon",
+      "correctFolderPath": "disruptors-media/ui/elements",
+      "filename": "minus-icon",
+      "correctedAt": "2025-09-12T22:14:31.252Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/hand-robot",
+      "newPublicId": "disruptors-media/services/graphics/hand-robot",
+      "correctFolderPath": "disruptors-media/services/graphics",
+      "filename": "hand-robot",
+      "correctedAt": "2025-09-12T22:14:31.267Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/mobile-menu-logo",
+      "newPublicId": "disruptors-media/brand/logos/mobile-menu-logo",
+      "correctFolderPath": "disruptors-media/brand/logos",
+      "filename": "mobile-menu-logo",
+      "correctedAt": "2025-09-12T22:14:31.367Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/logo",
+      "newPublicId": "disruptors-media/brand/logos/logo",
+      "correctFolderPath": "disruptors-media/brand/logos",
+      "filename": "logo",
+      "correctedAt": "2025-09-12T22:14:31.467Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/hand-srv",
+      "newPublicId": "disruptors-media/services/graphics/hand-srv",
+      "correctFolderPath": "disruptors-media/services/graphics",
+      "filename": "hand-srv",
+      "correctedAt": "2025-09-12T22:14:31.691Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/hand-human",
+      "newPublicId": "disruptors-media/services/graphics/hand-human",
+      "correctFolderPath": "disruptors-media/services/graphics",
+      "filename": "hand-human",
+      "correctedAt": "2025-09-12T22:14:31.742Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/logo-emboss",
+      "newPublicId": "disruptors-media/brand/logos/logo-emboss",
+      "correctFolderPath": "disruptors-media/brand/logos",
+      "filename": "logo-emboss",
+      "correctedAt": "2025-09-12T22:14:31.758Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/main-bg",
+      "newPublicId": "disruptors-media/ui/backgrounds/main-bg",
+      "correctFolderPath": "disruptors-media/ui/backgrounds",
+      "filename": "main-bg",
+      "correctedAt": "2025-09-12T22:14:32.584Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/pause-icon",
+      "newPublicId": "disruptors-media/ui/elements/pause-icon",
+      "correctFolderPath": "disruptors-media/ui/elements",
+      "filename": "pause-icon",
+      "correctedAt": "2025-09-12T22:14:35.194Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/pd-new-sm",
+      "newPublicId": "disruptors-media/content/podcast/pd-new-sm",
+      "correctFolderPath": "disruptors-media/content/podcast",
+      "filename": "pd-new-sm",
+      "correctedAt": "2025-09-12T22:14:35.720Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/mute-icon",
+      "newPublicId": "disruptors-media/ui/elements/mute-icon",
+      "correctFolderPath": "disruptors-media/ui/elements",
+      "filename": "mute-icon",
+      "correctedAt": "2025-09-12T22:14:35.721Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/pd-new-sm1-2",
+      "newPublicId": "disruptors-media/content/podcast/pd-new-sm1-2",
+      "correctFolderPath": "disruptors-media/content/podcast",
+      "filename": "pd-new-sm1-2",
+      "correctedAt": "2025-09-12T22:14:35.758Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/pd-new-sm-1",
+      "newPublicId": "disruptors-media/content/podcast/pd-new-sm-1",
+      "correctFolderPath": "disruptors-media/content/podcast",
+      "filename": "pd-new-sm-1",
+      "correctedAt": "2025-09-12T22:14:35.781Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/pd-new-sm-2",
+      "newPublicId": "disruptors-media/content/podcast/pd-new-sm-2",
+      "correctFolderPath": "disruptors-media/content/podcast",
+      "filename": "pd-new-sm-2",
+      "correctedAt": "2025-09-12T22:14:35.807Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/pd-new-sm1-1",
+      "newPublicId": "disruptors-media/content/podcast/pd-new-sm1-1",
+      "correctFolderPath": "disruptors-media/content/podcast",
+      "filename": "pd-new-sm1-1",
+      "correctedAt": "2025-09-12T22:14:35.926Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/pd-new-sm1",
+      "newPublicId": "disruptors-media/content/podcast/pd-new-sm1",
+      "correctFolderPath": "disruptors-media/content/podcast",
+      "filename": "pd-new-sm1",
+      "correctedAt": "2025-09-12T22:14:36.109Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/mobile-sec-bg",
+      "newPublicId": "disruptors-media/ui/backgrounds/mobile-sec-bg",
+      "correctFolderPath": "disruptors-media/ui/backgrounds",
+      "filename": "mobile-sec-bg",
+      "correctedAt": "2025-09-12T22:14:36.222Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/pd-new-sm-3",
+      "newPublicId": "disruptors-media/content/podcast/pd-new-sm-3",
+      "correctFolderPath": "disruptors-media/content/podcast",
+      "filename": "pd-new-sm-3",
+      "correctedAt": "2025-09-12T22:14:36.489Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/plus-icon",
+      "newPublicId": "disruptors-media/ui/elements/plus-icon",
+      "correctFolderPath": "disruptors-media/ui/elements",
+      "filename": "plus-icon",
+      "correctedAt": "2025-09-12T22:14:39.142Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/play-icon",
+      "newPublicId": "disruptors-media/ui/elements/play-icon",
+      "correctFolderPath": "disruptors-media/ui/elements",
+      "filename": "play-icon",
+      "correctedAt": "2025-09-12T22:14:39.183Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/prev-arrow",
+      "newPublicId": "disruptors-media/ui/elements/prev-arrow",
+      "correctFolderPath": "disruptors-media/ui/elements",
+      "filename": "prev-arrow",
+      "correctedAt": "2025-09-12T22:14:39.251Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/pd-new-sm1-3",
+      "newPublicId": "disruptors-media/content/podcast/pd-new-sm1-3",
+      "correctFolderPath": "disruptors-media/content/podcast",
+      "filename": "pd-new-sm1-3",
+      "correctedAt": "2025-09-12T22:14:39.606Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/poster",
+      "newPublicId": "disruptors-media/ui/backgrounds/poster",
+      "correctFolderPath": "disruptors-media/ui/backgrounds",
+      "filename": "poster",
+      "correctedAt": "2025-09-12T22:14:39.613Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/podcast-new-lg-1",
+      "newPublicId": "disruptors-media/content/podcast/podcast-new-lg-1",
+      "correctFolderPath": "disruptors-media/content/podcast",
+      "filename": "podcast-new-lg-1",
+      "correctedAt": "2025-09-12T22:14:39.651Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/poster-abt",
+      "newPublicId": "disruptors-media/ui/backgrounds/poster-abt",
+      "correctFolderPath": "disruptors-media/ui/backgrounds",
+      "filename": "poster-abt",
+      "correctedAt": "2025-09-12T22:14:39.729Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/play-ico",
+      "newPublicId": "disruptors-media/ui/elements/play-ico",
+      "correctFolderPath": "disruptors-media/ui/elements",
+      "filename": "play-ico",
+      "correctedAt": "2025-09-12T22:14:39.770Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/podcast-new-lg",
+      "newPublicId": "disruptors-media/content/podcast/podcast-new-lg",
+      "correctFolderPath": "disruptors-media/content/podcast",
+      "filename": "podcast-new-lg",
+      "correctedAt": "2025-09-12T22:14:40.078Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/phone",
+      "newPublicId": "disruptors-media/services/graphics/phone",
+      "correctFolderPath": "disruptors-media/services/graphics",
+      "filename": "phone",
+      "correctedAt": "2025-09-12T22:14:40.079Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/twitter",
+      "newPublicId": "disruptors-media/ui/icons/social/twitter",
+      "correctFolderPath": "disruptors-media/ui/icons/social",
+      "filename": "twitter",
+      "correctedAt": "2025-09-12T22:14:42.699Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/what-we-do-abt",
+      "newPublicId": "disruptors-media/services/graphics/what-we-do-abt",
+      "correctFolderPath": "disruptors-media/services/graphics",
+      "filename": "what-we-do-abt",
+      "correctedAt": "2025-09-12T22:14:43.232Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/services-img",
+      "newPublicId": "disruptors-media/services/graphics/services-img",
+      "correctFolderPath": "disruptors-media/services/graphics",
+      "filename": "services-img",
+      "correctedAt": "2025-09-12T22:14:43.383Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/what-we-do-abt-2",
+      "newPublicId": "disruptors-media/services/graphics/what-we-do-abt-2",
+      "correctFolderPath": "disruptors-media/services/graphics",
+      "filename": "what-we-do-abt-2",
+      "correctedAt": "2025-09-12T22:14:43.606Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/what-we-do-abt-1",
+      "newPublicId": "disruptors-media/services/graphics/what-we-do-abt-1",
+      "correctFolderPath": "disruptors-media/services/graphics",
+      "filename": "what-we-do-abt-1",
+      "correctedAt": "2025-09-12T22:14:43.730Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/what-we-do-abt-3",
+      "newPublicId": "disruptors-media/services/graphics/what-we-do-abt-3",
+      "correctFolderPath": "disruptors-media/services/graphics",
+      "filename": "what-we-do-abt-3",
+      "correctedAt": "2025-09-12T22:14:43.768Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/what-we-do-bx",
+      "newPublicId": "disruptors-media/services/graphics/what-we-do-bx",
+      "correctFolderPath": "disruptors-media/services/graphics",
+      "filename": "what-we-do-bx",
+      "correctedAt": "2025-09-12T22:14:43.790Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/what-we-do-bx-3",
+      "newPublicId": "disruptors-media/services/graphics/what-we-do-bx-3",
+      "correctFolderPath": "disruptors-media/services/graphics",
+      "filename": "what-we-do-bx-3",
+      "correctedAt": "2025-09-12T22:14:43.796Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/what-we-do-bx-2",
+      "newPublicId": "disruptors-media/services/graphics/what-we-do-bx-2",
+      "correctFolderPath": "disruptors-media/services/graphics",
+      "filename": "what-we-do-bx-2",
+      "correctedAt": "2025-09-12T22:14:43.902Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/what-we-do-bx-1",
+      "newPublicId": "disruptors-media/services/graphics/what-we-do-bx-1",
+      "correctFolderPath": "disruptors-media/services/graphics",
+      "filename": "what-we-do-bx-1",
+      "correctedAt": "2025-09-12T22:14:44.192Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/youtube",
+      "newPublicId": "disruptors-media/ui/icons/social/youtube",
+      "correctFolderPath": "disruptors-media/ui/icons/social",
+      "filename": "youtube",
+      "correctedAt": "2025-09-12T22:14:47.023Z",
+      "success": true
+    },
+    {
+      "oldPublicId": "disruptors-media/misc/unmapped/what-we-do-frame",
+      "newPublicId": "disruptors-media/services/graphics/what-we-do-frame",
+      "correctFolderPath": "disruptors-media/services/graphics",
+      "filename": "what-we-do-frame",
+      "correctedAt": "2025-09-12T22:14:47.617Z",
+      "success": true
+    }
+  ],
+  "errors": [],
+  "finalFolderStructure": {
+    "disruptors-media/clients/assets": [
+      {
+        "filename": "client-1",
+        "oldPath": "disruptors-media/misc/unmapped/client-1",
+        "finalPath": "disruptors-media/clients/assets/client-1"
+      },
+      {
+        "filename": "client-2",
+        "oldPath": "disruptors-media/misc/unmapped/client-2",
+        "finalPath": "disruptors-media/clients/assets/client-2"
+      }
+    ],
+    "disruptors-media/ui/elements": [
+      {
+        "filename": "favicon",
+        "oldPath": "disruptors-media/misc/unmapped/favicon",
+        "finalPath": "disruptors-media/ui/elements/favicon"
+      },
+      {
+        "filename": "arrow-cta",
+        "oldPath": "disruptors-media/misc/unmapped/arrow-cta",
+        "finalPath": "disruptors-media/ui/elements/arrow-cta"
+      },
+      {
+        "filename": "minus-icon",
+        "oldPath": "disruptors-media/misc/unmapped/minus-icon",
+        "finalPath": "disruptors-media/ui/elements/minus-icon"
+      },
+      {
+        "filename": "pause-icon",
+        "oldPath": "disruptors-media/misc/unmapped/pause-icon",
+        "finalPath": "disruptors-media/ui/elements/pause-icon"
+      },
+      {
+        "filename": "mute-icon",
+        "oldPath": "disruptors-media/misc/unmapped/mute-icon",
+        "finalPath": "disruptors-media/ui/elements/mute-icon"
+      },
+      {
+        "filename": "plus-icon",
+        "oldPath": "disruptors-media/misc/unmapped/plus-icon",
+        "finalPath": "disruptors-media/ui/elements/plus-icon"
+      },
+      {
+        "filename": "play-icon",
+        "oldPath": "disruptors-media/misc/unmapped/play-icon",
+        "finalPath": "disruptors-media/ui/elements/play-icon"
+      },
+      {
+        "filename": "prev-arrow",
+        "oldPath": "disruptors-media/misc/unmapped/prev-arrow",
+        "finalPath": "disruptors-media/ui/elements/prev-arrow"
+      },
+      {
+        "filename": "play-ico",
+        "oldPath": "disruptors-media/misc/unmapped/play-ico",
+        "finalPath": "disruptors-media/ui/elements/play-ico"
+      }
+    ],
+    "disruptors-media/ui/icons/social": [
+      {
+        "filename": "fb",
+        "oldPath": "disruptors-media/misc/unmapped/fb",
+        "finalPath": "disruptors-media/ui/icons/social/fb"
+      },
+      {
+        "filename": "insta",
+        "oldPath": "disruptors-media/misc/unmapped/insta",
+        "finalPath": "disruptors-media/ui/icons/social/insta"
+      },
+      {
+        "filename": "twitter",
+        "oldPath": "disruptors-media/misc/unmapped/twitter",
+        "finalPath": "disruptors-media/ui/icons/social/twitter"
+      },
+      {
+        "filename": "youtube",
+        "oldPath": "disruptors-media/misc/unmapped/youtube",
+        "finalPath": "disruptors-media/ui/icons/social/youtube"
+      }
+    ],
+    "disruptors-media/brand/logos": [
+      {
+        "filename": "gold-logo",
+        "oldPath": "disruptors-media/misc/unmapped/gold-logo",
+        "finalPath": "disruptors-media/brand/logos/gold-logo"
+      },
+      {
+        "filename": "gold-logo-banner",
+        "oldPath": "disruptors-media/misc/unmapped/gold-logo-banner",
+        "finalPath": "disruptors-media/brand/logos/gold-logo-banner"
+      },
+      {
+        "filename": "logo-menu",
+        "oldPath": "disruptors-media/misc/unmapped/logo-menu",
+        "finalPath": "disruptors-media/brand/logos/logo-menu"
+      },
+      {
+        "filename": "mobile-menu-logo",
+        "oldPath": "disruptors-media/misc/unmapped/mobile-menu-logo",
+        "finalPath": "disruptors-media/brand/logos/mobile-menu-logo"
+      },
+      {
+        "filename": "logo",
+        "oldPath": "disruptors-media/misc/unmapped/logo",
+        "finalPath": "disruptors-media/brand/logos/logo"
+      },
+      {
+        "filename": "logo-emboss",
+        "oldPath": "disruptors-media/misc/unmapped/logo-emboss",
+        "finalPath": "disruptors-media/brand/logos/logo-emboss"
+      }
+    ],
+    "disruptors-media/ui/backgrounds": [
+      {
+        "filename": "book-a-call-bg",
+        "oldPath": "disruptors-media/misc/unmapped/book-a-call-bg",
+        "finalPath": "disruptors-media/ui/backgrounds/book-a-call-bg"
+      },
+      {
+        "filename": "bg-what-we-do",
+        "oldPath": "disruptors-media/misc/unmapped/bg-what-we-do",
+        "finalPath": "disruptors-media/ui/backgrounds/bg-what-we-do"
+      },
+      {
+        "filename": "main-bg",
+        "oldPath": "disruptors-media/misc/unmapped/main-bg",
+        "finalPath": "disruptors-media/ui/backgrounds/main-bg"
+      },
+      {
+        "filename": "mobile-sec-bg",
+        "oldPath": "disruptors-media/misc/unmapped/mobile-sec-bg",
+        "finalPath": "disruptors-media/ui/backgrounds/mobile-sec-bg"
+      },
+      {
+        "filename": "poster",
+        "oldPath": "disruptors-media/misc/unmapped/poster",
+        "finalPath": "disruptors-media/ui/backgrounds/poster"
+      },
+      {
+        "filename": "poster-abt",
+        "oldPath": "disruptors-media/misc/unmapped/poster-abt",
+        "finalPath": "disruptors-media/ui/backgrounds/poster-abt"
+      }
+    ],
+    "disruptors-media/services/graphics": [
+      {
+        "filename": "after-phone-sec",
+        "oldPath": "disruptors-media/misc/unmapped/after-phone-sec",
+        "finalPath": "disruptors-media/services/graphics/after-phone-sec"
+      },
+      {
+        "filename": "hand-robot",
+        "oldPath": "disruptors-media/misc/unmapped/hand-robot",
+        "finalPath": "disruptors-media/services/graphics/hand-robot"
+      },
+      {
+        "filename": "hand-srv",
+        "oldPath": "disruptors-media/misc/unmapped/hand-srv",
+        "finalPath": "disruptors-media/services/graphics/hand-srv"
+      },
+      {
+        "filename": "hand-human",
+        "oldPath": "disruptors-media/misc/unmapped/hand-human",
+        "finalPath": "disruptors-media/services/graphics/hand-human"
+      },
+      {
+        "filename": "phone",
+        "oldPath": "disruptors-media/misc/unmapped/phone",
+        "finalPath": "disruptors-media/services/graphics/phone"
+      },
+      {
+        "filename": "what-we-do-abt",
+        "oldPath": "disruptors-media/misc/unmapped/what-we-do-abt",
+        "finalPath": "disruptors-media/services/graphics/what-we-do-abt"
+      },
+      {
+        "filename": "services-img",
+        "oldPath": "disruptors-media/misc/unmapped/services-img",
+        "finalPath": "disruptors-media/services/graphics/services-img"
+      },
+      {
+        "filename": "what-we-do-abt-2",
+        "oldPath": "disruptors-media/misc/unmapped/what-we-do-abt-2",
+        "finalPath": "disruptors-media/services/graphics/what-we-do-abt-2"
+      },
+      {
+        "filename": "what-we-do-abt-1",
+        "oldPath": "disruptors-media/misc/unmapped/what-we-do-abt-1",
+        "finalPath": "disruptors-media/services/graphics/what-we-do-abt-1"
+      },
+      {
+        "filename": "what-we-do-abt-3",
+        "oldPath": "disruptors-media/misc/unmapped/what-we-do-abt-3",
+        "finalPath": "disruptors-media/services/graphics/what-we-do-abt-3"
+      },
+      {
+        "filename": "what-we-do-bx",
+        "oldPath": "disruptors-media/misc/unmapped/what-we-do-bx",
+        "finalPath": "disruptors-media/services/graphics/what-we-do-bx"
+      },
+      {
+        "filename": "what-we-do-bx-3",
+        "oldPath": "disruptors-media/misc/unmapped/what-we-do-bx-3",
+        "finalPath": "disruptors-media/services/graphics/what-we-do-bx-3"
+      },
+      {
+        "filename": "what-we-do-bx-2",
+        "oldPath": "disruptors-media/misc/unmapped/what-we-do-bx-2",
+        "finalPath": "disruptors-media/services/graphics/what-we-do-bx-2"
+      },
+      {
+        "filename": "what-we-do-bx-1",
+        "oldPath": "disruptors-media/misc/unmapped/what-we-do-bx-1",
+        "finalPath": "disruptors-media/services/graphics/what-we-do-bx-1"
+      },
+      {
+        "filename": "what-we-do-frame",
+        "oldPath": "disruptors-media/misc/unmapped/what-we-do-frame",
+        "finalPath": "disruptors-media/services/graphics/what-we-do-frame"
+      }
+    ],
+    "disruptors-media/content/podcast": [
+      {
+        "filename": "pd-new-sm",
+        "oldPath": "disruptors-media/misc/unmapped/pd-new-sm",
+        "finalPath": "disruptors-media/content/podcast/pd-new-sm"
+      },
+      {
+        "filename": "pd-new-sm1-2",
+        "oldPath": "disruptors-media/misc/unmapped/pd-new-sm1-2",
+        "finalPath": "disruptors-media/content/podcast/pd-new-sm1-2"
+      },
+      {
+        "filename": "pd-new-sm-1",
+        "oldPath": "disruptors-media/misc/unmapped/pd-new-sm-1",
+        "finalPath": "disruptors-media/content/podcast/pd-new-sm-1"
+      },
+      {
+        "filename": "pd-new-sm-2",
+        "oldPath": "disruptors-media/misc/unmapped/pd-new-sm-2",
+        "finalPath": "disruptors-media/content/podcast/pd-new-sm-2"
+      },
+      {
+        "filename": "pd-new-sm1-1",
+        "oldPath": "disruptors-media/misc/unmapped/pd-new-sm1-1",
+        "finalPath": "disruptors-media/content/podcast/pd-new-sm1-1"
+      },
+      {
+        "filename": "pd-new-sm1",
+        "oldPath": "disruptors-media/misc/unmapped/pd-new-sm1",
+        "finalPath": "disruptors-media/content/podcast/pd-new-sm1"
+      },
+      {
+        "filename": "pd-new-sm-3",
+        "oldPath": "disruptors-media/misc/unmapped/pd-new-sm-3",
+        "finalPath": "disruptors-media/content/podcast/pd-new-sm-3"
+      },
+      {
+        "filename": "pd-new-sm1-3",
+        "oldPath": "disruptors-media/misc/unmapped/pd-new-sm1-3",
+        "finalPath": "disruptors-media/content/podcast/pd-new-sm1-3"
+      },
+      {
+        "filename": "podcast-new-lg-1",
+        "oldPath": "disruptors-media/misc/unmapped/podcast-new-lg-1",
+        "finalPath": "disruptors-media/content/podcast/podcast-new-lg-1"
+      },
+      {
+        "filename": "podcast-new-lg",
+        "oldPath": "disruptors-media/misc/unmapped/podcast-new-lg",
+        "finalPath": "disruptors-media/content/podcast/podcast-new-lg"
+      }
+    ]
+  }
+}

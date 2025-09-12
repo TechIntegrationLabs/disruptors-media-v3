@@ -15,7 +15,7 @@
       "variables": {
         "NODE_ENV": "production",
         "REACT_APP_RAILWAY": "true",
-        "REACT_APP_CLAUDE_BRIDGE_URL": "${{RAILWAY_PUBLIC_DOMAIN}}",
+        "REACT_APP_CLAUDE_BRIDGE_URL": "wss://${{RAILWAY_PUBLIC_DOMAIN}}",
         "CLAUDE_BRIDGE_PORT": "3456",
         "MCP_CONFIG_PATH": "./mcp-servers.json"
       }
